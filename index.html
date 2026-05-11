@@ -202,6 +202,57 @@ h3.sub-title { font-size: 11pt; font-weight: 700; color: var(--ink-soft); margin
 .toast { position: fixed; bottom: 22px; right: 22px; background: var(--ink); color: #fff; padding: 11px 18px; border-radius: 8px; font-size: 11pt; z-index: 400; opacity: 0; transform: translateY(6px); transition: all .25s; pointer-events: none; }
 .toast.show { opacity: 1; transform: translateY(0); }
 
+/* ── KANBAN ──────────────────────────────────────────────────────── */
+.subtabs { display: flex; gap: 0; border-bottom: 2px solid var(--line); margin-bottom: 24px; }
+.subtab { font-size: 12pt; font-family: var(--serif); font-weight: 600; padding: 8px 22px; color: var(--ink-mute); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all .15s; }
+.subtab.active { color: var(--ink); border-bottom-color: var(--ink); }
+.subtab:hover:not(.active) { color: var(--ink); }
+.kanban-page { padding: 28px 28px 60px; }
+.kanban-filter-bar { display: flex; gap: 10px; align-items: center; margin-bottom: 18px; flex-wrap: wrap; }
+.kanban-filter-select { font-size: 10.5pt; border: 1px solid var(--line); border-radius: 7px; padding: 6px 12px; background: var(--bg-card); color: var(--ink); outline: none; }
+.kanban-wrap { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 20px; align-items: flex-start; }
+.kanban-col { min-width: 262px; max-width: 292px; flex-shrink: 0; background: var(--bg-soft); border-radius: 12px; border: 1px solid var(--line); display: flex; flex-direction: column; transition: background .15s, border-color .15s; }
+.kanban-col.drag-over { background: var(--bg-accent); border-color: var(--gold); }
+.kanban-col-header { padding: 13px 14px 10px; display: flex; align-items: center; gap: 7px; }
+.col-title-input { font-size: 12pt; font-weight: 700; color: var(--ink); background: transparent; border: none; outline: none; flex: 1; font-family: var(--sans); cursor: pointer; }
+.col-title-input:focus { background: var(--bg-card); border-radius: 4px; padding: 1px 4px; cursor: text; }
+.col-count { font-size: 9.5pt; color: var(--ink-mute); background: var(--bg-accent); border-radius: 12px; padding: 1px 8px; flex-shrink: 0; }
+.col-add-btn, .col-del-btn { font-size: 16px; color: var(--ink-mute); cursor: pointer; background: none; border: none; padding: 2px 5px; border-radius: 4px; line-height: 1; }
+.col-add-btn:hover { background: var(--bg-accent); color: var(--clay); }
+.col-del-btn { font-size: 12px; opacity: .35; }
+.col-del-btn:hover { opacity: 1; color: #b91c1c; background: #fef2f2; }
+.kanban-cards { padding: 2px 10px 6px; display: flex; flex-direction: column; gap: 8px; min-height: 44px; }
+.kanban-card { background: var(--bg-card); border: 1px solid var(--line); border-left: 3px solid transparent; border-radius: 8px; padding: 11px 13px; cursor: grab; transition: box-shadow .12s, opacity .12s; }
+.kanban-card:active { cursor: grabbing; }
+.kanban-card.dragging { opacity: .45; box-shadow: 0 6px 18px rgba(0,0,0,.14); }
+.kanban-card[data-priority="high"] { border-left-color: var(--clay); }
+.kanban-card[data-priority="medium"] { border-left-color: var(--gold); }
+.kanban-card[data-priority="low"] { border-left-color: var(--sage); }
+.card-title { font-size: 11pt; font-weight: 600; color: var(--ink); margin-bottom: 3px; line-height: 1.35; }
+.card-desc { font-size: 9.5pt; color: var(--ink-mute); line-height: 1.4; margin-bottom: 8px; }
+.card-meta { display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+.card-project-tag { font-size: 8pt; font-weight: 700; padding: 2px 8px; border-radius: 12px; color: #fff; }
+.card-priority-tag { font-size: 8pt; font-weight: 600; padding: 2px 8px; border-radius: 12px; }
+.priority-low { background: #eef4ec; color: #2d6a4f; }
+.priority-medium { background: #fef9ec; color: #92400e; }
+.priority-high { background: #fef2f2; color: #b91c1c; }
+.card-delete { margin-left: auto; font-size: 11px; color: var(--ink-mute); cursor: pointer; opacity: 0; transition: opacity .15s; background: none; border: none; padding: 2px 4px; }
+.kanban-card:hover .card-delete { opacity: .5; }
+.card-delete:hover { opacity: 1 !important; color: #b91c1c; }
+.card-add-form { background: var(--bg-card); border: 1px solid var(--ws-border); border-radius: 8px; padding: 10px 12px; margin: 0 10px 10px; }
+.card-add-input { width: 100%; border: none; outline: none; font-size: 11pt; color: var(--ink); background: transparent; resize: none; font-family: var(--sans); }
+.card-add-actions { display: flex; gap: 6px; margin-top: 8px; align-items: center; flex-wrap: wrap; }
+.card-add-select { font-size: 9pt; border: 1px solid var(--line); border-radius: 5px; padding: 3px 6px; background: var(--bg); color: var(--ink); outline: none; cursor: pointer; }
+.add-col-btn { min-width: 200px; border: 2px dashed var(--line); border-radius: 12px; padding: 16px; background: transparent; cursor: pointer; color: var(--ink-mute); font-size: 11pt; font-family: var(--serif); font-style: italic; transition: all .15s; flex-shrink: 0; align-self: flex-start; margin-top: 0; }
+.add-col-btn:hover { border-color: var(--gold); color: var(--ink); background: var(--bg-soft); }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; margin-bottom: 24px; }
+.project-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; position: relative; }
+.project-color-bar { width: 100%; height: 4px; border-radius: 4px; margin-bottom: 14px; }
+.project-name { font-size: 13pt; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.project-count { font-size: 9.5pt; color: var(--ink-mute); }
+.project-delete { position: absolute; top: 12px; right: 12px; font-size: 12px; color: var(--ink-mute); cursor: pointer; opacity: .35; transition: opacity .15s; background: none; border: none; }
+.project-delete:hover { opacity: 1; color: #b91c1c; }
+
 /* ── GENERAL UTILITY ──────────────────────────────────────────────── */
 p { color: var(--ink-soft); margin-bottom: 12px; max-width: 700px; }
 p:last-child { margin-bottom: 0; }
@@ -226,12 +277,14 @@ strong { color: var(--ink); font-weight: 600; }
   <div class="nav-group">Command</div>
   <ul class="nav-list">
     <li><a onclick="navigate('dashboard')" class="active" id="nav-dashboard"><span class="nav-icon">⌂</span> Dashboard</a></li>
+    <li><a onclick="navigate('tasks')" id="nav-tasks"><span class="nav-icon">☑</span> Tasks</a></li>
     <li><a onclick="navigate('workspace')" id="nav-workspace"><span class="nav-icon">✦</span> My Workspace</a></li>
   </ul>
 
   <div class="nav-group">Knowledge Base</div>
   <ul class="nav-list">
     <li><a onclick="navigate('sisterhood-kb')" id="nav-sisterhood-kb"><span class="nav-icon">◎</span> Strategy &amp; Products</a></li>
+    <li><a onclick="navigate('marketing-kb')" id="nav-marketing-kb"><span class="nav-icon">◇</span> Marketing &amp; Content</a></li>
     <li><a onclick="navigate('saha-kb')" id="nav-saha-kb"><span class="nav-icon">◈</span> Saha Synergy</a></li>
     <ul class="nav-sub">
       <li><a onclick="navigate('icp')" id="nav-icp"><span class="nav-icon">◉</span> Ideal Clients</a></li>
@@ -403,6 +456,52 @@ strong { color: var(--ink); font-weight: 600; }
     <iframe src="kb-icp.html" class="iframe-wrap" title="Ideal Client Profiles"></iframe>
   </div>
 
+  <!-- MARKETING & CONTENT KB (iframe) -->
+  <div id="panel-marketing-kb" class="section-panel frame-mode" style="display:none">
+    <div class="frame-header">
+      <span class="frame-title">Marketing &amp; Content Knowledge Base</span>
+      <span class="frame-badge">Sisterhood OS</span>
+      <a href="kb-marketing.html" target="_blank" class="open-new-btn">Open in new tab ↗</a>
+    </div>
+    <iframe src="kb-marketing.html" class="iframe-wrap" title="Marketing & Content KB"></iframe>
+  </div>
+
+  <!-- TASKS / KANBAN -->
+  <div id="panel-tasks" class="section-panel content-mode" style="display:none">
+    <div class="kanban-page">
+      <div style="margin-bottom:20px">
+        <div style="font-size:9pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--clay);margin-bottom:6px">Command</div>
+        <div style="font-family:var(--serif);font-size:22pt;font-weight:400;color:var(--ink);margin-bottom:2px">Tasks &amp; Projects</div>
+        <div style="font-size:11pt;color:var(--ink-mute);font-family:var(--serif);font-style:italic">Drag cards between columns. Click a column title to rename it.</div>
+      </div>
+
+      <div class="subtabs">
+        <div class="subtab active" onclick="showTasksTab('board')" data-tab="board">Board</div>
+        <div class="subtab" onclick="showTasksTab('projects')" data-tab="projects">Projects</div>
+      </div>
+
+      <!-- BOARD -->
+      <div id="tasks-board">
+        <div class="kanban-filter-bar">
+          <select class="kanban-filter-select" id="kanban-project-filter" onchange="renderBoard()">
+            <option value="all">All Projects</option>
+          </select>
+          <button class="btn btn-secondary btn-sm" onclick="addColumn()">+ Add list</button>
+        </div>
+        <div class="kanban-wrap" id="kanban-board-inner"></div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div id="tasks-projects" style="display:none">
+        <div class="lead-actions" style="margin-bottom:20px">
+          <button class="btn btn-primary" onclick="openAddProject()">+ New Project</button>
+        </div>
+        <div class="projects-grid" id="projects-grid"></div>
+        <div id="projects-empty" class="empty-state" style="display:none">No projects yet. Add one above.</div>
+      </div>
+    </div>
+  </div>
+
   <!-- SOUL PATH MAP (iframe) -->
   <div id="panel-soul-path" class="section-panel frame-mode" style="display:none">
     <div class="frame-header">
@@ -497,10 +596,20 @@ function defaultState() {
     todaysFocus: '',
     stats: [
       { label:'SPC Leads', value:'—', note:'All pipeline stages' },
-      { label:'Contacted', value:'—', note:'First touch sent' },
-      { label:'In WA Group', value:'—', note:'Nurture active' },
-      { label:'Enrolled', value:'—', note:'Paid in full' }
-    ]
+      { label:'In Sequence M', value:'—', note:'Masterclass nurture' },
+      { label:'Watched MC', value:'—', note:'Full or partial watch' },
+      { label:'Enrolled', value:'—', note:'Payment secured' }
+    ],
+    kanban: {
+      columns: [
+        { id:'todo', title:'To Do' },
+        { id:'doing', title:'In Progress' },
+        { id:'review', title:'Review' },
+        { id:'done', title:'Done' }
+      ],
+      cards: [],
+      projects: []
+    }
   };
 }
 
@@ -514,7 +623,12 @@ function loadState() {
       leads: saved.leads || [],
       log: saved.log || [],
       todaysFocus: saved.todaysFocus || '',
-      stats: saved.stats || def.stats
+      stats: saved.stats || def.stats,
+      kanban: {
+        columns: saved.kanban?.columns || def.kanban.columns,
+        cards: saved.kanban?.cards || [],
+        projects: saved.kanban?.projects || []
+      }
     };
   } catch(e) { return defaultState(); }
 }
@@ -526,7 +640,7 @@ function saveState(state) {
 let state = loadState();
 
 // ─── NAVIGATION ──────────────────────────────────────────────────
-const panels = ['dashboard','workspace','sisterhood-kb','saha-kb','icp','soul-path','synergy'];
+const panels = ['dashboard','tasks','workspace','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy'];
 
 function navigate(id) {
   panels.forEach(p => {
@@ -842,6 +956,202 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2200);
 }
 
+// ─── KANBAN ──────────────────────────────────────────────────────
+const PROJECT_COLORS = ['#b86650','#7a8c6a','#c4a661','#6b5b95','#d4956a','#3d7a6b','#9b6b9b','#5c7fa0'];
+let dragCardId = null;
+
+function renderBoard() {
+  const container = document.getElementById('kanban-board-inner');
+  if (!container) return;
+  const filterProject = document.getElementById('kanban-project-filter')?.value || 'all';
+  let html = '';
+  state.kanban.columns.forEach(col => {
+    const colCards = state.kanban.cards
+      .filter(c => c.column === col.id && (filterProject === 'all' || c.project === filterProject))
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+    html += `<div class="kanban-col" data-col-id="${esc(col.id)}"
+      ondragover="handleDragOver(event,'${esc(col.id)}')"
+      ondragleave="handleDragLeave(event)"
+      ondrop="handleDrop(event,'${esc(col.id)}')">
+      <div class="kanban-col-header">
+        <input class="col-title-input" value="${esc(col.title)}" onblur="renameColumn('${esc(col.id)}',this.value)" onkeydown="if(event.key==='Enter')this.blur()">
+        <span class="col-count">${colCards.length}</span>
+        <button class="col-add-btn" onclick="showAddCardForm('${esc(col.id)}')" title="Add card">+</button>
+        <button class="col-del-btn" onclick="deleteColumn('${esc(col.id)}')" title="Remove list">×</button>
+      </div>
+      <div class="kanban-cards" id="cards-${esc(col.id)}">
+        ${colCards.map(c => renderCardHTML(c)).join('')}
+      </div>
+      <div id="add-form-${esc(col.id)}"></div>
+    </div>`;
+  });
+  html += `<button class="add-col-btn" onclick="addColumn()">+ Add list</button>`;
+  container.innerHTML = html;
+  container.querySelectorAll('.kanban-card').forEach(el => {
+    el.addEventListener('dragstart', e => { dragCardId = parseInt(el.dataset.cardId); el.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; });
+    el.addEventListener('dragend', () => { el.classList.remove('dragging'); document.querySelectorAll('.kanban-col').forEach(c => c.classList.remove('drag-over')); });
+  });
+}
+
+function renderCardHTML(card) {
+  const proj = state.kanban.projects.find(p => p.id === card.project);
+  const projTag = proj ? `<span class="card-project-tag" style="background:${proj.color}">${esc(proj.name)}</span>` : '';
+  const priTag = card.priority ? `<span class="card-priority-tag priority-${card.priority}">${card.priority}</span>` : '';
+  return `<div class="kanban-card" draggable="true" data-card-id="${card.id}" data-priority="${card.priority||''}">
+    <div class="card-title">${esc(card.title)}</div>
+    ${card.desc ? `<div class="card-desc">${esc(card.desc)}</div>` : ''}
+    <div class="card-meta">${projTag}${priTag}<button class="card-delete" onclick="deleteCard(${card.id})" title="Delete">✕</button></div>
+  </div>`;
+}
+
+function showAddCardForm(colId) {
+  const formEl = document.getElementById('add-form-' + colId);
+  if (!formEl) return;
+  const projOpts = state.kanban.projects.map(p => `<option value="${p.id}">${esc(p.name)}</option>`).join('');
+  formEl.innerHTML = `<div class="card-add-form">
+    <textarea class="card-add-input" id="nct-${colId}" placeholder="Card title..." rows="2"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();commitCard('${colId}')}if(event.key==='Escape')cancelCard('${colId}')"></textarea>
+    <textarea class="card-add-input" id="ncd-${colId}" placeholder="Description (optional)..." rows="1" style="margin-top:4px;font-size:9.5pt;opacity:.7"></textarea>
+    <div class="card-add-actions">
+      <select class="card-add-select" id="ncp-${colId}"><option value="">Priority</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select>
+      <select class="card-add-select" id="ncpr-${colId}"><option value="">No project</option>${projOpts}</select>
+      <button class="btn btn-primary btn-sm" onclick="commitCard('${colId}')">Add</button>
+      <button class="btn btn-secondary btn-sm" onclick="cancelCard('${colId}')">Cancel</button>
+    </div>
+  </div>`;
+  document.getElementById('nct-' + colId)?.focus();
+}
+
+function commitCard(colId) {
+  const title = document.getElementById('nct-' + colId)?.value.trim();
+  if (!title) { document.getElementById('nct-' + colId)?.focus(); return; }
+  const card = {
+    id: Date.now(), title,
+    desc: document.getElementById('ncd-' + colId)?.value.trim() || '',
+    priority: document.getElementById('ncp-' + colId)?.value || '',
+    project: document.getElementById('ncpr-' + colId)?.value || '',
+    column: colId,
+    order: state.kanban.cards.filter(c => c.column === colId).length,
+    created: new Date().toLocaleDateString('en-AU', { day:'numeric', month:'short' })
+  };
+  state.kanban.cards.push(card);
+  saveState(state);
+  renderBoard();
+  showAddCardForm(colId);
+}
+
+function cancelCard(colId) {
+  const el = document.getElementById('add-form-' + colId);
+  if (el) el.innerHTML = '';
+}
+
+function deleteCard(id) {
+  state.kanban.cards = state.kanban.cards.filter(c => c.id !== id);
+  saveState(state);
+  renderBoard();
+}
+
+function addColumn() {
+  const title = prompt('List name:');
+  if (!title?.trim()) return;
+  state.kanban.columns.push({ id: 'col-' + Date.now(), title: title.trim() });
+  saveState(state);
+  renderBoard();
+}
+
+function deleteColumn(id) {
+  const n = state.kanban.cards.filter(c => c.column === id).length;
+  if (n > 0 && !confirm(`Delete this list and its ${n} card${n!==1?'s':''}?`)) return;
+  state.kanban.columns = state.kanban.columns.filter(c => c.id !== id);
+  state.kanban.cards = state.kanban.cards.filter(c => c.column !== id);
+  saveState(state);
+  renderBoard();
+}
+
+function renameColumn(id, title) {
+  const col = state.kanban.columns.find(c => c.id === id);
+  if (col && title.trim()) { col.title = title.trim(); saveState(state); }
+}
+
+function handleDragOver(e, colId) {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  document.querySelectorAll('.kanban-col').forEach(c => c.classList.remove('drag-over'));
+  document.querySelector(`[data-col-id="${colId}"]`)?.classList.add('drag-over');
+}
+
+function handleDragLeave(e) {
+  if (!e.currentTarget.contains(e.relatedTarget)) e.currentTarget.classList.remove('drag-over');
+}
+
+function handleDrop(e, colId) {
+  e.preventDefault();
+  if (dragCardId === null) return;
+  const card = state.kanban.cards.find(c => c.id === dragCardId);
+  if (card) { card.column = colId; saveState(state); renderBoard(); }
+  document.querySelectorAll('.kanban-col').forEach(c => c.classList.remove('drag-over'));
+  dragCardId = null;
+}
+
+// ─── PROJECTS ────────────────────────────────────────────────────
+function updateProjectFilter() {
+  const sel = document.getElementById('kanban-project-filter');
+  if (!sel) return;
+  const cur = sel.value;
+  sel.innerHTML = '<option value="all">All Projects</option>' +
+    state.kanban.projects.map(p => `<option value="${p.id}"${p.id===cur?' selected':''}>${esc(p.name)}</option>`).join('');
+}
+
+function renderProjects() {
+  const grid = document.getElementById('projects-grid');
+  const empty = document.getElementById('projects-empty');
+  if (!grid) return;
+  if (state.kanban.projects.length === 0) {
+    grid.innerHTML = '';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+  grid.innerHTML = state.kanban.projects.map(p => {
+    const n = state.kanban.cards.filter(c => c.project === p.id).length;
+    return `<div class="project-card">
+      <div class="project-color-bar" style="background:${p.color}"></div>
+      <div class="project-name">${esc(p.name)}</div>
+      <div class="project-count">${n} card${n!==1?'s':''}</div>
+      <button class="project-delete" onclick="deleteProject('${p.id}')" title="Delete">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function openAddProject() {
+  const name = prompt('Project name:');
+  if (!name?.trim()) return;
+  const color = PROJECT_COLORS[state.kanban.projects.length % PROJECT_COLORS.length];
+  state.kanban.projects.push({ id: 'proj-' + Date.now(), name: name.trim(), color });
+  saveState(state);
+  renderProjects();
+  updateProjectFilter();
+  showToast('Project created');
+}
+
+function deleteProject(id) {
+  if (!confirm('Delete this project? Cards keep their data but lose the project tag.')) return;
+  state.kanban.projects = state.kanban.projects.filter(p => p.id !== id);
+  state.kanban.cards.forEach(c => { if (c.project === id) c.project = ''; });
+  saveState(state);
+  renderProjects();
+  updateProjectFilter();
+  renderBoard();
+}
+
+function showTasksTab(tab) {
+  document.getElementById('tasks-board').style.display = tab === 'board' ? 'block' : 'none';
+  document.getElementById('tasks-projects').style.display = tab === 'projects' ? 'block' : 'none';
+  document.querySelectorAll('.subtab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  if (tab === 'board') renderBoard();
+  if (tab === 'projects') { renderProjects(); updateProjectFilter(); }
+}
+
 // ─── INIT ─────────────────────────────────────────────────────────
 function init() {
   renderCountdown();
@@ -851,6 +1161,9 @@ function init() {
   renderLeads();
   renderLog();
   renderDashLog();
+  renderBoard();
+  renderProjects();
+  updateProjectFilter();
 }
 
 // Close modal on overlay click

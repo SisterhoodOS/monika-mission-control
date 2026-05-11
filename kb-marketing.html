@@ -1,0 +1,2123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sisterhood OS — Marketing & Content Knowledge Base</title>
+<style>
+:root {
+  --bg: #fbf8f4;
+  --bg-card: #ffffff;
+  --bg-soft: #f5edde;
+  --bg-accent: #ede0c5;
+  --ink: #1c1a17;
+  --ink-soft: #4a3520;
+  --ink-mute: #6e5a3f;
+  --line: #d8c9a8;
+  --line-soft: #ebe1ca;
+  --rose: #c9876a;
+  --clay: #b86650;
+  --sage: #7a8c6a;
+  --gold: #c4a661;
+  --cacao: #4a3520;
+  --pearl: #f0ead8;
+  --fuchsia: #b8467a;
+  --serif: 'Iowan Old Style', 'Palatino', 'Georgia', serif;
+  --sans: 'Optima', 'Avenir Next', 'Helvetica Neue', sans-serif;
+  --mono: 'SF Mono', 'Menlo', monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === Layout === */
+.layout { display: flex; min-height: 100vh; }
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 280px;
+  height: 100vh;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 28px 24px;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.32s ease;
+  z-index: 100;
+}
+.sidebar.open { transform: translateX(0); }
+.main {
+  flex: 1;
+  padding: 48px 32px 96px;
+  max-width: 100%;
+  margin-left: 0;
+  transition: margin-left 0.32s ease;
+}
+@media (min-width: 1024px) {
+  .sidebar { transform: translateX(0); }
+  .main { margin-left: 280px; padding: 48px 56px 96px; }
+}
+
+/* === Sidebar nav === */
+.sidebar-brand {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.sidebar-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 400;
+  margin-bottom: 32px;
+  color: var(--bg);
+}
+.nav-list { list-style: none; }
+.nav-list li { margin: 0; }
+.nav-list a {
+  display: block;
+  padding: 10px 12px;
+  color: var(--bg);
+  opacity: 0.78;
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.nav-list a:hover, .nav-list a.active {
+  opacity: 1;
+  background: rgba(196, 166, 97, 0.1);
+  border-left-color: var(--gold);
+}
+.nav-section {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.6;
+  margin: 24px 12px 8px;
+}
+
+/* === Hamburger === */
+.hamburger {
+  position: fixed;
+  top: 18px; left: 18px;
+  z-index: 101;
+  width: 44px; height: 44px;
+  background: var(--ink);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 2px 12px rgba(28, 26, 23, 0.2);
+}
+.hamburger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--bg);
+  border-radius: 1px;
+  transition: all 0.2s ease;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+@media (min-width: 1024px) { .hamburger { display: none; } }
+
+/* === Hero === */
+.hero {
+  background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-accent) 100%);
+  padding: 64px 40px 56px;
+  border-radius: 12px;
+  margin-bottom: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(196,166,97,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-eyebrow {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 12px;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: 42px;
+  line-height: 1.1;
+  font-weight: 400;
+  margin-bottom: 16px;
+  color: var(--ink);
+  max-width: 720px;
+}
+.hero-sub {
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 640px;
+  font-style: italic;
+}
+.hero-meta {
+  margin-top: 28px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--ink-mute);
+}
+.hero-meta span { padding: 4px 12px; background: rgba(255,255,255,0.5); border-radius: 100px; }
+
+/* === Sections === */
+section { margin-bottom: 64px; scroll-margin-top: 24px; }
+.section-eyebrow {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 8px;
+}
+h2 {
+  font-family: var(--serif);
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+.section-lead {
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin: 16px 0 32px;
+  font-style: italic;
+}
+h3 {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 32px 0 12px;
+  color: var(--ink);
+}
+h4 {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 20px 0 10px;
+  color: var(--clay);
+}
+p { margin-bottom: 14px; max-width: 760px; }
+em { color: var(--ink-mute); font-style: italic; }
+strong { color: var(--ink); font-weight: 600; }
+
+/* === Cards === */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin: 16px 0;
+  box-shadow: 0 1px 4px rgba(28,26,23,0.04);
+}
+.card-soft {
+  background: var(--bg-soft);
+  border-color: var(--line);
+}
+.card-accent {
+  background: var(--bg-accent);
+  border-left: 3px solid var(--gold);
+}
+.card-warning {
+  background: #fdf2ec;
+  border-left: 3px solid var(--clay);
+}
+
+/* === Grid === */
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+
+/* === Tables === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14.5px;
+}
+th, td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: top;
+}
+th {
+  background: var(--bg-accent);
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+tr:hover td { background: var(--bg-soft); }
+
+/* === Lists === */
+ul, ol { margin: 8px 0 14px 22px; max-width: 760px; }
+li { margin-bottom: 6px; }
+ul.clean { list-style: none; margin-left: 0; }
+ul.clean li { padding-left: 22px; position: relative; }
+ul.clean li::before {
+  content: "✦"; position: absolute; left: 0;
+  color: var(--gold); font-size: 14px;
+}
+
+/* === Quote box === */
+blockquote {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--ink-soft);
+  border-left: 3px solid var(--gold);
+  padding: 8px 0 8px 24px;
+  margin: 16px 0;
+  max-width: 720px;
+}
+
+/* === Color swatches === */
+.swatch-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+.swatch {
+  background: var(--bg-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 13px;
+}
+.swatch-color { height: 64px; }
+.swatch-info { padding: 10px 12px; }
+.swatch-name {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.swatch-hex {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  margin-top: 2px;
+}
+
+/* === Pillar cards === */
+.pillar-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  padding: 22px 26px;
+  position: relative;
+  overflow: hidden;
+}
+.pillar-pct {
+  position: absolute;
+  top: 18px; right: 22px;
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--gold);
+}
+.pillar-name {
+  font-family: var(--serif);
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+.pillar-tag {
+  font-family: var(--sans);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--clay);
+  margin-bottom: 12px;
+}
+
+/* === Avatar cards === */
+.avatar {
+  background: var(--bg-card);
+  border-left: 3px solid var(--rose);
+  border-radius: 6px;
+  padding: 18px 22px;
+  margin: 12px 0;
+}
+.avatar-num {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: 4px;
+}
+.avatar-name {
+  font-family: var(--serif);
+  font-size: 19px;
+  margin-bottom: 8px;
+}
+.avatar dt {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--clay);
+  margin-top: 10px;
+}
+.avatar dd { margin: 2px 0; font-size: 14.5px; }
+
+/* === Code/snippet === */
+code {
+  font-family: var(--mono);
+  font-size: 13px;
+  background: var(--bg-accent);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+pre {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 16px 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 12.5px;
+  font-family: var(--mono);
+  margin: 12px 0;
+}
+
+/* === She says / never says === */
+.dual { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+@media (max-width: 720px) { .dual { grid-template-columns: 1fr; } }
+.dual-col {
+  background: var(--bg-card);
+  border-radius: 8px;
+  padding: 18px 22px;
+}
+.dual-col.yes { border-left: 3px solid var(--sage); }
+.dual-col.no { border-left: 3px solid var(--clay); }
+.dual-col h4 { margin-top: 0; }
+
+/* === Asset gallery === */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--line-soft);
+}
+
+/* === Quick badges === */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--bg-accent);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 100px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+.badge-rose { background: rgba(184,102,80,0.14); color: var(--clay); }
+.badge-sage { background: rgba(122,140,106,0.14); color: var(--sage); }
+.badge-gold { background: rgba(196,166,97,0.18); color: var(--cacao); }
+
+/* === Misc === */
+a { color: var(--clay); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+.muted { color: var(--ink-mute); font-size: 13.5px; }
+.divider { border: none; border-top: 1px solid var(--line); margin: 32px 0; }
+.tiny { font-size: 12px; color: var(--ink-mute); }
+
+/* === Gallery / iPhone mockups === */
+.gallery-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  padding: 10px 14px;
+  background: var(--bg-soft);
+  border-radius: 8px;
+}
+.gallery-grid {
+  display: grid;
+  gap: 28px;
+  margin: 16px 0 32px;
+}
+.gallery-grid-iphone {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.gallery-grid-photos {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+.gallery-grid-videos {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.gallery-item { display: flex; flex-direction: column; align-items: center; }
+.gallery-item-small { align-items: stretch; }
+.gallery-item-wide { align-items: stretch; }
+
+.iphone-frame {
+  width: 220px;
+  height: 444px;
+  background: #1c1a17;
+  border-radius: 32px;
+  padding: 8px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(28,26,23,0.18), 0 2px 6px rgba(28,26,23,0.12);
+}
+.iphone-notch {
+  position: absolute;
+  top: 8px; left: 50%;
+  transform: translateX(-50%);
+  width: 70px; height: 18px;
+  background: #1c1a17;
+  border-radius: 0 0 14px 14px;
+  z-index: 5;
+}
+.iphone-screen {
+  width: 100%; height: 100%;
+  background: #000;
+  border-radius: 26px;
+  overflow: hidden;
+  position: relative;
+}
+.iphone-screen video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.iphone-caption {
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  font-style: italic;
+  max-width: 280px;
+  text-align: center;
+}
+
+.carousel-stack {
+  position: relative;
+  width: 100%; height: 100%;
+}
+.carousel-slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.carousel-slide.active { opacity: 1; z-index: 1; }
+.carousel-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+.carousel-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transition: background 0.2s;
+}
+.carousel-dot.active { background: rgba(255,255,255,1); }
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-nav.prev { left: 6px; }
+.carousel-nav.next { right: 6px; }
+.carousel-nav:hover { background: rgba(0,0,0,0.75); }
+
+.gallery-meta {
+  margin-top: 12px;
+  text-align: center;
+  max-width: 280px;
+}
+.gallery-meta h4 {
+  font-family: var(--sans);
+  font-size: 13px;
+  margin: 0 0 4px;
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.gallery-item-small .gallery-meta, .gallery-item-wide .gallery-meta { text-align: left; }
+
+.photo-tile {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--line-soft);
+  display: block;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.photo-tile:hover { transform: scale(1.02); }
+
+.video-tile {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Print */
+@media print {
+  .sidebar, .hamburger { display: none; }
+  .main { margin-left: 0; padding: 0; }
+  .hero { background: none; }
+}
+</style>
+</head>
+<body>
+
+<button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+
+<div class="layout">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">Sisterhood OS</div>
+  <div class="sidebar-title">Marketing &amp; Content Knowledge Base</div>
+
+  <div class="nav-section">Foundation</div>
+  <ul class="nav-list">
+    <li><a href="#essence">Essence &amp; Mission</a></li>
+    <li><a href="#values">Values · The SISTER Code</a></li>
+    <li><a href="#archetype">Brand Archetype</a></li>
+    <li><a href="#story">Founder Story</a></li>
+    <li><a href="#team">The Team</a></li>
+  </ul>
+
+  <div class="nav-section">Identity</div>
+  <ul class="nav-list">
+    <li><a href="#visual">Visual Identity</a></li>
+    <li><a href="#colors">Color Palette</a></li>
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#imagery">Imagery Direction</a></li>
+  </ul>
+
+  <div class="nav-section">Voice</div>
+  <ul class="nav-list">
+    <li><a href="#voice-modes">Six Voice Modes</a></li>
+    <li><a href="#voice-pillars">Four Universal Pillars</a></li>
+    <li><a href="#signature-phrases">Signature Phrases</a></li>
+    <li><a href="#she-says">She Says · Never Says</a></li>
+    <li><a href="#hard-bans">Hard Bans</a></li>
+    <li><a href="#favorite-words">Favorite Words</a></li>
+  </ul>
+
+  <div class="nav-section">Audience</div>
+  <ul class="nav-list">
+    <li><a href="#icp">ICP Overview</a></li>
+    <li><a href="#avatars">7 Avatars</a></li>
+    <li><a href="#psychographics">Psychographics</a></li>
+  </ul>
+
+  <div class="nav-section">Content</div>
+  <ul class="nav-list">
+    <li><a href="#pillars">6 Content Pillars</a></li>
+    <li><a href="#themes">7 Content Themes</a></li>
+    <li><a href="#formats">Formats &amp; Channels</a></li>
+    <li><a href="#cta">CTA Style Rules</a></li>
+  </ul>
+
+  <div class="nav-section">Products</div>
+  <ul class="nav-list">
+    <li><a href="#offers">Offer Ladder</a></li>
+    <li><a href="#masterclass">Masterclass</a></li>
+    <li><a href="#spc">Soul Path Collective</a></li>
+    <li><a href="#funnel">The Funnel</a></li>
+  </ul>
+
+  <div class="nav-section">Market</div>
+  <ul class="nav-list">
+    <li><a href="#competitors">Competitor Roster</a></li>
+    <li><a href="#patterns">Universal Patterns</a></li>
+    <li><a href="#aspirational">North Star</a></li>
+  </ul>
+
+  <div class="nav-section">Operations</div>
+  <ul class="nav-list">
+    <li><a href="#cadence">Posting Cadence</a></li>
+    <li><a href="#tools">Tech Stack</a></li>
+    <li><a href="#kpis">KPIs</a></li>
+  </ul>
+
+  <div class="nav-section">Paid Ads</div>
+  <ul class="nav-list">
+    <li><a href="../sisterhood-os-social/strategy/META-ADS-KNOWLEDGE-BASE.html" target="_blank">Meta Ads Knowledge Base</a></li>
+  </ul>
+
+  <div class="nav-section">Gallery</div>
+  <ul class="nav-list">
+    <li><a href="#gallery">Content Gallery</a></li>
+  </ul>
+
+  <div class="nav-section">Resources</div>
+  <ul class="nav-list">
+    <li><a href="#assets">Photos &amp; Graphics</a></li>
+    <li><a href="#templates">Templates &amp; Scripts</a></li>
+    <li><a href="#drive">Drive &amp; Storage</a></li>
+    <li><a href="#agents">Agent Roster</a></li>
+  </ul>
+</aside>
+
+<main class="main">
+
+<section class="hero">
+  <div class="hero-eyebrow">Marketing &amp; Content Knowledge Base · v1</div>
+  <h1>Everything anyone needs to understand the brand, in one place.</h1>
+  <p class="hero-sub">For Sophia and her marketing &amp; content team. Voice profile, ICP, content pillars, products, competitors, visual identity, and resources. Updated 2026-05-05.</p>
+  <div class="hero-meta">
+    <span>Brand: Sisterhood OS</span>
+    <span>Parent: Saha Synergy Group HK Ltd</span>
+    <span>Founder: Sophia Lee Fox</span>
+    <span>Bali · Global</span>
+  </div>
+</section>
+
+<!-- ====================================== FOUNDATION ====================================== -->
+
+<section id="essence">
+  <div class="section-eyebrow">Foundation · 01</div>
+  <h2>Essence &amp; Mission</h2>
+  <p class="section-lead">A sanctuary for feminine evolution, where wisdom becomes leadership and connection becomes power.</p>
+
+  <div class="card card-accent">
+    <h4>Brand Declaration</h4>
+    <blockquote style="border:none;padding:8px 0;margin:0;">
+      In truth we stand.<br>
+      In love we grow.<br>
+      As sisters we rise.
+    </blockquote>
+  </div>
+
+  <h3>Positioning</h3>
+  <p>Sisterhood OS is a new paradigm of women's education and empowerment. It bridges spirituality, emotional intelligence, and practical group and self-leadership. The next-generation ecosystem for feminine growth: rooted in real connection, free from performance, built to scale globally.</p>
+
+  <h3>Philosophy</h3>
+  <ul class="clean">
+    <li>Leadership can be soft. Growth can be safe.</li>
+    <li>Transformation doesn't demand pain. It asks for presence.</li>
+    <li>Every woman holds her own map to mastery.</li>
+    <li>Exploring the world together is safer, faster, and far more fulfilling.</li>
+  </ul>
+
+  <h3>Brand Frequency Statement</h3>
+  <blockquote>We are the Sisterhood of Sovereignty. A global network of women rising through remembrance, learning through embodiment, and leading through love. Here, growth feels safe. Wisdom feels alive. Connection feels like home.</blockquote>
+
+  <h3>Mission, Vision, Core Beliefs</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Mission</h4>
+      <p>Awaken feminine leadership in all its forms — emotional, creative, spiritual, and practical. Help every woman remember she is whole, build a life that feels entirely her own, and rise alongside other women doing the same.</p>
+    </div>
+    <div class="card">
+      <h4>Vision</h4>
+      <p>A global ecosystem of sovereign women who lead through connection, not hierarchy. International chapters, AI-assisted personal guidance (Sister Sage), and circles meeting in real life on every continent.</p>
+    </div>
+  </div>
+
+  <h4>Core Beliefs (repeat weekly in content)</h4>
+  <ul class="clean">
+    <li>Every woman is whole. We're just here to help her remember.</li>
+    <li>Safety is not the absence of challenge. It's the presence of support.</li>
+    <li>Transformation is not about becoming someone new. It's about returning home to yourself.</li>
+    <li>Growth should feel gentle, not performative.</li>
+    <li>Connection is the medicine. Wisdom is integration. Action is self-love.</li>
+    <li>Peace is a form of progress. Rest is part of productivity.</li>
+    <li>Your body is not a machine. Your cycle is strategic infrastructure.</li>
+  </ul>
+</section>
+
+<section id="values">
+  <div class="section-eyebrow">Foundation · 02</div>
+  <h2>The SISTER Code</h2>
+  <p class="section-lead">The six values every piece of content, every program, every interaction is built on.</p>
+
+  <div class="grid-3">
+    <div class="card"><h4>Sisterhood</h4><p>Real connection, not surface-level networking. We gather to be known, not to network.</p></div>
+    <div class="card"><h4>Identity</h4><p>Feminine identity. Knowing who you are beyond your job title.</p></div>
+    <div class="card"><h4>Safety</h4><p>Trauma-informed containers. Nervous system regulation as foundation.</p></div>
+    <div class="card"><h4>Trust</h4><p>Trust in yourself first. Trust in the community second. Built through presence and consistency.</p></div>
+    <div class="card"><h4>Evolution</h4><p>Transformation through growth, not pressure. The pace of returning home, not climbing higher.</p></div>
+    <div class="card"><h4>Responsibility</h4><p>Showing up for yourself and your sisters. Sovereignty as shared accountability.</p></div>
+  </div>
+
+  <h3>Code of Conduct (for circles, events, community)</h3>
+  <ul>
+    <li><strong>Confidentiality</strong> — what is shared in the circle stays in the circle</li>
+    <li><strong>Non-judgment</strong> — hold space without criticism, gossip, or unsolicited advice</li>
+    <li><strong>Presence</strong> — phones down, hearts open</li>
+    <li><strong>Respect</strong> — speak from "I," listen to understand, not to respond</li>
+    <li><strong>Integrity</strong> — honor your word and your commitments</li>
+    <li><strong>Kindness</strong> — treat every woman as you would your future self</li>
+    <li><strong>Diversity &amp; Inclusion</strong> — all backgrounds, faiths, and paths welcome</li>
+    <li><strong>Boundaries</strong> — share what feels right, honor others' limits</li>
+  </ul>
+</section>
+
+<section id="archetype">
+  <div class="section-eyebrow">Foundation · 03</div>
+  <h2>Brand Archetype: The Sister Sage™</h2>
+  <p class="section-lead">The wise, warm, worldly feminine. Part mentor, part mirror, part muse. The big sister you always craved.</p>
+
+  <h3>Archetypal Lineage</h3>
+  <div class="grid-3">
+    <div class="card card-soft">
+      <h4>Healer Energy</h4>
+      <p>Safety and compassion. Holds space without rescuing.</p>
+    </div>
+    <div class="card card-soft">
+      <h4>Sage Energy</h4>
+      <p>Structure and credibility. Strategy meets intuition.</p>
+    </div>
+    <div class="card card-soft">
+      <h4>Priestess Energy</h4>
+      <p>Ritual and transformation. The sacred, embodied.</p>
+    </div>
+  </div>
+  <p style="margin-top:14px;"><em>Tri-archetype integration → The Feminine Alchemist-Sage. The bridge between depth and discipline, ritual and reason, spirit and structure.</em></p>
+
+  <h3>Archetype Personality</h3>
+  <p>She is Alpha in the truest sense. Balanced, embodied, self-aware. True leadership means she doesn't need to know everything. She uplifts others, shares the spotlight, celebrates power as collective. Her ego is integrated, never dominant. She believes spirituality should feel like coming home, not joining a cult.</p>
+
+  <h3>The Frequency Test</h3>
+  <div class="card card-accent">
+    <p style="margin:0;"><em>She doesn't teach from a stage. She teaches from beside you. She holds space for your softness, strategy for your success, and belief in your becoming. <strong>She is the soul of the Sisterhood.</strong></em></p>
+    <p style="margin-top:12px;font-family:var(--sans);font-size:13px;color:var(--clay);"><strong>Before publishing anything, ask:</strong> Does this sound like her? If not, breathe. Rewrite until it does.</p>
+  </div>
+</section>
+
+<section id="story">
+  <div class="section-eyebrow">Foundation · 04</div>
+  <h2>Founder Story · Sophia Lee Fox</h2>
+  <p class="section-lead">Use these proof points specifically, not vaguely. Weave 1-2 per week into content.</p>
+
+  <h3>The Story</h3>
+  <p>Sophia didn't follow a traditional path. At 18, she started at the front desk and moved into management before 21. At 22, she quit corporate to start her own company. Three years of trial and error later, she had her first real hit. Then at 27, with a successful business behind her, she walked away again. Not to build more. To find herself.</p>
+  <p>What followed were years of deep inner work: over 50 days of silent meditation, yoga teacher training, breathwork, yoga nidra, and Vedic astrology. She went inward to learn what it truly means to live in alignment with her soul.</p>
+  <p>Saha Synergy and Sisterhood OS were born from that journey.</p>
+
+  <h3>Origin Proof Points (use specifically, weave 1-2 per week)</h3>
+  <ul class="clean">
+    <li>Walked away from a 6-figure corporate job (Singapore)</li>
+    <li>Left out of survival mode after sister overdosed and family responsibility shifted</li>
+    <li>Six months in, had failed. Rebuilt the foundation underneath, not just the business.</li>
+    <li>Built a life in Bali, grounded in presence</li>
+    <li>Built Sisterhood OS + Soul Path Collective from scratch</li>
+    <li>Had her own "this isn't it" moment in a corporate bathroom</li>
+    <li>Studies Shri Vidya yoga lineage + conscious connected breathwork</li>
+    <li>Her family thought she'd lost her mind when she left</li>
+    <li>50+ days of silent meditation</li>
+  </ul>
+
+  <h3>Co-Founder · Helena Seramor</h3>
+  <p>Helena built and scaled multiple businesses, from coaching programs to clothing brands to retreats, and guided over two thousand women in one of the largest Spanish-speaking holistic entrepreneurial communities. As a meditation teacher, yoga teacher, and holistic coach, she does not just teach theory. She has lived it. She left corporate to build freedom and has helped countless women do the same. Co-founder of Soul Path Collective. Leads M2 + all Phase 2 sales/marketing. Runs 600-woman community.</p>
+</section>
+
+<section id="team">
+  <div class="section-eyebrow">Foundation · 05</div>
+  <h2>The Team</h2>
+  <table>
+    <thead><tr><th>Person</th><th>Role</th><th>Scope</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Sophia Lee Fox</strong></td><td>Founder, Saha Synergy Group</td><td>Creator of Soul Path Map. Phase 1 (M1, M3), Phase 2 masterclasses, overall direction.</td></tr>
+      <tr><td><strong>Helena Seramor</strong></td><td>Co-founder of SPC</td><td>Leads Phase 1 Month 2 + all Phase 2 sales/marketing. 40% rev share Cohort 1, then 50/50.</td></tr>
+      <tr><td><strong>Camie</strong></td><td>Breathwork + EFT facilitator</td><td>4 sessions per cohort (M1 + M3). Specialist contractor.</td></tr>
+      <tr><td><strong>Monika Purba</strong></td><td>Director of Bali Sisterhood OS</td><td>Ops, platform, compliance, masterclass design, daily execution.</td></tr>
+      <tr><td><strong>Denise</strong></td><td>UX &amp; Tech</td><td>Circle.so platform builder.</td></tr>
+      <tr><td><strong>Flo (AI)</strong></td><td>Email marketing operator</td><td>MailerLite, brand voice on every send. Manages all email across Saha Synergy + SPC.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ====================================== IDENTITY ====================================== -->
+
+<section id="visual">
+  <div class="section-eyebrow">Identity · 06</div>
+  <h2>Visual Identity</h2>
+  <p class="section-lead">Muted, grounded, radiant. Lightly worn luxury. Real over polished.</p>
+
+  <div class="card card-warning">
+    <h4>Brand Kit Status</h4>
+    <p style="margin:0;">External brand strategy contractor engagement (Penelope Sloan Creative, $3,000) delivered conceptual documents and partial logo exploration but not the full Canva brand kit, finalized brand guidelines PDF, or asset handover. <strong>Workaround in use:</strong> AI image prompts via Google Whisk + reference imagery → Flux LoRA model of Sophia (configured at <code>~/Agents/marketing/sisterhood-os-social/sophia-face/</code>). Logo files and finalized brand kit pending.</p>
+  </div>
+</section>
+
+<section id="colors">
+  <div class="section-eyebrow">Identity · 07</div>
+  <h2>Color Palette</h2>
+  <p>Muted earth tones. Rose clay and sunlit gold accents. Avoid corporate clean, neon, or stock-aspirational luxury.</p>
+  <div class="swatch-row">
+    <div class="swatch"><div class="swatch-color" style="background:#c9876a;"></div><div class="swatch-info"><div class="swatch-name">Rose Clay</div><div class="swatch-hex">#c9876a</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e8d4b8;"></div><div class="swatch-info"><div class="swatch-name">Warm Sand</div><div class="swatch-hex">#e8d4b8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#7a8c6a;"></div><div class="swatch-info"><div class="swatch-name">Lush Green</div><div class="swatch-hex">#7a8c6a</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#b8467a;"></div><div class="swatch-info"><div class="swatch-name">Fuchsia Pink</div><div class="swatch-hex">#b8467a</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f0ead8;"></div><div class="swatch-info"><div class="swatch-name">Luminous Pearl</div><div class="swatch-hex">#f0ead8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4a3520;"></div><div class="swatch-info"><div class="swatch-name">Deep Cacao</div><div class="swatch-hex">#4a3520</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c4a661;"></div><div class="swatch-info"><div class="swatch-name">Sunlit Gold</div><div class="swatch-hex">#c4a661</div></div></div>
+  </div>
+  <p class="muted"><strong>Texture:</strong> Linen, silk, stone. Lightly worn luxury. <strong>Symbolism:</strong> Circle (unity), flame (transformation), triangle (sovereignty).</p>
+</section>
+
+<section id="typography">
+  <div class="section-eyebrow">Identity · 08</div>
+  <h2>Typography</h2>
+  <p>Pairing soft serif headlines with clean sans-serif support type. Fonts purchased through external contractor but license ownership unclear (workaround in progress).</p>
+  <div class="grid-2">
+    <div class="card"><h4>Headlines · Serif</h4><p style="font-family:var(--serif);font-size:24px;margin:0;">The Sister Sage</p><p class="tiny">Iowan Old Style / Palatino / Georgia. Soft, mature, feminine authority.</p></div>
+    <div class="card"><h4>Body &amp; UI · Sans</h4><p style="font-family:var(--sans);font-size:18px;margin:0;letter-spacing:0.02em;">Sisterhood OS</p><p class="tiny">Optima / Avenir Next. Clean, breathable, generous letter-spacing.</p></div>
+  </div>
+</section>
+
+<section id="imagery">
+  <div class="section-eyebrow">Identity · 09</div>
+  <h2>Imagery Direction</h2>
+  <p>Real women, barefoot or in flowy linen. Laughter, learning, tea, notebooks, natural glow, ambient shadows. Golden light. "Bali sunrise on skin."</p>
+
+  <div class="dual">
+    <div class="dual-col yes">
+      <h4>Lean into</h4>
+      <ul class="clean">
+        <li>Real, intimate, unposed</li>
+        <li>Soft natural light, shallow depth of field</li>
+        <li>Laughter, conversation, tea, journals</li>
+        <li>Linen, silk, stone, natural textures</li>
+        <li>Bali jungle / ocean / golden hour</li>
+        <li>Editorial photography feel</li>
+      </ul>
+    </div>
+    <div class="dual-col no">
+      <h4>Avoid</h4>
+      <ul class="clean">
+        <li>Stock-photo polish</li>
+        <li>Corporate clean / aspirational luxury</li>
+        <li>Crystals on perfect sand</li>
+        <li>White-robed women floating</li>
+        <li>Neon-lit "empowerment" graphics</li>
+        <li>Stock-looking handshakes</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>Flux Pro Base Prompt</h4>
+  <pre>[subject], grounded feminine aesthetic, natural linen textures, golden hour Bali light,
+muted earth tones with rose clay and sunlit gold accents, soft editorial photography,
+real and unposed, shallow depth of field, warmth and presence, --ar 4:5</pre>
+
+  <h4>Reference Imagery (from brand library)</h4>
+  <div class="gallery">
+    <img src="assets/IACS-Day2-BB-BS-LC-5.jpg" alt="Brand event imagery">
+    <img src="assets/IACS-Day2-BB-BS-LC-6.jpg" alt="Brand event imagery">
+    <img src="assets/IACS-Day2-BB-BS-LC-8.jpg" alt="Brand event imagery">
+  </div>
+</section>
+
+<!-- ====================================== VOICE ====================================== -->
+
+<section id="voice-modes">
+  <div class="section-eyebrow">Voice · 10</div>
+  <h2>Six Voice Modes</h2>
+  <p class="section-lead">The voice is not monolithic. Different channels call for different modes. Pick the right mode for the output, then layer the universal pillars.</p>
+
+  <table>
+    <thead><tr><th>Mode</th><th>Used For</th><th>Tone Quality</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. Sister Sage (CORE)</strong></td><td>Reels, carousels, email nurture, community posts</td><td>Sacred simplicity, exhale energy, invitational</td></tr>
+      <tr><td><strong>2. Direct-Response</strong></td><td>Meta Ads, lead magnets, masterclass hooks</td><td>Problem-first, punchy, 1-2 sec hook, Meta-safe</td></tr>
+      <tr><td><strong>3. Sales Page / Masterclass</strong></td><td>SPC pages, launch emails, masterclass content</td><td>Hybrid. Sharp framing + sacred close.</td></tr>
+      <tr><td><strong>4. Community Ops</strong></td><td>Circle.so posts, facilitator docs, codes of conduct</td><td>Structured, ethical, "we" language</td></tr>
+      <tr><td><strong>5. DM / Conversational</strong></td><td>Instagram DMs, ManyChat flows, warm reach-outs</td><td>Specific, personal, voice-note from a friend</td></tr>
+      <tr><td><strong>6. Story / BTS</strong></td><td>IG Stories, daily content</td><td>Unposed, fragmented, raw honesty</td></tr>
+    </tbody>
+  </table>
+  <p class="muted"><strong>Rule:</strong> If you mix Mode 2 punch with Mode 1 sacredness without choosing, output feels inauthentic. Pick one primary mode per asset.</p>
+</section>
+
+<section id="voice-pillars">
+  <div class="section-eyebrow">Voice · 11</div>
+  <h2>Four Universal Voice Pillars</h2>
+  <p>Apply to all six modes.</p>
+  <div class="grid-2">
+    <div class="card"><h4>Calm Authority</h4><p>Grounded, credible, emotionally fluent. Every line should feel like an exhale.</p></div>
+    <div class="card"><h4>Sacred Simplicity</h4><p>Spiritual without spectacle. No gurus, no performance, no aesthetic-only.</p></div>
+    <div class="card"><h4>Communal Wisdom</h4><p>Always "we," never "you vs. us." Co-elevation, not hierarchy.</p></div>
+    <div class="card"><h4>Practical Divinity</h4><p>Real-world wisdom meets soulful insight. Strategy is spiritual, growth is grounded.</p></div>
+  </div>
+
+  <h3>Writing Formula</h3>
+  <p>Plain language with sacred precision. Every word should feel like a breath.</p>
+  <p><strong>Pacing (Mode 1):</strong> 1 part reflection → 1 part truth → 1 part invitation.</p>
+  <p><strong>Sentence style:</strong> Short. Rhythmic. Each line a truth or a reminder.</p>
+
+  <h4>Emotional Frequency Order</h4>
+  <ol>
+    <li>Safety before excitement</li>
+    <li>Connection before conversion</li>
+    <li>Calm before curiosity</li>
+    <li>Truth before technique</li>
+    <li>Remembrance before reinvention</li>
+  </ol>
+</section>
+
+<section id="signature-phrases">
+  <div class="section-eyebrow">Voice · 12</div>
+  <h2>Signature Phrase Templates</h2>
+  <p class="section-lead">Proven hooks. Drop them word-for-word or fill the blanks. At least ONE per post / reel / story sequence.</p>
+
+  <div class="card">
+    <h4>1. "You don't need fixing. You just need ___"</h4>
+    <ul><li>…space to breathe again.</li><li>…sisters who see you clearly.</li><li>…to feel safe being seen.</li><li>…rest that feels like arrival.</li></ul>
+  </div>
+
+  <div class="card">
+    <h4>2. "Growth doesn't always look like ___. Sometimes it looks like ___"</h4>
+    <ul><li>…hustle / healing.</li><li>…expansion / exhale.</li><li>…certainty / surrender.</li><li>…control / compassion.</li></ul>
+  </div>
+
+  <div class="card">
+    <h4>3. "You're not late. You're right on time for ___"</h4>
+    <ul><li>…your next evolution.</li><li>…your calm era.</li><li>…a softer kind of success.</li><li>…the version of you that trusts her pace.</li></ul>
+  </div>
+
+  <div class="card">
+    <h4>4. "If you've been feeling ___, this is your reminder that ___"</h4>
+    <ul><li>…lost / every path home begins within.</li><li>…tired / rest is resistance too.</li><li>…behind / there's no race, only rhythm.</li><li>…ready / readiness is its own arrival.</li></ul>
+  </div>
+
+  <div class="card">
+    <h4>5. "We don't do ___. We do ___"</h4>
+    <ul><li>…hustle / harmony.</li><li>…pressure / presence.</li><li>…comparison / collaboration.</li><li>…perfection / progression.</li></ul>
+  </div>
+
+  <div class="card">
+    <h4>6. "You don't need more discipline. You need more ___"</h4>
+    <ul><li>…devotion / pleasure / alignment / self-trust.</li></ul>
+  </div>
+
+  <h3>Brand-Anchor Lines (use across formats)</h3>
+  <ul class="clean">
+    <li>"You're not meant to do life alone."</li>
+    <li>"Freedom isn't luck. It's built."</li>
+    <li>"You're not inconsistent. You're cyclical."</li>
+    <li>"We were taught to live like men and call it success."</li>
+    <li>"Your nervous system will never feel ready. That IS the work."</li>
+    <li>"The cycle is the strategy."</li>
+    <li>"Stop building other people's dreams. Build yours." <span class="tiny">(Monika)</span></li>
+    <li>"It's the same woman walking through different doors at different times."</li>
+  </ul>
+</section>
+
+<section id="she-says">
+  <div class="section-eyebrow">Voice · 13</div>
+  <h2>She Says · She Never Says</h2>
+  <div class="dual">
+    <div class="dual-col yes">
+      <h4>She says</h4>
+      <ul class="clean">
+        <li>"Let's simplify the process…"</li>
+        <li>"You already have what you need, let's organize it."</li>
+        <li>"Your softness is not a setback, it's your system."</li>
+        <li>"This isn't about becoming someone new. It's about remembering who you are."</li>
+        <li>"We rise through reflection, not perfection."</li>
+        <li>"You could try this, if it resonates…"</li>
+        <li>"Let's make it lighter this time."</li>
+      </ul>
+    </div>
+    <div class="dual-col no">
+      <h4>She never says</h4>
+      <ul class="clean">
+        <li>"I'll save you."</li>
+        <li>"Do it my way."</li>
+        <li>"You're not ready."</li>
+        <li>"You should…"</li>
+        <li>"Step into your power" <span class="tiny">(reframe as "remember your power")</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="hard-bans">
+  <div class="section-eyebrow">Voice · 14</div>
+  <h2>Hard Bans</h2>
+  <p>Never output these. Ever.</p>
+
+  <div class="card card-warning">
+    <h4>NO em dashes (—). EVER.</h4>
+    <p style="margin:0;">Replace with periods, commas, or restructure the sentence. This rule has no exceptions in any writing produced for Sophia.</p>
+  </div>
+
+  <h3>Commanding tone</h3>
+  <ul><li>"You need to…"</li><li>"If you're serious about growth…"</li><li>"You should…"</li><li>"Don't miss your chance"</li><li>"Limited time offer"</li><li>"Act fast" / "Sign up now"</li></ul>
+
+  <h3>Hype phrases</h3>
+  <ul><li>"This will change your life forever"</li><li>"Quantum leap"</li><li>"Vibrational upgrades" / "high-vibe" / "frequency upgrade"</li></ul>
+
+  <h3>Overused filler</h3>
+  <ul><li>Excessive "manifest," "alignment," "abundance"</li><li>"Crush goals" / "optimize mindset" (corporate-masculine)</li><li>"Stand tall" / "see clearly" (ableist)</li></ul>
+
+  <h3>Aesthetic-only spirituality</h3>
+  <ul><li>Anything that performs spirituality as a look rather than a way of being</li></ul>
+
+  <h3>Productivity-creator dialect</h3>
+  <ul><li>"Productivity and revenue framework"</li><li>"The version no one teaches"</li><li>"Hustle smarter not harder"</li></ul>
+
+  <h3>Strategic NOs (proven losers from IG audit)</h3>
+  <ul>
+    <li><strong>IG Boost button</strong> — burned ~$500 on vanity DMs that never bought. Use Meta Ads Manager only.</li>
+    <li><strong>@sahasynergy collaborator tagging</strong> — caps reach at the smaller account's audience.</li>
+    <li><strong>Third-person narration</strong> ("She left the salary…") — algorithm can't classify the voice.</li>
+    <li><strong>Abstract poetry openers</strong> ("The woman you are becoming…") — no scroll-stop.</li>
+    <li><strong>Mixed voice in same post</strong> — I + we + she on one post kills the algorithm signal.</li>
+    <li><strong>Vague questions</strong> ("Are you listening?") — proven low-engagement opener.</li>
+  </ul>
+
+  <h3>Meta Ads compliance (hard rules)</h3>
+  <ul>
+    <li>❌ Personal attributes: "Are you stuck?" → ✅ "Women are rewriting the rules…"</li>
+    <li>❌ Income claims without disclaimers: "Earn $10k/month" → ✅ "Build wealth outside the 9-5"</li>
+    <li>❌ Banned words: guaranteed, rich, secret, earn money fast, life-changing</li>
+    <li>❌ "Limited time offer" / "Act fast" / "Don't miss your chance"</li>
+  </ul>
+</section>
+
+<section id="favorite-words">
+  <div class="section-eyebrow">Voice · 15</div>
+  <h2>Favorite Words</h2>
+  <p>Use these natively. They are the brand's vocabulary fingerprint.</p>
+  <p style="font-family:var(--serif);font-size:20px;line-height:1.6;color:var(--ink-soft);max-width:760px;">Remember · Ground · Integrate · Rise · Embody · Align · Build · Presence · Exhale · Return · Home · Circle · Softness · Sovereignty · Devotion · Rhythm · Remembrance · Threshold · Design · Synergy · Cycle · Alchemise · Foundation</p>
+</section>
+
+<!-- ====================================== AUDIENCE ====================================== -->
+
+<section id="icp">
+  <div class="section-eyebrow">Audience · 16</div>
+  <h2>Ideal Client (ICP)</h2>
+  <p class="section-lead">Always write TO her. Every post should make her feel SEEN in the first 2 seconds.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>Demographics</h4>
+      <ul>
+        <li><strong>Age:</strong> 28-45</li>
+        <li><strong>Role:</strong> Senior Manager+ in Finance, Consulting, Tech, Marketing, Legal, Healthcare</li>
+        <li><strong>Location:</strong> US, UK, AU, CA, SG, Bali expats. Not bubbled audiences.</li>
+        <li><strong>Income:</strong> $80K+ USD or equivalent</li>
+        <li><strong>Stage:</strong> Established credibility. Track record. Quietly questioning everything.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Psychology (in her words)</h4>
+      <p><em>"You have the career, the salary, the title, and the track record. You are capable, respected, and by every external measure successful. And yet something in you has been quietly, persistently saying: this is not it."</em></p>
+    </div>
+  </div>
+
+  <h3>Signal Phrases She Says To Herself</h3>
+  <ul class="clean">
+    <li>"It looks good but it doesn't feel like mine."</li>
+    <li>"I'm exhausted by the performance."</li>
+    <li>"I want out but don't know where to start."</li>
+    <li>"I need people who get it."</li>
+  </ul>
+</section>
+
+<section id="avatars">
+  <div class="section-eyebrow">Audience · 17</div>
+  <h2>The 7 Avatars</h2>
+  <p class="section-lead">Psychological + circumstantial archetypes. A single woman may carry elements of multiple avatars. Use for copy, ads, sales, team briefings.</p>
+
+  <div class="avatar">
+    <div class="avatar-num">Avatar 01</div>
+    <div class="avatar-name">The Corporate Ceiling Woman</div>
+    <dl>
+      <dt>Who she is</dt><dd>Six-figure salary, team of fifteen, glass-walled office. She did everything the blueprint said. Now she has a persistent, humiliating feeling that none of it is actually hers.</dd>
+      <dt>Where she is</dt><dd>Secretly journaling. Follows feminine energy and cycle syncing accounts while pretending she doesn't.</dd>
+      <dt>What she needs</dt><dd>Someone to tell her she's not broken. She's just done with a system that was never designed for her.</dd>
+    </dl>
+  </div>
+
+  <div class="avatar">
+    <div class="avatar-num">Avatar 02</div>
+    <div class="avatar-name">The Leap-Taker Who's Struggling</div>
+    <dl>
+      <dt>Who she is</dt><dd>Already left the job, moved countries, building something. Income is inconsistent, confidence comes and goes, secretly terrified she made a terrible mistake.</dd>
+      <dt>Where she is</dt><dd>Has done the courses. Has the Notion templates. Missing the inner foundation, nervous system capacity, and business structure that fits how she works.</dd>
+      <dt>What she needs</dt><dd>The $77 community bridge, then the full SPC container.</dd>
+    </dl>
+  </div>
+
+  <div class="avatar">
+    <div class="avatar-num">Avatar 03</div>
+    <div class="avatar-name">The Silent Caretaker</div>
+    <dl>
+      <dt>Who she is</dt><dd>The person everyone relies on. Spent her entire adult life holding space for everyone else while quietly starving for someone to hold space for her.</dd>
+      <dt>Where she is</dt><dd>Has a vision but cannot say it out loud. Not in crisis. In a slow, quiet erosion.</dd>
+      <dt>What she needs</dt><dd>A container where she is finally held, not holding.</dd>
+    </dl>
+  </div>
+
+  <div class="avatar">
+    <div class="avatar-num">Avatar 04</div>
+    <div class="avatar-name">The Southeast Asian Achiever</div>
+    <dl>
+      <dt>Who she is</dt><dd>Already achieving by any measure. Running a business, building a brand. Feels the gap between where she is and where she knows she can go.</dd>
+      <dt>Where she is</dt><dd>Drawn to Sophia because she understands the Indonesian and Southeast Asian context.</dd>
+      <dt>What matters</dt><dd>The IDR payment option matters. The global sisterhood matters more.</dd>
+    </dl>
+  </div>
+
+  <div class="avatar">
+    <div class="avatar-num">Avatar 05</div>
+    <div class="avatar-name">The Gifted Undercharger</div>
+    <dl>
+      <dt>Who she is</dt><dd>Genuinely gifted. The transformation she creates in clients is real. But she charges a fraction of what she's worth. Oscillates between sold-out momentum and complete collapse.</dd>
+      <dt>Where she is</dt><dd>Has done the money mindset courses. Has NOT done the actual nervous system work.</dd>
+      <dt>What she needs</dt><dd>Phase 1 is her medicine. Phase 2 is the business she's been trying to build alone for three years.</dd>
+    </dl>
+  </div>
+
+  <div class="avatar">
+    <div class="avatar-num">Avatar 06</div>
+    <div class="avatar-name">The Sophisticated Stuckness Woman</div>
+    <dl>
+      <dt>Who she is</dt><dd>Has read every book. Done the retreats. Has the journals, the therapist, the Human Design chart. Can articulate her wounds with surgical precision.</dd>
+      <dt>Where she is</dt><dd>Same job, same apartment, same holding pattern since 2022. Personal development has given her a sophisticated way to stay stuck.</dd>
+      <dt>What she needs</dt><dd>Not more insight. Activation. A container with a deadline, a cohort, and a business deliverable.</dd>
+    </dl>
+  </div>
+
+  <div class="avatar">
+    <div class="avatar-num">Avatar 07</div>
+    <div class="avatar-name">The Threshold Woman</div>
+    <dl>
+      <dt>Who she is</dt><dd>Something ended. A marriage. A career. A version of herself she had outgrown. Now she's in the in-between, the most terrifying and most alive she has felt in years.</dd>
+      <dt>Where she is</dt><dd>Has the lived expertise to build something. Has the desire. Doesn't have a framework that honors both inner healing and outer building.</dd>
+      <dt>What she needs</dt><dd>Phase 1 is the composting. Phase 2 is the planting.</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="psychographics">
+  <div class="section-eyebrow">Audience · 18</div>
+  <h2>Psychographics</h2>
+
+  <h3>What she values</h3>
+  <ul>
+    <li>Depth over noise. Truth over trends.</li>
+    <li>Real connection. Quality over quantity.</li>
+    <li>Privacy and discretion. She is NOT in a Facebook group with 50,000 strangers.</li>
+    <li>Aesthetic that feels lived-in, not staged.</li>
+    <li>Spirituality that feels like coming home, not joining a cult.</li>
+  </ul>
+
+  <h3>What she resists</h3>
+  <ul>
+    <li>Hustle culture, even rebranded as "feminine hustle"</li>
+    <li>Bro-marketing tactics, fake urgency, manipulative scarcity</li>
+    <li>Performative spirituality (crystals on perfect sand, white-robed manifestation)</li>
+    <li>Productivity-creator dialect</li>
+    <li>Being told what to do</li>
+  </ul>
+
+  <h3>Where she lives online</h3>
+  <ul>
+    <li>Instagram (primary) — saves carousels, watches reels, lurks before DMing</li>
+    <li>Threads — for the unfiltered version</li>
+    <li>Selective newsletters (signs up to 3-5, opens maybe 2)</li>
+    <li>Podcasts during commute / dog walk / pilates</li>
+  </ul>
+</section>
+
+<!-- ====================================== CONTENT ====================================== -->
+
+<section id="pillars">
+  <div class="section-eyebrow">Content · 19</div>
+  <h2>The 6 Content Pillars</h2>
+  <p class="section-lead">Every post lives in one pillar. Weekly rotation hits all six.</p>
+
+  <div class="grid-2">
+    <div class="pillar-card">
+      <div class="pillar-pct">25%</div>
+      <div class="pillar-tag">Pillar 01</div>
+      <div class="pillar-name">The Comfort Trap</div>
+      <p>Name the quiet suffocation. "You're not unhappy, you're unalive."</p>
+      <p class="muted"><strong>Anchor line:</strong> Stop building other people's dreams. Build yours.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-pct">20%</div>
+      <div class="pillar-tag">Pillar 02</div>
+      <div class="pillar-name">The Walk-Away Story</div>
+      <p>Origin proof. Singapore job. Vegas moment. Bali threshold.</p>
+      <p class="muted"><strong>Format:</strong> Confessional reels, real moments, no production.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-pct">20%</div>
+      <div class="pillar-tag">Pillar 03</div>
+      <div class="pillar-name">The Method</div>
+      <p>Cycle synergy, Soul Path Map, nervous system, 7-day sprints.</p>
+      <p class="muted"><strong>Anchor line:</strong> The cycle is the strategy.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-pct">15%</div>
+      <div class="pillar-tag">Pillar 04</div>
+      <div class="pillar-name">The Belief Reversal</div>
+      <p>"Fairy tale as blueprint." "Rest is resistance." Reframe the contrarian truth.</p>
+      <p class="muted"><strong>Anchor line:</strong> You didn't leave the boss. You became one.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-pct">10%</div>
+      <div class="pillar-tag">Pillar 05</div>
+      <div class="pillar-name">Behind the Scenes</div>
+      <p>Bali life, building the work, team moments, real days.</p>
+      <p class="muted"><strong>Format:</strong> Voiceover + b-roll, ambient music allowed.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-pct">10%</div>
+      <div class="pillar-tag">Pillar 06</div>
+      <div class="pillar-name">Direct Invitation</div>
+      <p>Masterclass / $77 cohort / SPC. Specific, warm, never directive.</p>
+      <p class="muted"><strong>Anchor line:</strong> You don't have to figure it out alone.</p>
+    </div>
+  </div>
+</section>
+
+<section id="themes">
+  <div class="section-eyebrow">Content · 20</div>
+  <h2>7 Content Themes (cross-pillar)</h2>
+  <p>Topics that show up inside the pillars.</p>
+  <ol>
+    <li><strong>Corporate Exit / Leaving Corporate</strong> — identity shift, strategic exit, emotional journey</li>
+    <li><strong>Money &amp; Wealth</strong> — creating vs earning, financial freedom, relationship with money</li>
+    <li><strong>Cycle &amp; Feminine Energy</strong> — cyclical living, menstrual cycle as business OS, nervous system</li>
+    <li><strong>Girly Talks</strong> — loneliness of ambition, friendships during growth, real Bali life, guilt of wanting more</li>
+    <li><strong>Travel &amp; Lifestyle</strong> — Bali cost of living, building a business while traveling, day-in-the-life</li>
+    <li><strong>Fears &amp; Mindset</strong> — imposter syndrome, playing small, selling fears</li>
+    <li><strong>Identity &amp; Transformation</strong> — becoming, grieving old self, identity crisis after corporate</li>
+  </ol>
+</section>
+
+<section id="formats">
+  <div class="section-eyebrow">Content · 21</div>
+  <h2>Formats &amp; Channels</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Primary Channels</h4>
+      <ul>
+        <li>Instagram Reels (primary reach driver)</li>
+        <li>Instagram Carousels (saves + shares)</li>
+        <li>Instagram Stories (daily, funnel-driving)</li>
+        <li>Threads (raw reflection, parallel to IG)</li>
+        <li>Email / Newsletter via MailerLite</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Secondary Channels</h4>
+      <ul>
+        <li>TikTok (cross-post Reels)</li>
+        <li>Facebook Groups (value-content posting)</li>
+        <li>LinkedIn (text stories, carousels)</li>
+        <li>Podcast / podcast guesting</li>
+        <li>Circle.so community platform</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Format Guidelines</h3>
+  <ul>
+    <li><strong>Reels:</strong> 15-45s ideal. Talking head, phone-shot, natural light. Anti-polish wins.</li>
+    <li><strong>Carousels:</strong> 7-10 slides. Bold hook cover. One idea per slide. Save CTA close.</li>
+    <li><strong>Stories:</strong> Polls, questions, BTS, funnel drivers. 3+ per day during launches.</li>
+    <li><strong>Captions:</strong> Hook line → personal anecdote → tactical advice → soft CTA. 60-300 words.</li>
+  </ul>
+</section>
+
+<section id="cta">
+  <div class="section-eyebrow">Content · 22</div>
+  <h2>CTA Style Rules</h2>
+  <p class="section-lead">Every CTA should feel like a doorway, not a demand. Anchor in emotional benefit, never pure transaction.</p>
+
+  <h3>Invitational phrasing</h3>
+  <ul class="clean">
+    <li>"Join us in circle and come home to your own rhythm."</li>
+    <li>"Begin the next chapter with sisters who see you clearly."</li>
+    <li>"Step into a space where growth feels gentle."</li>
+    <li>"Come as you are. Leave with clarity and connection."</li>
+    <li>"Come sit with us. Your seat has been waiting."</li>
+    <li>"Link in bio when it feels right."</li>
+    <li>"Door's in the bio when it's time."</li>
+  </ul>
+
+  <h3>Funnel-specific CTAs</h3>
+  <table>
+    <thead><tr><th>Stage</th><th>CTA</th></tr></thead>
+    <tbody>
+      <tr><td>Masterclass</td><td>"Free masterclass Saturday. Come see what's possible."</td></tr>
+      <tr><td>$77 Cohort</td><td>"Start the journey. $77/month. Community and cycle-synced structure."</td></tr>
+      <tr><td>Clarifying Call</td><td>"30 minutes. No pitch. Just clarity on whether this is your path."</td></tr>
+      <tr><td>SPC</td><td>"Soul Path Collective. 6 months. 20 women. June 6."</td></tr>
+    </tbody>
+  </table>
+
+  <h3>ManyChat keywords (active)</h3>
+  <p><span class="badge badge-rose">READY</span> <span class="badge badge-rose">SPC</span> <span class="badge badge-rose">MASTERCLASS</span> <span class="badge badge-rose">CALL</span> <span class="badge badge-rose">CIRCLE</span> <span class="badge badge-rose">PATH</span> <span class="badge badge-rose">ROOM</span></p>
+</section>
+
+<!-- ====================================== PRODUCTS ====================================== -->
+
+<section id="offers">
+  <div class="section-eyebrow">Products · 23</div>
+  <h2>Offer Ladder</h2>
+  <p class="section-lead">Simplified 4-step funnel. Always sell the masterclass first. Never sell SPC directly in cold content.</p>
+
+  <table>
+    <thead><tr><th>Stage</th><th>Offer</th><th>Price</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Free Masterclass</td><td>Free</td><td>Top of funnel. Educate + demonstrate. 150-200 live attendees target.</td></tr>
+      <tr><td>2</td><td>$77/mo Sisterhood OS Cohort</td><td>$77/mo</td><td>Bridge product. Inner foundation + cycle awareness. Solves the "I want depth before I commit" objection.</td></tr>
+      <tr><td>3</td><td>30-min Clarifying Call</td><td>Free</td><td>Sophia or Helena. 60-80% close rate. No pitch, just clarity.</td></tr>
+      <tr><td>4</td><td>Soul Path Collective (SPC)</td><td>$3,333-$7,777</td><td>Flagship 6-month immersion. Cohort 1: June 6, 2026.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="masterclass">
+  <div class="section-eyebrow">Products · 24</div>
+  <h2>Cyclical Strategy Masterclass</h2>
+  <p class="section-lead">The Woman's Operating System for Business, Energy, and Money.</p>
+
+  <div class="card">
+    <h4>The Promise</h4>
+    <p>Stop forcing linear systems onto a cyclical body. Start building a business that works with your energy, not against it. <strong>This is not a webinar. It is a strategy session.</strong></p>
+  </div>
+
+  <h3>Curriculum (6 modules)</h3>
+  <ol>
+    <li><strong>The High Achiever's Trap</strong> — why the skills that made you successful in corporate are often the exact things keeping you stuck</li>
+    <li><strong>The Missing Foundation</strong> — what inner sovereignty actually means in a business context</li>
+    <li><strong>Cycle Synergy as Strategy</strong> — how to map your cycle phases to business activities</li>
+    <li><strong>The SAHA Soul Path Map™ Preview</strong> — your archetype, purpose, relational design, income strategy</li>
+    <li><strong>The Exit Architecture</strong> — building your business while still in your job</li>
+    <li><strong>Soul Path Collective Application</strong> — for women ready to go full distance</li>
+  </ol>
+
+  <h3>This Masterclass Is For You If…</h3>
+  <ul>
+    <li>You are ready to transition from high-achieving employee to sovereign creator</li>
+    <li>You've tried to start a business or side project before and something always got in the way</li>
+    <li>You are a high-achieving woman who knows something deeper is calling, but doesn't know where to begin</li>
+    <li>You've been putting your dreams and body at the bottom of the list for too long</li>
+    <li>You want to build something that works with your life, energy, and cycle, not a hustle model</li>
+    <li>You are ready to get strategic about your exit, your identity, and your next chapter</li>
+  </ul>
+
+  <h3>Last Live Performance (Apr 6-12, 2026)</h3>
+  <table>
+    <thead><tr><th>Metric</th><th>Result</th><th>Benchmark</th><th>Rating</th></tr></thead>
+    <tbody>
+      <tr><td>Reach</td><td>73,950</td><td>—</td><td>—</td></tr>
+      <tr><td>CTR</td><td>4.36%</td><td>1-2%</td><td>🔥 Top 5%</td></tr>
+      <tr><td>CPC</td><td>$0.04</td><td>$0.50-1.50</td><td>🔥 Top 1%</td></tr>
+      <tr><td>Cost per registration</td><td>$2.02</td><td>$5-15</td><td>🔥 Elite</td></tr>
+      <tr><td>Show-up rate</td><td>41.6%</td><td>25-35%</td><td>🔥 Strong</td></tr>
+      <tr><td>Full-watch rate</td><td>80%</td><td>40-60%</td><td>🔥 Elite</td></tr>
+      <tr><td>Call booking rate</td><td>11.5%</td><td>5-10%</td><td>🔥 Good</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="spc">
+  <div class="section-eyebrow">Products · 25</div>
+  <h2>Soul Path Collective (SPC)</h2>
+  <p class="section-lead">A 6-Month Sovereign Immersion. Exit, Design, Create.</p>
+
+  <div class="card card-accent">
+    <h4>One-line differentiator (use everywhere)</h4>
+    <p style="margin:0;font-size:17px;font-style:italic;">Most consultants charge thousands to tell you what to do. Soul Path Collective is a room of women already doing what you're trying to do, walking the path with you in real time.</p>
+  </div>
+
+  <h3>What It Is</h3>
+  <p>The only program that takes a woman from the deepest inner work all the way through to a live, revenue-generating business in one continuous, intentionally designed container. <strong>Cohort 1: Saturday June 6, 2026 · 10PM Bali Time · 20+ women.</strong></p>
+
+  <h3>Two Phases</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Phase 1 · The Sovereign Woman (Months 1-3)</h4>
+      <p>Consciousness, self-love, breathwork, trauma release, feminine energy, cycle synergy, the four archetypes, and the creation of each woman's personal SAHA Soul Path Map.</p>
+      <p class="tiny"><strong>Deliverables:</strong> Personal Soul Path Map · Turning points timeline · Sovereign identity statement · Cycle awareness chart · Fear clearing workbook · Money story audit · Self-care architecture · Personal AI Sister Sage · Branded journal · Weekly 1-min video reflection</p>
+    </div>
+    <div class="card">
+      <h4>Phase 2 · The Sovereign Creator (Months 4-6)</h4>
+      <p>Offer design, company structure, tax strategy, legal contracts, AI automation, sales, marketing, and a live launch. Every element built around her Soul Path Map and cycle.</p>
+      <p class="tiny"><strong>Deliverables:</strong> Signature offer suite · Company structure · Tax outline · Legal contracts · Personal business blueprint · Cycle-synced sprint calendar · AI automation · Team strategy · Sales page + email sequence · Live launch with first revenue</p>
+    </div>
+  </div>
+
+  <h3>Pricing (Cohort 1)</h3>
+  <table>
+    <thead><tr><th>Tier</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr><td>Full pay</td><td>$4,000-$4,444 USD</td></tr>
+      <tr><td>Founding Sovereign (first 10)</td><td>$3,500-$3,999 early bird</td></tr>
+      <tr><td>Payment plan</td><td>3 installments of ~$1,400</td></tr>
+      <tr><td>IDR option</td><td>Available for Jakarta-based women</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Bonuses</h4>
+  <ul>
+    <li><strong>Bonus 1</strong> · Personal Soul Path Map session with Sophia (valued $1,111). First 10 only.</li>
+    <li><strong>Bonus 2</strong> · 6 months Sisterhood Community / Circle access (valued $462)</li>
+    <li><strong>Guarantee</strong> · Full refund in first 2 weeks, no questions</li>
+  </ul>
+
+  <h3>Signature Frameworks (proprietary, never paraphrase)</h3>
+  <ul class="clean">
+    <li><strong>SAHA Soul Path Map™</strong> — Sophia's signature framework. Created in M3 of Phase 1.</li>
+    <li><strong>Sister Sage™</strong> — the archetype + the voice + the AI companion each SPC woman receives</li>
+    <li><strong>Cycle Synergy Framework</strong> — business + life planning aligned to 4 menstrual phases</li>
+    <li><strong>The Four Archetypes</strong> — Maiden (M1), Wild Woman (M2), Mother (M3), Queen (M4-6)</li>
+    <li><strong>Sacred Circle</strong> — mandatory monthly free community gathering</li>
+    <li><strong>7-Day Sovereign Reset</strong> — annual alumni-only retreat (7 women, $5,777-$7,777)</li>
+  </ul>
+</section>
+
+<section id="funnel">
+  <div class="section-eyebrow">Products · 26</div>
+  <h2>The Funnel</h2>
+  <p>Dan's simplified 4-step funnel. Apr-May build → June 6 launch.</p>
+
+  <div class="card card-soft">
+    <h4>Cold → Warm → Hot → Enrolled</h4>
+    <ol>
+      <li><strong>Meta Ads</strong> drive cold traffic to free masterclass registration ($1,000/mo spend, DIY)</li>
+      <li><strong>Free Masterclass</strong> educates and demonstrates value</li>
+      <li><strong>$77/mo Sisterhood OS Cohort</strong> serves as the bridge product (sold as MVP, built as you go)</li>
+      <li><strong>30-min Clarifying Call</strong> closes into Soul Path Collective (60-80% close rate)</li>
+    </ol>
+  </div>
+
+  <h3>Core Messaging Thread</h3>
+  <blockquote>"If you'd love to build a conscious, cycle-synced business on your own terms but don't know where to start, join this free masterclass."</blockquote>
+</section>
+
+<!-- ====================================== MARKET ====================================== -->
+
+<section id="competitors">
+  <div class="section-eyebrow">Market · 27</div>
+  <h2>Competitor Roster</h2>
+  <p class="section-lead">Tracked profiles. Cora (competitor-watcher) scans these on a daily 8:07 WITA cadence.</p>
+
+  <table>
+    <thead><tr><th>Account</th><th>Niche</th><th>Followers</th><th>Key strength to study</th></tr></thead>
+    <tbody>
+      <tr><td><strong>@christinagalbato</strong></td><td>Digital marketing educator</td><td>~500K</td><td>Comment-to-DM automation, anti-hustle in hustle niche</td></tr>
+      <tr><td><strong>@stillatonik</strong></td><td>Style → empowerment creator</td><td>231K</td><td>Identity-first bio, scenario hooks, DM keyword funnel</td></tr>
+      <tr><td><strong>@thelazyceo</strong> (Jane Lu)</td><td>Aussie entrepreneur</td><td>297K IG / 152K TikTok</td><td>Single contrarian position. Origin story repetition. Community flywheel.</td></tr>
+      <tr><td><strong>@sarablakely</strong></td><td>Spanx founder</td><td>5M+</td><td>Anti-polish, car confessionals, failure as content</td></tr>
+      <tr><td><strong>@herfirst100k</strong> (Tori Dunlap)</td><td>Financial feminist</td><td>~2M</td><td>Quiz funnel, polarizing takes, category of one</td></tr>
+      <tr><td><strong>@avnibarman_</strong></td><td>Gen She founder, ex-tech</td><td>476K</td><td>90/10 strategy, segmented lead magnets, comment-to-email</td></tr>
+      <tr><td><strong>@iamthebalisuperconnector</strong> (Marina Jaubert)</td><td>Bali events for established coaches</td><td>5,488</td><td>Room-builder positioning. Local collab partner.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="patterns">
+  <div class="section-eyebrow">Market · 28</div>
+  <h2>7 Universal Patterns Across All Competitors</h2>
+  <ol>
+    <li><strong>Origin Story on Repeat</strong> — every creator tells the same 3-5 origin stories endlessly. Sara Blakely has told the fax machine story hundreds of times. Sophia's: kicked out at 16, jets and bags at 25, walking away at 27, 50+ days silence.</li>
+    <li><strong>Confession &gt; Lesson</strong> — highest-performing content leads with what went wrong, BEFORE teaching. Sophia already does this naturally.</li>
+    <li><strong>Comment-to-DM Automation</strong> — ManyChat triggers on 2-3 posts/week minimum.</li>
+    <li><strong>Anti-Polish Wins</strong> — phone-shot, natural light, direct to camera consistently beats produced content.</li>
+    <li><strong>Saves &gt; Likes</strong> — every carousel needs a "save this" CTA. Save-driven content signals depth to the algorithm.</li>
+    <li><strong>One Contrarian Position</strong> — Sophia's anchor: "Your nervous system will never feel ready. That IS the work." Should appear in 30%+ of content.</li>
+    <li><strong>Soft CTAs Build Trust</strong> — "DM me" and "save this" before any direct sell.</li>
+  </ol>
+</section>
+
+<section id="aspirational">
+  <div class="section-eyebrow">Market · 29</div>
+  <h2>North Star · @growthof_mind (Hannah Singer)</h2>
+  <p class="section-lead">Not a competitor. The brand voice and aesthetic Sophia can grow into at 50x current size.</p>
+
+  <p>Hannah Singer. Somatic Coach + Yoga Therapist. Founder of Growth of Mind. Lives between Bali and Italy. 337K followers. Same vocabulary stack: nervous system, cycles, somatics, embodiment, alchemise, return to self.</p>
+
+  <h3>Signature pattern to copy</h3>
+  <div class="card card-accent">
+    <p style="margin:0;font-size:17px;"><strong>AND, not BUT.</strong> She holds two truths at once. "I think modern advancements are amazing AND I think it's important to return to the roots." Every other wellness creator uses contrast (X vs Y). She uses both/and. That's what makes her voice mature instead of preachy.</p>
+  </div>
+
+  <h3>Aesthetic she models</h3>
+  <ul>
+    <li>Earth-tone serif. Migrate from pink/gold toward terracotta/cream/sage.</li>
+    <li>One concept per post. Generous white space.</li>
+    <li>Body-first language anchoring every concept.</li>
+    <li>Threads as the journal. IG as the polished feed.</li>
+    <li>Free discovery call (not workbook) as primary funnel entry.</li>
+    <li>Slow cadence. High signal. Ruthlessly cut anything below 8/10.</li>
+  </ul>
+</section>
+
+<!-- ====================================== OPERATIONS ====================================== -->
+
+<section id="cadence">
+  <div class="section-eyebrow">Operations · 30</div>
+  <h2>Posting Cadence</h2>
+
+  <h3>Weekly rhythm</h3>
+  <ul>
+    <li><strong>Reels:</strong> 3 per week (Mon, Wed, Fri)</li>
+    <li><strong>Carousels:</strong> 2 per week (Tue, Sat)</li>
+    <li><strong>Stories:</strong> 3+ per day, 7 days</li>
+    <li><strong>Comment-trigger posts:</strong> 2 per week</li>
+    <li><strong>Email/Newsletter:</strong> Sunday 7:30PM (peak send time)</li>
+    <li><strong>Threads:</strong> 3-5 per week, raw, no overlap with IG</li>
+  </ul>
+
+  <h3>Monthly anchors</h3>
+  <ul>
+    <li>1× Sacred Circle (free, mandatory community gathering)</li>
+    <li>2× alternating Saturdays: Sophia masterclass / Sisterhood Circle</li>
+    <li>Tuesdays: co-working events (content opportunity)</li>
+    <li>Cora monthly competitor deep-dive (28th, 10:07 WITA)</li>
+  </ul>
+</section>
+
+<section id="tools">
+  <div class="section-eyebrow">Operations · 31</div>
+  <h2>Tech Stack</h2>
+  <table>
+    <thead><tr><th>Function</th><th>Tool</th><th>Owner</th></tr></thead>
+    <tbody>
+      <tr><td>Content scheduling</td><td>Airtable + Zapier</td><td>Sophia + Monika</td></tr>
+      <tr><td>Email marketing</td><td>MailerLite</td><td>Flo (AI)</td></tr>
+      <tr><td>Embedded forms</td><td>Wix</td><td>Flo (AI)</td></tr>
+      <tr><td>Community platform</td><td>Circle.so</td><td>Denise + Monika</td></tr>
+      <tr><td>CRM</td><td>Notion</td><td>Luna (AI lead nurture)</td></tr>
+      <tr><td>Image generation</td><td>Replicate Flux LoRA (Sophia model)</td><td>Sophia</td></tr>
+      <tr><td>B-roll library</td><td>MyRoll (270 clips)</td><td>Juno (trial-reel-creator)</td></tr>
+      <tr><td>Comment-to-DM</td><td>ManyChat</td><td>Sophia + Monika</td></tr>
+      <tr><td>Ads</td><td>Meta Ads Manager</td><td>Sophia</td></tr>
+      <tr><td>Competitor monitoring</td><td>Custom (Cora skill)</td><td>Cora (AI)</td></tr>
+      <tr><td>Bookings</td><td>Calendly</td><td>Dalia (AI call-prep)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Airtable Content schema (the source of truth for the calendar)</h3>
+  <p>Base: <code>Sisterhood OS Content</code> (id <code>app5785T70eIdpvRw</code>). Content table: <code>tblvQ86XEtNZb7pkp</code>.</p>
+  <table>
+    <thead><tr><th>Field</th><th>Type</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Title</td><td>singleLineText</td><td>—</td></tr>
+      <tr><td>Type</td><td>singleSelect</td><td>⚠️ LOCKED template field. Cannot add "Reel". Use <strong>Format</strong> instead.</td></tr>
+      <tr><td>Status</td><td>singleSelect</td><td>Draft / Needs Review / Approved / Scheduled / Posted / Failed</td></tr>
+      <tr><td>Pillar</td><td>singleSelect</td><td>Comfort Trap / Walk-Away / Method / Belief Reversal / BTS / Direct Invitation</td></tr>
+      <tr><td>Format</td><td>singleSelect</td><td>Reel / Carousel / Story / Static / Email</td></tr>
+      <tr><td>Hook · Body · CTA</td><td>multilineText</td><td>Three separate fields</td></tr>
+      <tr><td>Image URL</td><td>url</td><td>Public Cloudinary URL (NOT local file://)</td></tr>
+      <tr><td>ManyChat Keyword</td><td>singleLineText</td><td>CYCLE / READY / MATRIX / SPC / PATH / ROOM</td></tr>
+      <tr><td>Posted At · Live Post URL</td><td>dateTime / url</td><td>Auto-filled by Zapier on post</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Meta Ads — country whitelist (10 countries, 2026 verified)</h3>
+  <p>US, CA, UK, AU, NZ, IE, SG, UAE, NL, CH.</p>
+
+  <h3>Meta Ads — interests removed in 2024 prune</h3>
+  <p>Do NOT use these even if old playbooks list them: Alisa Vitti, FLO Living, Gabby Bernstein, and most "feminine business" interest tags. Use Advantage+ Audience or Lookalikes instead.</p>
+
+  <h3>Known issues / gotchas</h3>
+  <ul>
+    <li><strong>Wix pixel not firing on thank-you page.</strong> Last campaign: 5 pixel leads vs 96 actual registrations. Workaround: use Meta Lead Gen Instant Forms instead of Wix landing page.</li>
+    <li><strong>Replicate + Python urllib</strong> → Cloudflare 403 with default UA. Set <code>User-Agent: curl/8.0</code>.</li>
+    <li><strong>Part 2 podcast audio</strong> → NOT Sophia's content (Amy's pet care business). Skip when transcribing.</li>
+    <li><strong>mlx-whisper first run</strong> → downloads ~1.5 GB model to <code>~/.cache/huggingface/</code>.</li>
+    <li><strong>LoRA trigger word</strong> → <code>SOPHIA_FOX</code> (all caps, underscore). Missing this → generic face.</li>
+  </ul>
+
+  <h3>Cloudinary video library (all production masters)</h3>
+  <p>Account: <code>dk13kfhyu</code>. Creds at <code>~/.cloudinary-config</code>. All production reels are stored here. Local MOV files were retired 2026-05-08.</p>
+
+  <h4>Active ad creatives</h4>
+  <ul>
+    <li><strong>Corporate-2026 (running)</strong> · <code>https://res.cloudinary.com/dk13kfhyu/video/upload/sisterhood/ads/corporate-2026-running.mp4</code> · 75s, currently live</li>
+    <li><strong>Circle Original</strong> · <code>https://res.cloudinary.com/dk13kfhyu/video/upload/sisterhood/ads/circle-original.mov</code> · 54s organic Reel</li>
+    <li><strong>Circle Masterclass</strong> · <code>https://res.cloudinary.com/dk13kfhyu/video/upload/sisterhood/ads/circle-masterclass.mp4</code> · 40.5s cold ads variant</li>
+  </ul>
+
+  <h4>F1 podcast reel masters (raw + edited)</h4>
+  <ul>
+    <li><strong>F1 base</strong> · <code>https://res.cloudinary.com/dk13kfhyu/video/upload/sisterhood/reels/f1-base.mov</code> · raw cut</li>
+    <li><strong>Reel 9 — Loaded Gun</strong> · <code>https://res.cloudinary.com/dk13kfhyu/video/upload/sisterhood/reels/f1-loaded-gun.mov</code></li>
+    <li><strong>Reel 31 — Waiting to Die / Dead Inside</strong> · <code>https://res.cloudinary.com/dk13kfhyu/video/upload/sisterhood/reels/f1-dead-inside.mov</code></li>
+    <li><strong>Reel 33 — Small Things Get Eaten First</strong> · <code>https://res.cloudinary.com/dk13kfhyu/video/upload/sisterhood/reels/f1-small-things.mov</code></li>
+    <li><strong>Reel 12 — Set the Timer</strong> · <code>https://res.cloudinary.com/dk13kfhyu/video/upload/sisterhood/reels/reel-12-set-the-timer.mov</code></li>
+    <li><strong>Reel 14 — Writing Exercise</strong> · <code>https://res.cloudinary.com/dk13kfhyu/video/upload/sisterhood/reels/reel-14-writing-exercise.mov</code></li>
+    <li><strong>Reel 17 — Soul Path Map</strong> · <code>https://res.cloudinary.com/dk13kfhyu/video/upload/sisterhood/reels/reel-17-soul-path-map.mov</code></li>
+  </ul>
+  <p class="tiny">Total: 10 videos, 247 MB on Cloudinary (24 GB free tier remaining). To upload new masters: <code>python3 /tmp/cloudinary_upload.py</code> or use the cloudinary Python SDK with credentials from <code>~/.cloudinary-config</code>.</p>
+</section>
+
+<section id="kpis">
+  <div class="section-eyebrow">Operations · 32</div>
+  <h2>KPIs &amp; Targets</h2>
+
+  <h3>Cohort 1 launch (Apr-Jun 2026)</h3>
+  <ul>
+    <li>Masterclass registrations: 200+</li>
+    <li>Show-up rate: ~40% (proven)</li>
+    <li>Call bookings: 11-12% of registrations</li>
+    <li>SPC enrollments: 20 (Cohort 1 base case)</li>
+    <li>Cohort 1 gross revenue: $80,000-$88,000</li>
+  </ul>
+
+  <h3>Meta Ads kill criteria</h3>
+  <ul>
+    <li>CTR &lt; 1% → kill</li>
+    <li>CPL &gt; $8 (Leads-optimised) → kill</li>
+    <li>Hook retention &lt; 20% at 3s → kill the reel</li>
+  </ul>
+
+  <h3>Annual</h3>
+  <ul>
+    <li>2026 revenue target: $450K (Saha Synergy + Sisterhood OS combined)</li>
+    <li>Multiple SPC cohorts Q3-Q4</li>
+    <li>UK cohort via Klaudia possible (20% licensing fee)</li>
+  </ul>
+
+  <h3>Performance baselines (current)</h3>
+  <ul>
+    <li>View-to-follow conversion: <strong>0.09%</strong> (target: 1-3%, currently 10x below benchmark)</li>
+    <li>Organic reach per post: 166-637 views (below benchmark)</li>
+    <li>~$500 spent on IG Boost button → near-zero SPC buyers (vanity DMs)</li>
+  </ul>
+
+  <h3>30-day organic + Meta Ads targets</h3>
+  <ul>
+    <li>100-200 masterclass signups at $2-5 each</li>
+    <li>15-30 SPC waitlist adds</li>
+    <li>200-500 actual new followers</li>
+    <li>$4K-12K SPC pipeline (1-3 sales)</li>
+  </ul>
+
+  <h3>Budget scaling rules (apply after day 5 of any campaign)</h3>
+  <ul>
+    <li>If <strong>CPL &lt; $3</strong>: increase daily budget by 20% every 3 days</li>
+    <li>If <strong>CPL $3-6</strong>: hold budget, optimize creative</li>
+    <li>If <strong>CPL &gt; $6</strong>: kill the losing ad set, reallocate to the winner</li>
+  </ul>
+
+  <h3>Pre-launch checklist (every paid campaign)</h3>
+  <ul>
+    <li>Meta Business Manager account verified (not personal)</li>
+    <li>Payment method added + Currenxie card migrated</li>
+    <li>Meta Pixel installed on landing page (or Instant Form bypass)</li>
+    <li>Email integration with form (via Zapier)</li>
+    <li>Backup ad account ready (under same Business Manager)</li>
+    <li>2FA enabled on FB account</li>
+    <li>Page warmth: 2-3 organic posts before ads launch (algorithm trust signal)</li>
+  </ul>
+</section>
+
+<!-- ====================================== RESOURCES ====================================== -->
+
+<section id="assets">
+  <div class="section-eyebrow">Resources · 33</div>
+  <h2>Photos &amp; Graphics</h2>
+  <p>Brand-approved imagery for use in content, ads, web, decks. More to be added as the brand kit finalizes.</p>
+
+  <div class="gallery">
+    <a href="assets/IACS-Day2-BB-BS-LC-5.jpg" download><img src="assets/IACS-Day2-BB-BS-LC-5.jpg" alt="IACS Day 2 brand event"></a>
+    <a href="assets/IACS-Day2-BB-BS-LC-6.jpg" download><img src="assets/IACS-Day2-BB-BS-LC-6.jpg" alt="IACS Day 2 brand event"></a>
+    <a href="assets/IACS-Day2-BB-BS-LC-8.jpg" download><img src="assets/IACS-Day2-BB-BS-LC-8.jpg" alt="IACS Day 2 brand event"></a>
+  </div>
+  <p class="tiny">Click any image to download. More photos at <code>~/projects/SisterhoodOS/marketing-assets/</code>.</p>
+
+  <h3>AI imagery system</h3>
+  <ul>
+    <li><strong>Sophia Flux LoRA model</strong> (face model for branded AI images): config at <code>~/Agents/marketing/sisterhood-os-social/sophia-face/lora_config.json</code>. Trigger word: <code>SOPHIA_FOX</code>.</li>
+    <li><strong>AI B-Roll library:</strong> ai-broll.web.app (270 clips). Integrated as Mode C of /trial-reel-creator skill via Chrome CDP.</li>
+    <li><strong>Image prompts:</strong> <code>~/Agents/marketing/sisterhood-os-social/strategy/spc-meta-ads-opus-clip-prompts.md</code></li>
+  </ul>
+
+  <h3>Drive content inventory (use real over AI when possible)</h3>
+  <table>
+    <thead><tr><th>Asset type</th><th>Volume</th><th>Drive folder</th></tr></thead>
+    <tbody>
+      <tr><td>Photoshoot Day 1</td><td>1,440 photos · 17.7 GB</td><td>Sophia/Photoshoots Day 1</td></tr>
+      <tr><td>Photoshoot Day 2</td><td>975 photos · 28 GB</td><td>Sophia/Photoshoots Day 2</td></tr>
+      <tr><td>Finished reels</td><td>17 videos</td><td>Sophia/finished-reels</td></tr>
+      <tr><td>Reels to edit</td><td>8 videos · 4.8 GB</td><td>Sophia/reels-to-edit</td></tr>
+      <tr><td>Podcast clips</td><td>18 files · 425 MB</td><td>Sophia/podcast-clips</td></tr>
+      <tr><td>Testimonials</td><td>17 videos</td><td>Sophia/testimonials</td></tr>
+    </tbody>
+  </table>
+  <p class="tiny"><strong>Workflow:</strong> Real Drive content first. Flux LoRA as supplement when no match. AI B-Roll layered under talking-head shots.</p>
+</section>
+
+<section id="templates">
+  <div class="section-eyebrow">Resources · 34</div>
+  <h2>Templates &amp; Scripts</h2>
+
+  <h3>Active templates</h3>
+  <ul>
+    <li><a href="../sisterhood-os-social/strategy/freelancer-icp-scripts/Scripts-to-Record-Freelancer-ICP.md">Scripts to Record · Freelancer ICP</a> — 6 solo reel scripts mapped to pillars</li>
+    <li><a href="../sisterhood-os-social/strategy/freelancer-icp-scripts/Collab-Scripts-Marina-Jaubert.md">Collab Scripts · Sophia × Marina</a> — 5 collab reel scripts</li>
+    <li>SPC Meta Ad Scripts (10 variations) at <code>~/projects/SisterhoodOS/marketing-assets/SPC_Meta_Ad_Scripts_10_Variations.md</code></li>
+    <li>Masterclass form embed at <code>~/projects/SisterhoodOS/marketing-assets/masterclass-form-embed.html</code></li>
+    <li>DM templates at <code>~/Agents/marketing/sisterhood-os-social/brand-voice/source-text/marketing/Template Messages.md</code></li>
+    <li>ManyChat playbook at <code>~/Agents/marketing/sisterhood-os-social/brand-voice/source-text/manychat-automation-playbook.md</code></li>
+  </ul>
+
+  <h3>Sales / pipeline</h3>
+  <ul>
+    <li>Full Sisterhood OS pipeline: <code>~/Agents/marketing/sisterhood-os-social/brand-voice/source-text/marketing/THE FULL SISTERHOOD OS PIPELINE.md</code></li>
+    <li>Meta Ads Master setup: <code>~/Agents/marketing/sisterhood-os-social/strategy/META_ADS_MASTER.md</code></li>
+    <li>Zapier setup: <code>~/Agents/marketing/sisterhood-os-social/pipeline/ZAPIER_SETUP.md</code></li>
+  </ul>
+
+  <h3>Sales objection-handling playbook (warm-but-hesitant lead)</h3>
+  <p class="muted">Use when a lead says she wants direction but cites overlap with other courses, finances tight, or "brain fried." Her objections are buying signals.</p>
+  <table>
+    <thead><tr><th>What she says</th><th>What she means</th></tr></thead>
+    <tbody>
+      <tr><td>"I definitely want some business direction"</td><td>Ready to buy. Needs clarity.</td></tr>
+      <tr><td>"Other courses might be redundant overlap"</td><td>Pre-justifying the purchase.</td></tr>
+      <tr><td>"Mentioned regulating nervous system before strategy"</td><td>Needs the sequence-framing. SPC does both in order.</td></tr>
+      <tr><td>"Finances being tight"</td><td>Payment plan anchor, not price cut.</td></tr>
+      <tr><td>"Brain pretty fried"</td><td>Short, clear call. 20 min max.</td></tr>
+    </tbody>
+  </table>
+  <p><strong>The 4-point sequence (in order):</strong></p>
+  <ol>
+    <li><strong>Validate her instinct.</strong> "You're right. The healing courses are inner work. SPC uses that inner work to build the outer structure. You're 3 steps ahead."</li>
+    <li><strong>Show Soul Path Map demo live.</strong> 5 min.</li>
+    <li><strong>Payment plan anchor.</strong> Founding Sovereign at $556/month. "Designed for this. Pays itself back in your first launch."</li>
+    <li><strong>Scarcity with honor.</strong> Cohort 1 = 20 women. Cohort 2 = 40-60. One-time intimacy window.</li>
+  </ol>
+  <p><strong>Soft close:</strong> "If you say yes tonight, I'll send you the first two modules as a welcome gift. Does that feel aligned?"</p>
+  <p><strong>Fallback:</strong> "I'll hold a Founding Sovereign spot for 72 hours. No decision from fried-brain mode."</p>
+
+  <h3>ManyChat CYCLE 5-stage nurture flow</h3>
+  <p class="muted">Triggered by keyword <code>CYCLE</code> on @thesisterhood.os.</p>
+  <ol>
+    <li><strong>Immediate reply:</strong> "Hi sister 🌙 here's your masterclass link → [URL]. Save this thread."</li>
+    <li><strong>+24 hr:</strong> "How did you find us? What's pulling you toward Cyclical Strategy?"</li>
+    <li><strong>+3 days:</strong> Value drop. "Here's the 4 cycle phases. Screenshot this."</li>
+    <li><strong>+7 days (3 days before masterclass):</strong> "Masterclass is 3 days away → [calendar link]"</li>
+    <li><strong>+post-masterclass:</strong> "Did you catch the replay? Book a clarifying call → [link]"</li>
+  </ol>
+
+  <h3>3 Meta Ad text variants (Circle creative)</h3>
+  <details>
+    <summary><strong>Variant 1 · Contrarian framework</strong></summary>
+    <p><em>Headline:</em> Cyclical Strategy — Free Masterclass May 10<br><em>Description:</em> 90 min · Free · Women 28-45</p>
+    <p><em>Primary text:</em><br>Men work better in a box. Women work in a circle.<br><br>Every productivity system out there was built for linear bodies with linear hormones, and it's why you crash every 4 weeks and call it "burnout."<br><br>Cyclical Strategy is the OS that actually matches the way you're wired. Free 90-min masterclass May 10. The framework 96 women joined last month.</p>
+  </details>
+  <details>
+    <summary><strong>Variant 2 · Emotional invitation (Sister Sage mode)</strong></summary>
+    <p><em>Headline:</em> Women work in a circle. Build one.<br><em>Description:</em> The OS for cycle-synced business</p>
+    <p><em>Primary text:</em><br>I used to think I was the problem. The tired one. The inconsistent one. The one who couldn't just "push through" like the men in the room.<br><br>Turns out my nervous system was the most intelligent thing in it.<br><br>Free 90-min masterclass May 10. Cyclical Strategy. The framework for building a business that bends to your cycle, not the other way around.</p>
+  </details>
+  <details>
+    <summary><strong>Variant 3 · Direct (Direct-Response mode)</strong></summary>
+    <p><em>Headline:</em> Cyclical Strategy — Free Masterclass May 10<br><em>Description:</em> Build a business shaped like you</p>
+    <p><em>Primary text:</em><br>Women don't work in a box. We work in a circle.<br><br>Saturday May 10, I'm teaching Cyclical Strategy free. 90 minutes on how to structure your business, your energy, and your money around your actual rhythm, not a calendar built for men.</p>
+  </details>
+
+  <h3>3-frame Story sequence pattern (every launch reuses this)</h3>
+  <table>
+    <thead><tr><th>Frame</th><th>Visual</th><th>Overlay text</th><th>Interaction</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Hero shot from reel (0s frame)</td><td>The hook line, large</td><td>Tap-forward arrow</td></tr>
+      <tr><td>2</td><td>Mid-reel emotional moment</td><td>The reframe / share-driver line</td><td>Quiz or poll sticker</td></tr>
+      <tr><td>3</td><td>End card image</td><td>Date + free + tap to register</td><td>Link sticker + DM keyword prompt</td></tr>
+    </tbody>
+  </table>
+
+  <h3>21 reels podcast source list (top 3 for Meta Ads)</h3>
+  <ol>
+    <li><strong>Reel 31 — "Waiting to Die"</strong> (Sara Blakely vulnerability bomb)</li>
+    <li><strong>Reel 34 — "Circle, Not a Box"</strong> (Tori Dunlap contrarian)</li>
+    <li><strong>Reel 33 — "Small Things Get Eaten First"</strong> (Blakely truth-bomb)</li>
+  </ol>
+  <p>All 21 cuts and timestamps live at <code>~/Agents/marketing/sisterhood-os-social/strategy/spc-reels-timestamps-cuts.md</code>.</p>
+</section>
+
+<section id="drive">
+  <div class="section-eyebrow">Resources · 35</div>
+  <h2>Drive &amp; Storage</h2>
+
+  <h3>Local file structure</h3>
+  <ul>
+    <li><code>~/Agents/marketing/sisterhood-os-social/</code> — primary marketing workspace</li>
+    <li><code>~/Agents/marketing/knowledge-base/</code> — this knowledge base</li>
+    <li><code>~/projects/SisterhoodOS/marketing-assets/</code> — photos, graphics, ad scripts</li>
+    <li><code>~/projects/SisterhoodOS/sister-sage/</code> — Sister Sage app build</li>
+    <li><code>~/brain_dump_map/</code> — strategic source material</li>
+    <li><code>~/Desktop/Human Team/</code> — team docs (Helena, Monika, etc.)</li>
+  </ul>
+
+  <h3>External</h3>
+  <ul>
+    <li>Google Drive shared folders (Sisterhood OS) — accessed via gdown package (RUBE deprecated May 2026)</li>
+    <li>Drive inventory snapshot at <code>~/Agents/marketing/sisterhood-os-social/drive-inventory.json</code></li>
+    <li>Notion workspace: Lead CRM, Task Manager, Team &amp; Roles</li>
+    <li>Sprint Monitor: localhost:5180 (synced to sprint-monitor.onrender.com)</li>
+    <li>Agent Mindmap: localhost:5181</li>
+    <li>Sister Sage: localhost:5175</li>
+  </ul>
+</section>
+
+<section id="agents">
+  <div class="section-eyebrow">Resources · 36</div>
+  <h2>Marketing &amp; Content Agent Roster</h2>
+  <p class="section-lead">Each agent is briefed on this knowledge base and references it before generating any output.</p>
+
+  <table>
+    <thead><tr><th>Name</th><th>Role</th><th>Skill</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Saha</strong></td><td>Sophia's personal AI / strategy partner</td><td>/saha</td></tr>
+      <tr><td><strong>Paloma</strong></td><td>Social media manager · weekly planning, calendar, performance</td><td>/social-media-manager</td></tr>
+      <tr><td><strong>Nova</strong></td><td>Content lab · end-to-end content pipeline (idea → Airtable draft)</td><td>/content-lab</td></tr>
+      <tr><td><strong>Ash</strong></td><td>Hook lab · scored Reel hooks and carousel posts</td><td>/hook-lab</td></tr>
+      <tr><td><strong>Eden</strong></td><td>Email lab · scored email content (delegate of Flo)</td><td>/email-lab</td></tr>
+      <tr><td><strong>Iris</strong></td><td>Story creator · daily IG Story sequences</td><td>/story-creator</td></tr>
+      <tr><td><strong>Juno</strong></td><td>Trial reel creator · phone clip + AI B-roll → reel</td><td>/trial-reel-creator</td></tr>
+      <tr><td><strong>Cora</strong></td><td>Competitor watcher · daily/monthly briefs</td><td>/competitor-watcher</td></tr>
+      <tr><td><strong>Flo</strong></td><td>Email marketing operator · MailerLite + Wix forms across all brands</td><td>/flo</td></tr>
+      <tr><td><strong>Ivy</strong></td><td>Engagement OS · daily target lists + manual engagement</td><td>/engagement-os</td></tr>
+      <tr><td><strong>Luna</strong></td><td>Lead nurture · Notion CRM stage management</td><td>/lead-nurture</td></tr>
+      <tr><td><strong>Lio</strong></td><td>Launch readiness · pre-flight checklist</td><td>/launch-readiness</td></tr>
+      <tr><td><strong>Dalia</strong></td><td>Discovery call prep · daily call briefs</td><td>/discovery-call-prep</td></tr>
+    </tbody>
+  </table>
+
+  <p class="tiny">Full mindmap at localhost:5181. To update an agent's brief, edit the corresponding skill file at <code>~/.claude/skills/[skill-name]/SKILL.md</code>.</p>
+</section>
+
+<section id="gallery">
+  <div class="section-eyebrow">Gallery · 37</div>
+  <h2>Content Gallery</h2>
+  <p class="section-lead">Auto-updating visual library. Drop files into the labeled folders and they appear here within 5 minutes, framed in iPhone mockups.</p>
+
+  <div class="card card-accent">
+    <h4>How to add content</h4>
+    <ul style="margin-top:8px;">
+      <li><strong>Reel:</strong> drop video file into <code>assets/reels/</code></li>
+      <li><strong>Carousel:</strong> create folder <code>assets/carousels/[name]/</code>, drop slides numbered <code>01.jpg, 02.jpg, ...</code></li>
+      <li><strong>Photo:</strong> drop image into <code>assets/photos/</code></li>
+      <li><strong>Video (B-roll, BTS):</strong> drop into <code>assets/videos/</code></li>
+      <li><strong>Caption (optional):</strong> add <code>filename.txt</code> next to the file (or <code>caption.txt</code> inside a carousel folder)</li>
+    </ul>
+    <p class="tiny" style="margin-top:8px;">Auto-update runs every 5 min via launchd. To force-update now: <code>python3 ~/Agents/marketing/knowledge-base/gallery-builder.py</code></p>
+  </div>
+
+  <!-- GALLERY:START -->
+<div class="gallery-status">
+  <span class="badge badge-sage">Auto-updated</span>
+  <span class="muted tiny">Last regenerated 2026-05-11 16:29 · 0 reels · 1 carousels · 3 photos · 0 videos</span>
+</div>
+
+<h3>Reels</h3>
+<div class="gallery-grid gallery-grid-iphone"><p class="muted">No reels yet. Drop files into <code>assets/reels/</code> and they appear here within 5 minutes.</p></div>
+
+<h3>Carousels</h3>
+<div class="gallery-grid gallery-grid-iphone">
+<div class="gallery-item">
+  <div class="iphone-frame">
+    <div class="iphone-notch"></div>
+    <div class="iphone-screen">
+      <div class="carousel-stack"><img src="assets/carousels/01_sample-the-comfort-trap/01.jpg" class="carousel-slide" data-idx="0" alt="Slide 1"><img src="assets/carousels/01_sample-the-comfort-trap/02.jpg" class="carousel-slide" data-idx="1" alt="Slide 2"><img src="assets/carousels/01_sample-the-comfort-trap/03.jpg" class="carousel-slide" data-idx="2" alt="Slide 3"></div>
+      <div class="carousel-dots"><span class="carousel-dot" data-idx="0"></span><span class="carousel-dot" data-idx="1"></span><span class="carousel-dot" data-idx="2"></span></div>
+      <button class="carousel-nav prev" aria-label="Previous">‹</button>
+      <button class="carousel-nav next" aria-label="Next">›</button>
+    </div>
+  </div>
+  <div class="gallery-meta">
+    <h4>Sample The Comfort Trap</h4>
+    <p class="muted tiny">Carousel · 3 slides · added 2026-05-06</p>
+    <div class="iphone-caption">Sample carousel showing the iPhone-frame mockup. Replace with your actual carousel slides — drop images numbered 01.jpg, 02.jpg, etc. into a folder under assets/carousels/[name]/</div>
+  </div>
+</div>
+</div>
+
+<h3>Photos</h3>
+<div class="gallery-grid gallery-grid-photos">
+<div class="gallery-item gallery-item-small">
+  <a href="assets/photos/brand-event-day2-3.jpg" download>
+    <img src="assets/photos/brand-event-day2-3.jpg" alt="Brand Event Day2 3" class="photo-tile">
+  </a>
+  <div class="gallery-meta">
+    <h4>Brand Event Day2 3</h4>
+    <p class="muted tiny">Photo · added 2026-05-06 · 4.21 MB · click to download</p>
+  </div>
+</div>
+
+<div class="gallery-item gallery-item-small">
+  <a href="assets/photos/brand-event-day2-2.jpg" download>
+    <img src="assets/photos/brand-event-day2-2.jpg" alt="Brand Event Day2 2" class="photo-tile">
+  </a>
+  <div class="gallery-meta">
+    <h4>Brand Event Day2 2</h4>
+    <p class="muted tiny">Photo · added 2026-05-06 · 3.76 MB · click to download</p>
+  </div>
+</div>
+
+<div class="gallery-item gallery-item-small">
+  <a href="assets/photos/brand-event-day2-1.jpg" download>
+    <img src="assets/photos/brand-event-day2-1.jpg" alt="Brand Event Day2 1" class="photo-tile">
+  </a>
+  <div class="gallery-meta">
+    <h4>Brand Event Day2 1</h4>
+    <p class="muted tiny">Photo · added 2026-05-06 · 4.67 MB · click to download</p>
+  </div>
+</div>
+</div>
+
+<h3>Videos</h3>
+<div class="gallery-grid gallery-grid-videos"><p class="muted">No videos yet. Drop files into <code>assets/videos/</code> and they appear here within 5 minutes.</p></div>
+<!-- GALLERY:END -->
+</section>
+
+<hr class="divider">
+
+<section>
+  <div class="section-eyebrow">Document Control</div>
+  <h2>Notes</h2>
+  <ul>
+    <li><strong>Version:</strong> 1.0 · 2026-05-05</li>
+    <li><strong>Source corpus:</strong> 107 source files compiled from <code>~/Agents/marketing/sisterhood-os-social/</code>, <code>~/brain_dump_map/</code>, <code>~/projects/SisterhoodOS/</code>, <code>~/projects/SahaSynergy/</code></li>
+    <li><strong>Maintained by:</strong> Saha (orchestration). Updated when material changes.</li>
+    <li><strong>Bookmark:</strong> <code>~/Agents/marketing/knowledge-base/index.html</code></li>
+  </ul>
+</section>
+
+</main>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  hamburger.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    hamburger.classList.toggle('open');
+  });
+  // Close sidebar on link click (mobile)
+  sidebar.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (window.innerWidth < 1024) {
+        sidebar.classList.remove('open');
+        hamburger.classList.remove('open');
+      }
+    });
+  });
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = sidebar.querySelectorAll('.nav-list a');
+  const onScroll = () => {
+    let current = '';
+    sections.forEach(s => {
+      const top = s.getBoundingClientRect().top;
+      if (top < 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  };
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // Carousel mockups
+  document.querySelectorAll('.carousel-stack').forEach(stack => {
+    const slides = stack.querySelectorAll('.carousel-slide');
+    if (!slides.length) return;
+    const screen = stack.closest('.iphone-screen');
+    const dots = screen.querySelectorAll('.carousel-dot');
+    const prev = screen.querySelector('.carousel-nav.prev');
+    const next = screen.querySelector('.carousel-nav.next');
+    let idx = 0;
+    const show = i => {
+      idx = (i + slides.length) % slides.length;
+      slides.forEach((s, n) => s.classList.toggle('active', n === idx));
+      dots.forEach((d, n) => d.classList.toggle('active', n === idx));
+    };
+    show(0);
+    if (prev) prev.addEventListener('click', () => show(idx - 1));
+    if (next) next.addEventListener('click', () => show(idx + 1));
+    dots.forEach((d, n) => d.addEventListener('click', () => show(n)));
+  });
+</script>
+
+</body>
+</html>
