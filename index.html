@@ -456,13 +456,14 @@ strong { color: var(--ink); font-weight: 600; }
       <div class="form-row">
         <label class="form-label">Status</label>
         <select class="form-select" id="lead-status">
-          <option value="new">New Lead</option>
-          <option value="contacted">Contacted</option>
-          <option value="in-group">In WhatsApp Group</option>
-          <option value="invited">Invited to MC</option>
-          <option value="warm">Warm</option>
+          <option value="new">Signed Up</option>
+          <option value="seq-m">Sequence M</option>
+          <option value="watched">Watched MC</option>
+          <option value="seq-a">Sequence A</option>
+          <option value="call-booked">Call Booked</option>
+          <option value="deposit-paid">Deposit Paid</option>
+          <option value="enrolled">Registered</option>
           <option value="cold">Gone Cold</option>
-          <option value="enrolled">Enrolled</option>
         </select>
       </div>
     </div>
@@ -484,9 +485,9 @@ strong { color: var(--ink); font-weight: 600; }
 // ─── STATE ────────────────────────────────────────────────────────
 const STORAGE_KEY = 'monika-mc-v1';
 
-const STATUS_CYCLE = ['new','contacted','in-group','invited','warm','cold','enrolled'];
-const STATUS_LABELS = { new:'New Lead', contacted:'Contacted', 'in-group':'In WA Group', invited:'Invited to MC', warm:'Warm', cold:'Gone Cold', enrolled:'Enrolled' };
-const STATUS_CLASS  = { new:'status-new', contacted:'status-contacted', 'in-group':'status-in-group', invited:'status-invited', warm:'status-warm', cold:'status-cold', enrolled:'status-enrolled' };
+const STATUS_CYCLE = ['new','seq-m','watched','seq-a','call-booked','deposit-paid','enrolled','cold'];
+const STATUS_LABELS = { new:'Signed Up', 'seq-m':'Sequence M', watched:'Watched MC', 'seq-a':'Sequence A', 'call-booked':'Call Booked', 'deposit-paid':'Deposit Paid', enrolled:'Registered', cold:'Gone Cold' };
+const STATUS_CLASS  = { new:'status-new', 'seq-m':'status-contacted', watched:'status-in-group', 'seq-a':'status-invited', 'call-booked':'status-warm', 'deposit-paid':'status-invited', enrolled:'status-enrolled', cold:'status-cold' };
 
 function defaultState() {
   return {

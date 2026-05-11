@@ -120,7 +120,6 @@ tr:last-child td{border-bottom:none;}
     <ul class="nav-list">
       <li><a href="#sales">Funnel Stages</a></li>
       <li><a href="#roles">Team Roles</a></li>
-      <li><a href="#hot-leads">Hot Leads</a></li>
     </ul>
 
     <div class="nav-section">Pipeline</div>
@@ -406,44 +405,40 @@ tr:last-child td{border-bottom:none;}
     <section id="sales">
       <div class="section-eyebrow">Sales Operations</div>
       <h2>Sales Process</h2>
-      <p>Nine stages from first contact to confirmed attendee. Every lead is tracked in the CRM with full context before handover.</p>
+      <p>Eight stages from opt-in to registered. The funnel is email-automated from sign-up through masterclass. Human touchpoints begin at the call booking stage.</p>
 
       <div class="funnel-stages">
         <div class="funnel-stage">
           <div class="stage-num">1</div>
-          <div><div class="stage-label">New Lead</div><div class="stage-desc">Enters via ad, organic content, referral, or Quiz. Captured in Airtable/Notion CRM automatically.</div></div>
+          <div><div class="stage-label">Sign Up</div><div class="stage-desc">Lead opts in via the website form or Meta Ads lead form. Captured in CRM automatically.</div></div>
         </div>
         <div class="funnel-stage">
           <div class="stage-num">2</div>
-          <div><div class="stage-label">Contacted</div><div class="stage-desc">Monika sends first-touch DM or WhatsApp within 24 hours of lead entry. Warm, non-salesy.</div></div>
+          <div><div class="stage-label">Email Sequence M</div><div class="stage-desc">Auto-enrolled into the masterclass nurture sequence. Sequence M delivers the masterclass link and pre-watch context over several emails.</div></div>
         </div>
         <div class="funnel-stage">
           <div class="stage-num">3</div>
-          <div><div class="stage-label">In WhatsApp Group</div><div class="stage-desc">Lead joins the SPC interest WhatsApp group. Receives pre-masterclass nurture content from Sophia and Helena.</div></div>
+          <div><div class="stage-label">Watches Masterclass</div><div class="stage-desc">Lead watches the masterclass via the link sent in Sequence M. Watch status tracked in CRM. Full watch vs partial watch noted.</div></div>
         </div>
         <div class="funnel-stage">
           <div class="stage-num">4</div>
-          <div><div class="stage-label">Invited to Masterclass</div><div class="stage-desc">Personal invitation sent with registration link. Monika tracks RSVPs. Reminders at 48h and 1h before.</div></div>
+          <div><div class="stage-label">Post Sequence A + Newsletter</div><div class="stage-desc">Post-masterclass sequence fires automatically. Lead also enters the ongoing newsletter sequence. Nurture continues until she books or goes cold.</div></div>
         </div>
         <div class="funnel-stage">
           <div class="stage-num">5</div>
-          <div><div class="stage-label">Watched</div><div class="stage-desc">Attended the masterclass live or via replay. Marked in CRM with watch status and engagement notes.</div></div>
+          <div><div class="stage-label">Books Call</div><div class="stage-desc">Lead books a discovery or closing call with Helena or Sophia. CTA present throughout Sequence A and newsletter. Monika flags high-intent leads for Helena.</div></div>
         </div>
         <div class="funnel-stage">
           <div class="stage-num">6</div>
-          <div><div class="stage-label">Follow-up Call</div><div class="stage-desc">Helena follows up within 24 hours post-MC. 15-20 minute qualifying and closing conversation.</div></div>
+          <div><div class="stage-label">Deposit Secured</div><div class="stage-desc">Deposit paid on the call or within 24 hours after. Stripe link sent by Helena or Sophia. Seat held. CRM updated immediately.</div></div>
         </div>
         <div class="funnel-stage">
           <div class="stage-num">7</div>
-          <div><div class="stage-label">Deposit Paid</div><div class="stage-desc">Lead pays deposit to hold seat. Stripe link sent by Helena or Sophia. CRM stage updated immediately.</div></div>
+          <div><div class="stage-label">Payment Plan or Paid in Full</div><div class="stage-desc">Full investment received — either 3x payment plan or paid in full. Zapier automation fires: Airtable tag, welcome sequence, Circle community invite, orientation materials.</div></div>
         </div>
         <div class="funnel-stage">
           <div class="stage-num">8</div>
-          <div><div class="stage-label">Full Payment</div><div class="stage-desc">Full investment received. Zapier automation fires: Airtable tag, welcome sequence, Circle invite, orientation.</div></div>
-        </div>
-        <div class="funnel-stage">
-          <div class="stage-num">9</div>
-          <div><div class="stage-label">Confirmed Attendee</div><div class="stage-desc">Woman is in. Welcome email sent. Circle community access live. Onboarding begins Jan 19.</div></div>
+          <div><div class="stage-label">Registered</div><div class="stage-desc">Woman is in. Welcome email sent. Circle community access live. Onboarding begins Jan 19, 2027.</div></div>
         </div>
       </div>
     </section>
@@ -453,55 +448,31 @@ tr:last-child td{border-bottom:none;}
       <table>
         <thead><tr><th>Person</th><th>Role in Sales</th><th>Trigger</th></tr></thead>
         <tbody>
-          <tr><td>Monika</td><td>First touch and qualification</td><td>Lead enters CRM. Contacts within 24 hours. Gathers intel, moves to WhatsApp group.</td></tr>
-          <tr><td>Helena</td><td>Closer and post-MC follow-up</td><td>Follows up within 24 hours after every masterclass. Owns the closing conversation.</td></tr>
-          <tr><td>Sophia</td><td>Strategic sales and high-touch</td><td>Hot leads, complex situations, final payment confirmation, relationship-based closing.</td></tr>
+          <tr><td>Monika</td><td>CRM oversight and hot-lead flagging</td><td>Monitors lead progress through sequences. Flags high-intent leads (clicked call CTA, replied to email, watched in full) to Helena for immediate follow-up.</td></tr>
+          <tr><td>Helena</td><td>Closer — owns the call and post-call follow-up</td><td>Runs all discovery and closing calls. Sends Stripe link. Follows up within 24 hours of any booked call that did not convert.</td></tr>
+          <tr><td>Sophia</td><td>High-touch and strategic closing</td><td>Complex situations, high-value relationships, final payment confirmation, and any lead Helena escalates.</td></tr>
         </tbody>
       </table>
 
-      <h3>Lead Handover Checklist</h3>
+      <h3>Pre-Call Handover Checklist</h3>
       <div class="card">
-        <p>Before any lead is handed from Monika to Helena or Sophia, the following information must be captured in the CRM:</p>
+        <p>Before flagging a lead to Helena or Sophia for a call, capture the following in the CRM:</p>
         <table>
           <thead><tr><th>Field</th><th>Notes</th></tr></thead>
           <tbody>
             <tr><td>Full Name</td><td>As they prefer to be addressed</td></tr>
-            <tr><td>Contact Info</td><td>WhatsApp number, IG handle, email</td></tr>
-            <tr><td>Social Handle</td><td>For pre-call research</td></tr>
+            <tr><td>Email</td><td>The address they opted in with</td></tr>
+            <tr><td>Social Handle</td><td>IG or other — for pre-call research</td></tr>
             <tr><td>Location</td><td>Time zone and country for scheduling</td></tr>
-            <tr><td>Situation</td><td>What she is currently doing, what changed</td></tr>
-            <tr><td>Wants</td><td>What she says she is looking for</td></tr>
-            <tr><td>Budget Signal</td><td>Any pricing conversations, hesitations flagged</td></tr>
-            <tr><td>Product Recommendation</td><td>Monika's read on best fit</td></tr>
-            <tr><td>WhatsApp Status</td><td>In group / not yet / unresponsive</td></tr>
-            <tr><td>Masterclass Status</td><td>Registered / attended live / replay / no show</td></tr>
+            <tr><td>Sequence Stage</td><td>Where she is in Sequence M or A — which emails she has received and opened</td></tr>
+            <tr><td>Masterclass Status</td><td>Full watch / partial watch / not yet watched</td></tr>
+            <tr><td>Engagement Signal</td><td>Replied to email, clicked call CTA, responded on IG — note what triggered the flag</td></tr>
+            <tr><td>Situation</td><td>What she is currently doing, what changed — anything shared in replies or IG DMs</td></tr>
+            <tr><td>Budget Signal</td><td>Any pricing questions or hesitations flagged in email replies</td></tr>
+            <tr><td>Product Recommendation</td><td>Monika's read on best fit — payment plan vs paid in full likelihood</td></tr>
           </tbody>
         </table>
       </div>
-    </section>
-
-    <section id="hot-leads">
-      <h3>Active Hot Leads</h3>
-      <table>
-        <thead><tr><th>Name</th><th>Status</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Maria Johanna</td>
-            <td><span class="badge badge-yellow">Warm</span></td>
-            <td>Japan Journey interest. Needs convincing. Helena or Sophia to handle personally. High-value relationship.</td>
-          </tr>
-          <tr>
-            <td>Kamry Lorin</td>
-            <td><span class="badge badge-red">Gone Cold</span></td>
-            <td>Engaged earlier in the funnel, now unresponsive. Re-engagement attempt with no pressure message. Flag if no response by cart close.</td>
-          </tr>
-          <tr>
-            <td>Rhona Foster</td>
-            <td><span class="badge badge-green">Active</span></td>
-            <td>Partial trip May 7-10. In conversation. Track travel window and follow up post-return. High intent signals.</td>
-          </tr>
-        </tbody>
-      </table>
     </section>
 
     <div class="divider"></div>
