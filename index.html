@@ -245,7 +245,7 @@ strong { color: var(--ink); font-weight: 600; }
 
   <div class="nav-group">Knowledge Base</div>
   <ul class="nav-list">
-    <li><a onclick="navigate('sisterhood-kb')" id="nav-sisterhood-kb"><span class="nav-icon">◎</span> Sisterhood OS</a></li>
+    <li><a onclick="navigate('sisterhood-kb')" id="nav-sisterhood-kb"><span class="nav-icon">◎</span> Strategy &amp; Products</a></li>
     <li><a onclick="navigate('saha-kb')" id="nav-saha-kb"><span class="nav-icon">◈</span> Saha Synergy</a></li>
     <li><a onclick="navigate('icp')" id="nav-icp"><span class="nav-icon">◉</span> Ideal Clients</a></li>
   </ul>
@@ -272,7 +272,7 @@ strong { color: var(--ink); font-weight: 600; }
           <div class="cd-block"><div class="cd-num" id="cd-days">—</div><div class="cd-label">Days</div></div>
           <div class="cd-block"><div class="cd-num" id="cd-hours">—</div><div class="cd-label">Hours</div></div>
           <div class="cd-block"><div class="cd-num" id="cd-mins">—</div><div class="cd-label">Mins</div></div>
-          <div class="cd-event">until SPC Launch &mdash; June 6, 2026</div>
+          <div class="cd-event">until SPC Launch &mdash; Jan 19, 2027</div>
         </div>
       </div>
 
@@ -388,7 +388,7 @@ strong { color: var(--ink); font-weight: 600; }
   <!-- SISTERHOOD KB (iframe) -->
   <div id="panel-sisterhood-kb" class="section-panel frame-mode" style="display:none">
     <div class="frame-header">
-      <span class="frame-title">Sisterhood OS Strategy & Products</span>
+      <span class="frame-title">Sisterhood OS — Strategy &amp; Products</span>
       <span class="frame-badge">Knowledge Base</span>
       <a href="kb-sisterhood.html" target="_blank" class="open-new-btn">Open in new tab ↗</a>
     </div>
@@ -598,7 +598,7 @@ function navigate(id) {
 
 // ─── COUNTDOWN ────────────────────────────────────────────────────
 function renderCountdown() {
-  const target = new Date('2026-06-06T22:00:00+08:00').getTime();
+  const target = new Date('2027-01-19T22:00:00+08:00').getTime();
   function tick() {
     const now = Date.now();
     const diff = target - now;
