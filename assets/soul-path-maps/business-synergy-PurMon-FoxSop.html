@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sophia × Monika — Partnership Chart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF0DC; --cream-mid: #F5E6C8; --gold: #BA7517; --gold-light: #D4A04A;
+      --gold-pale: #F0DEB0; --charcoal: #2A2218; --text-primary: #2A2218;
+      --text-secondary: #6B5B3E; --text-muted: #9B8B72; --white: #FFFFFF;
+      --border: rgba(186,117,23,0.2); --shadow: 0 2px 16px rgba(42,34,24,0.08);
+      --sophia: #5B3A8A; --sophia-pale: rgba(91,58,138,0.08); --sophia-border: rgba(91,58,138,0.25);
+      --monika: #2D6E5B; --monika-pale: rgba(45,110,91,0.08); --monika-border: rgba(45,110,91,0.25);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #1A1208; color: var(--text-primary); min-height: 100vh; display: flex; }
+    .sidebar {
+      width: 252px; min-height: 100vh; background: #120E08;
+      border-right: 1px solid rgba(186,117,23,0.12); position: fixed; top: 0; left: 0;
+      display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+    }
+    .sb-brand { padding: 28px 24px 22px; border-bottom: 1px solid rgba(186,117,23,0.12); }
+    .sb-sigil { font-size: 28px; margin-bottom: 10px; }
+    .sb-name { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; color: var(--cream); letter-spacing: 0.03em; }
+    .sb-tag { font-size: 10px; color: rgba(186,117,23,0.55); text-transform: uppercase; letter-spacing: 0.14em; margin-top: 3px; }
+    .sb-nav { padding: 14px 0; flex: 1; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 24px; cursor: pointer; color: rgba(250,240,220,0.5); font-size: 13px; transition: all 0.15s; border-left: 3px solid transparent; }
+    .nav-item:hover { background: rgba(186,117,23,0.07); color: var(--cream); }
+    .nav-item.active { background: rgba(186,117,23,0.11); color: var(--gold-light); border-left-color: var(--gold); }
+    .nav-icon { font-size: 14px; width: 18px; text-align: center; flex-shrink: 0; }
+    .sb-footer { padding: 14px 24px; border-top: 1px solid rgba(186,117,23,0.1); font-size: 10px; color: rgba(186,117,23,0.3); text-transform: uppercase; letter-spacing: 0.1em; }
+    .main { margin-left: 252px; flex: 1; background: var(--cream); min-height: 100vh; }
+    .page-header { background: var(--white); border-bottom: 1px solid var(--border); padding: 28px 48px; position: sticky; top: 0; z-index: 50; box-shadow: var(--shadow); }
+    .ph-crumb { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; }
+    .ph-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 400; color: var(--charcoal); }
+    .ph-meta { font-size: 11px; color: var(--text-muted); text-align: right; line-height: 1.6; }
+    .ph-inner { display: flex; align-items: flex-end; justify-content: space-between; }
+    .ph-badge { display: inline-block; margin-top: 6px; font-size: 10px; font-weight: 600; color: var(--gold); background: var(--gold-pale); padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.1em; }
+    .section { display: none; padding: 44px 48px; }
+    .section.active { display: block; }
+    .card { background: var(--white); border-radius: 16px; padding: 32px; border: 1px solid var(--border); margin-bottom: 24px; }
+    .card-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .card-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .card-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: var(--charcoal); }
+    .card-sub { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+    .hero { background: linear-gradient(135deg, var(--charcoal) 0%, #3D2E1A 100%); border-radius: 20px; padding: 48px 40px; text-align: center; margin-bottom: 28px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(186,117,23,0.15) 0%, transparent 65%); }
+    .hero-kicker { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold-light); margin-bottom: 10px; position: relative; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 400; color: var(--cream); line-height: 1.15; margin-bottom: 14px; position: relative; }
+    .hero-body { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: rgba(250,240,220,0.72); font-style: italic; max-width: 540px; margin: 0 auto; line-height: 1.65; position: relative; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+    .cell { background: var(--cream); border-radius: 12px; padding: 18px 20px; border: 1px solid var(--border); }
+    .cell-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 5px; font-weight: 600; }
+    .cell-value { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 500; color: var(--charcoal); }
+    .cell-sub { font-size: 12px; color: var(--text-secondary); margin-top: 5px; line-height: 1.55; }
+    .highlight { background: linear-gradient(135deg, rgba(186,117,23,0.07), rgba(186,117,23,0.03)); border: 1.5px solid rgba(186,117,23,0.22); border-radius: 16px; padding: 26px 30px; margin-bottom: 24px; }
+    .highlight-headline { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: var(--charcoal); line-height: 1.2; margin-bottom: 12px; }
+    .highlight-body { font-size: 14px; color: var(--text-secondary); line-height: 1.75; }
+    .divider { height: 1px; background: var(--border); margin: 26px 0; }
+    .sec-title { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 500; color: var(--charcoal); margin-bottom: 14px; }
+    .body-text { font-size: 14px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px; }
+    .gold-tag { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; padding: 3px 10px; background: var(--gold-pale); border-radius: 20px; margin-bottom: 8px; }
+    .sophia-tag { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sophia); font-weight: 600; padding: 2px 9px; background: var(--sophia-pale); border-radius: 20px; }
+    .monika-tag { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--monika); font-weight: 600; padding: 2px 9px; background: var(--monika-pale); border-radius: 20px; }
+
+    /* Synastry table */
+    .syn-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 20px; }
+    .syn-table th { padding: 9px 14px; text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 600; border-bottom: 2px solid var(--border); background: var(--cream); }
+    .syn-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; line-height: 1.5; }
+    .syn-table tr:nth-child(even) { background: rgba(186,117,23,0.02); }
+    .syn-signal { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 8px; white-space: nowrap; }
+    .sig-green { background: rgba(45,110,91,0.12); color: var(--monika); }
+    .sig-gold { background: var(--gold-pale); color: var(--gold); }
+    .sig-purple { background: var(--sophia-pale); color: var(--sophia); }
+    .sig-warn { background: rgba(180,60,60,0.1); color: rgba(160,50,50,0.9); }
+
+    /* Date cards */
+    .date-card { background: var(--white); border-radius: 14px; padding: 22px 26px; border: 1px solid var(--border); margin-bottom: 14px; display: flex; align-items: flex-start; gap: 20px; }
+    .date-badge { min-width: 88px; text-align: center; background: var(--gold-pale); border-radius: 10px; padding: 10px 8px; }
+    .date-month { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 700; }
+    .date-day { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--charcoal); line-height: 1; }
+    .date-year { font-size: 11px; color: var(--text-muted); }
+    .date-content { flex: 1; }
+    .date-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--charcoal); margin-bottom: 4px; }
+    .date-why { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
+    .date-avoid { border-left: 3px solid rgba(160,50,50,0.4); background: rgba(160,50,50,0.03); }
+    .date-avoid .date-badge { background: rgba(160,50,50,0.08); }
+    .date-avoid .date-month { color: rgba(140,50,50,0.8); }
+    .date-go { border-left: 3px solid var(--monika); }
+    .date-go .date-badge { background: var(--monika-pale); }
+    .date-go .date-month { color: var(--monika); }
+    .date-peak { border-left: 3px solid var(--gold); }
+    .date-peak .date-badge { background: var(--gold-pale); }
+    .verdict-row { display: flex; align-items: flex-start; gap: 14px; padding: 18px; background: var(--cream); border-radius: 12px; margin-bottom: 10px; border: 1px solid var(--border); }
+    .verdict-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .verdict-q { font-size: 13px; font-weight: 600; color: var(--charcoal); margin-bottom: 4px; }
+    .verdict-a { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sb-brand">
+    <div class="sb-sigil">⊗</div>
+    <div class="sb-name">Sophia × Monika</div>
+    <div class="sb-tag">Partnership Chart</div>
+  </div>
+  <div class="sb-nav">
+    <div class="nav-item active" onclick="show('synastry')"><span class="nav-icon">⟲</span> Synastry</div>
+    <div class="nav-item" onclick="show('verdict')"><span class="nav-icon">⚖</span> Partner Verdict</div>
+    <div class="nav-item" onclick="show('structure')"><span class="nav-icon">◻</span> Bali + Estonia</div>
+    <div class="nav-item" onclick="show('dates')"><span class="nav-icon">◈</span> Launch Dates</div>
+    <div class="nav-item" onclick="show('elevara')"><span class="nav-icon">◉</span> Elevara & Dharma</div>
+    <div class="nav-item" onclick="show('shadows')"><span class="nav-icon">◇</span> Watch Points</div>
+  </div>
+  <div class="sb-footer">Saha Synergy · May 2026</div>
+</div>
+
+<div class="main">
+  <div class="page-header">
+    <div class="ph-inner">
+      <div>
+        <div class="ph-crumb">Partnership Analysis · Swiss Ephemeris Verified</div>
+        <div class="ph-title">Sophia × Monika — Business Synastry</div>
+      </div>
+      <div class="ph-meta">
+        <span class="sophia-tag">Sophia · Leo ASC · Rahu/Sun</span>&nbsp;
+        <span class="monika-tag">Monika · Scorpio ASC · Venus/Sun</span><br>
+        <span class="ph-badge">Bali PT · Estonia OÜ · SPC Container Analysis</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYNASTRY -->
+  <div id="synastry" class="section active">
+
+    <div class="hero">
+      <div class="hero-kicker">Cross-Chart Analysis · Sisterhood OS Partnership</div>
+      <div class="hero-title">Two charts.<br>One mission field.</div>
+      <div class="hero-body">Sophia's Sun lands in Monika's 1st house. Monika's north node lands in Sophia's 10th. The teacher illuminates the student's identity. The student's evolution moves through the teacher's public mission. This is not coincidence — it is dharmic architecture.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">☀</div>
+        <div>
+          <div class="card-title">The 5 Defining Synastry Signals</div>
+          <div class="card-sub">Swiss Ephemeris · Whole Sign houses · Sidereal Lahiri Ayanamsa</div>
+        </div>
+      </div>
+
+      <div class="highlight">
+        <div class="highlight-headline">Signal 1: Sophia's Sun (29° Scorpio) lands in Monika's H1</div>
+        <div class="highlight-body">Sophia's Sun falls directly in Monika's 1st house (Scorpio). In synastry this is the teacher-of-identity signature: Sophia literally illuminates who Monika is. This placement explains why Monika experiences Sophia as a catalyst for self-knowledge — not just a boss or mentor but a mirror. As Monika grows into her own Sun (Rohini, H7), the H1 relationship with Sophia will naturally shift from illuminator to peer. The chart shows this is designed to evolve — not stay fixed.</div>
+      </div>
+
+      <div class="highlight" style="border-color: var(--monika-border); background: var(--monika-pale);">
+        <div class="highlight-headline" style="color: var(--monika);">Signal 2: Monika's Rahu + Sun (Taurus) land in Sophia's H10</div>
+        <div class="highlight-body">Both Monika's identity (Sun) and her north node evolution (Rahu) land in Sophia's 10th house — the house of career, dharma, and public legacy. This means Monika's soul growth literally moves through Sophia's mission field. She is not passing through — her dharmic evolution is intertwined with whether Sisterhood OS succeeds. The reverse is also true: Sophia's H10 is amplified by Monika's Rahu energy.</div>
+      </div>
+
+      <div class="highlight" style="border-color: var(--sophia-border); background: var(--sophia-pale);">
+        <div class="highlight-headline" style="color: var(--sophia);">Signal 3: Sophia's entire H5 stellium lands in Monika's H2</div>
+        <div class="highlight-body">Sophia's Jupiter (own sign), Mars, Mercury, and Venus — the entire 5th house creative intelligence cluster — lands in Monika's 2nd house. The 2nd house governs wealth, speech, family, and accumulated resources. Sophia's creative dharma is a direct wealth-activator for Monika. Every product, program, or teaching Sophia builds opens a financial lane for Monika. This is the financial partnership signature.</div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Full House Overlay Map</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--sophia);margin-bottom:12px;">Sophia's Planets in Monika's Houses</div>
+          <table class="syn-table">
+            <thead><tr><th>Sophia's Planet</th><th>Sign</th><th>Monika's House</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Sun</strong></td><td>Scorpio</td><td><span class="syn-signal sig-gold">H1 — Identity</span></td><td>Sophia illuminates Monika's self</td></tr>
+              <tr><td><strong>ASC (Leo)</strong></td><td>Leo</td><td><span class="syn-signal sig-purple">H10 — Career</span></td><td>Sophia's identity = Monika's career muse</td></tr>
+              <tr><td><strong>Jupiter</strong></td><td>Sagittarius</td><td><span class="syn-signal sig-green">H2 — Wealth</span></td><td>Sophia's dharma opens Monika's abundance</td></tr>
+              <tr><td><strong>Mars</strong></td><td>Sagittarius</td><td><span class="syn-signal sig-green">H2 — Wealth</span></td><td>Sophia's drive activates Monika's earnings</td></tr>
+              <tr><td><strong>Mercury</strong></td><td>Sagittarius</td><td><span class="syn-signal sig-green">H2 — Wealth/Speech</span></td><td>Sophia's communication expands Monika's voice</td></tr>
+              <tr><td><strong>Venus</strong></td><td>Sagittarius</td><td><span class="syn-signal sig-green">H2 — Wealth</span></td><td>Sophia's beauty activates Monika's resources</td></tr>
+              <tr><td><strong>Moon</strong></td><td>Virgo</td><td>H11 — Network</td><td>Sophia's community = Monika's gains</td></tr>
+              <tr><td><strong>Rahu</strong></td><td>Virgo</td><td>H11 — Gains</td><td>Sophia's north node amplifies Monika's community</td></tr>
+              <tr><td><strong>Saturn</strong></td><td>Aquarius</td><td>H4 — Foundation</td><td>Sophia provides structural grounding for Monika</td></tr>
+              <tr><td><strong>Ketu</strong></td><td>Pisces</td><td>H5 — Creativity</td><td>Sophia's spiritual lineage feeds Monika's gifts</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--monika);margin-bottom:12px;">Monika's Planets in Sophia's Houses</div>
+          <table class="syn-table">
+            <thead><tr><th>Monika's Planet</th><th>Sign</th><th>Sophia's House</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Sun + Rahu</strong></td><td>Taurus</td><td><span class="syn-signal sig-purple">H10 — Career</span></td><td>Monika's identity + evolution amplifies Sophia's dharma</td></tr>
+              <tr><td><strong>ASC (Scorpio)</strong></td><td>Scorpio</td><td>H4 — Roots</td><td>Monika's presence grounds Sophia's inner life</td></tr>
+              <tr><td><strong>Ketu</strong></td><td>Scorpio</td><td>H4 — Foundation</td><td>Monika holds Sophia's roots + depth</td></tr>
+              <tr><td><strong>Jupiter (exalted)</strong></td><td>Cancer</td><td><span class="syn-signal sig-gold">H12 — Liberation</span></td><td>Monika's exalted Jupiter blesses Sophia's foreign/spiritual work</td></tr>
+              <tr><td><strong>Mercury + Venus</strong></td><td>Aries</td><td><span class="syn-signal sig-gold">H9 — Dharma</span></td><td>Monika's intelligence amplifies Sophia's teaching</td></tr>
+              <tr><td><strong>Mars (exalted)</strong></td><td>Capricorn</td><td>H6 — Service</td><td>Monika's drive serves Sophia's operational mission</td></tr>
+              <tr><td><strong>Moon</strong></td><td>Pisces</td><td>H8 — Depth</td><td>Monika holds the emotional depth Sophia can't always access</td></tr>
+              <tr><td><strong>Saturn</strong></td><td>Gemini</td><td>H11 — Community</td><td>Monika brings structure to Sophia's network</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">⚡</div>
+        <div>
+          <div class="card-title">Dasha Alignment — The Rare Signal</div>
+          <div class="card-sub">May 2026 · Both enter Sun sub-periods within 7 days of each other</div>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-bottom:16px;">
+        <div class="cell" style="border-left: 3px solid var(--sophia);">
+          <div class="cell-label" style="color:var(--sophia);">Sophia — Active Now</div>
+          <div class="cell-value">Rahu / Sun</div>
+          <div class="cell-sub">Sun = Leo Ascendant lord. Rahu amplifying her core identity. The most personal period of the entire Rahu cycle. Started April 2026. She is becoming the offer — not just building it.</div>
+        </div>
+        <div class="cell" style="border-left: 3px solid var(--monika);">
+          <div class="cell-label" style="color:var(--monika);">Monika — Begins May 26</div>
+          <div class="cell-value">Venus / Sun</div>
+          <div class="cell-sub">Sun activates her Rohini H7 identity. Begins on her 23rd birthday. Seven days later Jupiter enters sidereal Cancer (her natal Hamsa Yoga house). The most visible period of her Venus Mahadasha begins.</div>
+        </div>
+      </div>
+
+      <div class="highlight" style="border-color:var(--gold);background:rgba(186,117,23,0.06)">
+        <div class="highlight-headline">June 2, 2026: The 7-Day Window</div>
+        <div class="highlight-body">May 26: Monika's birthday + Venus/Sun antardasha begins. June 2: Jupiter enters sidereal Cancer, activating Monika's natal Hamsa Yoga (Jupiter exalted in H9) by transit. Both women simultaneously in their Sun sub-periods. This 7-day corridor is the most astrologically charged window in their combined charts for the next several years. A joint public commitment — circle launch, partnership announcement, or company intention-setting — made in this window carries the force of two Sun periods plus a Jupiter exaltation echo. It does not need to be a legal action. It can be a private ceremony of commitment to the partnership path.</div>
+      </div>
+
+      <div class="grid3" style="margin-bottom:0">
+        <div class="cell"><div class="cell-label">Sophia enters Rahu/Moon</div><div class="cell-sub">March 2027. Mass emotional resonance, peak public connection. Sisterhood OS built by then can receive the wave.</div></div>
+        <div class="cell"><div class="cell-label">Monika enters Venus/Moon</div><div class="cell-sub">May 2027. Moon rules Monika's H9 dharma house. Teaching at scale, nourishing many, mass emotional field. Timing aligns with Sophia's Rahu/Moon.</div></div>
+        <div class="cell"><div class="cell-label">Both in Moon sub-periods</div><div class="cell-sub">March 2027 – January 2029: Sophia Rahu/Moon + Monika Venus/Moon. A 22-month window of double mass-reach activation. What is built by then can expand significantly.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PARTNERSHIP VERDICT -->
+  <div id="verdict" class="section">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">⚖</div>
+        <div>
+          <div class="card-title">The Partner Question — Direct Read</div>
+          <div class="card-sub">Should Sophia bring Monika on as a partner even though she is her mentor now?</div>
+        </div>
+      </div>
+
+      <div class="highlight" style="border-color:var(--monika-border);background:var(--monika-pale)">
+        <div class="highlight-headline" style="color:var(--monika);">The short answer: Yes — but structured, phased, and not equal equity yet.</div>
+        <div class="highlight-body">The charts strongly support the partnership arc. What they do not support is immediate 50/50 co-founder status. The synastry shows a dharmic apprenticeship that is designed to evolve into peership — but the evolution needs Monika to first demonstrate what she can build independently. The mentor-to-partner transition is real and written in both charts. The question is timing, structure, and clarity of roles.</div>
+      </div>
+
+      <div class="sec-title">The Case For (What the Charts Show)</div>
+      <div class="verdict-row">
+        <div class="verdict-icon">✦</div>
+        <div><div class="verdict-q">Two Panchamahapurusha Yogas</div><div class="verdict-a">Monika has Hamsa Yoga (Jupiter exalted H9) AND Ruchaka Yoga (Mars exalted H3). These are genuinely rare — the top 1% of chart configurations. She is not a student playing at leadership. She has real dharmic capacity and destiny. These yogas indicate she will become significant regardless of whether she partners with Sophia or not. Better for both that she builds within the Sisterhood OS ecosystem.</div></div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon">✦</div>
+        <div><div class="verdict-q">Monika's north node (Rahu) is in Sophia's H10</div><div class="verdict-a">Monika's soul evolution is literally wired through Sophia's dharma field. This is not co-dependence — it is dharmic alignment. Monika's Rahu in Taurus is about building material legacy through beauty, beauty-aligned work, and partnerships. Sisterhood OS is precisely that field.</div></div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon">✦</div>
+        <div><div class="verdict-q">Sophia's Sun lights Monika's H1 — the illuminator relationship</div><div class="verdict-a">Sophia is not just a boss or employer to Monika. She is an identity mirror. Keeping Monika at arm's length or as purely operational staff would underuse this connection and potentially frustrate Monika as she grows. The chart says this relationship is designed for significant intimacy and shared purpose.</div></div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon">✦</div>
+        <div><div class="verdict-q">PT structural need — Monika IS the solution</div><div class="verdict-a">A Bali-based PT (Perseroan Terbatas) requires majority Indonesian ownership. Monika as local director and co-founder is not just astrologically aligned — it solves the legal structure problem entirely. She becomes the local holding entity for the Indonesia operations. This is practical dharma.</div></div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon">✦</div>
+        <div><div class="verdict-q">Complementary archetypes: Visionary + Supporter</div><div class="verdict-a">Sophia's 5th house stellium (dharmic fire, creative intelligence, Jupiter own sign) = the visionary architect. Monika's Supporter Genius Code + Hamsa Yoga H9 = the wisdom-holder who creates the container for others. This is a classical leadership dyad. They build different things and each needs what the other carries.</div></div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">The Honest Watch Points</div>
+      <div class="verdict-row">
+        <div class="verdict-icon">◇</div>
+        <div><div class="verdict-q">Sophia's identity consolidation (Rahu/Sun) should not be complicated by a messy partnership</div><div class="verdict-a">Rahu/Sun is the period for Sophia to become fully visible as herself. An undefined partnership structure or unclear roles could drain her identity energy precisely when she needs to concentrate it. The partnership should be clean and clear — not emotionally consuming.</div></div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon">◇</div>
+        <div><div class="verdict-q">Monika is in Sade Sati peak (Saturn exactly on her natal Moon right now)</div><div class="verdict-a">Saturn is at 17.54° Pisces. Monika's Moon is at 20.06° Pisces. Saturn will cross the exact degree around August 2026 — the peak of her Sade Sati. This does not disqualify the partnership. But it means Monika is in a period of heavy internal restructuring, emotional weight, and karmic completion. Large commitments made at the Sade Sati peak (June-August 2026) require more discipline and reality-testing than usual. Build deliberately during this window, not from excitement.</div></div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon">◇</div>
+        <div><div class="verdict-q">Sun + Rahu in Monika's H7 — identity through partnership shadow</div><div class="verdict-a">Monika's chart shows she can seek identity validation through her partnerships. Before formalizing the partnership, both women should ensure Monika can articulate what she wants to BUILD independently, not just in relation to Sophia's vision. The partnership is strongest when Monika has her own mission within it.</div></div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">The Phased Partnership Path</div>
+      <div class="grid2" style="margin-bottom:0">
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label" style="color:var(--gold)">Phase 1: 2026 — Sponsored Independence</div>
+          <div class="cell-sub">Monika leads her own Bali circles and events under the Sisterhood OS umbrella. Revenue share (suggested: 70% Monika / 30% SisterOS for circles she runs). She is not an employee — she is a licensed facilitator building her own track record. No equity yet. This is the audition she needs to give herself.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--monika)">
+          <div class="cell-label" style="color:var(--monika)">Phase 2: 2027 — Formal Partnership in Bali Entity</div>
+          <div class="cell-sub">After Monika has run at least 6 circles independently and launched her own 6-month container, formalize her as co-founder and local director of the Bali PT. Start at 15-20% equity in the Bali entity specifically. This is after Sade Sati intensity passes and Venus/Moon (May 2027) confirms her capacity for scale.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--sophia)">
+          <div class="cell-label" style="color:var(--sophia)">Phase 3: 2029+ — Expanded Stake</div>
+          <div class="cell-sub">When Sophia enters Jupiter Mahadasha (Oct 2029) and Monika has 3 years of track record — revisit equity. At this point, 25-35% in Bali entity could be warranted. Monika's Venus/Jupiter antardasha (Mar 2033) is her peak — she should own meaningful equity by then.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(180,60,60,0.4)">
+          <div class="cell-label" style="color:rgba(140,50,50,0.8)">Estonia OÜ — Not Yet</div>
+          <div class="cell-sub">The Estonia company is Sophia's international holding entity. No equity for Monika there in 2026-2028. Once the Bali track record exists and Sophia's Jupiter Mahadasha creates international expansion opportunities, revisit. Monika can be a contractor or service provider to the Estonian entity without holding shares.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUSINESS STRUCTURE -->
+  <div id="structure" class="section">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">◻</div>
+        <div>
+          <div class="card-title">Bali PT + Estonia OÜ — Structure Recommendation</div>
+          <div class="card-sub">Legal structure mapped to chart data · Partnership roles · Revenue split</div>
+        </div>
+      </div>
+
+      <div class="sec-title">Why the Charts Suggest Two Separate Entities</div>
+      <div class="body-text">Sophia's H7 Saturn in Aquarius (own sign) = partnerships that are structured, slow-built, and longevity-oriented. This is not "move fast" Saturn — this is "build it to last." The Estonia OÜ represents Aquarian international infrastructure. The Bali PT represents Scorpionic depth work and transformation — which is Monika's entire chart signature (Scorpio Ascendant, Ketu in H1, Jupiter H9 dharma). These are two different energy fields and they need two different structures.</div>
+
+      <div class="grid2">
+        <div class="cell" style="border:1.5px solid var(--sophia-border);background:var(--sophia-pale)">
+          <div class="cell-label" style="color:var(--sophia);">Estonia OÜ — Sophia's International Arm</div>
+          <div class="cell-value" style="font-size:16px;">Sophia: 100% ownership (near-term)</div>
+          <div class="cell-sub">Holds SPC program sales, international clients, digital products, and global brand. Sophia's Leo ASC + Rahu/Sun + Jupiter Mahadasha (2029) = she is building something internationally significant. Keep this clean and solely hers until Phase 3. Monika can be invoiced as a service provider/facilitator from this entity for international work without holding equity.</div>
+        </div>
+        <div class="cell" style="border:1.5px solid var(--monika-border);background:var(--monika-pale)">
+          <div class="cell-label" style="color:var(--monika);">Bali PT — Monika as Local Director</div>
+          <div class="cell-value" style="font-size:16px;">Monika: 51%+ (required for PT)</div>
+          <div class="cell-sub">Indonesian PT law requires majority local ownership. Monika holding 51%+ is not just legally necessary — it is astrologically correct. Her Scorpio Ascendant + Jupiter H9 + Ketu H1 is the perfect chart for holding Indonesia's ground. Sophia holds the remaining stake as foreign investor. The Bali PT runs local circles, events, retreats, and the Indonesian 6-month container.</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Revenue Split Model</div>
+      <div class="grid3" style="margin-bottom:0">
+        <div class="cell">
+          <div class="cell-label">Phase 1 Circles (2026)</div>
+          <div class="cell-sub" style="font-size:13px;"><strong>70% Monika / 30% SisterOS brand fee.</strong> Monika takes the operational risk and runs the circles. Sisterhood OS licenses the brand, methodology, and Sophia's IP. This is fair for a facilitator at the start.</div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Phase 1 6-Month Container (2026-27)</div>
+          <div class="cell-sub" style="font-size:13px;"><strong>80% Monika / 20% SisterOS.</strong> This is Monika's own container — her IP, her design, her facilitation. The SisterOS 20% is a brand umbrella and mentorship fee from Sophia. Once Monika is a formal partner in the Bali PT, this converts to equity distributions.</div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Phase 2 PT Entity (2027+)</div>
+          <div class="cell-sub" style="font-size:13px;"><strong>Profit share per shareholding.</strong> Once PT is formally structured, distribute per equity stakes. Sophia's investment into the PT (if any) converts to minority equity. Operations run by Monika.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">★</div>
+        <div>
+          <div class="card-title">What Each Person Brings to the Partnership</div>
+          <div class="card-sub">Chart-based role definition</div>
+        </div>
+      </div>
+      <div class="grid2" style="margin-bottom:0">
+        <div class="cell" style="border-left:3px solid var(--sophia)">
+          <div class="cell-label" style="color:var(--sophia);">Sophia Brings</div>
+          <div class="cell-sub">
+            <strong>Brand + methodology</strong> — Sisterhood OS IP, SPC framework, brand equity<br><br>
+            <strong>Teaching lineage</strong> — Jupiter (H5 own sign) + 6/2 Role Model profile = the source of credibility<br><br>
+            <strong>Business architecture</strong> — Gate 32 (Preservation) + Saturn H7 = the structure that makes things last<br><br>
+            <strong>International reach</strong> — Estonia OÜ, global audience, digital distribution<br><br>
+            <strong>Mentorship</strong> — Sophia's Sun in Monika's H1 continues as the identity catalyst, now within a business frame
+          </div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--monika)">
+          <div class="cell-label" style="color:var(--monika);">Monika Brings</div>
+          <div class="cell-sub">
+            <strong>Local authority</strong> — Indonesian citizen, PT eligibility, cultural fluency with Indonesian women<br><br>
+            <strong>Hamsa Yoga</strong> — Teaching dharma, spiritual depth, wisdom transmission (Jupiter exalted H9 = the natural teacher)<br><br>
+            <strong>Ruchaka Yoga</strong> — Operational courage, bold action, execution in H3 (communication, logistics, events)<br><br>
+            <strong>Supporter Genius Code</strong> — Holds the container while Sophia builds the vision. She excels at making others feel held.<br><br>
+            <strong>Revati Moon</strong> — Compassionate completion frequency. She helps women cross thresholds. The perfect 6-month container energy.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAUNCH DATES -->
+  <div id="dates" class="section">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">◈</div>
+        <div>
+          <div class="card-title">Monika's Launch Calendar</div>
+          <div class="card-sub">Bali company · First circles · 6-month container · Based on Swiss Ephemeris transit data</div>
+        </div>
+      </div>
+
+      <div style="background:rgba(160,50,50,0.06);border:1px solid rgba(160,50,50,0.2);border-radius:12px;padding:14px 20px;margin-bottom:24px;font-size:13px;color:var(--text-secondary);line-height:1.7;">
+        <strong style="color:rgba(140,50,50,0.9);">Sade Sati Alert — Currently Active.</strong> Saturn (17.54° Pisces) will cross Monika's natal Moon (20.06° Pisces) around <strong>August 2026</strong> — the exact peak of her Janma Sade Sati. This is not a reason to pause everything, but it means June-August 2026 requires especially grounded, reality-tested decisions. The best strategy: soft launches and community building during the Sade Sati window, legal/formal launches after Saturn passes the exact degree (October 2026 onwards). Saturn exits sidereal Pisces entirely around <strong>September 2027</strong> — that is when the Sade Sati pressure lifts.
+      </div>
+
+      <div class="sec-title">Step 1: The Birthday Activation — Private Commitment</div>
+      <div class="date-card date-peak">
+        <div class="date-badge"><div class="date-month">May</div><div class="date-day">26</div><div class="date-year">2026</div></div>
+        <div class="date-content">
+          <div class="date-title">Personal Activation — Monika's 23rd Birthday</div>
+          <div class="date-why">Venus/Venus closes. Venus/Sun begins. A private ceremony of intention — write the vision for what she is building. Make a commitment to herself (and to the partnership) before anything is public. No launches, no announcements — just the internal vow. This is the seed moment. The most potent action on this day is the one no one else sees.</div>
+        </div>
+      </div>
+
+      <div class="date-card date-peak">
+        <div class="date-badge"><div class="date-month">Jun</div><div class="date-day">02</div><div class="date-year">2026</div></div>
+        <div class="date-content">
+          <div class="date-title">Jupiter Enters Cancer (Sidereal) — Hamsa Yoga Activates</div>
+          <div class="date-why">7 days after her birthday. Jupiter transits into Cancer — activating her natal Hamsa Yoga (Jupiter exalted in H9). This is the teaching dharma fully online. If Sophia and Monika are going to mark the beginning of their formal partnership path with any shared ritual or letter of intent (not legal), this week is the window. Jupiter in Cancer stays through mid-2027, giving the full year of Hamsa support.</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Step 2: First Women's Circle in Bali — Soft Launch</div>
+      <div class="date-card date-go">
+        <div class="date-badge"><div class="date-month">Jul</div><div class="date-day">19</div><div class="date-year">2026</div></div>
+        <div class="date-content">
+          <div class="date-title">First Bali Women's Circle — Sunday</div>
+          <div class="date-why">Sunday (Sun's day — Venus/Sun antardasha). Jupiter freshly in Cancer sidereal for 6 weeks. Full moon period nearby. Keep it small: 6-10 women, invitation only, free or gift-based. This is practice, not product. The Sade Sati peak is coming (August) — do the first circle before it, so there is a momentum reference point. The Supporter in Monika knows how to hold a room even under personal pressure.</div>
+        </div>
+      </div>
+      <div class="date-card date-go">
+        <div class="date-badge"><div class="date-month">Aug</div><div class="date-day">20</div><div class="date-year">2026</div></div>
+        <div class="date-content">
+          <div class="date-title">Second Circle — Sade Sati Peak Window</div>
+          <div class="date-why">Thursday (Jupiter day). Saturn is near exact Moon degree this month — the Sade Sati peak. Run a second small circle intentionally during this pressure period. The discipline of showing up for others while carrying personal weight IS the Supporter's training. This is not avoidance of the Sade Sati — it is using it correctly. What she learns about herself in August 2026 becomes the backbone of her container.</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Step 3: Bali Company Registration (PT)</div>
+      <div class="date-card date-avoid">
+        <div class="date-badge"><div class="date-month">Jun–Aug</div><div class="date-day">—</div><div class="date-year">2026</div></div>
+        <div class="date-content">
+          <div class="date-title">Avoid Legal/Formal Registration</div>
+          <div class="date-why">Sade Sati peak + Saturn retrograde period typically June-October annually. Legal documents signed during Sade Sati peak and retrograde often require revision or bring unexpected complications. The circles can run informally. The PT can wait until Saturn has passed the Moon degree and is moving cleanly forward.</div>
+        </div>
+      </div>
+      <div class="date-card date-go">
+        <div class="date-badge"><div class="date-month">Oct</div><div class="date-day">15</div><div class="date-year">2026</div></div>
+        <div class="date-content">
+          <div class="date-title">Bali PT Registration Window Opens</div>
+          <div class="date-why">Thursday, October 15, 2026. Jupiter direct and in Cancer. Saturn has crossed the exact Moon degree and is moving forward. Venus/Sun antardasha still active. This is the window to begin the PT registration paperwork in Bali. Use a local notaris (Indonesian notary). Monika as majority director (51%+). Sophia as foreign minority investor. Registration typically takes 2-4 weeks to complete — begin October, finalize November.</div>
+        </div>
+      </div>
+      <div class="date-card date-go">
+        <div class="date-badge"><div class="date-month">Nov</div><div class="date-day">05</div><div class="date-year">2026</div></div>
+        <div class="date-content">
+          <div class="date-title">PT Formal Completion + Launch Announcement</div>
+          <div class="date-why">Thursday (Jupiter's day), November 2026. Announce the official Bali entity publicly. Monika as co-founder and local director of Sisterhood OS Indonesia (or the Bali-specific brand name chosen). Jupiter in Cancer still strong. This announcement is the first time Monika steps publicly into the identity of "founder." Venus/Sun antardasha holds this moment exactly.</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Step 4: 6-Month Container for Indonesian Women</div>
+      <div class="date-card date-go">
+        <div class="date-badge"><div class="date-month">Nov</div><div class="date-day">19</div><div class="date-year">2026</div></div>
+        <div class="date-content">
+          <div class="date-title">Container Enrollment Opens — Thursday</div>
+          <div class="date-why">The enrollment period: November 19 – December 31, 2026. Jupiter in Cancer (H9) = dharmic teaching energy fully active. Monika has now run 3+ circles and has a proof-of-concept. Venus/Sun antardasha is her visibility window — this is the moment the offer becomes public. Target: Indonesian women, facilitated in Bahasa Indonesia and English. Price point: accessible for the Indonesian market (not the $4,000 SPC price — more like IDR 8-15 million / $500-$1,000).</div>
+        </div>
+      </div>
+      <div class="date-card date-peak">
+        <div class="date-badge"><div class="date-month">Jan</div><div class="date-day">19</div><div class="date-year">2027</div></div>
+        <div class="date-content">
+          <div class="date-title">6-Month Container Begins</div>
+          <div class="date-why">Tuesday, January 19, 2027. The container runs January 19 – July 19, 2027. This window holds:  Venus/Sun antardasha still active through May 26, 2027. Jupiter in Cancer through ~mid-2027. Container completes exactly as Monika transitions into Venus/Moon antardasha (May 2027) — the nourishment/mass connection phase begins right as her first cohort finishes. The timing is elegant. She closes the container in her Moon antardasha energy: full, nourished, having received from the women she served.</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Full Timeline at a Glance</div>
+      <div style="overflow-x:auto;">
+        <table class="syn-table" style="min-width:600px;">
+          <thead><tr><th>Date</th><th>Action</th><th>Dasha Context</th><th>Signal</th></tr></thead>
+          <tbody>
+            <tr><td>May 26, 2026</td><td>Birthday intention-setting (private)</td><td>Venus/Sun begins</td><td><span class="syn-signal sig-gold">Seed moment</span></td></tr>
+            <tr><td>Jun 2, 2026</td><td>Jupiter enters Cancer — Hamsa activation</td><td>Venus/Sun + Jupiter transit</td><td><span class="syn-signal sig-gold">Peak window</span></td></tr>
+            <tr><td>Jun–Aug, 2026</td><td>NO major legal or financial commitments</td><td>Sade Sati peak</td><td><span class="syn-signal sig-warn">Avoid</span></td></tr>
+            <tr><td>Jul 19, 2026</td><td>First Bali women's circle (6-10 women, soft)</td><td>Venus/Sun + Jupiter Cancer</td><td><span class="syn-signal sig-green">Go</span></td></tr>
+            <tr><td>Aug 20, 2026</td><td>Second circle — Sade Sati discipline training</td><td>Sade Sati exact + Venus/Sun</td><td><span class="syn-signal sig-green">Go (small)</span></td></tr>
+            <tr><td>Oct 15, 2026</td><td>Begin Bali PT registration paperwork</td><td>Venus/Sun + Saturn forward</td><td><span class="syn-signal sig-green">Go</span></td></tr>
+            <tr><td>Nov 5, 2026</td><td>PT finalized + public announcement as co-founder</td><td>Venus/Sun · Jupiter Cancer</td><td><span class="syn-signal sig-gold">Launch</span></td></tr>
+            <tr><td>Nov 19, 2026</td><td>6-month container enrollment opens</td><td>Venus/Sun · Jupiter Cancer</td><td><span class="syn-signal sig-gold">Launch</span></td></tr>
+            <tr><td>Jan 19, 2027</td><td>6-month container begins</td><td>Venus/Sun · Jupiter Cancer</td><td><span class="syn-signal sig-gold">Begin</span></td></tr>
+            <tr><td>May 26, 2027</td><td>Container enters final phase — Venus/Moon begins</td><td>Venus/Moon · nourishment</td><td><span class="syn-signal sig-green">Closing</span></td></tr>
+            <tr><td>Jul 19, 2027</td><td>First cohort completes — testimonials, second round</td><td>Venus/Moon · Sophia Rahu/Moon</td><td><span class="syn-signal sig-gold">Scale</span></td></tr>
+            <tr><td>2027–2028</td><td>Formalize equity in Bali PT (15-20% Sophia stake)</td><td>Venus/Moon — proven track record</td><td><span class="syn-signal sig-purple">Partnership</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ELEVARA & DHARMA -->
+  <div id="elevara" class="section">
+
+    <div class="hero">
+      <div class="hero-kicker">Dharma Read · Elevara · COO vs CMO</div>
+      <div class="hero-title">One thread.<br>Three expressions.</div>
+      <div class="hero-body">Elevara and Sisterhood OS are not competing companies. They are the material and spiritual legs of the same mission: helping people — especially Indonesian women — move from dependency into self-determined, economically grounded lives. The Sumatra office is not a distraction from the plan. It is evidence that Monika's dharma is already in motion.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">◉</div>
+        <div>
+          <div class="card-title">Monika's Dharma — The True Thread</div>
+          <div class="card-sub">Not "empowering women." Something more precise and more powerful.</div>
+        </div>
+      </div>
+
+      <div class="highlight" style="border-color:var(--monika-border);background:var(--monika-pale)">
+        <div class="highlight-headline" style="color:var(--monika);">Her dharma is: creating sovereignty pathways — practical first, then spiritual.</div>
+        <div class="highlight-body">Empowering women is a category. Monika's actual dharma is more specific: she creates the conditions for people (strongly weighted toward Indonesian women) to become financially stable and self-directed, then to know who they are once that stability exists. Elevara opens the material door — income, remote work, economic access. Sisterhood OS opens the identity door — community, transformation, cyclical leadership. She doesn't want people to just feel empowered. She wants them to have real capacity — money, skills, belonging, self-knowledge. That is a rare and complete dharmic package. It explains why both companies feel true to her.</div>
+      </div>
+
+      <div class="sec-title">Chart Backing — Three Yogas, One Mission</div>
+      <div class="grid3" style="margin-bottom:24px;">
+        <div class="cell" style="border-left:3px solid var(--monika)">
+          <div class="cell-label" style="color:var(--monika);">Ruchaka Yoga — Mars H3</div>
+          <div class="cell-sub">Mars exalted in H3 (communication, local networks, logistics, enterprise). This yoga delivers through action, pioneering new territory, and building practical infrastructure. The Sumatra office IS Ruchaka Yoga in motion. Elevara is its clearest business expression.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label" style="color:var(--gold);">Hamsa Yoga — Jupiter H9</div>
+          <div class="cell-sub">Jupiter exalted in H9 (dharma, teaching, wisdom transmission). This yoga delivers through facilitation, spiritual depth, and mentorship at scale. The Sisterhood OS circle work is its clearest expression. She is a natural teacher — not because she performs it, but because Jupiter's exaltation in H9 makes wisdom transmission her effortless default.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--sophia)">
+          <div class="cell-label" style="color:var(--sophia);">Supporter Genius — Revati Moon</div>
+          <div class="cell-sub">She builds containers for others to grow. Not just emotionally — structurally. She finds the office, secures the furniture, sets up the system, holds the space. She does this instinctively for Elevara clients, for Sisterhood OS women, and for Sophia. This is not servitude — it is sovereign service. The distinction matters.</div>
+        </div>
+      </div>
+
+      <div class="body-text">The question "is her dharma empowering women or Elevara?" is a false binary. Elevara is material empowerment — jobs, income, remote access, economic mobility. Sisterhood OS is identity empowerment — knowing yourself, belonging, cyclical leadership. Both serve the same woman at different stages of her journey. A woman Elevara places in a remote role who then joins a Sisterhood OS circle is not Monika serving two missions. She is completing one. Sophia's own chart confirms this: her 5th house stellium in Monika's H2 means Sophia's creative dharma directly generates Monika's resources. They are already in the same ecosystem. Elevara is the material leg of it that Monika owns outright.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">★</div>
+        <div>
+          <div class="card-title">The Elevara Integration Map</div>
+          <div class="card-sub">How Elevara, the Sumatra office, and Sisterhood OS function as a natural ecosystem</div>
+        </div>
+      </div>
+
+      <div class="highlight" style="border-color:var(--gold);background:rgba(186,117,23,0.06)">
+        <div class="highlight-headline">The Sumatra Office Is Not a Distraction. It Is the Proof.</div>
+        <div class="highlight-body">Monika manifested a free office and free furniture in Sumatra while in the middle of Sade Sati. That is Ruchaka Yoga operating at full capacity under pressure. It is exactly what the chart said she could do. For the partnership conversation, this matters: she is not a student who aspires to build. She is someone who already builds. The Sumatra office is the first piece of evidence Sophia can point to when evaluating whether the Phase 2 partnership formalization is warranted. It was not given to her — she secured it.</div>
+      </div>
+
+      <div class="sec-title">The Natural Funnel — Elevara into Sisterhood OS</div>
+      <div class="grid2" style="margin-bottom:24px;">
+        <div class="cell" style="border:1.5px solid var(--monika-border);background:var(--monika-pale)">
+          <div class="cell-label" style="color:var(--monika);">Stage 1 — Elevara opens the door</div>
+          <div class="cell-sub">A woman in Sumatra or Bali comes to Elevara seeking employment or remote work placement. Elevara places her. She has income now — perhaps for the first time in her own name. She is stable. She is asking what's next. <strong>This is the moment she is ready for Sisterhood OS.</strong> Financial security creates the psychic space for identity work. Elevara solves the prerequisite Sophia's programs often assume is already met.</div>
+        </div>
+        <div class="cell" style="border:1.5px solid var(--sophia-border);background:var(--sophia-pale)">
+          <div class="cell-label" style="color:var(--sophia);">Stage 2 — Sisterhood OS deepens the story</div>
+          <div class="cell-sub">The woman joins a Monika-facilitated circle. She finds community, cyclical intelligence, embodied leadership. Now she has income AND identity AND belonging. She becomes a Sisterhood OS testimonial, an alumni, a referral source, eventually a candidate for the 6-month container. <strong>Sophia's SPC is the top of this same pyramid</strong> — the $4,000 immersion for women who have done the ground work. Elevara is the ground work, Monika holds the middle, Sophia holds the apex.</div>
+        </div>
+      </div>
+
+      <div class="sec-title">The Sumatra Office — What to Do With It</div>
+      <div class="verdict-row">
+        <div class="verdict-icon">✦</div>
+        <div><div class="verdict-q">Year one: Let it be Elevara's</div><div class="verdict-a">Monika should use the Sumatra office as Elevara's operational base first. This is her independent company. Let her build it on its own terms. Do not rush to co-brand it with Sisterhood OS. Give Elevara 12 months to demonstrate what it can do with the space — clients placed, income generated, a small team maybe. The chart says she needs a body of work that is undeniably hers. The Sumatra office is where that happens.</div></div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon">✦</div>
+        <div><div class="verdict-q">Year two (2027+): Dual-branded hub</div><div class="verdict-a">Once Monika has run her first Bali circles and the PT is formalized in late 2026, explore a Sisterhood OS Sumatra chapter hosted at the Elevara office. Monthly circle, quarterly intensive, a Sumatra-specific entry point into the ecosystem. This expands Sisterhood OS to a second Indonesian city with zero real estate cost to Sophia. Monika's Ruchaka Yoga (H3 = local enterprise, community networks) is perfectly suited to running a second-city chapter.</div></div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon">✦</div>
+        <div><div class="verdict-q">What not to force</div><div class="verdict-a">Do not try to merge Elevara and Sisterhood OS into one company or one brand. They serve overlapping but distinct needs and having them as separate entities protects both Monika's autonomy and Sophia's brand. Cross-pollination is healthy. Merger is not the move. Monika's ability to say "I built Elevara independently" is part of what makes her a credible co-founder of the Bali PT. Collapse that distinction and you undermine the very proof she needs to build.</div></div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="highlight" style="border-color:rgba(186,117,23,0.3);background:rgba(186,117,23,0.05)">
+        <div class="highlight-headline">How Sophia's Strategy Role Fits</div>
+        <div class="highlight-body">Sophia has already been helping Monika strategize Elevara. That is Sophia's 5th house stellium (Jupiter, Mars, Mercury, Venus in Sagittarius) landing in Monika's H2 — her creative intelligence is literally Monika's financial activator. This is not Sophia overextending. It is the synastry working. Continue the strategic partnership with Elevara informally. Do not formalize Saha Synergy as an Elevara consultant yet (muddies the equity picture). The informal mentorship-to-strategy relationship is exactly right for now. When Elevara earns revenue, that is the natural moment to formalize any advisory arrangement if wanted.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">⚖</div>
+        <div>
+          <div class="card-title">COO or CMO — The Role Clarity</div>
+          <div class="card-sub">What her chart actually calls for, and how to title it</div>
+        </div>
+      </div>
+
+      <div class="highlight" style="border-color:var(--monika-border);background:var(--monika-pale)">
+        <div class="highlight-headline" style="color:var(--monika);">Recommendation: COO of Sisterhood OS Indonesia (Bali PT entity). Not CMO.</div>
+        <div class="highlight-body">CMO is a creative and brand leadership role — owning marketing strategy, content, and audience growth. Helena holds the global strategy and marketing layer. Monika's gifts are not primarily in brand or content creation. They are in execution, container-building, local operations, and facilitation. COO is the honest title for what she actually does and what the chart says she excels at. It is also a title that commands operational authority — which she needs to run circles, hire local facilitators, manage the Bali/Sumatra presence, and build the Indonesian chapter with genuine decision-making power.</div>
+      </div>
+
+      <div class="grid2" style="margin-bottom:24px;">
+        <div class="cell" style="border-left:3px solid var(--monika)">
+          <div class="cell-label" style="color:var(--monika);">Why COO fits</div>
+          <div class="cell-sub">
+            <strong>Ruchaka Yoga (Mars H3)</strong> — execution, logistics, local enterprise. Mars exalted is the operational planet, not the marketing planet.<br><br>
+            <strong>Supporter Genius Code</strong> — builds systems and containers for a visionary to inhabit. That is COO energy by definition.<br><br>
+            <strong>Scorpio ASC + Ketu H1</strong> — depth, unseen structure, behind-the-scenes power. COOs hold more than they show. This is her natural register.<br><br>
+            <strong>Helena is already global CMO</strong> — the strategy and marketing layer is covered. Monika's lane is Indonesia operations, not global brand.
+          </div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(160,50,50,0.4)">
+          <div class="cell-label" style="color:rgba(140,50,50,0.8);">Why CMO does not fit (yet)</div>
+          <div class="cell-sub">
+            <strong>CMO = content, brand, growth strategy</strong> — Monika's chart and Genius Code do not point here as her primary gift. Hamsa Yoga is a teaching yoga, not a marketing yoga.<br><br>
+            <strong>She is not the public face of the global brand</strong> — she is the face of the Indonesia chapter. That is a COO + Co-Founder role, not a CMO role.<br><br>
+            <strong>CMO title would create scope confusion with Helena</strong> — there cannot be two CMO-equivalent roles at the global level without friction. COO is a cleanly distinct lane.<br><br>
+            <strong>Exception</strong>: if Helena transitions out or the Indonesia brand becomes a fully separate entity with its own marketing function, revisit CMO for that entity specifically.
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-title">Phased Title Evolution</div>
+      <div class="grid3" style="margin-bottom:0">
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label" style="color:var(--gold);">2026 — Licensed Facilitator</div>
+          <div class="cell-sub">No formal title yet. Monika runs circles under the Sisterhood OS umbrella on a revenue share. She is building her track record. Informally: "Sisterhood OS Bali Lead" or "Circle Facilitator, Indonesia." This is intentional — she needs the proof-of-work before any C-suite title lands with weight.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--monika)">
+          <div class="cell-label" style="color:var(--monika);">Nov 2026 — Co-Founder + COO, Indonesia</div>
+          <div class="cell-sub">When the Bali PT formalizes, Monika is publicly announced as Co-Founder and COO of Sisterhood OS Indonesia. This is the title that goes on LinkedIn, the website, and the announcement post. COO of the Indonesia entity is specific enough to be accurate and broad enough to give her operational authority over all Indonesian programming.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--sophia)">
+          <div class="cell-label" style="color:var(--sophia);">2028+ — Revisit at the Global Level</div>
+          <div class="cell-sub">After 2+ years of running Indonesia operations and once Sophia enters Jupiter Mahadasha (Oct 2029), revisit whether Monika steps into a global COO role for the broader Sisterhood OS entity — not just the Bali PT. By then she will have run multiple cohorts, built a team, and demonstrated the operational capacity to hold a larger scope.</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">What She Owns vs What Sophia Owns</div>
+      <div class="grid2" style="margin-bottom:0">
+        <div class="cell" style="border-left:3px solid var(--monika)">
+          <div class="cell-label" style="color:var(--monika);">Monika Owns (COO lane)</div>
+          <div class="cell-sub">All Indonesia-based programming and operations. Circle facilitation and curriculum (her own design). Local facilitator hiring and management. Sumatra expansion timeline and pacing. Elevara as a fully independent company. Event logistics, venue, local partnerships. The Bali PT (majority shareholder, director).</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--sophia)">
+          <div class="cell-label" style="color:var(--sophia);">Sophia Owns (Visionary + Global lane)</div>
+          <div class="cell-sub">Global Sisterhood OS brand and IP. SPC program, Estonia OÜ, international sales. Sister Sage and Saha Synergy as separate entities. Strategic architecture for the ecosystem. Mentorship to Monika (as it evolves into peer advisory). Final say on brand direction and methodology expansion globally.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WATCH POINTS -->
+  <div id="shadows" class="section">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">◇</div>
+        <div>
+          <div class="card-title">Watch Points — For Both Women</div>
+          <div class="card-sub">What the charts warn about · Where the partnership can erode · How to prevent it</div>
+        </div>
+      </div>
+
+      <div class="sec-title">For Sophia</div>
+      <div class="verdict-row">
+        <div class="verdict-icon">◇</div>
+        <div><div class="verdict-q">Rahu/Sun can inflate the need to be the center</div><div class="verdict-a">The Rahu/Sun antardasha intensifies Sophia's visibility and identity energy — which is necessary and right. But it can also create an unconscious need to remain the most important person in every room she enters. Monika stepping forward as a co-founder is not a threat to Sophia's identity — it is the evidence that what Sophia built is big enough to need other leaders. The Panther doesn't shrink. But it also doesn't compete with its own cubs.</div></div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon">◇</div>
+        <div><div class="verdict-q">The mentor staying mentor past its expiry date</div><div class="verdict-a">Sophia's Sun in Monika's H1 is the illuminator relationship — designed and natural. But if Sophia continues to hold herself primarily as mentor past 2027, she blocks the partnership from maturing. The chart says this relationship is designed to arrive at peership. When Monika has run her own container and built her own reputation, the mentor frame should be consciously retired and the partner frame formally adopted.</div></div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon">◇</div>
+        <div><div class="verdict-q">Saturn H7 (own sign) — slow-build partnerships, not fast ones</div><div class="verdict-a">Saturn in Aquarius in H7 for Leo Ascendant means partnerships that are structured, serious, and built slowly are the ones that compound. Sophia should not rush the equity conversation to keep Monika happy. The right partnership is built on track record, not sentiment. Holding to the phased timeline protects both women.</div></div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">For Monika</div>
+      <div class="verdict-row">
+        <div class="verdict-icon">◇</div>
+        <div><div class="verdict-q">Sun + Rahu in H7 — identity through others</div><div class="verdict-a">Monika's shadow is seeking to know who she is through her relationship to Sophia (or other key figures). Before she can be a full partner, she needs to be able to answer: "What am I building if Sophia were not in the picture?" The 2026 circles and container are precisely the training ground for this. She needs a body of work that is undeniably hers.</div></div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon">◇</div>
+        <div><div class="verdict-q">Sade Sati (active until Sep 2027) — emotional realism required</div><div class="verdict-a">Saturn on the natal Moon brings reality-testing. Monika may go through periods of self-doubt, heaviness, or feeling like she is not ready. This is Sade Sati doing its work — not evidence she is wrong for the partnership. The prescription: stay grounded in what she is actually doing (showing up, running circles, building community), not in how she is feeling about it. The work is the proof.</div></div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon">◇</div>
+        <div><div class="verdict-q">Gate 18 shadow — criticism of self and of Sophia</div><div class="verdict-a">Gate 18 (Integrity) at shadow frequency becomes judgment: of herself for not being far enough along, of Sophia for not giving her enough credit or equity fast enough. The antidote is Gate 17 (Far-Sightedness) — she can see five years ahead if she lets herself. The version of this partnership that exists in 2031 is extraordinary. She is building toward it right now. The Integrity gate is not a weapon; it is a compass.</div></div>
+      </div>
+      <div class="verdict-row">
+        <div class="verdict-icon">◇</div>
+        <div><div class="verdict-q">Hamsa Yoga shadow — expecting recognition for wisdom that has not yet been transmitted</div><div class="verdict-a">Jupiter exalted in H9 gives Monika natural teaching authority and deep dharmic access. The shadow: assuming she should be trusted with large responsibilities before she has demonstrated them. The Hamsa Yoga delivers its full potential when she teaches from actual experience, not from her intuitive knowing alone. The 2026 circles and 2027 container build the evidence base that makes her natural authority legible to others.</div></div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">The One Sentence for Each</div>
+      <div class="grid2" style="margin-bottom:0">
+        <div class="cell" style="border-left:3px solid var(--sophia);text-align:center;padding:28px;">
+          <div class="cell-label" style="color:var(--sophia);">Sophia</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--charcoal);line-height:1.5;margin-top:10px;">"Build the structure that lets her lead — and trust that her growing does not diminish yours."</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--monika);text-align:center;padding:28px;">
+          <div class="cell-label" style="color:var(--monika);">Monika</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--charcoal);line-height:1.5;margin-top:10px;">"Build something undeniably yours first — so that when the partnership formalizes, you enter it as a founder, not as a student who was given a title."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function show(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+</script>
+</body>
+</html>

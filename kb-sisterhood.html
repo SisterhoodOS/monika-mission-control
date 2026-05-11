@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sisterhood OS — Strategy & Products Knowledge Base</title>
+<style>
+:root{--bg:#fbf8f4;--bg-card:#ffffff;--bg-soft:#f5edde;--bg-accent:#ede0c5;--ink:#1c1a17;--ink-soft:#4a3520;--ink-mute:#6e5a3f;--line:#d8c9a8;--line-soft:#ebe1ca;--rose:#c9876a;--clay:#b86650;--sage:#7a8c6a;--gold:#c4a661;--cacao:#4a3520;--pearl:#f0ead8;--fuchsia:#b8467a;--serif:'Iowan Old Style','Palatino','Georgia',serif;--sans:'Optima','Avenir Next','Helvetica Neue',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+body{font-family:var(--serif);font-size:16px;line-height:1.6;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;}
+.layout{display:flex;min-height:100vh;}
+.sidebar{position:fixed;top:0;left:0;width:280px;height:100vh;background:var(--ink);color:var(--bg);padding:28px 24px;overflow-y:auto;transform:translateX(-100%);transition:transform 0.32s ease;z-index:100;}
+.sidebar.open{transform:translateX(0);}
+.main{flex:1;padding:48px 32px 96px;max-width:100%;margin-left:0;transition:margin-left 0.32s ease;}
+@media(min-width:1024px){.sidebar{transform:translateX(0);}.main{margin-left:280px;padding:48px 56px 96px;}}
+.sidebar-brand{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.sidebar-title{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--bg);margin-bottom:28px;line-height:1.25;}
+.nav-section{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin:20px 0 8px;}
+.nav-list{list-style:none;}
+.nav-list a{display:block;font-family:var(--sans);font-size:13px;color:rgba(251,248,244,0.7);padding:5px 0 5px 10px;text-decoration:none;border-left:2px solid transparent;transition:color 0.15s;}
+.nav-list a:hover,.nav-list a.active{color:var(--bg);border-left-color:var(--gold);}
+.menu-btn{position:fixed;top:16px;left:16px;z-index:200;background:var(--ink);color:var(--bg);border:none;border-radius:6px;padding:8px 12px;font-size:16px;cursor:pointer;}
+@media(min-width:1024px){.menu-btn{display:none;}}
+.hero{background:linear-gradient(135deg,var(--bg-soft) 0%,var(--bg-accent) 100%);border-radius:16px;padding:48px 40px;margin-bottom:48px;border:1px solid var(--line);}
+.hero-eyebrow{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--clay);margin-bottom:16px;}
+.hero h1{font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--ink);line-height:1.15;margin-bottom:16px;}
+.hero-sub{font-size:17px;color:var(--ink-soft);max-width:680px;margin-bottom:24px;}
+.hero-meta{display:flex;flex-wrap:wrap;gap:16px;}
+.hero-meta span{font-family:var(--sans);font-size:12px;color:var(--ink-mute);background:var(--pearl);padding:4px 10px;border-radius:20px;border:1px solid var(--line);}
+section{margin-bottom:56px;scroll-margin-top:32px;}
+.section-eyebrow{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--clay);margin-bottom:8px;}
+h2{font-size:clamp(22px,3vw,30px);font-weight:700;color:var(--ink);margin-bottom:16px;line-height:1.2;}
+h3{font-size:18px;font-weight:700;color:var(--ink-soft);margin:24px 0 10px;}
+p{color:var(--ink-soft);margin-bottom:14px;max-width:740px;}
+.card{background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:24px 28px;margin-bottom:20px;}
+.card h3{margin-top:0;}
+table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px;}
+th{background:var(--bg-soft);color:var(--ink);font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);}
+td{padding:10px 14px;border-bottom:1px solid var(--line-soft);color:var(--ink-soft);vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+.tag{display:inline-block;font-family:var(--sans);font-size:11px;background:var(--bg-soft);color:var(--clay);border:1px solid var(--line);border-radius:20px;padding:2px 10px;margin:2px;}
+.divider{height:1px;background:var(--line-soft);margin:40px 0;}
+
+/* Additional styles for this doc */
+.avatar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:16px;}
+.avatar-card{background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;}
+.avatar-num{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+.avatar-name{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.avatar-card p{font-size:14px;margin-bottom:0;}
+.funnel-stages{display:flex;flex-direction:column;gap:8px;margin:16px 0;}
+.funnel-stage{display:flex;align-items:flex-start;gap:14px;background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;}
+.stage-num{font-family:var(--sans);font-size:12px;font-weight:700;color:var(--bg);background:var(--clay);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.stage-label{font-weight:700;color:var(--ink);font-size:15px;margin-bottom:2px;}
+.stage-desc{font-size:13px;color:var(--ink-mute);}
+.pillar-chips{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 20px;}
+.pillar-chip{font-family:var(--sans);font-size:12px;background:var(--pearl);color:var(--ink-soft);border:1px solid var(--line);border-radius:8px;padding:6px 14px;font-weight:500;}
+.mc-block{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line-soft);}
+.mc-block:last-child{border-bottom:none;}
+.mc-time{font-family:var(--sans);font-size:12px;font-weight:700;color:var(--clay);min-width:60px;padding-top:2px;}
+.mc-content{font-size:14px;color:var(--ink-soft);}
+.kpi-row{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0;}
+.kpi-box{background:var(--bg-card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;min-width:140px;flex:1;}
+.kpi-label{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:6px;}
+.kpi-value{font-size:22px;font-weight:700;color:var(--ink);}
+.kpi-note{font-family:var(--sans);font-size:11px;color:var(--ink-mute);margin-top:4px;}
+.badge{display:inline-block;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:4px;margin-left:6px;}
+.badge-green{background:#d4edda;color:#2d6a4f;}
+.badge-yellow{background:#fff3cd;color:#856404;}
+.badge-red{background:#f8d7da;color:#842029;}
+.six-a{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:16px;}
+.six-a-card{background:var(--bg-card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;}
+.six-a-letter{font-size:32px;font-weight:700;color:var(--clay);line-height:1;margin-bottom:8px;}
+.six-a-name{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:8px;}
+.six-a-card p{font-size:13px;margin-bottom:0;}
+.hook-card{background:var(--bg-card);border-left:3px solid var(--clay);padding:14px 18px;margin-bottom:12px;border-radius:0 8px 8px 0;}
+.hook-views{font-family:var(--sans);font-size:11px;font-weight:700;color:var(--sage);margin-top:6px;}
+.revenue-split{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0;}
+.split-box{flex:1;min-width:180px;background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:16px 20px;text-align:center;}
+.split-name{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:6px;}
+.split-pct{font-size:28px;font-weight:700;color:var(--clay);}
+.split-note{font-size:12px;color:var(--ink-mute);margin-top:4px;}
+</style>
+</head>
+<body>
+
+<button class="menu-btn" id="menuBtn" aria-label="Open menu">&#9776;</button>
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-brand">Sisterhood OS</div>
+    <div class="sidebar-title">Strategy &amp; Products Knowledge Base</div>
+
+    <div class="nav-section">Overview</div>
+    <ul class="nav-list">
+      <li><a href="#roadmap">2026 Roadmap</a></li>
+    </ul>
+
+    <div class="nav-section">SPC Program</div>
+    <ul class="nav-list">
+      <li><a href="#spc">Soul Path Collective</a></li>
+      <li><a href="#spc-phases">Program Phases</a></li>
+      <li><a href="#spc-pricing">Pricing &amp; Bonuses</a></li>
+    </ul>
+
+    <div class="nav-section">ICP Avatars</div>
+    <ul class="nav-list">
+      <li><a href="#icp">All 7 Avatars</a></li>
+    </ul>
+
+    <div class="nav-section">Masterclass</div>
+    <ul class="nav-list">
+      <li><a href="#masterclass">MC Structure</a></li>
+      <li><a href="#mc-blocks">90-Min Breakdown</a></li>
+      <li><a href="#mc-slides">10-Slide Deck</a></li>
+    </ul>
+
+    <div class="nav-section">Sales Process</div>
+    <ul class="nav-list">
+      <li><a href="#sales">Funnel Stages</a></li>
+      <li><a href="#roles">Team Roles</a></li>
+      <li><a href="#hot-leads">Hot Leads</a></li>
+    </ul>
+
+    <div class="nav-section">Pipeline</div>
+    <ul class="nav-list">
+      <li><a href="#pipeline">The 6 A's</a></li>
+    </ul>
+
+    <div class="nav-section">Content</div>
+    <ul class="nav-list">
+      <li><a href="#content">Content Strategy</a></li>
+      <li><a href="#pillars">7 Pillars</a></li>
+      <li><a href="#hooks">Top Hooks</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main content -->
+  <main class="main">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-eyebrow">Internal Strategy Document</div>
+      <h1>Sisterhood OS<br>Strategy &amp; Products</h1>
+      <p class="hero-sub">Complete knowledge base for the 2026 launch of Soul Path Collective, Sisterhood OS community growth, sales pipeline, masterclass execution, and content strategy.</p>
+      <div class="hero-meta">
+        <span>SPC Launch: June 6 2026</span>
+        <span>Revenue Target: $450K</span>
+        <span>Cohort 1: 20+ Women</span>
+        <span>Updated: May 2026</span>
+      </div>
+    </div>
+
+    <!-- ===== 2026 ROADMAP ===== -->
+    <section id="roadmap">
+      <div class="section-eyebrow">Strategic Overview</div>
+      <h2>2026 Roadmap</h2>
+      <p>Starting from a -75M IDR deficit, the 2026 goal is $450K in total revenue across six distinct streams. Growth is built on a layered team interdependency chain and tracked weekly, monthly, and quarterly.</p>
+
+      <h3>Revenue Streams</h3>
+      <table>
+        <thead>
+          <tr><th>Stream</th><th>Details</th><th>Tier</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Founding Members</td><td>100 seats at $33/month</td><td><span class="tag">Community</span></td></tr>
+          <tr><td>Standard Members</td><td>250 seats at $55/month</td><td><span class="tag">Community</span></td></tr>
+          <tr><td>Japan Journey</td><td>Minimum 7 seats (group travel)</td><td><span class="tag">Journey</span></td></tr>
+          <tr><td>4 Retreats</td><td>Quarterly retreat calendar across Bali and internationally</td><td><span class="tag">Retreats</span></td></tr>
+          <tr><td>Chapter Kits</td><td>2 kits at $33K each — licensing for international chapters</td><td><span class="tag">Expansion</span></td></tr>
+          <tr><td>Apprenticeships</td><td>5 positions for trained facilitators entering the ecosystem</td><td><span class="tag">Education</span></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Team Structure</h3>
+      <p>Six people with an interdependency chain — no single role operates in isolation. Team breakdowns must account for handoff points and communication lag across time zones.</p>
+      <div class="card">
+        <h3>Roles in the Chain</h3>
+        <table>
+          <thead><tr><th>Person</th><th>Primary Function</th><th>Interdependencies</th></tr></thead>
+          <tbody>
+            <tr><td>Sophia</td><td>Founder, strategic sales, SPC delivery</td><td>All roles</td></tr>
+            <tr><td>Helena</td><td>Co-founder, strategy, marketing, closing</td><td>Sophia, Monika, content team</td></tr>
+            <tr><td>Monika</td><td>Day-to-day operations, first-touch lead management</td><td>Sophia, Helena, CRM</td></tr>
+            <tr><td>Team Members 4-6</td><td>Content, community, admin support</td><td>Monika, Helena</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>KPI Tracking Cadence</h3>
+      <div class="kpi-row">
+        <div class="kpi-box"><div class="kpi-label">Weekly</div><div class="kpi-value" style="font-size:16px">Leads, DMs, registrations, ad spend, conversion rate, follow-up completions</div></div>
+        <div class="kpi-box"><div class="kpi-label">Monthly</div><div class="kpi-value" style="font-size:16px">Revenue, CAC, LTV, content reach, email open rate, pipeline health</div></div>
+        <div class="kpi-box"><div class="kpi-label">Quarterly</div><div class="kpi-value" style="font-size:16px">Milestone review, team expansion decisions, product iteration, chapter kit progress</div></div>
+      </div>
+
+      <h3>Profit Distribution</h3>
+      <div class="revenue-split">
+        <div class="split-box">
+          <div class="split-name">Sophia</div>
+          <div class="split-pct">60%</div>
+          <div class="split-note">Cohort 1 only</div>
+        </div>
+        <div class="split-box">
+          <div class="split-name">Helena</div>
+          <div class="split-pct">40%</div>
+          <div class="split-note">Cohort 1 only</div>
+        </div>
+        <div class="split-box" style="background:var(--bg-accent);">
+          <div class="split-name">Cohort 2 Onward</div>
+          <div class="split-pct" style="color:var(--sage)">50/50</div>
+          <div class="split-note">Equal split, ongoing</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ===== SPC PROGRAM ===== -->
+    <section id="spc">
+      <div class="section-eyebrow">Flagship Product</div>
+      <h2>Soul Path Collective (SPC)</h2>
+      <p>"The Expansive Woman" — a 6-month sovereign immersion for women ready to leave behind the performance of a life that was never theirs and step into the one that is.</p>
+
+      <div class="kpi-row">
+        <div class="kpi-box"><div class="kpi-label">Launch Date</div><div class="kpi-value" style="font-size:18px">June 6 2026</div><div class="kpi-note">10PM Bali time</div></div>
+        <div class="kpi-box"><div class="kpi-label">Cohort 1 Target</div><div class="kpi-value" style="font-size:18px">20+ Women</div><div class="kpi-note">Founding Sovereign seats</div></div>
+        <div class="kpi-box"><div class="kpi-label">Duration</div><div class="kpi-value" style="font-size:18px">6 Months</div><div class="kpi-note">Two 3-month phases</div></div>
+      </div>
+    </section>
+
+    <section id="spc-phases">
+      <h3>Phase 1 — Sovereign Woman (Months 1-3)</h3>
+      <div class="card">
+        <p>The inner work foundation. Clearing, integrating, and coming home to herself before building anything new.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+          <span class="tag">Consciousness Work</span>
+          <span class="tag">Breathwork</span>
+          <span class="tag">Trauma Release</span>
+          <span class="tag">Feminine Energy</span>
+          <span class="tag">Cycle Synergy</span>
+          <span class="tag">Soul Path Map Creation</span>
+        </div>
+      </div>
+
+      <h3>Phase 2 — Sovereign Creator (Months 4-6)</h3>
+      <div class="card">
+        <p>The outer expression. Building the structure, brand, and business that matches the woman she has become in Phase 1.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+          <span class="tag">Offer Design</span>
+          <span class="tag">Company Structure</span>
+          <span class="tag">Tax Strategy</span>
+          <span class="tag">Legal Contracts</span>
+          <span class="tag">AI Automation</span>
+          <span class="tag">Live Launch</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="spc-pricing">
+      <h3>Pricing Tiers</h3>
+      <table>
+        <thead>
+          <tr><th>Tier</th><th>Price</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Full Pay</td><td>$4,000 – $4,444</td><td>Standard investment, one payment</td></tr>
+          <tr><td>Founding Sovereign</td><td>$3,333 – $3,999</td><td>Early access pricing, limited seats</td></tr>
+          <tr><td>Payment Plan</td><td>3x ~$1,400</td><td>Spread over 3 months</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Bonuses</h3>
+      <div class="card">
+        <h3>Soul Path Map Session with Sophia</h3>
+        <p>Value: $1,111. Offered to the first 10 women who enroll. A private session with Sophia to generate and interpret the participant's Soul Path Map.</p>
+      </div>
+      <div class="card">
+        <h3>6 Months Community Access</h3>
+        <p>Value: $462. Full access to the Sisterhood OS Circle.so community throughout the program. Connection, accountability, and peer support.</p>
+      </div>
+
+      <h3>Guarantee</h3>
+      <div class="card" style="border-left:3px solid var(--sage);">
+        <h3>Full Refund Within First 2 Weeks</h3>
+        <p>No questions asked. If a woman joins and determines in the first two weeks that SPC is not the right fit, she receives a complete refund. This removes the risk barrier for fence-sitters and signals full confidence in the container.</p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ===== ICP AVATARS ===== -->
+    <section id="icp">
+      <div class="section-eyebrow">Ideal Client Profile</div>
+      <h2>The 7 Avatars</h2>
+      <p>SPC speaks to seven distinct women. Each avatar names a different flavor of the same core wound: she is too big for the container she has been living in.</p>
+
+      <div class="avatar-grid">
+        <div class="avatar-card">
+          <div class="avatar-num">Avatar 01</div>
+          <div class="avatar-name">Corporate Ceiling Woman</div>
+          <p>Six-figure salary, glass office, the respect of her peers — and she is done. The system has given her everything it promised and it still does not feel like enough. She is not burned out. She is outgrown.</p>
+        </div>
+
+        <div class="avatar-card">
+          <div class="avatar-num">Avatar 02</div>
+          <div class="avatar-name">Leap-Taker Who's Struggling</div>
+          <p>She already left corporate. The income is inconsistent, the clients are sometimes wrong, and the inner foundation she thought she had is shakier than she expected. She needs roots, not more strategy.</p>
+        </div>
+
+        <div class="avatar-card">
+          <div class="avatar-num">Avatar 03</div>
+          <div class="avatar-name">Silent Caretaker</div>
+          <p>She holds everyone. The team, the family, the household. The slow quiet erosion has taken years. She has a vision she cannot say out loud because saying it feels like a betrayal. She is ready to be seen.</p>
+        </div>
+
+        <div class="avatar-card">
+          <div class="avatar-num">Avatar 04</div>
+          <div class="avatar-name">Southeast Asian Achiever</div>
+          <p>Drawn to Sophia's cultural context and lived experience in this region. The IDR payment option matters — it signals that this program sees her. High achiever, high expectations, deeply loyal once trust is built.</p>
+        </div>
+
+        <div class="avatar-card">
+          <div class="avatar-num">Avatar 05</div>
+          <div class="avatar-name">Gifted Undercharger</div>
+          <p>Genuinely talented. Has the gift, has the results, has the testimonials. Still undercharges, over-delivers, and apologizes for her prices. She does not need more mindset content. She needs somatic work.</p>
+        </div>
+
+        <div class="avatar-card">
+          <div class="avatar-num">Avatar 06</div>
+          <div class="avatar-name">Sophisticated Stuckness Woman</div>
+          <p>Knows all the theory. Has read the books, attended the retreats, done the certifications. Still in the same holding pattern since 2022. She does not need more insight. She needs activation and accountability.</p>
+        </div>
+
+        <div class="avatar-card">
+          <div class="avatar-num">Avatar 07</div>
+          <div class="avatar-name">Threshold Woman</div>
+          <p>Something ended. A marriage, a career, an identity she wore for a decade. She is in the in-between — nothing fully composted, nothing new yet planted. She knows this is a threshold. She needs someone to walk it with her.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ===== MASTERCLASS ===== -->
+    <section id="masterclass">
+      <div class="section-eyebrow">Launch Event</div>
+      <h2>Masterclass Structure</h2>
+      <p>Two masterclasses in the launch sequence. MC1 led by Sophia, MC2 led by Helena. Format: 90 minutes on Zoom/StreamYard. Target 50 registered, 40+ live per session.</p>
+
+      <div class="kpi-row">
+        <div class="kpi-box"><div class="kpi-label">Timeline</div><div class="kpi-value" style="font-size:16px">Apr 20 – May 3</div><div class="kpi-note">MC run dates</div></div>
+        <div class="kpi-box"><div class="kpi-label">Cart Close</div><div class="kpi-value" style="font-size:16px">May 17</div><div class="kpi-note">Hard deadline</div></div>
+        <div class="kpi-box"><div class="kpi-label">Registration Target</div><div class="kpi-value" style="font-size:16px">50</div><div class="kpi-note">Per masterclass</div></div>
+        <div class="kpi-box"><div class="kpi-label">Live Attendance Target</div><div class="kpi-value" style="font-size:16px">40+</div><div class="kpi-note">Per masterclass</div></div>
+      </div>
+    </section>
+
+    <section id="mc-blocks">
+      <h3>90-Minute Block Breakdown</h3>
+      <div class="card">
+        <div class="mc-block"><div class="mc-time">0-10 min</div><div class="mc-content"><strong>Opening.</strong> Welcome, set the container, establish safety and credibility. Ground the room before anything else moves.</div></div>
+        <div class="mc-block"><div class="mc-time">10-25 min</div><div class="mc-content"><strong>The Problem.</strong> Name the pain with precision. She needs to feel seen before she is ready to be sold. No positioning yet.</div></div>
+        <div class="mc-block"><div class="mc-time">25-40 min</div><div class="mc-content"><strong>The Vision.</strong> Show her who she becomes. Not features. Not modules. The woman on the other side of the 6 months.</div></div>
+        <div class="mc-block"><div class="mc-time">40-60 min</div><div class="mc-content"><strong>The Method.</strong> Break down the 4-step framework. Teach a meaningful piece of it live. She gets a real win in the room.</div></div>
+        <div class="mc-block"><div class="mc-time">60-70 min</div><div class="mc-content"><strong>The Bridge.</strong> Connect the method to the offer. Show why SPC is the fastest path from where she is to where she wants to be.</div></div>
+        <div class="mc-block"><div class="mc-time">70-85 min</div><div class="mc-content"><strong>Offer + Q&amp;A.</strong> Full offer reveal. Pricing, bonuses, guarantee, payment plan. Open Q&amp;A to clear objections live.</div></div>
+        <div class="mc-block"><div class="mc-time">85-90 min</div><div class="mc-content"><strong>Post-MC CTA.</strong> Clear next step. Direct to application form or Stripe link. Helena begins follow-up sequence within 24 hrs.</div></div>
+      </div>
+    </section>
+
+    <section id="mc-slides">
+      <h3>10-Slide Deck Structure</h3>
+      <table>
+        <thead><tr><th>#</th><th>Slide</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Hook</td><td>Pattern interrupt before the camera fully settles. Bali setting visible. Grab attention in the first 5 seconds.</td></tr>
+          <tr><td>2</td><td>Pain</td><td>Name her situation with specificity. She thinks she is the only one. Show her she is not.</td></tr>
+          <tr><td>3</td><td>Promise</td><td>The outcome she will have by the end of the 90 minutes. Micro-commitment to staying.</td></tr>
+          <tr><td>4</td><td>This Is For You If</td><td>Clear qualification. Avatar language. She leans in or self-selects out. Both outcomes are fine.</td></tr>
+          <tr><td>5</td><td>Breathwork</td><td>Short live practice. Creates an embodied experience in the masterclass. Differentiates from information-only events.</td></tr>
+          <tr><td>6</td><td>Story</td><td>Sophia's or Helena's personal arc. The turn. The cost of staying. The decision that changed everything.</td></tr>
+          <tr><td>7</td><td>4-Step Framework</td><td>The core method. Teachable, memorable, named. Real value delivered here.</td></tr>
+          <tr><td>8</td><td>3 Mistakes</td><td>The three things keeping her stuck. Reframe common beliefs. Position SPC as the corrective path.</td></tr>
+          <tr><td>9</td><td>The Choice</td><td>Two futures. The one she stays in and the one she steps into. Emotional. True. No pressure tactics.</td></tr>
+          <tr><td>10</td><td>The Offer</td><td>Full SPC reveal. Pricing, tiers, bonuses, guarantee. Application link. CTA to Helena's calendar.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Production Notes</h3>
+      <div class="card">
+        <ul style="color:var(--ink-soft);padding-left:20px;line-height:2;">
+          <li>Hook fires before the camera fully settles — do not wait for the room to fill</li>
+          <li>Bali setting visible in background — this is intentional brand positioning</li>
+          <li>Captions always on for accessibility and retention</li>
+          <li>StreamYard or Zoom — confirm platform per MC before promotion goes out</li>
+          <li>Replay available for registered attendees who missed live</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ===== SALES PROCESS ===== -->
+    <section id="sales">
+      <div class="section-eyebrow">Sales Operations</div>
+      <h2>Sales Process</h2>
+      <p>Nine stages from first contact to confirmed attendee. Every lead is tracked in the CRM with full context before handover.</p>
+
+      <div class="funnel-stages">
+        <div class="funnel-stage">
+          <div class="stage-num">1</div>
+          <div><div class="stage-label">New Lead</div><div class="stage-desc">Enters via ad, organic content, referral, or Quiz. Captured in Airtable/Notion CRM automatically.</div></div>
+        </div>
+        <div class="funnel-stage">
+          <div class="stage-num">2</div>
+          <div><div class="stage-label">Contacted</div><div class="stage-desc">Monika sends first-touch DM or WhatsApp within 24 hours of lead entry. Warm, non-salesy.</div></div>
+        </div>
+        <div class="funnel-stage">
+          <div class="stage-num">3</div>
+          <div><div class="stage-label">In WhatsApp Group</div><div class="stage-desc">Lead joins the SPC interest WhatsApp group. Receives pre-masterclass nurture content from Sophia and Helena.</div></div>
+        </div>
+        <div class="funnel-stage">
+          <div class="stage-num">4</div>
+          <div><div class="stage-label">Invited to Masterclass</div><div class="stage-desc">Personal invitation sent with registration link. Monika tracks RSVPs. Reminders at 48h and 1h before.</div></div>
+        </div>
+        <div class="funnel-stage">
+          <div class="stage-num">5</div>
+          <div><div class="stage-label">Watched</div><div class="stage-desc">Attended the masterclass live or via replay. Marked in CRM with watch status and engagement notes.</div></div>
+        </div>
+        <div class="funnel-stage">
+          <div class="stage-num">6</div>
+          <div><div class="stage-label">Follow-up Call</div><div class="stage-desc">Helena follows up within 24 hours post-MC. 15-20 minute qualifying and closing conversation.</div></div>
+        </div>
+        <div class="funnel-stage">
+          <div class="stage-num">7</div>
+          <div><div class="stage-label">Deposit Paid</div><div class="stage-desc">Lead pays deposit to hold seat. Stripe link sent by Helena or Sophia. CRM stage updated immediately.</div></div>
+        </div>
+        <div class="funnel-stage">
+          <div class="stage-num">8</div>
+          <div><div class="stage-label">Full Payment</div><div class="stage-desc">Full investment received. Zapier automation fires: Airtable tag, welcome sequence, Circle invite, orientation.</div></div>
+        </div>
+        <div class="funnel-stage">
+          <div class="stage-num">9</div>
+          <div><div class="stage-label">Confirmed Attendee</div><div class="stage-desc">Woman is in. Welcome email sent. Circle community access live. Onboarding begins June 6.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roles">
+      <h3>Team Sales Roles</h3>
+      <table>
+        <thead><tr><th>Person</th><th>Role in Sales</th><th>Trigger</th></tr></thead>
+        <tbody>
+          <tr><td>Monika</td><td>First touch and qualification</td><td>Lead enters CRM. Contacts within 24 hours. Gathers intel, moves to WhatsApp group.</td></tr>
+          <tr><td>Helena</td><td>Closer and post-MC follow-up</td><td>Follows up within 24 hours after every masterclass. Owns the closing conversation.</td></tr>
+          <tr><td>Sophia</td><td>Strategic sales and high-touch</td><td>Hot leads, complex situations, final payment confirmation, relationship-based closing.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Lead Handover Checklist</h3>
+      <div class="card">
+        <p>Before any lead is handed from Monika to Helena or Sophia, the following information must be captured in the CRM:</p>
+        <table>
+          <thead><tr><th>Field</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Full Name</td><td>As they prefer to be addressed</td></tr>
+            <tr><td>Contact Info</td><td>WhatsApp number, IG handle, email</td></tr>
+            <tr><td>Social Handle</td><td>For pre-call research</td></tr>
+            <tr><td>Location</td><td>Time zone and country for scheduling</td></tr>
+            <tr><td>Situation</td><td>What she is currently doing, what changed</td></tr>
+            <tr><td>Wants</td><td>What she says she is looking for</td></tr>
+            <tr><td>Budget Signal</td><td>Any pricing conversations, hesitations flagged</td></tr>
+            <tr><td>Product Recommendation</td><td>Monika's read on best fit</td></tr>
+            <tr><td>WhatsApp Status</td><td>In group / not yet / unresponsive</td></tr>
+            <tr><td>Masterclass Status</td><td>Registered / attended live / replay / no show</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="hot-leads">
+      <h3>Active Hot Leads</h3>
+      <table>
+        <thead><tr><th>Name</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Maria Johanna</td>
+            <td><span class="badge badge-yellow">Warm</span></td>
+            <td>Japan Journey interest. Needs convincing. Helena or Sophia to handle personally. High-value relationship.</td>
+          </tr>
+          <tr>
+            <td>Kamry Lorin</td>
+            <td><span class="badge badge-red">Gone Cold</span></td>
+            <td>Engaged earlier in the funnel, now unresponsive. Re-engagement attempt with no pressure message. Flag if no response by cart close.</td>
+          </tr>
+          <tr>
+            <td>Rhona Foster</td>
+            <td><span class="badge badge-green">Active</span></td>
+            <td>Partial trip May 7-10. In conversation. Track travel window and follow up post-return. High intent signals.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ===== SALES PIPELINE — 6 A'S ===== -->
+    <section id="pipeline">
+      <div class="section-eyebrow">Pipeline Framework</div>
+      <h2>The 6 A's</h2>
+      <p>A structured sales pipeline mapped to the psychological journey of the buyer. Each stage has a defined trigger, deliverable, and handoff point.</p>
+
+      <div class="six-a">
+        <div class="six-a-card">
+          <div class="six-a-letter">A<sub style="font-size:16px">1</sub></div>
+          <div class="six-a-name">Attention</div>
+          <p>Content hooks, lead magnets, and the Soul Path Quiz bring her into the ecosystem. She finds Sisterhood OS because something she saw reflected her truth.</p>
+        </div>
+
+        <div class="six-a-card">
+          <div class="six-a-letter">A<sub style="font-size:16px">2</sub></div>
+          <div class="six-a-name">Activation</div>
+          <p>The masterclass structure and landing page convert passive interest into committed attendance. She registers, shows up, and has a real experience in the room.</p>
+        </div>
+
+        <div class="six-a-card">
+          <div class="six-a-letter">A<sub style="font-size:16px">3</sub></div>
+          <div class="six-a-name">Application</div>
+          <p>Airtable auto-sorts submissions by fit level. Green = book a call immediately. Yellow = manual review required. Red = graceful decline with a warm message and redirect.</p>
+        </div>
+
+        <div class="six-a-card">
+          <div class="six-a-letter">A<sub style="font-size:16px">4</sub></div>
+          <div class="six-a-name">Assessment</div>
+          <p>15-minute qualifying call. Four gap areas explored: identity, belonging, purpose, and support. Helena or Sophia listens for readiness and fit — not just desire.</p>
+        </div>
+
+        <div class="six-a-card">
+          <div class="six-a-letter">A<sub style="font-size:16px">5</sub></div>
+          <div class="six-a-name">Assurance</div>
+          <p>She needs to know this is real. Deliverables: 12-page product guide PDF, detailed FAQ, case studies, comparison chart, walkthrough video. Remove doubt, build trust.</p>
+        </div>
+
+        <div class="six-a-card">
+          <div class="six-a-letter">A<sub style="font-size:16px">6</sub></div>
+          <div class="six-a-name">Agreement</div>
+          <p>Stripe link sent. On payment, Zapier fires: Airtable tags updated, welcome sequence triggered, Circle community invite sent, orientation materials delivered. The machine handles the moment, the team handles the human.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ===== CONTENT STRATEGY ===== -->
+    <section id="content">
+      <div class="section-eyebrow">Organic Growth</div>
+      <h2>Content Strategy</h2>
+      <p>Content is the primary trust-builder and lead engine for SPC. Everything published should make one of the seven avatars feel seen, spoken to, and ready to take a step closer.</p>
+
+      <h3>Channel Priority</h3>
+      <table>
+        <thead><tr><th>Channel</th><th>Role</th><th>Priority</th></tr></thead>
+        <tbody>
+          <tr><td>Instagram Reels</td><td>Primary reach and discovery engine</td><td><span class="tag">Primary</span></td></tr>
+          <tr><td>TikTok</td><td>Secondary reach, younger adjacents, algorithm testing</td><td><span class="tag">Secondary</span></td></tr>
+          <tr><td>Threads</td><td>Thought leadership, longer-form context, community</td><td><span class="tag">Secondary</span></td></tr>
+          <tr><td>Facebook Groups</td><td>Warm traffic from relevant groups, direct outreach</td><td><span class="tag">Tactical</span></td></tr>
+          <tr><td>LinkedIn</td><td>Corporate Ceiling avatar, professional positioning</td><td><span class="tag">Tactical</span></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Content Formats</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 20px;">
+        <span class="pillar-chip">15-45 sec Reels</span>
+        <span class="pillar-chip">Podcast-style collab (Sophia + Helena)</span>
+        <span class="pillar-chip">Walk-and-talk UGC</span>
+        <span class="pillar-chip">iPhone captions (low-fi, high-trust)</span>
+      </div>
+    </section>
+
+    <section id="pillars">
+      <h3>7 Content Pillars</h3>
+      <div class="pillar-chips">
+        <span class="pillar-chip">1. Corporate Exit</span>
+        <span class="pillar-chip">2. Money &amp; Wealth</span>
+        <span class="pillar-chip">3. Cycle &amp; Feminine Energy</span>
+        <span class="pillar-chip">4. Girly Talks</span>
+        <span class="pillar-chip">5. Travel &amp; Bali Lifestyle</span>
+        <span class="pillar-chip">6. Fears &amp; Mindset</span>
+        <span class="pillar-chip">7. Identity &amp; Transformation</span>
+      </div>
+
+      <table>
+        <thead><tr><th>Pillar</th><th>Core Theme</th><th>Primary Avatar</th></tr></thead>
+        <tbody>
+          <tr><td>Corporate Exit</td><td>The conversation happening in her head about leaving — before she says it out loud</td><td>Corporate Ceiling Woman</td></tr>
+          <tr><td>Money &amp; Wealth</td><td>Undercharging, money blocks, financial sovereignty, pricing her worth</td><td>Gifted Undercharger</td></tr>
+          <tr><td>Cycle &amp; Feminine Energy</td><td>Working with her body, not against it. Seasons, rest, cyclical business building</td><td>Silent Caretaker, all avatars</td></tr>
+          <tr><td>Girly Talks</td><td>Soft and honest conversations between women. Relationship, desire, friendships, fun</td><td>All avatars</td></tr>
+          <tr><td>Travel &amp; Bali Lifestyle</td><td>Bali as the visual brand anchor. Freedom, beauty, slow living without apology</td><td>Leap-Taker, Threshold Woman</td></tr>
+          <tr><td>Fears &amp; Mindset</td><td>What she is afraid of and why that is not the full story</td><td>Sophisticated Stuckness, Threshold Woman</td></tr>
+          <tr><td>Identity &amp; Transformation</td><td>Who she is becoming, who she is shedding, what sovereignty actually looks like</td><td>All 7 avatars</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="hooks">
+      <h3>Helena's Top-Performing Hooks</h3>
+      <p>From @helena.seramor analysis — hooks that have demonstrated viral reach and avatar resonance. Study the pattern: simple, true, slightly uncomfortable.</p>
+
+      <div class="hook-card">
+        <p style="font-size:16px;font-weight:600;color:var(--ink);">"Being a woman who provides for herself is a privilege."</p>
+        <div class="hook-views">608,000 views</div>
+      </div>
+
+      <div class="hook-card">
+        <p style="font-size:16px;font-weight:600;color:var(--ink);">"Sometimes I'm not available for anyone."</p>
+        <div class="hook-views">309,000 views</div>
+      </div>
+
+      <div class="hook-card">
+        <p style="font-size:16px;font-weight:600;color:var(--ink);">"All that worry and we all end up in the same place."</p>
+        <div class="hook-views">265,000 views</div>
+      </div>
+
+      <h3>Hook Pattern Notes</h3>
+      <div class="card">
+        <ul style="color:var(--ink-soft);padding-left:20px;line-height:2;">
+          <li>Each hook is one sentence. No setup needed.</li>
+          <li>All three speak a truth she has felt but not said. The content validates an unspoken interior experience.</li>
+          <li>None are negative or fear-based. They are observational and slightly sovereign.</li>
+          <li>The privilege framing works because it reframes something assumed to be basic as actually rare and earned.</li>
+          <li>The availability hook works because it names the thing women feel guilty for wanting.</li>
+          <li>The worry hook works because it dissolves the mental load with a grounding truth.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <p style="font-family:var(--sans);font-size:12px;color:var(--ink-mute);text-align:center;padding-top:24px;">
+      Sisterhood OS — Strategy &amp; Products Knowledge Base &nbsp;|&nbsp; Internal Document &nbsp;|&nbsp; Updated May 2026
+    </p>
+
+  </main>
+</div>
+
+<script>
+// Hamburger menu
+const menuBtn = document.getElementById('menuBtn');
+const sidebar = document.getElementById('sidebar');
+menuBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+});
+document.addEventListener('click', (e) => {
+  if (window.innerWidth < 1024 && !sidebar.contains(e.target) && e.target !== menuBtn) {
+    sidebar.classList.remove('open');
+  }
+});
+
+// Scroll-spy
+const navLinks = document.querySelectorAll('.nav-list a');
+const sections = document.querySelectorAll('section[id]');
+
+function onScroll() {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if (sectionTop <= 80) {
+      current = section.getAttribute('id');
+    }
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+// Close sidebar on nav click (mobile)
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth < 1024) {
+      sidebar.classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>

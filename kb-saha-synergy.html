@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saha Synergy Knowledge Base</title>
+<style>
+:root {
+  --bg: #fbf8f4; --bg-card: #ffffff; --bg-soft: #f5edde; --bg-accent: #ede0c5;
+  --ink: #1c1a17; --ink-soft: #4a3520; --ink-mute: #6e5a3f; --line: #d8c9a8;
+  --line-soft: #ebe1ca; --rose: #c9876a; --clay: #b86650; --sage: #7a8c6a;
+  --gold: #c4a661; --cacao: #4a3520; --pearl: #f0ead8; --fuchsia: #b8467a;
+  --serif: 'Iowan Old Style', 'Palatino', 'Georgia', serif;
+  --sans: 'Optima', 'Avenir Next', 'Helvetica Neue', sans-serif;
+  --mono: 'SF Mono', 'Menlo', monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--serif); font-size: 16px; line-height: 1.6; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }
+.layout { display: flex; min-height: 100vh; }
+.sidebar { position: fixed; top: 0; left: 0; width: 280px; height: 100vh; background: var(--ink); color: var(--bg); padding: 28px 24px; overflow-y: auto; transform: translateX(-100%); transition: transform 0.32s ease; z-index: 100; }
+.sidebar.open { transform: translateX(0); }
+.main { flex: 1; padding: 48px 32px 96px; max-width: 100%; margin-left: 0; transition: margin-left 0.32s ease; }
+@media (min-width: 1024px) { .sidebar { transform: translateX(0); } .main { margin-left: 280px; padding: 48px 56px 96px; } }
+.sidebar-brand { font-family: var(--sans); font-weight: 600; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.sidebar-title { font-family: var(--serif); font-size: 20px; font-weight: 700; color: var(--bg); margin-bottom: 28px; line-height: 1.25; }
+.nav-section { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin: 20px 0 8px; }
+.nav-list { list-style: none; }
+.nav-list li { margin: 0; }
+.nav-list a { display: block; font-family: var(--sans); font-size: 13px; color: rgba(251,248,244,0.7); padding: 5px 0; text-decoration: none; transition: color 0.15s; border-left: 2px solid transparent; padding-left: 10px; }
+.nav-list a:hover, .nav-list a.active { color: var(--bg); border-left-color: var(--gold); }
+.menu-btn { position: fixed; top: 16px; left: 16px; z-index: 200; background: var(--ink); color: var(--bg); border: none; border-radius: 6px; padding: 8px 12px; font-size: 16px; cursor: pointer; }
+@media (min-width: 1024px) { .menu-btn { display: none; } }
+.hero { background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg-accent) 100%); border-radius: 16px; padding: 48px 40px; margin-bottom: 48px; border: 1px solid var(--line); }
+.hero-eyebrow { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); margin-bottom: 16px; }
+.hero h1 { font-size: clamp(28px,4vw,42px); font-weight: 700; color: var(--ink); line-height: 1.15; margin-bottom: 16px; }
+.hero-sub { font-size: 17px; color: var(--ink-soft); max-width: 680px; margin-bottom: 24px; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+.hero-meta span { font-family: var(--sans); font-size: 12px; color: var(--ink-mute); background: var(--pearl); padding: 4px 10px; border-radius: 20px; border: 1px solid var(--line); }
+section { margin-bottom: 56px; scroll-margin-top: 32px; }
+.section-eyebrow { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay); margin-bottom: 8px; }
+h2 { font-size: clamp(22px,3vw,30px); font-weight: 700; color: var(--ink); margin-bottom: 16px; line-height: 1.2; }
+h3 { font-size: 18px; font-weight: 700; color: var(--ink-soft); margin: 24px 0 10px; }
+p { color: var(--ink-soft); margin-bottom: 14px; max-width: 740px; }
+ul, ol { padding-left: 22px; margin-bottom: 14px; max-width: 720px; }
+li { color: var(--ink-soft); margin-bottom: 6px; }
+strong { color: var(--ink); font-weight: 700; }
+.card { background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; }
+.card h3 { margin-top: 0; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14px; }
+th { background: var(--bg-soft); color: var(--ink); font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--line); }
+td { padding: 10px 14px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+.tag { display: inline-block; font-family: var(--sans); font-size: 11px; background: var(--bg-soft); color: var(--clay); border: 1px solid var(--line); border-radius: 20px; padding: 2px 10px; margin: 2px; }
+.callout { border-radius: 10px; padding: 16px 20px; margin: 16px 0 24px; font-size: 14.5px; line-height: 1.65; max-width: 740px; }
+.callout.info { background: #f5ede0; border-left: 3px solid var(--gold); color: var(--cacao); }
+.callout.success { background: #eef4ec; border-left: 3px solid var(--sage); color: #2e4a25; }
+.callout.warn { background: #fdf6ec; border-left: 3px solid var(--rose); color: #6b3620; }
+.divider { height: 1px; background: var(--line-soft); margin: 40px 0; }
+.updated { font-family: var(--sans); font-size: 11px; color: rgba(251,248,244,0.35); margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+
+<!-- SIDEBAR -->
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">Saha Synergy</div>
+  <div class="sidebar-title">Knowledge Base</div>
+  <div class="updated">Updated 2026-05-08</div>
+
+  <div class="nav-section">Overview</div>
+  <ul class="nav-list">
+    <li><a href="#overview">Company Overview</a></li>
+    <li><a href="#brands">Brands &amp; Entities</a></li>
+    <li><a href="#team">Team</a></li>
+  </ul>
+
+  <div class="nav-section">BCS</div>
+  <ul class="nav-list">
+    <li><a href="#bcs-offer">BCS Offer</a></li>
+    <li><a href="#bcs-pricing">Pricing Tiers</a></li>
+    <li><a href="#bcs-backend">Backend &amp; Tech Stack</a></li>
+    <li><a href="#bcs-marketing">BCS Marketing Playbook</a></li>
+  </ul>
+
+  <div class="nav-section">Grant &amp; Vision</div>
+  <ul class="nav-list">
+    <li><a href="#grant">Grant Application</a></li>
+    <li><a href="#vision">Vision &amp; B2B Pivot</a></li>
+  </ul>
+
+  <div class="nav-section">Soul Path Maps</div>
+  <ul class="nav-list">
+    <li><a href="#spm-index">All Maps</a></li>
+    <li><a href="#spm-DorCli">DorCli — Clint Dorman</a></li>
+    <li><a href="#spm-PurMon">PurMon — Monika</a></li>
+    <li><a href="#spm-biz-synergy">Business Synergy — Monika × Sophia</a></li>
+    <li><a href="#spm-FoxSop">FoxSop — Sophia</a></li>
+    <li><a href="#spm-RodHel">RodHel — Helena</a></li>
+    <li><a href="#spm-HagDen">HagDen — Denise Hager</a></li>
+  </ul>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Internal Knowledge Base</div>
+    <h1>Saha Synergy Group Ltd</h1>
+    <p class="hero-sub">Parent entity for Sisterhood OS, Business Clarity Sessions, and Sophia's consulting operations. Registered in Hong Kong. B2C-first, B2B trajectory.</p>
+    <div class="hero-meta">
+      <span>Founder: Sophia Lee Fox</span>
+      <span>sahasynergy.com</span>
+      <span>HK Ltd (parent entity)</span>
+      <span>Bali-based operations</span>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section id="overview">
+    <div class="section-eyebrow">Company</div>
+    <h2>Company Overview</h2>
+    <p>Saha Synergy Group Ltd is the Hong Kong-registered parent entity that houses all of Sophia Lee Fox's ventures. It operates primarily out of Bali, Indonesia, and holds the legal and financial layer beneath the consumer-facing brands. The current strategic trajectory is B2C community building first (Sisterhood OS), generating proof-of-concept and brand authority before pivoting to B2B corporate programs.</p>
+
+    <table>
+      <thead><tr><th>Field</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Legal entity</strong></td><td>Saha Synergy Group Ltd (Hong Kong)</td></tr>
+        <tr><td><strong>Founder</strong></td><td>Sophia Lee Fox</td></tr>
+        <tr><td><strong>Website</strong></td><td>sahasynergy.com</td></tr>
+        <tr><td><strong>Operating base</strong></td><td>Bali, Indonesia</td></tr>
+        <tr><td><strong>Current trajectory</strong></td><td>B2C community and coaching, pivoting to B2B corporate leadership</td></tr>
+        <tr><td><strong>Revenue target</strong></td><td>$450K in 2026</td></tr>
+        <tr><td><strong>Primary payment gateway</strong></td><td>Stripe, payouts to Currenxie</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- BRANDS -->
+  <section id="brands">
+    <div class="section-eyebrow">Structure</div>
+    <h2>Brands &amp; Entities</h2>
+
+    <div class="card">
+      <h3>Sisterhood OS</h3>
+      <p>Flagship brand. Women's empowerment community offering circles, co-working events, retreats, and transformational journeys across Bali and internationally. Primary consumer product is Soul Path Collective (SPC), a $4,000 six-month immersion program launching June 6, 2026. Instagram: <strong>@thesisterhood.os</strong>. Community platform: Circle.so. AI tool: Sister Sage.</p>
+      <p>Sisterhood OS is the brand that generates community proof, audience trust, and case studies that underpin the future B2B corporate offerings.</p>
+    </div>
+
+    <div class="card">
+      <h3>Business Clarity Sessions (BCS)</h3>
+      <p>Secondary revenue stream under Saha Synergy. AI-powered business audit and strategy sessions for founders, coaches, and entrepreneurs. Designed for quick revenue with minimal overhead. Full details in the BCS section below.</p>
+    </div>
+
+    <div class="card">
+      <h3>Soul Path Collective (SPC)</h3>
+      <p>Sisterhood OS flagship program. A six-month immersion at $4,000 per participant. Launching June 6, 2026. Combines cyclical strategy, archetype mapping, and embodied leadership frameworks.</p>
+    </div>
+
+    <div class="callout info">
+      <strong>B2C to B2B trajectory:</strong> The plan is to scale to approximately 100 women in the B2C ecosystem, build documented methodology and social proof, then transition into selling corporate leadership programs using the cycle syncing and archetype mapping frameworks developed through Sisterhood OS.
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="section-eyebrow">People</div>
+    <h2>Team</h2>
+
+    <table>
+      <thead><tr><th>Name</th><th>Role</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Sophia Lee Fox</strong></td>
+          <td>Founder</td>
+          <td>Leads vision, strategy, facilitation, and client delivery. Based in Bali.</td>
+        </tr>
+        <tr>
+          <td><strong>Helena Seramor</strong></td>
+          <td>Co-Founder / Strategy &amp; Marketing</td>
+          <td>Handles strategy and marketing. Has an audience of approximately 600 women. Key asset for BCS and SPC distribution.</td>
+        </tr>
+        <tr>
+          <td><strong>Monika</strong></td>
+          <td>Co-Founder Designate + COO, Sisterhood OS Indonesia (target Nov 2026) · Founder, Elevara</td>
+          <td>Runs day-to-day operations and is building the Indonesia chapter of Sisterhood OS. Also the founder of Elevara, her independent job placement and remote work company with an office in Sumatra. Bali PT majority director (Indonesian citizen). Circle facilitator from Jul 2026. COO title formalizes at PT announcement Nov 2026. Speaks about Sisterhood OS and Saha with full ownership — a genuine thought partner, not purely operational.</td>
+        </tr>
+        <tr>
+          <td><strong>Anabelle</strong></td>
+          <td>Content</td>
+          <td>Content creation and management across Sisterhood OS channels.</td>
+        </tr>
+        <tr>
+          <td><strong>Camie</strong></td>
+          <td>Breathwork &amp; EFT Facilitator</td>
+          <td>Supports retreat and circle programming. Brings somatic modalities to SPC and events.</td>
+        </tr>
+        <tr>
+          <td><strong>Denise</strong></td>
+          <td>UX / Tech</td>
+          <td>Handles user experience design, tech infrastructure, and platform buildout.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>All team-related documents for Helena, Monika, and new hires are stored in <strong>~/Desktop/Human Team/</strong>.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BCS OFFER -->
+  <section id="bcs-offer">
+    <div class="section-eyebrow">Business Clarity Sessions</div>
+    <h2>BCS Offer</h2>
+
+    <p>Business Clarity Sessions (BCS) is an AI-powered business audit and strategy service. It is positioned as a fast, affordable entry point for founders and entrepreneurs who need clarity on their business model, positioning, or growth levers. The format is lightweight by design, keeping Sophia's time commitment low while delivering high perceived value.</p>
+
+    <div class="card">
+      <h3>Standard BCS (90 Minutes)</h3>
+      <ul>
+        <li><strong>Session:</strong> 90-minute AI-powered business audit call</li>
+        <li><strong>Deliverable:</strong> Written strategy report delivered within 48 hours of the session</li>
+        <li><strong>Follow-up:</strong> 7-day WhatsApp support window after delivery</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Premium BCS (3 Hours)</h3>
+      <ul>
+        <li><strong>Session:</strong> Extended 3-hour deep-dive (Strategic Mind Mapping format)</li>
+        <li><strong>Deliverable:</strong> Comprehensive written strategy document within 48 hours</li>
+        <li><strong>Follow-up:</strong> 7-day WhatsApp support window</li>
+        <li><strong>Price:</strong> $997 regular / $397 April-June 2026 special (Saha Synergy launch offer)</li>
+      </ul>
+    </div>
+
+    <div class="callout success">
+      <strong>Saha Synergy April-June 2026 Special:</strong> The 3-hour Strategic Mind Mapping session is available at $397 (regular $997) for April through June 2026 only. This is a founding-client acquisition offer to build case studies and social proof.
+    </div>
+  </section>
+
+  <!-- BCS PRICING -->
+  <section id="bcs-pricing">
+    <div class="section-eyebrow">BCS</div>
+    <h2>Pricing Tiers</h2>
+
+    <table>
+      <thead><tr><th>Tier</th><th>Price</th><th>Format</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Founding</strong></td>
+          <td>$297</td>
+          <td>90 min + 48hr report + 7-day WhatsApp</td>
+          <td>Launch pricing for first cohort of clients</td>
+        </tr>
+        <tr>
+          <td><strong>Early Bird</strong></td>
+          <td>$497</td>
+          <td>90 min + 48hr report + 7-day WhatsApp</td>
+          <td>Standard go-to-market price</td>
+        </tr>
+        <tr>
+          <td><strong>Premium / 3hr</strong></td>
+          <td>$997</td>
+          <td>3 hr deep-dive + 48hr report + 7-day WhatsApp</td>
+          <td>$397 April-June 2026 special</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>All prices are in USD. Payments processed through Stripe. Payouts routed to Currenxie.</p>
+  </section>
+
+  <!-- BCS BACKEND -->
+  <section id="bcs-backend">
+    <div class="section-eyebrow">BCS</div>
+    <h2>Backend &amp; Tech Stack</h2>
+
+    <p>The BCS booking flow is designed to run fully automated after a single afternoon of setup. The flow removes manual steps between payment and booking confirmation.</p>
+
+    <h3>Booking Flow (End-to-End)</h3>
+    <ol>
+      <li>Client arrives via ad, social post, WhatsApp referral, or direct link</li>
+      <li>Lands on BCS landing page</li>
+      <li>Clicks to pay via <strong>Stripe</strong> (payment processed, funds routed to Currenxie)</li>
+      <li>Stripe triggers <strong>automated email</strong> with Calendly booking link</li>
+      <li>Client selects session time in <strong>Calendly</strong></li>
+      <li>Sophia receives <strong>automated notification</strong> of confirmed booking</li>
+      <li>Client receives <strong>confirmation email</strong> with session prep instructions</li>
+    </ol>
+
+    <div class="card">
+      <h3>Tech Stack</h3>
+      <table>
+        <thead><tr><th>Function</th><th>Tool</th></tr></thead>
+        <tbody>
+          <tr><td>Payment processing</td><td>Stripe</td></tr>
+          <tr><td>Payout account</td><td>Currenxie</td></tr>
+          <tr><td>Email automation (post-payment)</td><td>Stripe webhook or email automation layer (e.g. MailerLite)</td></tr>
+          <tr><td>Booking / scheduling</td><td>Calendly</td></tr>
+          <tr><td>Founder notification</td><td>Calendly notification email to Sophia</td></tr>
+          <tr><td>Client confirmation</td><td>Calendly auto-confirmation with prep instructions</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout info">
+      <strong>Setup time:</strong> One afternoon. Connect Stripe to Currenxie payout account, set up a post-payment email sequence with Calendly link, configure Calendly availability. The flow requires no ongoing manual intervention.
+    </div>
+  </section>
+
+  <!-- BCS MARKETING -->
+  <section id="bcs-marketing">
+    <div class="section-eyebrow">BCS</div>
+    <h2>BCS Marketing Playbook</h2>
+
+    <p>BCS marketing is direct and community-driven. The primary channels are Bali and Canggu-based group chats and warm networks, supplemented by Luma masterclass events and Meta Ads targeting entrepreneurs.</p>
+
+    <h3>Primary Channels</h3>
+
+    <div class="card">
+      <h3>WhatsApp Group Outreach</h3>
+      <p>Sophia and Helena reach out directly in Bali and Canggu group chats. Target communities include Bali digital nomad groups, yoga and wellness communities, and Canggu entrepreneur circles.</p>
+      <ul>
+        <li>Bali digital nomad groups</li>
+        <li>Yoga / wellness communities</li>
+        <li>Canggu community and entrepreneur groups</li>
+        <li>Helena's personal network (approximately 600-woman audience)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Voice Note Strategy</h3>
+      <p>Personalized voice note outreach via WhatsApp. Voice notes outperform text in conversion and trust-building. Sophia or Helena records a short voice note introducing BCS to warm contacts in relevant groups. Feels personal, bypasses message fatigue.</p>
+    </div>
+
+    <div class="card">
+      <h3>Luma Masterclass Events</h3>
+      <p>Free or low-cost Luma events used as top-of-funnel lead generation. Masterclass attendees are warm leads who have already sampled Sophia's facilitation style. BCS is pitched as a natural next step for founders who want personalized strategy.</p>
+    </div>
+
+    <div class="card">
+      <h3>Meta Ads</h3>
+      <p>Paid traffic targeting entrepreneurs, coaches, and founders in relevant demographics. Campaigns emphasize the quick ROI and clarity outcome of a single session. Target: women in Bali, Southeast Asia, and international digital nomad hubs who identify as entrepreneurs.</p>
+    </div>
+
+    <h3>Channel Priority</h3>
+    <table>
+      <thead><tr><th>Channel</th><th>Priority</th><th>Effort</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>WhatsApp outreach (Bali/Canggu groups)</td><td>Highest</td><td>Low</td><td>Warm audience, fast conversion</td></tr>
+        <tr><td>Helena's network</td><td>High</td><td>Low</td><td>600-woman pre-warmed audience</td></tr>
+        <tr><td>Voice note strategy</td><td>High</td><td>Low-Medium</td><td>Boosts reply rates significantly</td></tr>
+        <tr><td>Luma masterclasses</td><td>Medium</td><td>Medium</td><td>Builds list and trust in parallel</td></tr>
+        <tr><td>Meta Ads</td><td>Medium</td><td>Medium</td><td>Scales once BCS messaging is proven</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- GRANT -->
+  <section id="grant">
+    <div class="section-eyebrow">Funding</div>
+    <h2>Grant Application</h2>
+
+    <p>Sisterhood OS is pursuing grant funding to accelerate community infrastructure, technology, and retreat programming. The pitch centers on women's empowerment and the unique technology differentiator: Sister Sage, the AI tool built specifically for the community.</p>
+
+    <h3>Core Grant Pitch</h3>
+    <p>Sisterhood OS is building community infrastructure for women's empowerment, combining in-person events and retreats in Bali with a global digital platform. The technology differentiator is Sister Sage, a custom AI tool that supports members with personalized strategy and self-development within a values-aligned framework.</p>
+
+    <h3>Funding Scenarios</h3>
+
+    <div class="card">
+      <h3>$10K Scenario</h3>
+      <p>Focused allocation for events and platform development.</p>
+      <ul>
+        <li>Community events programming (circles, co-working, local retreats)</li>
+        <li>Platform infrastructure (Circle.so scaling, Sister Sage development)</li>
+        <li>Content and marketing to grow community membership</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>$50K Scenario</h3>
+      <p>Full team, technology, and retreat buildout.</p>
+      <ul>
+        <li>Full team salaries and contractor fees</li>
+        <li>Technology buildout (Sister Sage expansion, platform architecture)</li>
+        <li>International retreat programming</li>
+        <li>Community growth and international chapter seeding</li>
+      </ul>
+    </div>
+
+    <div class="callout info">
+      <strong>Key differentiators for grant reviewers:</strong> (1) Tech integration via Sister Sage AI sets Sisterhood OS apart from standard women's circles. (2) Sophia's track record in Bali with real in-person community events demonstrates non-speculative use of funds. (3) The B2B pivot roadmap shows a path to financial sustainability beyond grant dependency.
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section id="vision">
+    <div class="section-eyebrow">Strategy</div>
+    <h2>Vision &amp; B2B Pivot</h2>
+
+    <p>The long-term strategic vision moves from B2C community to B2B corporate programs, using the methodology and case studies built through Sisterhood OS as the foundation for scalable enterprise offerings.</p>
+
+    <h3>Phase 1: B2C Foundation (Now to ~100 Women)</h3>
+    <ul>
+      <li>Grow Sisterhood OS community to approximately 100 active women</li>
+      <li>Launch and deliver Soul Path Collective (SPC) as the flagship immersion</li>
+      <li>Build documented case studies and transformation evidence</li>
+      <li>Develop Sister Sage AI tool as a community-first product</li>
+      <li>Run BCS as parallel revenue and proof-of-methodology</li>
+    </ul>
+
+    <h3>Phase 2: B2B Pivot (Corporate Leadership Programs)</h3>
+    <ul>
+      <li>Package the cycle syncing and archetype mapping methodology for corporate clients</li>
+      <li>Pitch to companies seeking women's leadership development programs</li>
+      <li>License or sell the Sister Sage tool to corporate HR and wellness teams</li>
+      <li>Use Sisterhood OS community success as credibility anchor in B2B proposals</li>
+    </ul>
+
+    <h3>Global Chapters</h3>
+    <p>Sisterhood OS will scale internationally through a Chapter Kit model. Chapter Kits are priced at $33,000 and provide everything a local host needs to launch a Sisterhood OS chapter in their city, including curriculum, branding, facilitation training, and platform access.</p>
+
+    <div class="card">
+      <h3>Japan Journey 2027</h3>
+      <p>The flagship international retreat. Japan Journey 2027 is positioned as the premium transformational travel experience within the Sisterhood OS ecosystem. It anchors the international expansion narrative and serves as a high-ticket offer for SPC graduates and Sisterhood OS members.</p>
+    </div>
+
+    <div class="callout success">
+      <strong>Revenue target:</strong> $450,000 in 2026. Primary drivers are SPC ($4,000 x participants), BCS sessions, Saha Synergy consulting, and community membership. The B2B pivot is designed to unlock a significantly higher revenue ceiling beyond 2026 without proportional increase in Sophia's time.
+    </div>
+  </section>
+
+  <section id="spm-index">
+    <div class="section-eyebrow">Soul Path Maps</div>
+    <h2>Soul Path Map Library</h2>
+    <p>Vedic astrology + Human Design profiles generated for Saha Synergy Strategic Mind Mapping sessions. Each map includes natal chart, Vimshottari Dasha timeline, 24-hour cycle protocol, current situation read, decision audit, and shadow check. Generated via the <code>/soul-path-map</code> skill using Sister Sage and verified ephemeris sources.</p>
+
+    <div class="callout info">Maps are stored in <code>~/Agents/marketing/knowledge-base/assets/soul-path-maps/</code> and also kept in <code>~/projects/SahaSynergy/clients/</code> for the active client folders. The KB copies are the current versions as of the session date below.</div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Person</th>
+          <th>Role</th>
+          <th>DOB / Birthplace</th>
+          <th>HD Type</th>
+          <th>Active Dasha</th>
+          <th>Generated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#spm-DorCli"><strong>DorCli</strong></a></td>
+          <td>Clint Dorman</td>
+          <td>3-Hour Strategic Mind Mapping Client</td>
+          <td>28 Nov 1990, 5:40 AM, Dax, France</td>
+          <td>Manifesting Generator, 6/3, Emotional Authority</td>
+          <td>Venus/Rahu/Mercury (May 3 – Oct 5, 2026)</td>
+          <td>7 May 2026</td>
+        </tr>
+        <tr>
+          <td><a href="#spm-PurMon"><strong>PurMon</strong></a></td>
+          <td>Monika</td>
+          <td>Operations Manager, Saha Synergy</td>
+          <td>26 May 2003, 19:00 WIB, Sidikalang, Indonesia</td>
+          <td>Projector, 4/6, Splenic Authority</td>
+          <td>Venus Mahadasha / Venus-Sun antardasha</td>
+          <td>2026</td>
+        </tr>
+        <tr>
+          <td><a href="#spm-biz-synergy"><strong>Synergy</strong></a></td>
+          <td>Sophia × Monika</td>
+          <td>Partnership Chart</td>
+          <td>—</td>
+          <td>MG + Projector (Emotional + Splenic)</td>
+          <td>Venus Mahadasha aligned</td>
+          <td>May 2026</td>
+        </tr>
+        <tr>
+          <td><a href="#spm-FoxSop"><strong>FoxSop</strong></a></td>
+          <td>Sophia Lee Fox</td>
+          <td>Founder, Saha Synergy</td>
+          <td>Dec 1995, Bali (approx)</td>
+          <td>Manifesting Generator, 2/4, Emotional Authority</td>
+          <td>Active dasha per current map</td>
+          <td>2026</td>
+        </tr>
+        <tr>
+          <td><a href="#spm-RodHel"><strong>RodHel</strong></a></td>
+          <td>Helena Sofía Rodriguez Weidner</td>
+          <td>Co-founder / Strategy &amp; Marketing, Saha Synergy</td>
+          <td>24 Jan 2006, 21:20, Las Palmas de Gran Canaria, Spain</td>
+          <td>Manifesting Generator, 3/6, Sacral Authority</td>
+          <td>Mercury/Moon (Jan 2026 – Jun 2027)</td>
+          <td>2026</td>
+        </tr>
+        <tr>
+          <td><a href="#spm-HagDen"><strong>HagDen</strong></a></td>
+          <td>Denise Hager</td>
+          <td>3-Hour Strategic Mind Mapping Client (1 May 2026)</td>
+          <td>11 Apr 1990, 16:13 CEST, Altona, Hamburg, Germany</td>
+          <td>Splenic Projector, Splenic Authority</td>
+          <td>Saturn-Moon (9 Sep 2025 – 11 Apr 2027)</td>
+          <td>1 May 2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="spm-DorCli">
+    <div class="section-eyebrow">Soul Path Map — DorCli</div>
+    <h2>Clint Dorman</h2>
+    <div class="card">
+      <h3>Chart Summary</h3>
+      <table>
+        <tr><td><strong>Ascendant</strong></td><td>~11°16' Libra sidereal (Swati, Rahu-ruled)</td></tr>
+        <tr><td><strong>Sun</strong></td><td>~11°57' Scorpio sidereal · Anuradha · 2nd house</td></tr>
+        <tr><td><strong>Moon</strong></td><td>~14°36' Pisces sidereal · Uttara Bhadrapada · 6th house · 10th lord in service</td></tr>
+        <tr><td><strong>Jupiter</strong></td><td>~19°51' Cancer sidereal · Ashlesha · 10th house · EXALTED</td></tr>
+        <tr><td><strong>Saturn</strong></td><td>Yogakaraka · 3rd house · Uttara Ashadha · sustained mastery</td></tr>
+        <tr><td><strong>Rahu/Ketu</strong></td><td>~7°11' Capricorn / Cancer sidereal · 4th / 10th houses</td></tr>
+        <tr><td><strong>Venus Mahadasha</strong></td><td>Nov 7, 2017 – Nov 7, 2037 · Venus rules Ascendant (1st) and 8th house</td></tr>
+        <tr><td><strong>Active Antardasha</strong></td><td>Venus/Rahu · Jan 4, 2025 – Jan 4, 2028</td></tr>
+        <tr><td><strong>Active Pratyantar</strong></td><td>Venus/Rahu/Mercury · May 3 – Oct 5, 2026</td></tr>
+        <tr><td><strong>Jupiter transit</strong></td><td>Enters Cancer sidereal (10th house) June 2, 2026</td></tr>
+      </table>
+      <h3>Human Design</h3>
+      <table>
+        <tr><td><strong>Type</strong></td><td>Manifesting Generator</td></tr>
+        <tr><td><strong>Authority</strong></td><td>Emotional / Solar Plexus — ride the full wave, decide at neutral bottom</td></tr>
+        <tr><td><strong>Profile</strong></td><td>6/3 The Responsible Adventurer — mid-Phase 2 (roof retreat), trial and error curriculum</td></tr>
+        <tr><td><strong>Definition</strong></td><td>Split Definition — watch for conditioning by bridge people</td></tr>
+        <tr><td><strong>Incarnation Cross</strong></td><td>Left Angle Cross of Duality (34/20 | 40/37)</td></tr>
+        <tr><td><strong>Most Important Gift</strong></td><td>Gate 34 — Sacral Power / Strength</td></tr>
+      </table>
+      <h3>Session Context (May 2026)</h3>
+      <p>Three active paths: sustainable portable products business (scaling, chart-aligned), HR joint venture in Bali as director (Venus/Rahu shadow path), and body-based psychotherapy teacher training (dharmic path, Jupiter exalted in 10th). Key decision: whether to exit the JV and fully commit to the coaching path. Chart verdict: JV is the Rahu test. SPP and coaching are both aligned. Emotional wave has settled on JV exit.</p>
+      <p><a href="assets/soul-path-maps/soul-path-map-DorCli.html" target="_blank">Open Full Soul Path Map →</a></p>
+    </div>
+  </section>
+
+  <section id="spm-PurMon">
+    <div class="section-eyebrow">Soul Path Map — PurMon</div>
+    <h2>Monika</h2>
+    <div class="card">
+      <h3>Chart Summary</h3>
+      <table>
+        <tr><td><strong>DOB</strong></td><td>26 May 2003, 19:00 WIB, Sidikalang, Indonesia</td></tr>
+        <tr><td><strong>Ascendant</strong></td><td>Scorpio sidereal</td></tr>
+        <tr><td><strong>Moon</strong></td><td>20.06° Pisces sidereal · Revati Pada 2 · Venus Mahadasha</td></tr>
+        <tr><td><strong>Active Dasha</strong></td><td>Venus Mahadasha · Venus/Sun antardasha begins May 26, 2026</td></tr>
+        <tr><td><strong>Sade Sati</strong></td><td>Active since ~August 2024 (Saturn transiting Pisces, natal Moon sign)</td></tr>
+      </table>
+      <h3>Human Design</h3>
+      <table>
+        <tr><td><strong>Type</strong></td><td>Projector</td></tr>
+        <tr><td><strong>Authority</strong></td><td>Splenic — first flash, act immediately or release</td></tr>
+        <tr><td><strong>Profile</strong></td><td>4/6 Opportunist / Role Model — mid-Phase 2, building toward the Role Model emergence in her 30s</td></tr>
+        <tr><td><strong>Defined Channel</strong></td><td>Channel 18-58 (Root to Spleen) — quality assessment, the diagnostic gift</td></tr>
+        <tr><td><strong>Strategy</strong></td><td>Wait for invitation — bitterness is the not-self signal</td></tr>
+      </table>
+      <p><a href="assets/soul-path-maps/soul-path-map-PurMon.html" target="_blank">Open Full Soul Path Map →</a></p>
+    </div>
+  </section>
+
+  <section id="spm-biz-synergy">
+    <div class="section-eyebrow">Business Synergy — Monika × Sophia</div>
+    <h2>Partnership Chart: Sophia × Monika</h2>
+    <div class="card">
+      <h3>Overview</h3>
+      <p>Vedic synastry and Human Design compatibility analysis for the Sophia / Monika working partnership. Covers the 5 defining synastry signals, dasha alignment, structural recommendations (Bali PT + Estonia OÜ), role clarity (COO vs CMO question), Elevara integration map, and shadow watch points for both women.</p>
+      <h3>Key Signals</h3>
+      <table>
+        <tr><td><strong>Dasha Alignment</strong></td><td>Both in Venus Mahadasha simultaneously — rare shared period; both experiencing identity transformation through the same planetary ruler</td></tr>
+        <tr><td><strong>HD Interaction</strong></td><td>Sophia (MG, Emotional Authority) + Monika (Projector, Splenic Authority) — classic Generator/Projector pairing; Monika guides Sophia's energy, Sophia provides the motor</td></tr>
+        <tr><td><strong>Sophia H5 Stellium</strong></td><td>Sophia's 5th house (Jupiter, Mars, Mercury, Venus in Sagittarius) lands in Monika's H2 — Sophia's creative intelligence is Monika's financial activator</td></tr>
+        <tr><td><strong>Structure Recommendation</strong></td><td>Bali PT + Estonia OÜ dual-entity model</td></tr>
+        <tr><td><strong>Role Clarity</strong></td><td>COO vs CMO question addressed; Sophia retains brand/IP/global strategy; Monika holds operational and community container</td></tr>
+      </table>
+      <p><a href="assets/soul-path-maps/business-synergy-PurMon-FoxSop.html" target="_blank">Open Full Business Synergy Chart →</a></p>
+    </div>
+  </section>
+
+  <section id="spm-FoxSop">
+    <div class="section-eyebrow">Soul Path Map — FoxSop</div>
+    <h2>Sophia Lee Fox</h2>
+    <div class="card">
+      <h3>Human Design</h3>
+      <table>
+        <tr><td><strong>Type</strong></td><td>Manifesting Generator</td></tr>
+        <tr><td><strong>Authority</strong></td><td>Emotional / Solar Plexus — full wave required before any real decision; clarity at ~80%</td></tr>
+        <tr><td><strong>Profile</strong></td><td>2/4 Hermit / Opportunist — solitude to recharge (Line 2), network and right relationship to expand (Line 4)</td></tr>
+        <tr><td><strong>Defined Channels</strong></td><td>32-54 (Business Channel: Root to Spleen) · 29-46 (Discovery: Sacral to G/Identity)</td></tr>
+        <tr><td><strong>Not-Self Theme</strong></td><td>Frustration — signal of forcing or incorrect response</td></tr>
+      </table>
+      <p><a href="assets/soul-path-maps/soul-path-map-FoxSop.html" target="_blank">Open Full Soul Path Map →</a></p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="spm-RodHel">
+    <div class="section-eyebrow">Soul Path Map — RodHel</div>
+    <h2>Helena Sofía Rodriguez Weidner</h2>
+    <div class="card">
+      <h3>Chart Summary</h3>
+      <table>
+        <tr><td><strong>DOB</strong></td><td>24 January 2006, 21:20 local (UTC+0), Las Palmas de Gran Canaria, Spain</td></tr>
+        <tr><td><strong>Ascendant</strong></td><td>Leo 17°13' sidereal · Purva Phalguni Pada 2 · Venus-ruled nakshatra</td></tr>
+        <tr><td><strong>Sun</strong></td><td>9°55' Capricorn sidereal · Uttara Ashadha nakshatra · "The Final Victory" — sustained, dharmic march toward inevitable triumph</td></tr>
+        <tr><td><strong>Moon</strong></td><td>7°34' Scorpio sidereal · Anuradha nakshatra · 4th house</td></tr>
+        <tr><td><strong>Signature Yoga</strong></td><td>Budha-Aditya Yoga — Mercury (7°58' Capricorn) and Sun (9°55' Capricorn) within 1°57', same nakshatra. Intelligence and identity fused. Recognition arrives through how she articulates, not just what she knows.</td></tr>
+        <tr><td><strong>Jupiter</strong></td><td>Vargottama in Libra — same sign in D-1 and D-9. The highest position of planetary strength. Dharmic expansion through beautiful, harmonious wisdom and relationship.</td></tr>
+        <tr><td><strong>Mercury Mahadasha</strong></td><td>December 2018 – December 2035 · 7 years in progress as of 2026</td></tr>
+        <tr><td><strong>Active Antardasha</strong></td><td>Mercury/Moon · January 2026 – June 2027 · Moon in 4th house (Scorpio/Anuradha): intelligence turning toward emotional depth, home, and inner knowing</td></tr>
+      </table>
+      <h3>Human Design</h3>
+      <table>
+        <tr><td><strong>Type</strong></td><td>Manifesting Generator</td></tr>
+        <tr><td><strong>Authority</strong></td><td>Sacral — gut response, immediate and unmistakable</td></tr>
+        <tr><td><strong>Profile</strong></td><td>3/6 The Living Contrast — trial-and-error curriculum; mid-Phase 2 experience building toward Role Model emergence</td></tr>
+        <tr><td><strong>Strategy</strong></td><td>Respond; inform before acting to avoid resistance</td></tr>
+        <tr><td><strong>Not-Self Theme</strong></td><td>Frustration — signal of force or incorrect response</td></tr>
+      </table>
+      <h3>Session Context</h3>
+      <p>Co-founder relationship with Sophia (Saha Synergy). Sophia (MG, Emotional Authority) + Helena (MG, Sacral Authority) — both Manifesting Generators, different authorities. Helena's Mercury Mahadasha aligns with this period of strategic clarity and public positioning. Genius Code assessment pending.</p>
+      <p><a href="assets/soul-path-maps/soul-path-map-RodHel.html" target="_blank">Open Full Soul Path Map →</a></p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="spm-HagDen">
+    <div class="section-eyebrow">Soul Path Map — HagDen</div>
+    <h2>Denise Hager</h2>
+    <div class="card">
+      <h3>Chart Summary</h3>
+      <table>
+        <tr><td><strong>DOB</strong></td><td>11 April 1990, 16:13 CEST, Altona, Hamburg, Germany</td></tr>
+        <tr><td><strong>Ascendant</strong></td><td>Simha (Leo) 17°34' sidereal · Purva Phalguni nakshatra pada 2 · Venus-ruled · Bhaga deity · Relational authority — most powerful in 1:1 containers she has been invited into</td></tr>
+        <tr><td><strong>Sun</strong></td><td>27°42' Meena (Pisces) · Revati nakshatra pada 4 · GANDANTA · 8th house. Pushan deity. Born at the karmic threshold — dharma is guiding women across the passage from internal collapse to internal sovereignty.</td></tr>
+        <tr><td><strong>Moon</strong></td><td>Tula (Libra) 13°42' · Swati nakshatra pada 3 · 3rd house. Rahu-ruled. Independent flame — mind requires genuine autonomy. Voice and writing are the primary vehicle for her emotional intelligence.</td></tr>
+        <tr><td><strong>6th House Stellium</strong></td><td>Saturn 1°10' Capricorn (own sign) + Mars 29°18' Capricorn (exalted) + Rahu 19°24' Capricorn (Shravana). Service, daily work, discipline, and healing — the architectural fingerprint of THE HOME METHOD.</td></tr>
+        <tr><td><strong>Ketu</strong></td><td>Cancer 19°24' · Ashlesha pada 1 · 12th house. Past-life self-dissolution in nurturing. The NVS shutdown loop is the curriculum, not the flaw.</td></tr>
+        <tr><td><strong>Venus</strong></td><td>Aquarius 11°41' · Shatabhisha pada 2 · 7th house. Unconventional 1:1 healing partnerships — client work is the vehicle for value flow.</td></tr>
+        <tr><td><strong>Jupiter</strong></td><td>Gemini 10°17' · Ardra pada 2 · 11th house. Wisdom through storms. Gains through community and connections over time.</td></tr>
+        <tr><td><strong>Saturn Mahadasha</strong></td><td>7 October 2014 → 7 October 2033 · 19-year chapter of disciplined empire-building through service. 60.9% complete as of May 2026.</td></tr>
+        <tr><td><strong>Active Antardasha</strong></td><td>Saturn-Moon · 9 September 2025 → 11 April 2027 · Inner integration phase. Emotional preparation. Building the foundation in silence.</td></tr>
+        <tr><td><strong>Next Antardasha</strong></td><td>Saturn-Mars · 11 April 2027 → 20 May 2028 · LAUNCH PHASE. Decisive outer action begins on her 37th birthday — the astrological launch date.</td></tr>
+      </table>
+      <h3>Human Design + Wealth Dynamics</h3>
+      <table>
+        <tr><td><strong>Type</strong></td><td>Splenic Projector</td></tr>
+        <tr><td><strong>Authority</strong></td><td>Splenic — fires once, immediately, non-repeating. Trust the first flash and act immediately, or release entirely.</td></tr>
+        <tr><td><strong>Strategy</strong></td><td>Wait for the invitation — recognition precedes invitation. Bitterness is the not-self signal.</td></tr>
+        <tr><td><strong>Wealth Profile</strong></td><td>Lord (Roger Hamilton 5.0) — Steel 48%, Dynamo 28%, Tempo 16%, Blaze 8%. Famous Lords: Carnegie, Merkel, Yellen, Nooyi. Wealth is built through owning methodology and IP, not service hours.</td></tr>
+        <tr><td><strong>Team Formula</strong></td><td>1-2-3 Lord: Lord (Denise) + Creator (markets and promotes — missing link) + Deal Maker. Cannot scale alone. Creator collaborator is the priority hire.</td></tr>
+      </table>
+      <h3>Session Context (1 May 2026)</h3>
+      <p>3-Hour Strategic Mind Mapping. Programme already fully designed: THE HOME METHOD™ (HALT · OPEN · MEET · EMBRACE), 18 sessions over 6 months, priced at €5,497 / €5,991 / €6,582. ICP rigorously documented (German-speaking women 30-45, income €38-85K, willingness to invest €3-6K+ for 6 months confirmed). Proof of concept: CEO client paid ~€5,200 over one year and said she'd have paid more. Session focus was sequencing and NVS-informed execution cadence, not strategy redesign. Key date: 11 April 2027 (37th birthday, Saturn-Mars dasha shift) is the astrological launch date for full-price 1:1 programme.</p>
+      <p><a href="assets/soul-path-maps/soul-path-map-HagDen.html" target="_blank">Open Full Soul Path Map →</a></p>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<!-- SCROLL SPY -->
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-list a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav-list a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -75% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monika — Soul Path Map 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF0DC;
+      --cream-mid: #F5E6C8;
+      --gold: #BA7517;
+      --gold-light: #D4A04A;
+      --gold-pale: #F0DEB0;
+      --charcoal: #2A2218;
+      --text-primary: #2A2218;
+      --text-secondary: #6B5B3E;
+      --text-muted: #9B8B72;
+      --white: #FFFFFF;
+      --border: rgba(186, 117, 23, 0.2);
+      --shadow: 0 2px 16px rgba(42, 34, 24, 0.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #1A1208;
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+    }
+    .sidebar {
+      width: 252px; min-height: 100vh; background: #120E08;
+      border-right: 1px solid rgba(186,117,23,0.12);
+      position: fixed; top: 0; left: 0;
+      display: flex; flex-direction: column;
+      z-index: 100; overflow-y: auto;
+    }
+    .sb-brand { padding: 28px 24px 22px; border-bottom: 1px solid rgba(186,117,23,0.12); }
+    .sb-sigil { font-size: 30px; margin-bottom: 10px; }
+    .sb-name { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 500; color: var(--cream); letter-spacing: 0.03em; }
+    .sb-tag { font-size: 10px; color: rgba(186,117,23,0.55); text-transform: uppercase; letter-spacing: 0.14em; margin-top: 3px; }
+    .sb-nav { padding: 14px 0; flex: 1; }
+    .nav-group-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.18em; color: rgba(186,117,23,0.4); padding: 14px 24px 5px; font-weight: 600; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 24px; cursor: pointer; color: rgba(250,240,220,0.5); font-size: 13px; transition: all 0.15s; border-left: 3px solid transparent; user-select: none; }
+    .nav-item:hover { background: rgba(186,117,23,0.07); color: var(--cream); }
+    .nav-item.active { background: rgba(186,117,23,0.11); color: var(--gold-light); border-left-color: var(--gold); }
+    .nav-icon { font-size: 14px; width: 18px; text-align: center; flex-shrink: 0; }
+    .sb-footer { padding: 14px 24px; border-top: 1px solid rgba(186,117,23,0.1); font-size: 10px; color: rgba(186,117,23,0.3); text-transform: uppercase; letter-spacing: 0.1em; }
+    .main { margin-left: 252px; flex: 1; background: var(--cream); min-height: 100vh; }
+    .page-header { background: var(--white); border-bottom: 1px solid var(--border); padding: 28px 48px; position: sticky; top: 0; z-index: 50; box-shadow: var(--shadow); }
+    .ph-inner { display: flex; align-items: flex-end; justify-content: space-between; }
+    .ph-crumb { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px; }
+    .ph-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 400; color: var(--charcoal); }
+    .ph-meta { font-size: 11px; color: var(--text-muted); text-align: right; line-height: 1.6; }
+    .ph-badge { display: inline-block; margin-top: 6px; font-size: 10px; font-weight: 600; color: var(--gold); background: var(--gold-pale); padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.1em; }
+    .section { display: none; padding: 44px 48px; }
+    .section.active { display: block; }
+    .card { background: var(--white); border-radius: 16px; padding: 32px; border: 1px solid var(--border); margin-bottom: 24px; }
+    .card-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .card-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .card-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: var(--charcoal); }
+    .card-sub { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+    .hero { background: linear-gradient(135deg, var(--charcoal) 0%, #3D2E1A 100%); border-radius: 20px; padding: 48px 40px; text-align: center; margin-bottom: 28px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(186,117,23,0.15) 0%, transparent 65%); }
+    .hero-sigil { font-size: 48px; display: block; margin-bottom: 14px; position: relative; }
+    .hero-kicker { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold-light); margin-bottom: 10px; position: relative; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 400; color: var(--cream); line-height: 1.15; margin-bottom: 14px; position: relative; }
+    .hero-body { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: rgba(250,240,220,0.72); font-style: italic; max-width: 460px; margin: 0 auto; line-height: 1.65; position: relative; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+    .grid4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+    .cell { background: var(--cream); border-radius: 12px; padding: 18px 20px; border: 1px solid var(--border); }
+    .cell-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); margin-bottom: 5px; font-weight: 600; }
+    .cell-value { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 500; color: var(--charcoal); }
+    .cell-sub { font-size: 12px; color: var(--text-secondary); margin-top: 5px; line-height: 1.55; }
+    .pill-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+    .pill { display: flex; align-items: center; gap: 7px; padding: 9px 14px; background: var(--white); border-radius: 20px; border: 1px solid var(--border); }
+    .pill-lbl { font-size: 11px; color: var(--text-muted); }
+    .pill-val { font-size: 12px; font-weight: 600; color: var(--gold); }
+    .rules { list-style: none; }
+    .rules li { display: flex; align-items: flex-start; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+    .rules li:last-child { border-bottom: none; }
+    .rnum { width: 24px; height: 24px; border-radius: 50%; background: var(--gold-pale); color: var(--gold); font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .divider { height: 1px; background: var(--border); margin: 26px 0; }
+    .sec-title { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 500; color: var(--charcoal); margin-bottom: 14px; }
+    .body-text { font-size: 14px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px; }
+    .gold-tag { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; padding: 3px 10px; background: var(--gold-pale); border-radius: 20px; margin-bottom: 8px; }
+    .highlight { background: linear-gradient(135deg, rgba(186,117,23,0.07), rgba(186,117,23,0.03)); border: 1.5px solid rgba(186,117,23,0.22); border-radius: 16px; padding: 26px 30px; margin-bottom: 24px; }
+    .highlight-headline { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: var(--charcoal); line-height: 1.2; margin-bottom: 12px; }
+    .highlight-body { font-size: 14px; color: var(--text-secondary); line-height: 1.75; }
+    .cycle-wrap { display: flex; align-items: flex-start; gap: 40px; margin-bottom: 28px; }
+    .phase-card { padding: 16px 18px; border-radius: 12px; margin-bottom: 12px; border: 1.5px solid transparent; }
+    .phase-card.menstrual { background: rgba(139,107,139,0.1); border-color: rgba(139,107,139,0.2); }
+    .phase-card.menstrual.current { border-color: #8B6B8B; border-width: 2px; }
+    .phase-card.follicular { background: rgba(74,123,94,0.1); border-color: rgba(74,123,94,0.3); }
+    .phase-card.ovulatory { background: rgba(186,117,23,0.08); border-color: rgba(186,117,23,0.25); }
+    .phase-card.luteal { background: rgba(123,90,62,0.08); border-color: rgba(123,90,62,0.2); }
+    .phase-name { font-size: 14px; font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .phase-body { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+    .now-badge { font-size: 10px; font-weight: 600; color: #8B6B8B; background: rgba(139,107,139,0.15); padding: 2px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .shadow-item { display: flex; align-items: flex-start; gap: 14px; padding: 18px; background: var(--cream); border-radius: 12px; margin-bottom: 12px; border: 1px solid var(--border); }
+    .shadow-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(186,117,23,0.08); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .shadow-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+    .shadow-text { font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; }
+    .dasha-bar { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-radius: 10px; margin-bottom: 8px; }
+    .dasha-bar.venus { background: rgba(186,117,23,0.09); border: 1px solid rgba(186,117,23,0.2); }
+    .dasha-bar.antardasha { background: rgba(186,117,23,0.18); border: 1.5px solid rgba(186,117,23,0.4); margin-left: 24px; }
+    .dasha-bar.future { background: rgba(74,123,94,0.09); border: 1px solid rgba(74,123,94,0.2); }
+    .dasha-lbl { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+    .dasha-theme { font-size: 12px; color: var(--text-secondary); margin-top: 2px; font-style: italic; }
+    .dasha-period { font-size: 12px; color: var(--text-muted); flex-shrink: 0; margin-left: 16px; }
+    .now-dot { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 600; color: var(--gold); background: var(--gold-pale); padding: 2px 8px; border-radius: 20px; margin-left: 8px; }
+    .tl-wrap { position: relative; margin: 20px 0 72px; }
+    .tl-track { height: 6px; background: var(--cream-mid); border-radius: 3px; position: relative; }
+    .tl-fill-past { position: absolute; left: 0; top: 0; height: 100%; width: 62%; background: linear-gradient(90deg, rgba(186,117,23,0.35), rgba(186,117,23,0.75)); border-radius: 3px; }
+    .tl-fill-now { position: absolute; left: 37%; top: -4px; height: 14px; width: 5%; background: var(--gold); border-radius: 3px; box-shadow: 0 0 10px rgba(186,117,23,0.5); }
+    .tl-fill-future { position: absolute; left: 62%; top: 0; height: 100%; width: 38%; background: linear-gradient(90deg, rgba(74,123,94,0.55), rgba(74,123,94,0.25)); border-radius: 3px; }
+    .tl-marker { position: absolute; top: 50%; transform: translate(-50%, -50%); }
+    .tl-dot { width: 12px; height: 12px; border-radius: 50%; background: white; border: 2px solid var(--gold); margin: 0 auto; }
+    .tl-dot.now { width: 18px; height: 18px; background: var(--gold); border: 3px solid white; box-shadow: 0 0 0 3px rgba(186,117,23,0.25); }
+    .tl-dot.jup { border-color: rgba(74,123,94,0.8); }
+    .tl-top { position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%); white-space: nowrap; text-align: center; }
+    .tl-bot { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%); white-space: nowrap; text-align: center; }
+    .tl-year { font-size: 11px; font-weight: 700; color: var(--text-primary); }
+    .tl-year.gold { color: var(--gold); }
+    .tl-lbl { font-size: 10px; color: var(--text-muted); }
+    .tl-lbl.gold { color: var(--gold); font-weight: 600; }
+    .tl-period-labels { display: flex; margin-top: 8px; font-family: 'Cormorant Garamond', serif; }
+    .decl { text-align: center; padding: 36px 32px; background: var(--charcoal); border-radius: 18px; margin-bottom: 16px; }
+    .decl-quote { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--cream); font-style: italic; line-height: 1.4; }
+    .decl-line { width: 40px; height: 1px; background: var(--gold); margin: 14px auto 0; }
+    .cal-year { margin-bottom: 32px; }
+    .cal-year-hd { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1.5px solid var(--border); }
+    .cal-year-num { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; color: var(--charcoal); line-height: 1; flex-shrink: 0; }
+    .cal-year-badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; }
+    .badge-gold { color: var(--gold); background: var(--gold-pale); }
+    .badge-green { color: rgba(74,123,94,0.9); background: rgba(74,123,94,0.1); }
+    .badge-red { color: #b53030; background: rgba(181,48,48,0.08); }
+    .cal-year-theme { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+    .cal-events { list-style: none; margin-bottom: 20px; }
+    .cal-event { display: flex; align-items: flex-start; gap: 12px; padding: 11px 0; border-bottom: 1px solid rgba(186,117,23,0.08); }
+    .cal-event:last-child { border-bottom: none; }
+    .ev-date { font-size: 11px; font-weight: 700; color: var(--text-muted); min-width: 72px; text-transform: uppercase; letter-spacing: 0.06em; padding-top: 3px; flex-shrink: 0; }
+    .ev-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+    .ev-dot.auspicious { background: var(--gold); }
+    .ev-dot.eclipse { background: #b53030; }
+    .ev-dot.transit { background: rgba(186,117,23,0.4); }
+    .ev-dot.peak { background: rgba(74,123,94,0.9); box-shadow: 0 0 0 3px rgba(74,123,94,0.2); }
+    .ev-content { flex: 1; }
+    .ev-title { font-size: 13.5px; font-weight: 600; color: var(--charcoal); margin-bottom: 4px; }
+    .ev-body { font-size: 12.5px; color: var(--text-secondary); line-height: 1.65; }
+    .ev-tag { display: inline-block; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 2px 7px; border-radius: 10px; margin-left: 6px; vertical-align: middle; }
+    .ev-tag.peak { color: rgba(74,123,94,0.9); background: rgba(74,123,94,0.12); }
+    .ev-tag.eclipse { color: #b53030; background: rgba(181,48,48,0.08); }
+    .ev-tag.power { color: var(--gold); background: var(--gold-pale); }
+    .mw-row { display: flex; align-items: flex-start; gap: 16px; padding: 12px 16px; border-radius: 10px; margin-bottom: 8px; }
+    .mw-row.gold { background: rgba(186,117,23,0.06); border: 1px solid rgba(186,117,23,0.16); }
+    .mw-row.green { background: rgba(74,123,94,0.06); border: 1px solid rgba(74,123,94,0.16); }
+    .mw-period-wrap { min-width: 190px; flex-shrink: 0; }
+    .mw-type { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px; font-weight: 600; }
+    .mw-period { font-size: 13px; font-weight: 700; color: var(--charcoal); }
+    .mw-desc { font-size: 12.5px; color: var(--text-secondary); line-height: 1.55; }
+    .wave-row { display: flex; gap: 8px; margin-bottom: 8px; }
+    .wave-col { flex: 1; text-align: center; }
+    .wave-bar-wrap { height: 80px; display: flex; align-items: flex-end; justify-content: center; margin-bottom: 6px; }
+    .wave-bar { width: 100%; border-radius: 5px 5px 0 0; }
+    .wday { font-size: 11px; font-weight: 600; color: var(--text-primary); }
+    .wlbl { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .audit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .audit-cell { padding: 16px 18px; border-radius: 12px; background: var(--cream); border: 1px solid var(--border); }
+    .audit-q { font-size: 13px; font-weight: 600; color: var(--charcoal); margin-bottom: 5px; }
+    .audit-a { font-size: 12px; color: var(--text-secondary); line-height: 1.55; }
+  </style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sb-brand">
+    <div class="sb-sigil">🌙</div>
+    <div class="sb-name">Monika</div>
+    <div class="sb-tag">Soul Path Map · 2026</div>
+  </div>
+  <div class="sb-nav">
+    <div class="nav-group-label">Foundation</div>
+    <div class="nav-item active" onclick="show('overview')"><span class="nav-icon">✦</span> Overview</div>
+    <div class="nav-item" onclick="show('hd')"><span class="nav-icon">◯</span> Human Design</div>
+    <div class="nav-item" onclick="show('vedic')"><span class="nav-icon">☽</span> Vedic Chart</div>
+    <div class="nav-group-label">Embodiment</div>
+    <div class="nav-item" onclick="show('cycle')"><span class="nav-icon">🌿</span> Cycle Phase</div>
+    <div class="nav-item" onclick="show('decision')"><span class="nav-icon">⚖</span> Decision Audit</div>
+    <div class="nav-item" onclick="show('shadow')"><span class="nav-icon">◈</span> Shadow Check</div>
+    <div class="nav-item" onclick="show('activation')"><span class="nav-icon">☀</span> 2026 Activation</div>
+    <div class="nav-item" onclick="show('ventures')"><span class="nav-icon">◉</span> Ventures & Role</div>
+    <div class="nav-group-label">Arc</div>
+    <div class="nav-item" onclick="show('timeline')"><span class="nav-icon">→</span> Dasha Timeline</div>
+    <div class="nav-item" onclick="show('declarations')"><span class="nav-icon">❖</span> Declarations</div>
+    <div class="nav-item" onclick="show('calendar')"><span class="nav-icon">📅</span> Calendar 2026–30</div>
+  </div>
+  <div class="sb-footer">Saha Synergy · 2026</div>
+</nav>
+
+<div class="main">
+  <div class="page-header">
+    <div class="ph-inner">
+      <div>
+        <div class="ph-crumb">Soul Path Collective · Saha Synergy · 2026</div>
+        <div class="ph-title">Monika</div>
+      </div>
+      <div class="ph-meta">
+        26 May 2003 · 19:00 · Sidikalang, Indonesia<br>
+        Scorpio Ascendant · Rohini Sun · Venus Mahadasha
+        <div class="ph-badge">Venus / Sun begins May 26 · 4/6 Projector · Splenic Authority</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="overview" class="section active">
+    <div class="hero">
+      <span class="hero-sigil">🌙</span>
+      <div class="hero-kicker">Soul Path Collective · Saha Synergy · 2026</div>
+      <div class="hero-title">The Sanctuary Keeper</div>
+      <div class="hero-body">"She does not create safety through control. She creates it through presence. The space she holds is not a technique — it is a transmission."</div>
+    </div>
+
+    <div class="pill-row">
+      <div class="pill"><span>◯</span><span class="pill-lbl">Genius Code</span><span class="pill-val">Supporter</span></div>
+      <div class="pill"><span>☽</span><span class="pill-lbl">Sun</span><span class="pill-val">11° Taurus Rohini</span></div>
+      <div class="pill"><span>⚡</span><span class="pill-lbl">Dasha</span><span class="pill-val">Venus / Sun · May 26</span></div>
+      <div class="pill"><span>♏</span><span class="pill-lbl">Ascendant</span><span class="pill-val">Scorpio · Jyeshtha</span></div>
+      <div class="pill"><span>❄</span><span class="pill-lbl">Cycle</span><span class="pill-val">Menstrual — Winter · Day 3</span></div>
+      <div class="pill"><span>◯</span><span class="pill-lbl">HD Type</span><span class="pill-val">Projector · 4/6</span></div>
+      <div class="pill"><span>⚬</span><span class="pill-lbl">Authority</span><span class="pill-val">Splenic</span></div>
+    </div>
+
+    <div class="grid2">
+      <div class="cell">
+        <div class="cell-label">Genius Code</div>
+        <div class="cell-value">Supporter</div>
+        <div class="cell-sub">The one whose presence creates the conditions for others to become who they are meant to be. The shadow: over-giving until empty. The gift: support that flows from abundance, not fear.</div>
+      </div>
+      <div class="cell">
+        <div class="cell-label">Active Dasha</div>
+        <div class="cell-value">Venus / Sun (May 26)</div>
+        <div class="cell-sub">Venus Mahadasha (Jan 2023–Jan 2043). Venus/Venus closes on her 23rd birthday. Venus/Sun begins that same day — a year of public identity and visibility. Jupiter transits her exalted H9 from June 2, 2026.</div>
+      </div>
+      <div class="cell">
+        <div class="cell-label">Ascendant Energy</div>
+        <div class="cell-value">Scorpio · Jyeshtha</div>
+        <div class="cell-sub">Jyeshtha: The Eldest, the Protector. Scorpio depth, Indra's courage, the one who takes responsibility. She does not shrink from what others avoid — she walks into it.</div>
+      </div>
+      <div class="cell">
+        <div class="cell-label">Jupiter in Chart</div>
+        <div class="cell-value">Exalted in H9</div>
+        <div class="cell-sub">Jupiter exalted in Cancer in the 9th house is a once-in-12-year placement. She came in with exceptional dharmic fortune, natural wisdom, and access to higher guidance. The golden era is already encoded in her design.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">✦</div>
+        <div>
+          <div class="card-title">Core Gifts</div>
+          <div class="card-sub">What Monika brings to every room</div>
+        </div>
+      </div>
+      <div class="grid2" style="margin-bottom:0">
+        <div class="cell">
+          <div class="cell-label">The Sanctuary</div>
+          <div class="cell-sub">Her presence creates space where people feel genuinely held. This cannot be manufactured — it is a frequency. The container she creates is part of her offer, whether she claims it or not.</div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Far-Sighted Pattern Recognition</div>
+          <div class="cell-sub">Gate 17 (Far-Sightedness): she sees the whole system before others see the individual parts. She knows what needs refining before it breaks. This looks like intuition — it is a form of intelligence.</div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Rohini Abundance</div>
+          <div class="cell-sub">Sun in Rohini — the Moon's most beloved nakshatra, star of abundance and beauty. She carries a natural magnetism for resources, comfort, and the tangible. She is built for material and spiritual richness simultaneously.</div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Integrity as Architecture</div>
+          <div class="cell-sub">Gate 18 (Integrity): she sees what needs correcting and knows how to refine it without destroying what works. The inner quality-check is her gift when used consciously — not a weapon turned on herself.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HUMAN DESIGN -->
+  <div id="hd" class="section">
+    <div style="background:rgba(186,117,23,0.06);border:1px solid rgba(186,117,23,0.2);border-radius:12px;padding:14px 20px;margin-bottom:24px;font-size:12px;color:var(--text-secondary);line-height:1.7;">
+      <strong style="color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;">Calculation Sources</strong><br>
+      <strong>Human Design gates</strong> computed via Swiss Ephemeris (tropical zodiac). Birth: 26 May 2003, 19:00 WIB, Sidikalang, Indonesia. Design date: 25 Feb 2003, 20:57 UTC (Sun exactly 88° before birth Sun at 64.84°). Gate mapping: Ra Uru Hu's original Jovian Archive system (1987), 64 hexagrams from Aries 0° = Gate 41. <strong>Gene Keys</strong>: Richard Rudd (2009). Verify at <strong>myBodyGraph.com</strong> for official bodygraph rendering.
+    </div>
+
+    <!-- HD BODYGRAPH -->
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">◯</div>
+        <div>
+          <div class="card-title">Human Design — 4/6 Projector</div>
+          <div class="card-sub">Splenic Authority · Channel 18-58 · Defined: Spleen + Root · Design date: 25 Feb 2003</div>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-bottom:20px">
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label">Type</div>
+          <div class="cell-value">Projector</div>
+          <div class="cell-sub">No defined Sacral center. She does not have consistent motor energy like Generators. She runs in bursts, needs deep rest between. Her gift is guiding others' energy — she sees the system, the pattern, the person, with extraordinary clarity. She is not here to do the work herself. She is here to direct how it gets done.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label">Authority</div>
+          <div class="cell-value">Splenic</div>
+          <div class="cell-sub">The rarest authority. The Spleen speaks once, in the present moment, as a body sensation — a quiet knowing, a gut-flash. It never repeats. If she checks again, she has missed it. All major decisions: notice the first body response and trust it without re-examining. The second thought is the mind's interference, not the Spleen's wisdom.</div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Profile</div>
+          <div class="cell-value">4/6 — Opportunist / Role Model</div>
+          <div class="cell-sub">Line 4: her success and opportunities come through the people she already knows — not strangers, not wide casting. Her network is her life. Line 6: she is in Phase 1 right now (trial and error, birth to ~age 29-30). Around her Saturn Return (~2032), she transitions into the Role Model phase. She is literally designed to become the living example in her 30s and beyond.</div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Strategy / Not-Self</div>
+          <div class="cell-value">Wait for the Invitation</div>
+          <div class="cell-sub">Projectors who initiate without invitation burn out and feel invisible. The invitation is recognition — when someone genuinely sees her capacity and calls it forward. The not-self theme is bitterness (the feeling of "why isn't anyone seeing what I can do?"). Bitterness is always the signal she is either pushing without invitation or in the wrong environment.</div>
+        </div>
+      </div>
+
+      <!-- BODYGRAPH VISUAL -->
+      <div class="divider"></div>
+      <div class="sec-title">Energy Centers — Defined vs Open</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(74,123,94,0.9);margin-bottom:12px;">Defined Centers (Consistent Energy)</div>
+          <div class="cell" style="margin-bottom:10px;border-left:3px solid rgba(74,123,94,0.8)">
+            <div class="cell-label" style="color:rgba(74,123,94,0.9)">Spleen Center (Defined)</div>
+            <div class="cell-sub">Instinctive survival intelligence, immune system awareness, present-moment knowing. Her Splenic authority lives here. She carries a consistent sense of what is healthy/unhealthy, safe/unsafe, alive/dead. This is real data, not paranoia. Trust the Spleen.</div>
+          </div>
+          <div class="cell" style="border-left:3px solid rgba(74,123,94,0.8)">
+            <div class="cell-label" style="color:rgba(74,123,94,0.9)">Root Center (Defined)</div>
+            <div class="cell-sub">Consistent adrenal pressure to complete and evolve. She has a reliable drive and a consistent relationship to stress — it motivates her rather than paralyzing her. The Root's pressure feeds the Spleen through Channel 18-58. She has a steady engine for improvement even without Sacral energy.</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:12px;">Open Centers (Amplified + Variable)</div>
+          <div class="cell" style="margin-bottom:8px">
+            <div class="cell-label">Head + Ajna (Open)</div>
+            <div class="cell-sub">Absorbs others' mental pressure and ideas. She can think many ways — this is wisdom, not confusion. Not designed to be the conceptual authority. Questions don't need answers; they can just be held.</div>
+          </div>
+          <div class="cell" style="margin-bottom:8px">
+            <div class="cell-label">Throat (Open)</div>
+            <div class="cell-sub">Amplifies and reflects others' communication. She may feel pressure to speak before she is recognized. The practice: wait to be invited into conversation. Her words carry more weight when called forward.</div>
+          </div>
+          <div class="cell" style="margin-bottom:8px">
+            <div class="cell-label">G Center (Open)</div>
+            <div class="cell-sub">Identity and direction are fluid — she naturally senses which environments and people feel aligned. She is not designed to have a fixed identity. She finds direction by noticing where she feels most like herself.</div>
+          </div>
+          <div class="cell" style="margin-bottom:8px">
+            <div class="cell-label">Heart / Will (Open)</div>
+            <div class="cell-sub">No consistent willpower. She should not make ego-driven promises or push through sheer will. Her power is not willpower — it is Splenic knowing. She cannot prove her worth by efforting harder.</div>
+          </div>
+          <div class="cell">
+            <div class="cell-label">Sacral + Solar Plexus (Open)</div>
+            <div class="cell-sub">No consistent life-force energy (Projector). She amplifies others' Sacral energy in the room. Solar Plexus open: she absorbs others' emotional waves as her own. Not her emotion — received data. Regular clearing (alone time, nature, water) is essential.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHANNEL -->
+      <div class="divider"></div>
+      <div class="sec-title">Defined Channel</div>
+      <div class="cell" style="border-left:3px solid var(--gold);margin-bottom:0">
+        <div class="cell-label">Channel 18-58 · Judgment (Spleen–Root)</div>
+        <div class="cell-value" style="font-size:16px">The Channel of Depth</div>
+        <div class="cell-sub">Gate 58 (Vitality/Joy in Root) + Gate 18 (Integrity/Correction in Spleen). This is the channel of quality assessment — the drive to identify what isn't working and refine it toward aliveness. At the shadow frequency: hypercritical, never satisfied, finding fault as a reflex. At the gift level: the natural diagnostician, the quality guide, the person who spots precisely what needs to shift. As a Projector with this channel, she is here to GUIDE others toward better quality of life — not to do the work herself. Her role is to see clearly and invite improvement, not to force it. This channel also explains her Genius Code: the Supporter who holds the standard of what a truly held container feels like, because she can sense the difference at the Splenic level.</div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Sacred Rules — Projector Edition</div>
+      <ul class="rules">
+        <li><span class="rnum">1</span>Wait for genuine recognition before offering guidance. When someone truly sees her capacity and asks — that is the invitation. Unsolicited guidance, however brilliant, lands as bitterness.</li>
+        <li><span class="rnum">2</span>Rest is not laziness — it is her work. Projectors need more sleep than Generators. Her energy tank is smaller and must be maintained intentionally. This is not a character flaw.</li>
+        <li><span class="rnum">3</span>Trust the Spleen once. The first body-hit is the truth. If she asks again, she has entered the mind's interference. Make the decision quickly or not at all.</li>
+        <li><span class="rnum">4</span>The 4-line network is everything. Her breakthroughs, clients, partnerships, and opportunities come through the people she already knows. Tend those relationships before building new ones.</li>
+        <li><span class="rnum">5</span>Phase 1 (age 22-30) is trial, error, and learning. She is not supposed to have it figured out yet. The Role Model phase (after ~30) is when the integration of everything she is living now becomes the teaching.</li>
+        <li><span class="rnum">6</span>Channel 18-58 gives her a consistent eye for what is off. Use it as a compass for what to improve in her own systems and offerings — not as self-punishment.</li>
+      </ul>
+    </div>
+
+    <!-- GENIUS CODE -->
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">✦</div>
+        <div>
+          <div class="card-title">Genius Code — Supporter</div>
+          <div class="card-sub">Saha Synergy Primary Lens · Confirmed by HD Projector + Channel 18-58</div>
+        </div>
+      </div>
+      <div class="body-text">The Supporter Genius Code is confirmed by her Human Design: a Projector (here to guide, not generate), with Channel 18-58 (the quality-sensing, depth-seeing channel). Both systems say the same thing — she is designed to perceive what others miss and hold a standard of aliveness that elevates every room she enters. The gift is not what she does. It is what she is.</div>
+      <div class="grid2" style="margin-bottom:0">
+        <div class="cell"><div class="cell-label">Core Gift</div><div class="cell-value">Sacred Container</div><div class="cell-sub">The space she holds is part of the offer. Spleen center defined: she senses health, safety, and aliveness at the cellular level. Others feel held because she is genuinely calibrated to what it means to be well.</div></div>
+        <div class="cell"><div class="cell-label">Shadow Pattern</div><div class="cell-value">Over-Giving + Bitterness</div><div class="cell-sub">Giving from depletion to avoid feeling dispensable (Supporter shadow) + bitterness when her gifts go unrecognized without invitation (Projector not-self). Both arise from the same root: offering herself without being called for.</div></div>
+        <div class="cell"><div class="cell-label">Emergence Path</div><div class="cell-value">Invitation + Rest</div><div class="cell-sub">The Projector path and the Supporter path are identical: wait to be seen, receive the call, give from that recognition. Rest deeply between. The well refills in solitude and in genuine care from others.</div></div>
+        <div class="cell"><div class="cell-label">Highest Expression</div><div class="cell-value">The Guide Who Sees</div><div class="cell-sub">When recognized and invited, she brings the clarity of Splenic knowing + Channel 18-58 quality vision + Far-Sightedness (Gate 17). She sees the person fully, guides them precisely, and holds the space where they find their own truth.</div></div>
+      </div>
+    </div>
+
+    <!-- GENE KEYS -->
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">🔑</div>
+        <div>
+          <div class="card-title">Gene Keys — Full Hologenetic Profile</div>
+          <div class="card-sub">Richard Rudd (2009) · Swiss Ephemeris computed · Activation + Venus + Pearl Sequences</div>
+        </div>
+      </div>
+      <div class="body-text">Each Gene Key has three frequencies: the <strong>Shadow</strong> (unconscious fear pattern), the <strong>Gift</strong> (heart-based potential), and the <strong>Siddhi</strong> (divine expression). The journey is from Shadow to Gift — not by eliminating the shadow but by transmuting it. Personality = conscious (what she knows about herself). Design = unconscious (what others see in her that she may not recognize).</div>
+
+      <div class="sec-title">Activation Sequence — Life's Purpose</div>
+      <div class="grid2" style="margin-bottom:24px">
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label">Life's Work · Personality Sun · Gate 17.4</div>
+          <div class="cell-value">Gene Key 17 — Far-Sightedness</div>
+          <div class="cell-sub" style="margin-top:8px">
+            <span style="color:#a33;font-size:11px;font-weight:600;text-transform:uppercase">Shadow:</span> Opinion<br>
+            <span style="color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase">Gift:</span> Far-Sightedness<br>
+            <span style="color:rgba(74,123,94,0.9);font-size:11px;font-weight:600;text-transform:uppercase">Siddhi:</span> Omniscience<br><br>
+            <span style="font-size:12px;color:var(--text-secondary)">Her life's work is holding multiple truths at once — seeing the whole picture before the evidence arrives. The 4th line Opportunist: this visionary knowing flows through her close network, not in isolation. The shadow (Opinion) collapses the vision into a fixed belief when she feels unsafe. The practice: stay in the seeing without collapsing it into certainty.</span>
+          </div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(186,117,23,0.5)">
+          <div class="cell-label">Evolution · Personality Earth · Gate 18.4</div>
+          <div class="cell-value">Gene Key 18 — Integrity</div>
+          <div class="cell-sub" style="margin-top:8px">
+            <span style="color:#a33;font-size:11px;font-weight:600;text-transform:uppercase">Shadow:</span> Judgement<br>
+            <span style="color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase">Gift:</span> Integrity<br>
+            <span style="color:rgba(74,123,94,0.9);font-size:11px;font-weight:600;text-transform:uppercase">Siddhi:</span> Perfection<br><br>
+            <span style="font-size:12px;color:var(--text-secondary)">She evolves by transforming harsh judgment (of self and others) into discerning integrity. The 4th line: her capacity for quality refinement is strongest within trusted relationships. Gate 18 also powers her defined Channel 18-58 — her ability to sense what needs correcting is literally wired into her biology.</span>
+          </div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(186,117,23,0.5)">
+          <div class="cell-label">Radiance · Design Earth · Gate 52.6</div>
+          <div class="cell-value">Gene Key 52 — Restraint</div>
+          <div class="cell-sub" style="margin-top:8px">
+            <span style="color:#a33;font-size:11px;font-weight:600;text-transform:uppercase">Shadow:</span> Stress<br>
+            <span style="color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase">Gift:</span> Restraint<br>
+            <span style="color:rgba(74,123,94,0.9);font-size:11px;font-weight:600;text-transform:uppercase">Siddhi:</span> Samadhi<br><br>
+            <span style="font-size:12px;color:var(--text-secondary)">Her unconscious radiance is the energy of stillness. Others feel calmer in her presence not because she performs calm — but because Restraint is her field. The 6th line (Role Model) means this gift deepens and becomes more visible as she ages. She becomes the still point others gather around.</span>
+          </div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(186,117,23,0.5)">
+          <div class="cell-label">Purpose · Design Sun · Gate 58.6</div>
+          <div class="cell-value">Gene Key 58 — Vitality</div>
+          <div class="cell-sub" style="margin-top:8px">
+            <span style="color:#a33;font-size:11px;font-weight:600;text-transform:uppercase">Shadow:</span> Dissatisfaction<br>
+            <span style="color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase">Gift:</span> Vitality<br>
+            <span style="color:rgba(74,123,94,0.9);font-size:11px;font-weight:600;text-transform:uppercase">Siddhi:</span> Bliss<br><br>
+            <span style="font-size:12px;color:var(--text-secondary)">Her deepest unconscious purpose: to transmit the joy of being alive. Gate 58 is in her Root center and forms her defined Channel 18-58. The dissatisfaction shadow drives her toward improvement. The Gift is the aliveness that radiates when she has arrived — not when she has fixed everything, but when she has found peace with what is.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Venus Sequence — Love Nature</div>
+      <div class="grid2" style="margin-bottom:24px">
+        <div class="cell">
+          <div class="cell-label">Attraction · Personality Venus · Gate 63.4</div>
+          <div class="cell-value">Gene Key 63 — Inquiry</div>
+          <div class="cell-sub" style="margin-top:8px">
+            <span style="color:#a33;font-size:11px;font-weight:600;text-transform:uppercase">Shadow:</span> Doubt<br>
+            <span style="color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase">Gift:</span> Inquiry<br>
+            <span style="color:rgba(74,123,94,0.9);font-size:11px;font-weight:600;text-transform:uppercase">Siddhi:</span> Truth<br><br>
+            <span style="font-size:12px;color:var(--text-secondary)">She is attracted to — and attracts — minds that question deeply. Her love language is genuine inquiry: the willingness to not know, to ask real questions, to sit with uncertainty. Doubt (the shadow) becomes chronic anxiety when she cannot tolerate not-knowing. The gift: she loves through honest questioning that opens rather than closes. Note: Mercury and Venus share Gate 63.4 — the analytical and relational selves are identical here.</span>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">IQ · Design Venus · Gate 14.3</div>
+          <div class="cell-value">Gene Key 14 — Competence</div>
+          <div class="cell-sub" style="margin-top:8px">
+            <span style="color:#a33;font-size:11px;font-weight:600;text-transform:uppercase">Shadow:</span> Compromise<br>
+            <span style="color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase">Gift:</span> Competence<br>
+            <span style="color:rgba(74,123,94,0.9);font-size:11px;font-weight:600;text-transform:uppercase">Siddhi:</span> Bounteousness<br><br>
+            <span style="font-size:12px;color:var(--text-secondary)">Unconscious love IQ: she loves through mastery and genuine excellence. She is attracted to people who are excellent at what they do, and her love is expressed through the quality of her presence and work. The shadow (Compromise) is when she dilutes her gifts or accepts less than she is worth in relationships. Bounteousness is the destination: love as overflowing abundance rather than careful allocation.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Pearl Sequence — Vocation + Prosperity</div>
+      <div class="grid2" style="margin-bottom:24px">
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label">Vocation · Personality N.Node · Gate 25.4</div>
+          <div class="cell-value">Gene Key 25 — Universal Love</div>
+          <div class="cell-sub" style="margin-top:8px">
+            <span style="color:#a33;font-size:11px;font-weight:600;text-transform:uppercase">Shadow:</span> Constriction<br>
+            <span style="color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase">Gift:</span> Acceptance<br>
+            <span style="color:rgba(74,123,94,0.9);font-size:11px;font-weight:600;text-transform:uppercase">Siddhi:</span> Universal Love<br><br>
+            <span style="font-size:12px;color:var(--text-secondary)">Her vocation is to create spaces of radical acceptance. The 4th line: this happens through specific, intimate relationships — not mass broadcasting. Her work is most powerful in intimate containers (circles, 1:1, small groups) where genuine acceptance can be felt rather than preached. The constriction shadow: withdrawing from life when it feels too much, protecting herself instead of remaining open. The Gift: meeting people exactly as they are without trying to fix or improve them.</span>
+          </div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(186,117,23,0.5)">
+          <div class="cell-label">Culture · Personality S.Node · Gate 46.4</div>
+          <div class="cell-value">Gene Key 46 — Ecstasy</div>
+          <div class="cell-sub" style="margin-top:8px">
+            <span style="color:#a33;font-size:11px;font-weight:600;text-transform:uppercase">Shadow:</span> Seriousness<br>
+            <span style="color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase">Gift:</span> Exquisiteness<br>
+            <span style="color:rgba(74,123,94,0.9);font-size:11px;font-weight:600;text-transform:uppercase">Siddhi:</span> Ecstasy<br><br>
+            <span style="font-size:12px;color:var(--text-secondary)">Her culture contribution is the gift of sensory exquisiteness — beauty, embodiment, physical delight, the sacred mundane. When she becomes too serious (the shadow), she cuts off from the pleasure that actually nourishes others. Her work environments, circles, and containers should be physically beautiful. She creates culture through attention to how things feel, not just what they mean.</span>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Brand · Design N.Node · Gate 17.3</div>
+          <div class="cell-value">Gene Key 17 — Far-Sightedness</div>
+          <div class="cell-sub" style="margin-top:8px">
+            <span style="color:var(--text-muted);font-size:11px">Unconscious brand</span><br><br>
+            <span style="font-size:12px;color:var(--text-secondary)">Gate 17 appears in BOTH her conscious (Personality Sun) and unconscious (Design North Node) positions. Her brand — what others know her by before she speaks — is her far-sighted clarity. People seek her out because she sees ahead. This double Gate 17 activation means far-sightedness is her deepest signature, not a single gift.</span>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Pearl · Design S.Node · Gate 18.3</div>
+          <div class="cell-value">Gene Key 18 — Integrity</div>
+          <div class="cell-sub" style="margin-top:8px">
+            <span style="color:var(--text-muted);font-size:11px">Unconscious pearl</span><br><br>
+            <span style="font-size:12px;color:var(--text-secondary)">Gate 18 appears in both Personality Earth and Design South Node. Her prosperity (Pearl) comes through integrity — the willingness to correct what isn't working, to refine what is, and to hold a standard even when it is inconvenient. Her deepest material success comes when she operates from integrity rather than from what others want to hear.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Imprinting + Core (Emotional Body)</div>
+      <div class="grid2" style="margin-bottom:24px">
+        <div class="cell">
+          <div class="cell-label">Imprinting · Personality Moon · Gate 13.3</div>
+          <div class="cell-value">Gene Key 13 — Discernment</div>
+          <div class="cell-sub" style="margin-top:8px">
+            <span style="color:#a33;font-size:11px;font-weight:600;text-transform:uppercase">Shadow:</span> Discord<br>
+            <span style="color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase">Gift:</span> Discernment<br>
+            <span style="color:rgba(74,123,94,0.9);font-size:11px;font-weight:600;text-transform:uppercase">Siddhi:</span> Empathy<br><br>
+            <span style="font-size:12px;color:var(--text-secondary)">Her emotional field is shaped by the stories she absorbs from those around her. Gate 13 is the Listener — she holds human narratives with extraordinary attentiveness. The Discord shadow: feeling alien, unable to fit in, carrying stories that are not hers. The Gift: she knows which stories are true and which are the mind's protection. She is here to help others find the narrative that is actually theirs.</span>
+          </div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Core · Design Moon · Gate 28.5</div>
+          <div class="cell-value">Gene Key 28 — Totality</div>
+          <div class="cell-sub" style="margin-top:8px">
+            <span style="color:#a33;font-size:11px;font-weight:600;text-transform:uppercase">Shadow:</span> Purposelessness<br>
+            <span style="color:var(--gold);font-size:11px;font-weight:600;text-transform:uppercase">Gift:</span> Totality<br>
+            <span style="color:rgba(74,123,94,0.9);font-size:11px;font-weight:600;text-transform:uppercase">Siddhi:</span> Immortality<br><br>
+            <span style="font-size:12px;color:var(--text-secondary)">At her core (unconscious), Monika is learning to commit to life with totality despite not knowing the outcome. The Purposelessness shadow is the deepest existential fear — the feeling that none of it matters. The Gift of Totality is what emerges when she commits fully to the present moment regardless of the future. The 5th line: she is seen by others as a practical problem-solver at the soul level, whether she intends to be or not.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEY PATTERN -->
+      <div class="card" style="background:var(--charcoal);border-color:transparent;margin-bottom:0">
+        <div style="font-size:12px;color:rgba(250,240,220,0.6);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">Pattern Across All Gates</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--cream);line-height:1.6;">
+          Gate 17 (Far-Sightedness) appears <strong style="color:var(--gold-light)">twice</strong> — Personality Sun and Design North Node. Gate 18 (Integrity) appears <strong style="color:var(--gold-light)">twice</strong> — Personality Earth and Design South Node. Both of these gates also form her defined Channel 18-58. Her entire chart — conscious, unconscious, physical, and vocational — says the same thing: she is here to see clearly and hold to what is true. The Projector 4/6 Role Model path means the fullest expression of this arrives in her 30s, built from everything she is living now.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VEDIC CHART -->
+  <div id="vedic" class="section">
+    <div style="background:rgba(186,117,23,0.06);border:1px solid rgba(186,117,23,0.2);border-radius:12px;padding:14px 20px;margin-bottom:24px;font-size:12px;color:var(--text-secondary);line-height:1.7;">
+      <strong style="color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;">Calculation Sources</strong><br>
+      <strong style="color:rgba(74,123,94,0.9);">Verified via Swiss Ephemeris (pyswisseph).</strong> All planetary positions are exact, computed with Lahiri Ayanamsa 23.9046° for 26 May 2003, 19:00 WIB (UTC+7), Sidikalang, Indonesia (2.74°N 98.31°E). Dasha timeline calculated from exact Moon position in Revati Pada 2 (350.06°). Human Design requires separate verification at <strong>myBodyGraph.com</strong> (Design date: ~25 Feb 2003).
+    </div>
+
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">☽</div>
+        <div>
+          <div class="card-title">Vedic Chart — Full Reading</div>
+          <div class="card-sub">Sidereal / Lahiri Ayanamsa · Scorpio Ascendant · Swiss Ephemeris verified · 26 May 2003 19:00 WIB</div>
+        </div>
+      </div>
+
+      <div class="sec-title">Planetary Positions (Swiss Ephemeris Verified)</div>
+      <div style="overflow-x:auto;margin-bottom:24px;">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead>
+            <tr style="background:var(--cream);border-bottom:2px solid var(--border);">
+              <th style="padding:10px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:600;">Planet</th>
+              <th style="padding:10px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:600;">Position (Vedic)</th>
+              <th style="padding:10px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:600;">Nakshatra</th>
+              <th style="padding:10px 4px;text-align:center;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:600;">Lord</th>
+              <th style="padding:10px 14px;text-align:center;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:600;">House</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(186,117,23,0.04);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">Ascendant</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">18.41° Scorpio</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Jyeshtha, Pada 1</td>
+              <td style="padding:10px 4px;text-align:center;color:var(--text-muted);">Mercury</td>
+              <td style="padding:10px 14px;text-align:center;"><span style="background:var(--gold-pale);color:var(--gold);font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;">1st</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">☀ Sun</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">10.94° Taurus <span style="color:var(--gold);font-size:10px;font-weight:700;">ROHINI</span></td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Rohini, Pada 1</td>
+              <td style="padding:10px 4px;text-align:center;color:var(--text-muted);">Moon</td>
+              <td style="padding:10px 14px;text-align:center;"><span style="background:var(--cream);color:var(--text-secondary);font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;">7th</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(186,117,23,0.03);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">☽ Moon</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">20.06° Pisces</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Revati, Pada 2</td>
+              <td style="padding:10px 4px;text-align:center;color:var(--text-muted);">Mercury</td>
+              <td style="padding:10px 14px;text-align:center;"><span style="background:var(--cream);color:var(--text-secondary);font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;">5th</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">♂ Mars</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">25.75° Capricorn <span style="color:rgba(74,123,94,0.9);font-size:10px;font-weight:700;">EXALTED</span></td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Dhanishtha, Pada 1</td>
+              <td style="padding:10px 4px;text-align:center;color:var(--text-muted);">Mars</td>
+              <td style="padding:10px 14px;text-align:center;"><span style="background:rgba(74,123,94,0.15);color:rgba(74,123,94,0.9);font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;">3rd ✦</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(186,117,23,0.03);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">♃ Jupiter</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">18.09° Cancer <span style="color:rgba(74,123,94,0.9);font-size:10px;font-weight:700;">EXALTED</span></td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Ashlesha, Pada 1</td>
+              <td style="padding:10px 4px;text-align:center;color:var(--text-muted);">Mercury</td>
+              <td style="padding:10px 14px;text-align:center;"><span style="background:rgba(186,117,23,0.15);color:var(--gold);font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;">9th ✦</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">♄ Saturn</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">5.03° Gemini</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Mrigashira, Pada 4</td>
+              <td style="padding:10px 4px;text-align:center;color:var(--text-muted);">Mars</td>
+              <td style="padding:10px 14px;text-align:center;"><span style="background:var(--cream);color:var(--text-secondary);font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;">8th</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(186,117,23,0.03);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">☊ Rahu</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">5.42° Taurus</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Krittika, Pada 3</td>
+              <td style="padding:10px 4px;text-align:center;color:var(--text-muted);">Sun</td>
+              <td style="padding:10px 14px;text-align:center;"><span style="background:var(--cream);color:var(--text-secondary);font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;">7th</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">☋ Ketu</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">5.42° Scorpio</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Anuradha, Pada 1</td>
+              <td style="padding:10px 4px;text-align:center;color:var(--text-muted);">Saturn</td>
+              <td style="padding:10px 14px;text-align:center;"><span style="background:rgba(139,107,139,0.15);color:#8B6B8B;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;">1st ◈</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(186,117,23,0.03);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">☿ Mercury</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">18.66° Aries</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Bharani, Pada 2</td>
+              <td style="padding:10px 4px;text-align:center;color:var(--text-muted);">Venus</td>
+              <td style="padding:10px 14px;text-align:center;"><span style="background:var(--cream);color:var(--text-secondary);font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;">6th</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">♀ Venus</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">18.29° Aries</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Bharani, Pada 2</td>
+              <td style="padding:10px 4px;text-align:center;color:var(--text-muted);">Venus</td>
+              <td style="padding:10px 14px;text-align:center;"><span style="background:var(--cream);color:var(--text-secondary);font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;">6th</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sec-title">Key Placements — Interpretation</div>
+      <div class="grid2">
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label">Sun in Rohini (H7)</div>
+          <div class="cell-value" style="font-size:16px;">Moon's Own Star</div>
+          <div class="cell-sub">Rohini is the most abundant, beloved nakshatra — the one the Moon never wants to leave. Sun here gives magnetic charisma, natural beauty, talent for the material world, and a relationship-forward destiny. Her identity (Sun) expresses through partnership and public life (H7).</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(74,123,94,0.8)">
+          <div class="cell-label">Jupiter Exalted in H9</div>
+          <div class="cell-value" style="font-size:16px;">Hamsa Yoga</div>
+          <div class="cell-sub">Jupiter exalted (Cancer) in the 9th house creates Hamsa Yoga — one of the five Panchamahapurusha Yogas. Exceptional dharmic fortune, natural teaching ability, access to higher guidance, connection to wisdom traditions. Jupiter also rules H2 (wealth) and H5 (divine intelligence) for Scorpio ascendant — Yoga Karaka.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(139,107,139,0.7)">
+          <div class="cell-label">Ketu in H1 (Lagna)</div>
+          <div class="cell-value" style="font-size:16px;">Spiritual Depth</div>
+          <div class="cell-sub">Ketu conjunct the Ascendant: deep previous-life karma active in the identity. Strong psychic sensitivity, ability to perceive what is hidden, tendency toward self-effacement. The gift is extraordinary spiritual perception. The shadow is invisible-izing herself. This life is about learning to inhabit herself fully.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(186,117,23,0.5)">
+          <div class="cell-label">Sun + Rahu in H7 (Taurus)</div>
+          <div class="cell-value" style="font-size:16px;">Relational Dharma</div>
+          <div class="cell-sub">Sun and Rahu together in the 7th house (Taurus/Rohini-Krittika): Rahu amplifies the Sun here, creating intense magnetism, visibility through partnerships, and karmic relationship themes. Destiny is shaped through public relationships and collaboration. The Rohini Sun in H7 gives her natural abundance and beauty in how she shows up for others.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(74,123,94,0.8)">
+          <div class="cell-label">Mars Exalted in H3 (Capricorn)</div>
+          <div class="cell-value" style="font-size:16px;">Ruchaka Yoga</div>
+          <div class="cell-sub">Mars exalted in Capricorn (H3) creates Ruchaka Yoga — the second Panchamahapurusha Yoga in her chart alongside Hamsa. Mars rules H6 (health, service, mastery) from Scorpio Ascendant. Exceptional courage, driven communication, physical resilience, mastery through disciplined effort. H3 = writing, speaking, siblings, short journeys. She is encoded for bold expression.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(186,117,23,0.4)">
+          <div class="cell-label">Mercury + Venus in H6 (Aries)</div>
+          <div class="cell-value" style="font-size:16px;">Bharani Conjunction</div>
+          <div class="cell-sub">Mercury and Venus within 0.37° of each other in Bharani (Aries, H6): intelligence and beauty fused in the house of service, health, and mastery. Bharani is Venus's nakshatra — Venus is strong here. This conjunction gives artistic intelligence, a persuasive voice, and a gift for making difficult things feel beautiful. H6 placement makes her a natural healer-teacher.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(123,90,62,0.6)">
+          <div class="cell-label">Saturn in H8 (Gemini)</div>
+          <div class="cell-value" style="font-size:16px;">Occult Depth</div>
+          <div class="cell-sub">Saturn in the 8th house (Gemini/Mrigashira) in Scorpio Ascendant charts: Saturn rules H3 and H4 from this Ascendant. H8 Saturn creates depth of research, access to hidden knowledge, slow-burning transformation, and eventual mastery over what frightens others. The 8th is the house of other people's resources, inheritance, death/rebirth cycles — Saturn here gives her a long-game approach to transformation.</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Active Yogas</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-bottom:0">
+        <div class="cell"><div class="cell-label">Hamsa Yoga</div><div class="cell-sub">Jupiter exalted in Cancer H9. Wisdom, dharma, spiritual fortune, dignity in all dealings. One of the five Panchamahapurusha Yogas.</div></div>
+        <div class="cell"><div class="cell-label">Ruchaka Yoga</div><div class="cell-sub">Mars exalted in Capricorn H3. Courage, bold expression, physical excellence, mastery through discipline. Second Panchamahapurusha Yoga in her chart.</div></div>
+        <div class="cell"><div class="cell-label">Dhana Yoga</div><div class="cell-sub">Jupiter (5th lord) strongly placed and exalted: wealth through dharmic expression, creative intelligence, and spiritual work.</div></div>
+        <div class="cell"><div class="cell-label">Revati Moon</div><div class="cell-sub">Moon in Revati Pada 2 (confirmed 20.06° Pisces): journey's end and new beginnings, deep compassion, nourishing others through wisdom.</div></div>
+      </div>
+    </div>
+
+    <!-- NAVAMSA D-9 -->
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">◉</div>
+        <div>
+          <div class="card-title">Navamsa Chart (D-9): Soul-Level Chart</div>
+          <div class="card-sub">Each rasi divided into 9 equal parts of 3°20'. The D-9 reveals the soul's deepest signature, marriage themes, and what ripens in the second half of life. Computed via Swiss Ephemeris + Lahiri Ayanamsa.</div>
+        </div>
+      </div>
+
+      <div style="overflow-x:auto;margin-bottom:24px;">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead>
+            <tr style="background:var(--cream);border-bottom:2px solid var(--border);">
+              <th style="padding:10px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:600;">Planet</th>
+              <th style="padding:10px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:600;">D-1 Sign</th>
+              <th style="padding:10px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:600;">D-9 Sign</th>
+              <th style="padding:10px 14px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);font-weight:600;">Soul Signature</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(186,117,23,0.04);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">Ascendant</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Scorpio</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Sagittarius <span style="color:var(--gold);font-size:10px;font-weight:700;">JUP RULES</span></td>
+              <td style="padding:10px 14px;color:var(--text-secondary);font-size:12px;">The soul presents as Sagittarius, expansive, dharmic, teacher-natured. Jupiter rules D-9 ASC and is placed in Sagittarius D-9: near-Vargottama alignment. The dharmic mission is encoded at the soul level.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">☀ Sun</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Taurus</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Aries <span style="color:rgba(74,123,94,0.9);font-size:10px;font-weight:700;">STRONG</span></td>
+              <td style="padding:10px 14px;color:var(--text-secondary);font-size:12px;">Sun near its degree of exaltation in Aries D-9. At the soul level, her solar identity is bold, initiating, sovereign. The public leadership she is moving toward was written into the soul chart before birth.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(186,117,23,0.03);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">☽ Moon</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Pisces</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Capricorn <span style="color:#a33;font-size:10px;font-weight:700;">DEBILITATED</span></td>
+              <td style="padding:10px 14px;color:var(--text-secondary);font-size:12px;">Moon debilitated in D-9: the emotional body has deep soul-level work around receiving care and finding security through mastery rather than through being needed. Sade Sati 2025-2027 is the transit activating this exact curriculum.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">♂ Mars</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Capricorn (Exalted)</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Leo <span style="color:rgba(74,123,94,0.9);font-size:10px;font-weight:700;">STRONG</span></td>
+              <td style="padding:10px 14px;color:var(--text-secondary);font-size:12px;">Exalted Mars in D-1, Leo in D-9: the warrior energy is creative and kingly at the soul level. Courage expressed through creative sovereignty, not just disciplined action. She is built to lead with joy, not only with rigor.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(186,117,23,0.03);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">♃ Jupiter</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Cancer (Exalted)</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);font-weight:700;">Sagittarius <span style="color:rgba(74,123,94,0.9);font-size:10px;font-weight:700;">OWN SIGN</span></td>
+              <td style="padding:10px 14px;color:var(--text-secondary);font-size:12px;">Exalted in D-1 AND own sign in D-9. This is the most powerful Jupiter configuration possible. Hamsa Yoga confirmed at birth AND soul level. Dharmic abundance, wisdom, and access to higher guidance are not circumstantial, they are who she is.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">♄ Saturn</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Gemini</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Scorpio</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);font-size:12px;">Saturn in Scorpio D-9: the soul's discipline comes through the underworld, processing what others avoid, finding strength in depth. This is what gives her containers their felt sense of genuine safety. She has been here before.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(186,117,23,0.03);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">☿ Mercury + ♀ Venus</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Aries (Bharani conj.)</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Virgo <span style="color:var(--gold);font-size:10px;font-weight:700;">EXACT CONJ</span></td>
+              <td style="padding:10px 14px;color:var(--text-secondary);font-size:12px;">The Bharani conjunction (D-1 H6) moves to Virgo D-9, precision, healing, discernment, service. Intelligence and beauty serve through detail and care at the soul level. The healer-teacher gift is Virgo-exact in the soul chart.</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);">
+              <td style="padding:10px 14px;font-weight:600;color:var(--charcoal);">☊ Rahu</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Taurus</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);">Aquarius</td>
+              <td style="padding:10px 14px;color:var(--text-secondary);font-size:12px;">Rahu in Aquarius D-9: the soul's expansion comes through collective vision, community, and humanitarian purpose. Her dharma is ultimately collective, the sanctuary she builds is for many, not for few.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="highlight" style="border-color:rgba(74,123,94,0.35);background:rgba(74,123,94,0.04);margin-bottom:20px">
+        <div class="highlight-headline" style="font-size:22px">Hamsa Yoga, Confirmed at Three Levels</div>
+        <div class="highlight-body">D-1 birth chart: Jupiter exalted in Cancer (H9). D-9 soul chart: Jupiter in own sign Sagittarius. June 2026 transit: Jupiter returns to Cancer for the first time since birth. Three simultaneous confirmations of the same truth, this is not auspicious coincidence, it is soul-level architecture becoming visible. The dharmic fortune and wisdom she carries is not something she has to create. It is something she has to recognize and allow.</div>
+      </div>
+
+      <div class="grid2" style="margin-bottom:0">
+        <div class="cell" style="border-left:3px solid rgba(74,123,94,0.8)">
+          <div class="cell-label">D-9 ASC Sagittarius: The Soul's Face</div>
+          <div class="cell-sub">Jupiter rules the D-9 Ascendant and sits in its own sign in D-9: near-Vargottama strength. The soul presents as dharmic, expansive, philosophical. Her deepest identity is the teacher-guide who holds the larger picture. This becomes more visible after 30 (Profile 4/6, Role Model phase).</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(139,107,139,0.6)">
+          <div class="cell-label">D-9 Moon in Capricorn: The Curriculum</div>
+          <div class="cell-sub">Moon debilitated in D-9 is the soul's learning: receiving care, finding emotional security through structure and mastery rather than through being needed. The Sade Sati of 2025-2027 is Saturn doing exactly this work. It is not a punishment, it is the curriculum arriving on schedule.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label">D-9 Sun in Aries: Sovereign</div>
+          <div class="cell-sub">Soul Sun in Aries: bold, initiating, sovereign. She does not need to earn the right to be seen, the soul chart says it was already there before the birth chart. Venus Mahadasha is the period designed to bring this soul-level knowing into the birth-chart reality.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(186,117,23,0.5)">
+          <div class="cell-label">Mercury + Venus Virgo D-9</div>
+          <div class="cell-sub">The Bharani conjunction of D-1 becomes Virgo in D-9: healing through precision, beauty through care for detail. Her facilitation work carries a quality-consciousness at the soul level that others sense even when they cannot name it. It is not technique. It is soul signature.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">⚡</div>
+        <div>
+          <div class="card-title">Current Dasha Period</div>
+          <div class="card-sub">Venus Mahadasha · Venus/Venus Antardasha ending May 26, 2026 · Venus/Sun begins on her 23rd birthday</div>
+        </div>
+      </div>
+      <div class="highlight" style="border-color:rgba(186,117,23,0.45)">
+        <div class="highlight-headline">Venus / Venus ends May 26, 2026, on her birthday</div>
+        <div class="highlight-body">Venus Mahadasha started Jan 2023. The first antardasha, Venus/Venus, runs Jan 2023 to May 26, 2026. That is today minus 20 days. On her 23rd birthday (May 26, 2026), she transitions into Venus/Sun antardasha. Venus/Venus is the purest expression of the Mahadasha lord, the period of establishing identity, discovering what she loves, and beginning to inhabit her own gifts. She has been in that establishing phase for three years. The Sun antardasha that begins on her birthday asks a new question: who is she in public? What is her contribution? The Rohini Sun in H7 answers that with beauty, abundance, and a magnetically visible presence in partnerships.</div>
+      </div>
+      <div class="grid2" style="margin-bottom:0">
+        <div class="cell" style="border:1.5px solid var(--gold);background:rgba(186,117,23,0.04)"><div class="cell-label" style="color:var(--gold)">Active Now: Venus/Venus (ends May 26)</div><div class="cell-sub">The final weeks of the self-discovery antardasha. Whatever she has been clarifying about herself, her values, and her path over the last 3 years is crystallizing now. She is completing a chapter.</div></div>
+        <div class="cell" style="border:1.5px solid rgba(74,123,94,0.5);background:rgba(74,123,94,0.04)"><div class="cell-label" style="color:rgba(74,123,94,0.9)">Next: Venus/Sun (May 26, 2026 – May 26, 2027)</div><div class="cell-sub">Begins on her birthday. Sun rules no house as Mahadasha context but activates her H7 Rohini Sun. A year of greater visibility, public presence, and stepping into the role others see her as capable of. Identity becomes public.</div></div>
+        <div class="cell"><div class="cell-label">Venus/Moon: May 2027 to Jan 2029</div><div class="cell-sub">Moon rules H9 (dharma, travel, teaching) for Scorpio Ascendant. A deeply nourishing period of mass emotional connection, possible teaching or healing work at scale, intuitive leadership.</div></div>
+        <div class="cell"><div class="cell-label">Venus/Jupiter: Mar 2033 to Nov 2035</div><div class="cell-sub">The peak antardasha still comes: Jupiter Yoga Karaka (rules H2 wealth and H5 creative intelligence, exalted in H9). The dharmic abundance window. She is building toward it.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CYCLE PHASE -->
+  <div id="cycle" class="section">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">🌿</div>
+        <div>
+          <div class="card-title">Cycle Phase Reading</div>
+          <div class="card-sub">33-day cycle · Current: Menstrual: Winter · Day 3 of 33 · Period started May 4</div>
+        </div>
+      </div>
+
+      <div class="cycle-wrap">
+        <div style="flex-shrink:0">
+          <svg width="260" height="260" viewBox="0 0 260 260">
+            <circle cx="130" cy="130" r="120" fill="#FAF0DC" stroke="#F0DEB0" stroke-width="1"/>
+            <path d="M130,130 L130,10 A120,120 0 0,0 10,130 Z" fill="rgba(139,107,139,0.18)" stroke="white" stroke-width="2"/>
+            <path d="M130,130 L250,130 A120,120 0 0,0 130,10 Z" fill="rgba(74,123,94,0.22)" stroke="white" stroke-width="2"/>
+            <path d="M130,130 L130,250 A120,120 0 0,0 250,130 Z" fill="rgba(186,117,23,0.15)" stroke="white" stroke-width="2"/>
+            <path d="M130,130 L10,130 A120,120 0 0,0 130,250 Z" fill="rgba(123,90,62,0.15)" stroke="white" stroke-width="2"/>
+            <!-- Active phase: Menstrual/Winter (top-left) -->
+            <path d="M130,130 L130,10 A120,120 0 0,0 10,130 Z" fill="rgba(139,107,139,0.52)" stroke="#8B6B8B" stroke-width="2.5"/>
+            <circle cx="130" cy="130" r="46" fill="white" stroke="#F0DEB0" stroke-width="1.5"/>
+            <text x="130" y="122" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="13" fill="#2A2218">Day 3</text>
+            <text x="130" y="138" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" fill="#8B6B8B">of 33</text>
+            <text x="68" y="68" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#8B6B8B" font-weight="700">WINTER ✓</text>
+            <text x="68" y="79" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#8B6B8B">Days 1-5</text>
+            <text x="192" y="68" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#4A7B5E" font-weight="700">SPRING</text>
+            <text x="192" y="79" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#4A7B5E">Days 6-14</text>
+            <text x="192" y="195" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#BA7517" font-weight="700">SUMMER</text>
+            <text x="192" y="206" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#BA7517">Days 15-19</text>
+            <text x="68" y="195" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7B5A3E" font-weight="700">AUTUMN</text>
+            <text x="68" y="206" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#7B5A3E">Days 20-33</text>
+            <!-- You are here, Winter, Day 3 (60% into top-left arc) -->
+            <circle cx="42" cy="72" r="6" fill="#8B6B8B"/>
+            <text x="42" y="88" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#8B6B8B" font-weight="600">You are here</text>
+          </svg>
+        </div>
+
+        <div style="flex:1">
+          <div class="phase-card menstrual current">
+            <div class="phase-name" style="color:#8B6B8B">❄ Menstrual, Winter (Days 1–5) <span class="now-badge">Day 3 · Active Now</span></div>
+            <div class="phase-body"><strong>Archetype:</strong> The Oracle. The veil thins. The body is doing the deepest internal reset, honor this completely.<br><br><strong>Gifts:</strong> Pattern recognition, prophetic clarity, seeing what the noise has been covering, truth-telling from stillness.<br><br><strong>Watch:</strong> No major decisions. No forcing output. The Supporter in winter needs to receive from the world, not give to it. Period is active, rest is the strategy.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="cell">
+          <div class="cell-label">For the Supporter in Winter</div>
+          <div class="cell-sub">This is the phase most likely to trigger the over-giving shadow, the impulse to prove worth through output even when the body is asking for stillness. The most powerful thing Monika can do in Winter is allow herself to be held. Receive. Let others give to her.</div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Embodiment Cue</div>
+          <div class="cell-sub">Warmth, stillness, darkness, silence. No social obligations unless genuinely desired. Gentle movement only. Nourishing foods, soups, roots, warm liquids. Allow the Oracle to surface. What she knows right now in silence is more accurate than what she'll analyze next week.</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">All Four Phases, 33-Day Cycle</div>
+      <div class="phase-card menstrual" style="border-color:#8B6B8B;border-width:2px;">
+        <div class="phase-name" style="color:#8B6B8B">❄ Menstrual, Winter (Days 1–5) <span class="now-badge">Active · Day 3</span></div>
+        <div class="phase-body">The Oracle phase. Clarity arrives in stillness. Pattern recognition is highest. Rest is the entire strategy. High sensitivity to truth, what she senses during menstruation about people and situations is usually accurate.</div>
+      </div>
+      <div class="phase-card follicular">
+        <div class="phase-name" style="color:#4A7B5E">🌱 Follicular, Spring (Days 6–14)</div>
+        <div class="phase-body">The Pioneer phase. Rising estrogen brings rising energy and clarity. Ideas form. The supporter energy rises into genuine enthusiasm, this is when her support of others carries the most joy and the least cost.</div>
+      </div>
+      <div class="phase-card ovulatory">
+        <div class="phase-name" style="color:#BA7517">☀ Ovulatory, Summer (Days 15–19)</div>
+        <div class="phase-body">The Empress phase. Peak magnetic field, communication, and creative output. The Rohini Sun activates here, beauty and abundance radiate naturally. Best window for visibility, collaboration, and speaking her truth to people who matter.</div>
+      </div>
+      <div class="phase-card luteal">
+        <div class="phase-name" style="color:#7B5A3E">🍂 Luteal, Autumn (Days 20–33)</div>
+        <div class="phase-body">The Weaver phase. Gate 18 (Integrity) activates, refining, editing, completing. The inner critic rises: use it as the quality-check it is, not as self-punishment. Protect energy fiercely in days 28+.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DECISION AUDIT -->
+  <div id="decision" class="section">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">⚖</div>
+        <div>
+          <div class="card-title">Decision Audit</div>
+          <div class="card-sub">Supporter Code · Menstrual Phase · Venus/Venus Dasha (ending May 26)</div>
+        </div>
+      </div>
+
+      <div class="body-text">The Supporter's decision-making challenge: she can feel so attuned to what others need that she loses the thread of her own signal. The audit below helps her locate her own yes/no before she extends it to anyone else.</div>
+
+      <div class="sec-title">The Supporter Decision Filter</div>
+      <div class="audit-grid">
+        <div class="audit-cell">
+          <div class="audit-q">1. Where is this coming from?</div>
+          <div class="audit-a">Is this impulse coming from overflow (genuine desire, real capacity, full cup), or from fear (fear of not being needed, fear of disappointing, fear of being dispensable)? Full cup gives. Empty cup depletes and eventually resents.</div>
+        </div>
+        <div class="audit-cell">
+          <div class="audit-q">2. Have I given myself the same thing?</div>
+          <div class="audit-a">The Supporter shadow is the caretaker who never receives. Before extending support to anyone, check: have I received this from myself or another? Can I give it without needing it back from them?</div>
+        </div>
+        <div class="audit-cell">
+          <div class="audit-q">3. Am I visible in this?</div>
+          <div class="audit-a">Ketu in H1 creates invisible-izing patterns, making herself small in her own story. Before any significant decision, check: is Monika present in this outcome, or has she designed herself out of it?</div>
+        </div>
+        <div class="audit-cell">
+          <div class="audit-q">4. Does this pass the far-sight test?</div>
+          <div class="audit-a">Gate 17: six months from now, does this decision still make sense? She has the capacity to see consequences before they arrive. Ask the far-sighted self, not just the present self.</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Phase Check: Winter Decision Protocol</div>
+      <div style="background:rgba(139,107,139,0.06);border:1px solid rgba(139,107,139,0.2);border-radius:12px;padding:20px 24px;font-size:13.5px;color:var(--text-secondary);line-height:1.75;">
+        <strong style="color:#8B6B8B;">In Menstrual/Winter:</strong> The Oracle is active, not the Executive. Major decisions made in menstruation are often either deeply prophetic or temporarily distorted by the hormonal shift. The rule: <em>receive the knowing in Winter, act on it in Spring.</em> Write down what arrives. Do not execute it yet.
+      </div>
+    </div>
+
+    <!-- SPLENIC AUTHORITY PROTOCOL -->
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">⚬</div>
+        <div>
+          <div class="card-title">Splenic Authority: The First Flash Protocol</div>
+          <div class="card-sub">Rarest of the 7 authorities. The Spleen speaks once, in the present moment only. It will not repeat.</div>
+        </div>
+      </div>
+
+      <div class="highlight" style="border-color:rgba(74,123,94,0.35);background:rgba(74,123,94,0.04);margin-bottom:24px">
+        <div class="highlight-headline" style="font-size:20px">The First Body Hit is the Answer</div>
+        <div class="highlight-body">Monika's Spleen center is defined (consistent, reliable). Her Splenic authority operates in the immediate present, a quiet knowing, a body sensation, a flash of yes or no that arrives before the mind forms an opinion. The Spleen never screams. It whispers once. If she waits for it to repeat or confirm, she has already missed it and entered the mind's loop. The second thought is not wisdom, it is interference.</div>
+      </div>
+
+      <div class="sec-title">The Six Rules of Splenic Authority</div>
+      <ul class="rules" style="margin-bottom:24px">
+        <li><span class="rnum">1</span><strong>The Spleen speaks once.</strong> If the first body response was clear and she checks again, she has left Splenic territory. The second feeling is the mind's construction, not the Spleen's knowing. Trust the first flash, even if it is inconvenient.</li>
+        <li><span class="rnum">2</span><strong>Act immediately or release.</strong> Splenic knowing does not keep. Unlike Sacral authority (which can be queried) or Emotional authority (which requires a wave), the Spleen is a now-tool. If she cannot act now, she must start fresh when the moment arrives rather than relying on the memory of the old flash.</li>
+        <li><span class="rnum">3</span><strong>Never sleep on a Splenic decision.</strong> If she is waiting until morning to see how she feels, she has already left the Splenic window. Morning brings a new present moment with its own flash, it does not continue the last one.</li>
+        <li><span class="rnum">4</span><strong>The signal is always in the body, never in the mind.</strong> Physical cues of Splenic YES: a subtle warmth, an ease, a quiet opening. Physical cues of Splenic NO: a slight contraction, a flatness, a sense of something being off. Silence = not yet or not this.</li>
+        <li><span class="rnum">5</span><strong>The mind will construct reasons.</strong> After the flash, the mind builds a story explaining or contradicting it. This is normal. The story is not the authority. The story is commentary. The flash was the decision.</li>
+        <li><span class="rnum">6</span><strong>Channel 18-58 amplifies the Spleen.</strong> Her defined channel runs Root pressure through the Spleen. This means her Splenic knowing is also calibrated to quality, it can detect what is healthy/unhealthy, alive/dead, sustainable/depleting at the cell level. When her body says no, it is often detecting a quality mis-match before the mind has data.</li>
+      </ul>
+
+      <div class="divider"></div>
+      <div class="sec-title">Splenic Protocol by Decision Type</div>
+      <div class="grid2" style="margin-bottom:0">
+        <div class="cell" style="border-left:3px solid rgba(74,123,94,0.8)">
+          <div class="cell-label">Collaborations + Partnerships</div>
+          <div class="cell-sub">Trust the first-meeting body sense before the mind evaluates credentials. If the Spleen said no in the first moment and the mind has been building reasons to say yes ever since, that is the pattern to watch. Her Spleen reads people accurately. The mind wants to override it for social reasons.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label">Physical Environments</div>
+          <div class="cell-sub">Does this space feel alive or dead? Does this room make her feel more or less like herself? The first 30 seconds in any environment carry Splenic data. Her defined Spleen can detect environments that are healing or depleting before conscious thought arrives. Trust the first reading.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(186,117,23,0.5)">
+          <div class="cell-label">Timing: Should I Move Now?</div>
+          <div class="cell-sub">The Spleen answers timing questions in the moment of wondering. If she feels a pull to act right now, that may be Splenic. If she feels a subtle resistance or flatness, not yet. She does not need to overthink timing. She needs to notice the first body response to "should I do this now?"</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(139,107,139,0.6)">
+          <div class="cell-label">Receiving Care + Support</div>
+          <div class="cell-sub">The Supporter with Splenic authority: when someone offers to care for her, the Spleen knows instantly whether to receive it. The pattern to break is the mental override, the mind saying "I should not need this" while the Spleen is saying "yes, receive." The flash of yes is permission enough.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHADOW CHECK -->
+  <div id="shadow" class="section">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">◈</div>
+        <div>
+          <div class="card-title">Shadow Check</div>
+          <div class="card-sub">The five patterns that cost Monika most: know them before they move</div>
+        </div>
+      </div>
+
+      <div class="shadow-item">
+        <div class="shadow-icon">💧</div>
+        <div>
+          <div class="shadow-lbl">Shadow 1 · Supporter Code</div>
+          <div class="shadow-text"><strong>Over-giving until empty, then collapse.</strong> The Supporter's most costly pattern: giving to avoid the fear of being dispensable. The invisible resentment that accumulates when giving is not reciprocated. The collapse that happens when the body finally says no. Recognition: "I'm exhausted and no one sees how much I do." That sentence is the warning light.</div>
+        </div>
+      </div>
+
+      <div class="shadow-item">
+        <div class="shadow-icon">◈</div>
+        <div>
+          <div class="shadow-lbl">Shadow 2 · Ketu in H1</div>
+          <div class="shadow-text"><strong>Self-erasure in service of the story.</strong> Ketu conjunct Ascendant: a tendency to become the background, to make herself small in her own narrative, to feel that her presence is less important than everyone else's. The gift is spiritual depth. The shadow is disappearing. Reclaiming her Jyeshtha Ascendant means claiming the front of the room.</div>
+        </div>
+      </div>
+
+      <div class="shadow-item">
+        <div class="shadow-icon">🔒</div>
+        <div>
+          <div class="shadow-lbl">Shadow 3 · Gate 17, Opinion</div>
+          <div class="shadow-text"><strong>Locking into a position when the far-sight becomes uncomfortable.</strong> The far-sighted gate narrows into fixed opinion when Monika feels unsafe. She can see multiple outcomes simultaneously, but that can feel unbearable, so the mind collapses it into certainty. The practice: stay in the seeing. Not every question requires a position.</div>
+        </div>
+      </div>
+
+      <div class="shadow-item">
+        <div class="shadow-icon">⚖</div>
+        <div>
+          <div class="shadow-lbl">Shadow 4 · Gate 18, Judgement</div>
+          <div class="shadow-text"><strong>The inner critic weaponized against the self.</strong> Gate 18 at shadow frequency: finding fault in herself as a reflex before anyone else can. The quality-check that becomes self-punishment. The gap between what is and what should be, used against her own becoming. The gift of integrity is meant for situations, not for her identity.</div>
+        </div>
+      </div>
+
+      <div class="shadow-item">
+        <div class="shadow-icon">♄</div>
+        <div>
+          <div class="shadow-lbl">Shadow 5 · Sun + Rahu in H7</div>
+          <div class="shadow-text"><strong>Identity swallowed by partnerships.</strong> Sun conjunct Rahu in H7 (partnerships): Rahu amplifies and distorts whatever it touches. Sun in H7 means her identity is expressed through relationship, but Rahu here creates a hunger for partnership recognition that can eclipse her own center. The pattern: losing herself in the relational field, seeking identity validation through how others see her. The shift: knowing her own Sun before asking any relationship to reflect it back.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2026 ACTIVATION -->
+  <div id="activation" class="section">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">☀</div>
+        <div>
+          <div class="card-title">2026 Activation</div>
+          <div class="card-sub">Venus/Sun antardasha begins May 26 + Jupiter entering exaltation June 2026 · The birthday transmission</div>
+        </div>
+      </div>
+
+      <div class="highlight">
+        <div class="highlight-headline">May 26 + June 2026: The Birthday Transmission</div>
+        <div class="highlight-body">On May 26, 2026 (her 23rd birthday), Venus/Venus antardasha closes and Venus/Sun begins. Twenty days later, Jupiter transits into Cancer (its sign of exaltation) and into her natal 9th house, mirroring her natal Hamsa Yoga exactly. This is a rare sequence: a birthday antardasha shift + Jupiter entering exaltation in her H9. Jupiter rules her 2nd (wealth) and 5th (creative intelligence, divine inspiration). Whatever she begins at her birthday threshold carries Hamsa Yoga force through the Jupiter transit window (June 2026 to July 2027). The Sun antardasha asks her to be seen. Jupiter in H9 gives her the dharmic backing to step forward.</div>
+      </div>
+
+      <div class="grid2">
+        <div class="cell">
+          <div class="cell-label">Venus/Sun Theme (May 2026 to May 2027)</div>
+          <div class="cell-sub">Sun activates her Rohini H7 identity. A year of stepping into public visibility, being recognized in partnerships and collaborations, and discovering that being seen does not diminish her, it amplifies her dharma. The Supporter who learns she is also the lead.</div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Jupiter Transit H9 (June 2026 to July 2027)</div>
+          <div class="cell-sub">Jupiter exalted in her natal H9: the Hamsa Yoga is activated by transit. A one-year window of extraordinary dharmic fortune, teacher encounters, long-distance opportunities, and spiritual expansion aligned with material growth. Plant intentionally.</div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">What to Move Forward</div>
+          <div class="cell-sub">Anything that puts her Rohini Sun in view: creative work with her name on it, public teaching or facilitation, collaborations that honor her contribution visibly. The Bharani Mercury + Venus in H6 make this a time to offer her craft with clarity and confidence.</div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">What to Watch</div>
+          <div class="cell-sub">Sun + Rahu in H7: as visibility rises, Rahu may amplify relational ego dynamics. Use Gate 18 (Integrity) as the filter: does this relationship or project ask her to become more of herself or less?</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Cycle + Dasha Sync</div>
+      <div class="body-text">May 6, 2026: Day 3 of menstrual cycle (Winter/Oracle) in the final 20 days of Venus/Venus antardasha, with Venus/Sun beginning on her birthday May 26. The Oracle phase is receiving mode, what arrives in stillness right now is carrying the signal of the chapter she is completing AND the one beginning. This is a liminal window between antardashas. Do not push output. Receive the transmission.</div>
+    </div>
+  </div>
+
+  <!-- VENTURES & ROLE -->
+  <div id="ventures" class="section">
+
+    <div class="hero">
+      <span class="hero-sigil">◉</span>
+      <div class="hero-kicker">Elevara · Sisterhood OS Indonesia · Saha Synergy</div>
+      <div class="hero-title">Two companies.<br>One dharma.</div>
+      <div class="hero-body">"She is not split between her businesses. She is expressing the same mission through different doors — practical sovereignty first, then identity sovereignty. Both are hers."</div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">◉</div>
+        <div>
+          <div class="card-title">The Dharma Read</div>
+          <div class="card-sub">Why Elevara and Sisterhood OS are expressions of one mission, not two competing ones</div>
+        </div>
+      </div>
+
+      <div class="highlight">
+        <div class="highlight-headline">Her dharma is creating sovereignty pathways — practical first, then spiritual.</div>
+        <div class="highlight-body">Empowering women is a category. Monika's actual dharma is more precise: she creates the conditions for people (strongly weighted toward Indonesian women) to become financially self-directed, then to know who they are once that stability exists. Elevara opens the material door — jobs, remote work access, economic mobility. Sisterhood OS opens the identity door — community, transformation, cyclical leadership. She does not want people to just feel empowered. She wants them to have real capacity: income, skills, belonging, self-knowledge. That is a complete dharmic package. The fact that she speaks about Sisterhood OS and Saha with as much enthusiasm as Elevara is not role confusion. It is coherence. She sees the whole ecosystem. Because it is one.</div>
+      </div>
+
+      <div class="grid3" style="margin-bottom:0">
+        <div class="cell" style="border-left:3px solid rgba(74,123,94,0.8)">
+          <div class="cell-label" style="color:rgba(74,123,94,0.9);">Elevara — Ruchaka Yoga</div>
+          <div class="cell-sub">Mars exalted H3 (local enterprise, communication, logistics). She builds practical infrastructure, finds offices, places people in roles, creates material pathways. This is not adjacent to her mission. It IS her mission's material leg. Ruchaka Yoga delivers through bold, grounded action in the community — which is exactly what Elevara is.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label" style="color:var(--gold);">Sisterhood OS — Hamsa Yoga</div>
+          <div class="cell-sub">Jupiter exalted H9 (dharma, teaching, wisdom). The Sisterhood OS circle work is this yoga's clearest expression. She is a natural teacher and container-holder — not because she performs it, but because Jupiter's exaltation in H9 makes wisdom transmission her effortless default. The circles are where this yoga moves through the world.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(139,107,139,0.7)">
+          <div class="cell-label" style="color:#8B6B8B;">Saha Synergy — The Bridge</div>
+          <div class="cell-sub">Sophia has been helping her strategize Elevara. This is not Sophia overextending — it is the synastry working (Sophia's 5th house stellium lands in Monika's H2 wealth). Monika speaks about Saha with the same enthusiasm because she understands the strategic architecture and believes in it at the soul level. She is a genuine thought partner, not just an implementer.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">★</div>
+        <div>
+          <div class="card-title">Elevara — Her Independent Vehicle</div>
+          <div class="card-sub">Job placement · Remote work access · Sumatra office · Built by Monika, not within Sisterhood OS</div>
+        </div>
+      </div>
+
+      <div class="highlight" style="border-color:rgba(74,123,94,0.35);background:rgba(74,123,94,0.04)">
+        <div class="highlight-headline" style="font-size:20px;color:rgba(74,123,94,0.9)">The Sumatra office is Ruchaka Yoga proving itself.</div>
+        <div class="highlight-body">While in the middle of Sade Sati — Saturn pressing directly on her natal Moon — Monika secured a free office and free furniture in Sumatra for Elevara. She did not wait for perfect conditions. She did not ask permission. She found a way. This is Mars exalted in H3 operating exactly as the chart said it would: practical initiative, local resourcefulness, courage under pressure. For the partnership conversation with Sophia: this is the first piece of evidence that she earns co-founder status through demonstration, not sentiment.</div>
+      </div>
+
+      <div class="sec-title">What Elevara Is</div>
+      <div class="grid2" style="margin-bottom:24px">
+        <div class="cell">
+          <div class="cell-label">The mission</div>
+          <div class="cell-sub">Elevara helps people access employment and remote work opportunities, with a focus on the Indonesian market. The Sumatra office creates a physical base where people can be set up to work remotely — economic mobility for those who couldn't otherwise access it. Sumatra is often economically disadvantaged relative to Bali and Java. Elevara is meeting real need in real geography.</div>
+        </div>
+        <div class="cell">
+          <div class="cell-label">Why it is separate from Sisterhood OS</div>
+          <div class="cell-sub">Elevara is Monika's independent company. It should stay that way. Her ability to say "I built this on my own" is the track record that makes her a credible co-founder of the Bali PT. Collapse Elevara into Sisterhood OS and you remove the proof she needs to present herself as a founder. The two entities are allies, not mergers.</div>
+        </div>
+      </div>
+
+      <div class="sec-title">How Elevara and Sisterhood OS Work Together (Without Merging)</div>
+      <div class="grid2" style="margin-bottom:0">
+        <div class="cell" style="border-left:3px solid rgba(74,123,94,0.8)">
+          <div class="cell-label">Year 1 — 2026: Elevara's base</div>
+          <div class="cell-sub">The Sumatra office belongs to Elevara. Use it fully as Elevara's operational home. Place remote workers. Build the client base. Generate revenue. Let Elevara prove what it can do with the space. Do not co-brand with Sisterhood OS yet. This is the independent track record year.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label">Year 2+ — 2027: The natural funnel</div>
+          <div class="cell-sub">A woman Elevara places in a remote role has income now, perhaps for the first time. She is stable. She asks: what's next? That is when Sisterhood OS reaches her. The Sumatra office becomes a potential dual-use space — Elevara co-working during the week, Sisterhood OS circles monthly. New city. Zero additional real estate cost. Monika's local network is the distribution channel.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">⚖</div>
+        <div>
+          <div class="card-title">Her Role in Sisterhood OS — COO, Not CMO</div>
+          <div class="card-sub">Role clarity · What she owns · Title evolution through 2028</div>
+        </div>
+      </div>
+
+      <div class="highlight" style="border-color:rgba(74,123,94,0.35);background:rgba(74,123,94,0.04)">
+        <div class="highlight-headline" style="color:rgba(74,123,94,0.9);font-size:20px">COO of Sisterhood OS Indonesia (Bali PT entity). Not CMO.</div>
+        <div class="highlight-body">CMO is a creative and brand leadership role — owning marketing strategy, content, and audience growth. Helena holds the global strategy and marketing layer. Monika's gifts are not primarily in brand creation or content. They are in execution, container-building, local operations, and facilitation. COO is the honest title for what she actually does: she holds the operational container while Sophia builds the vision. It also gives her real decision-making authority — which she needs to run circles, manage Bali/Sumatra presence, hire local facilitators, and build the Indonesian chapter without having to ask permission at every step.</div>
+      </div>
+
+      <div class="sec-title">What She Owns as COO</div>
+      <div class="grid2" style="margin-bottom:24px">
+        <div class="cell" style="border-left:3px solid rgba(74,123,94,0.8)">
+          <div class="cell-label">Her lane</div>
+          <div class="cell-sub">All Indonesia-based programming and operations. Circle facilitation and curriculum (her own design). Local facilitator hiring and management. Sumatra expansion — timeline and pacing. Event logistics, venue, local partnerships. The Bali PT (majority shareholder and director). Elevara as a fully independent company alongside all of this.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label">Sophia's lane</div>
+          <div class="cell-sub">Global Sisterhood OS brand and IP. SPC program, Estonia OÜ, international sales. Sister Sage and Saha Synergy as separate entities. Strategic architecture for the ecosystem. Mentorship that evolves into peer advisory. Final say on global brand direction and methodology expansion.</div>
+        </div>
+      </div>
+
+      <div class="sec-title">Title Evolution</div>
+      <div class="grid3" style="margin-bottom:0">
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label" style="color:var(--gold);">2026 — Circle Facilitator</div>
+          <div class="cell-sub">No C-suite title yet. "Sisterhood OS Bali Lead" or "Circle Facilitator, Indonesia" while she runs the first 3–6 circles and builds track record. The work comes first. The title carries weight when it is backed by evidence.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(74,123,94,0.8)">
+          <div class="cell-label" style="color:rgba(74,123,94,0.9);">Nov 2026 — Co-Founder + COO</div>
+          <div class="cell-sub">When the Bali PT formalizes (target: November 2026 announcement), Monika steps publicly into: Co-Founder and COO, Sisterhood OS Indonesia. This goes on LinkedIn, the website, the announcement post. The title is specific enough to be accurate and broad enough to give her real operational authority.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(139,107,139,0.7)">
+          <div class="cell-label" style="color:#8B6B8B;">2028+ — Global revisit</div>
+          <div class="cell-sub">After 2+ years running Indonesia operations, when Sophia enters Jupiter Mahadasha (Oct 2029), revisit whether Monika steps into a global COO scope across the full Sisterhood OS entity. By then she will have cohorts completed, a team built, and the operational proof to hold a larger role.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DASHA TIMELINE -->
+  <div id="timeline" class="section">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">→</div>
+        <div>
+          <div class="card-title">Dasha Timeline</div>
+          <div class="card-sub">2003–2049 · The full arc of Monika's major life periods (Swiss Ephemeris verified)</div>
+        </div>
+      </div>
+
+      <div class="sec-title">Mahadasha Periods</div>
+      <div style="margin-bottom:28px">
+        <div class="dasha-bar" style="background:rgba(139,107,139,0.07);border:1px solid rgba(139,107,139,0.18);padding:14px 20px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div>
+            <div class="dasha-lbl" style="font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:4px;">Ketu Mahadasha</div>
+            <div class="dasha-theme" style="font-size:12px;color:var(--text-muted);">Karmic clearing · Spiritual initiation · The past dissolves, the dharma path clears</div>
+          </div>
+          <div class="dasha-period" style="font-size:12px;color:var(--text-secondary);white-space:nowrap;margin-left:16px;">Jan 2016 – Jan 2023</div>
+        </div>
+        <div class="dasha-bar venus" style="background:rgba(186,117,23,0.07);border:1px solid rgba(186,117,23,0.2);padding:14px 20px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div>
+            <div class="dasha-lbl" style="font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:4px;">Venus Mahadasha <span class="now-dot" style="font-size:11px;color:var(--gold);margin-left:8px;">◼ You are here</span></div>
+            <div class="dasha-theme" style="font-size:12px;color:var(--text-muted);">Relationships · Beauty · Dharmic partnerships · Creative expression · The world encounters her through connection</div>
+          </div>
+          <div class="dasha-period" style="font-size:12px;color:var(--text-secondary);white-space:nowrap;margin-left:16px;">Jan 2023 – Jan 2043</div>
+        </div>
+        <div class="dasha-bar antardasha" style="background:rgba(186,117,23,0.04);border:1.5px solid var(--gold);padding:14px 20px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;margin-left:24px;">
+          <div>
+            <div class="dasha-lbl" style="font-size:13px;font-weight:600;color:var(--gold);margin-bottom:4px;">Venus/Venus Antardasha <span style="font-size:11px;color:var(--gold);margin-left:8px;">Ending May 26, 2026</span></div>
+            <div class="dasha-theme" style="font-size:12px;color:var(--text-muted);">Establishing identity through values, love, beauty. The pure Venus period. Self-discovery through what she loves.</div>
+          </div>
+          <div class="dasha-period" style="font-size:12px;color:var(--text-secondary);white-space:nowrap;margin-left:16px;">Jan 2023 – May 26, 2026</div>
+        </div>
+        <div class="dasha-bar" style="background:rgba(74,123,94,0.05);border:1px solid rgba(74,123,94,0.25);padding:14px 20px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;margin-left:24px;">
+          <div>
+            <div class="dasha-lbl" style="font-size:13px;font-weight:600;color:rgba(74,123,94,0.9);margin-bottom:4px;">Venus/Sun Antardasha <span style="font-size:11px;margin-left:8px;">Begins on her 23rd birthday</span></div>
+            <div class="dasha-theme" style="font-size:12px;color:var(--text-muted);">Visibility, public identity, stepping forward. Rohini Sun in H7 activates. Jupiter in H9 transit amplifies this window.</div>
+          </div>
+          <div class="dasha-period" style="font-size:12px;color:var(--text-secondary);white-space:nowrap;margin-left:16px;">May 26, 2026 – May 26, 2027</div>
+        </div>
+        <div class="dasha-bar future" style="background:rgba(123,90,62,0.05);border:1px solid rgba(123,90,62,0.15);padding:14px 20px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <div>
+            <div class="dasha-lbl" style="font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:4px;">Sun Mahadasha</div>
+            <div class="dasha-theme" style="font-size:12px;color:var(--text-muted);">Identity leadership · The Self as the offer · Dharma made visible through personal authority</div>
+          </div>
+          <div class="dasha-period" style="font-size:12px;color:var(--text-secondary);white-space:nowrap;margin-left:16px;">Jan 2043 – Jan 2049</div>
+        </div>
+        <div class="dasha-bar future" style="background:rgba(74,123,94,0.04);border:1px solid rgba(74,123,94,0.12);padding:14px 20px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div class="dasha-lbl" style="font-size:13px;font-weight:600;color:var(--charcoal);margin-bottom:4px;">Moon Mahadasha</div>
+            <div class="dasha-theme" style="font-size:12px;color:var(--text-muted);">Emotional mastery · Mass reach · The nourisher at scale · Revati Pada 2 gifts fully expressed</div>
+          </div>
+          <div class="dasha-period" style="font-size:12px;color:var(--text-secondary);white-space:nowrap;margin-left:16px;">Jan 2049 – Jan 2059</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Visual Arc: 2023 – 2049</div>
+      <div class="tl-wrap">
+        <div class="tl-track">
+          <div class="tl-fill-past"></div>
+          <div class="tl-fill-now"></div>
+          <div class="tl-fill-future"></div>
+          <div class="tl-marker" style="left:0%">
+            <div class="tl-top"><div class="tl-year">2023</div><div class="tl-lbl">Venus begins</div></div>
+            <div class="tl-dot"></div>
+          </div>
+          <div class="tl-marker" style="left:13%">
+            <div class="tl-top"><div class="tl-year gold">May 2026</div><div class="tl-lbl gold">◼ Now</div></div>
+            <div class="tl-dot now"></div>
+            <div class="tl-bot"><div class="tl-lbl gold">Venus/Sun begins</div></div>
+          </div>
+          <div class="tl-marker" style="left:76%">
+            <div class="tl-dot" style="border-color:var(--text-muted)"></div>
+            <div class="tl-bot"><div class="tl-year">2043</div><div class="tl-lbl">Venus ends</div></div>
+          </div>
+          <div class="tl-marker" style="left:100%">
+            <div class="tl-top"><div class="tl-year">2049</div><div class="tl-lbl">Sun ends</div></div>
+            <div class="tl-dot jup"></div>
+          </div>
+        </div>
+        <div class="tl-period-labels" style="margin-top:56px">
+          <div style="width:76%;text-align:center">
+            <div style="font-size:16px;color:var(--gold)">Venus Mahadasha</div>
+            <div style="font-size:11px;color:var(--text-muted)">Relationships, beauty, dharmic expression (20 yrs)</div>
+          </div>
+          <div style="width:4%;text-align:center;padding-top:16px;font-size:12px;color:var(--text-muted)">~</div>
+          <div style="width:20%;text-align:center">
+            <div style="font-size:16px;color:rgba(74,123,94,0.9)">Sun + Moon</div>
+            <div style="font-size:11px;color:var(--text-muted)">Leadership and reach</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="sec-title">Venus Mahadasha, Full Antardasha Sequence</div>
+      <div class="grid2">
+        <div class="cell" style="border:1.5px solid var(--gold);background:rgba(186,117,23,0.04)"><div class="cell-label" style="color:var(--gold)">Venus/Venus · Jan 2023 – May 26, 2026 (NOW)</div><div class="cell-sub">Establishing identity, values, aesthetic sense. The purest Venus period. Discovering what she loves and who she is through it. Completing May 26 on her birthday.</div></div>
+        <div class="cell" style="border:1px solid rgba(74,123,94,0.3);background:rgba(74,123,94,0.03)"><div class="cell-label" style="color:rgba(74,123,94,0.9)">Venus/Sun · May 26, 2026 – May 26, 2027</div><div class="cell-sub">Begins on birthday. Public visibility, Rohini Sun activates, Jupiter in H9 transit amplifies. The year she steps forward. Identity becomes the offering.</div></div>
+        <div class="cell"><div class="cell-label">Venus/Moon · May 2027 – Jan 2029</div><div class="cell-sub">Moon rules H9 (dharma, teachers, long travel) for Scorpio Ascendant. Deep emotional nourishment, mass connection, intuitive leadership. Teaching or healing work at scale.</div></div>
+        <div class="cell"><div class="cell-label">Venus/Mars · Jan 2029 – Mar 2030</div><div class="cell-sub">Mars exalted in H3 (Ruchaka Yoga) activates. Bold expression, courageous action, breaking new ground. The Supporter who decides to lead with her warrior energy.</div></div>
+        <div class="cell"><div class="cell-label">Venus/Rahu · Mar 2030 – Mar 2033</div><div class="cell-sub">Disruption, expansion, amplification. Rahu in H7 (Taurus) creates intense relational experiences. A period of rapid evolution: Rahu accelerates whatever Venus has attracted.</div></div>
+        <div class="cell" style="border:1px solid rgba(186,117,23,0.3);background:rgba(186,117,23,0.02)"><div class="cell-label">Venus/Jupiter · Mar 2033 – Nov 2035</div><div class="cell-sub">The peak dharmic window. Jupiter Yoga Karaka (exalted H9, rules H2 wealth + H5 creative intelligence) in full expression. Wisdom, abundance, and dharmic partnerships converge.</div></div>
+        <div class="cell"><div class="cell-label">Venus/Saturn · Nov 2035 – Jan 2039</div><div class="cell-sub">Consolidation. H8 Saturn builds structures that last. Discipline applied to what Venus has attracted. Deep foundations laid for the Sun Mahadasha transition.</div></div>
+        <div class="cell"><div class="cell-label">Venus/Mercury · Jan 2039 – Nov 2041</div><div class="cell-sub">Mercury activates the Bharani conjunction in H6. Mastery through service, articulate intelligence, healing through language and teaching. The mind at its most refined.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DECLARATIONS -->
+  <div id="declarations" class="section">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">❖</div>
+        <div>
+          <div class="card-title">Sacred Declarations</div>
+          <div class="card-sub">The vows that anchor the design</div>
+        </div>
+      </div>
+
+      <div class="decl">
+        <div class="decl-quote">"I support others because I choose to, from a full cup, never from fear"</div>
+        <div class="decl-line"></div>
+      </div>
+      <div class="decl">
+        <div class="decl-quote">"The sanctuary I am is already complete, it does not need to earn its worth"</div>
+        <div class="decl-line"></div>
+      </div>
+      <div class="decl">
+        <div class="decl-quote">"I trust the far-sighted knowing before the evidence arrives"</div>
+        <div class="decl-line"></div>
+      </div>
+      <div class="decl">
+        <div class="decl-quote">"My presence is not background, it is the architecture"</div>
+        <div class="decl-line"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">🌙</div>
+        <div>
+          <div class="card-title">Core Transmission</div>
+          <div class="card-sub">The soul of Monika's dharma</div>
+        </div>
+      </div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--charcoal);line-height:1.5;text-align:center;padding:20px 0">
+        She does not make people feel held<br>
+        by doing more.<br>
+        She makes people feel held<br>
+        by being <strong>more fully herself</strong>.
+      </div>
+    </div>
+
+    <div class="card" style="background:var(--charcoal);border-color:transparent">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold-light);line-height:1.7;text-align:center">
+        Rohini Sun in the 7th house.<br>
+        Jupiter exalted in the 9th.<br>
+        Ketu on the Ascendant, the saint who came back to claim her body.<br>
+        <span style="color:rgba(250,240,220,0.55);font-size:16px">She came in rich with dharma. The work is learning to receive it.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALENDAR 2026–2030 -->
+  <div id="calendar" class="section">
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">📅</div>
+        <div>
+          <div class="card-title">Astrological Calendar 2026–2030</div>
+          <div class="card-sub">Jupiter, Saturn, Rahu transits · Dasha transitions · Interpreted for Scorpio Ascendant</div>
+        </div>
+      </div>
+      <div class="body-text">All dates computed via Swiss Ephemeris (Lahiri Ayanamsa, sidereal) and interpreted relative to Monika's estimated Scorpio Ascendant, natal exalted Jupiter in H9, Venus Mahadasha, and active Venus/Jupiter antardasha. Gold dots are prime action windows. Green dots are extraordinary peaks. Red dots are eclipse or review periods, prepare, do not initiate.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;margin-bottom:0">
+        <div class="cell" style="text-align:center"><div style="width:12px;height:12px;border-radius:50%;background:rgba(74,123,94,0.9);margin:0 auto 8px;box-shadow:0 0 0 3px rgba(74,123,94,0.2);"></div><div class="cell-label" style="text-align:center">Peak</div><div style="font-size:11px;color:var(--text-secondary)">Extraordinary window</div></div>
+        <div class="cell" style="text-align:center"><div style="width:12px;height:12px;border-radius:50%;background:var(--gold);margin:0 auto 8px;"></div><div class="cell-label" style="text-align:center">Auspicious</div><div style="font-size:11px;color:var(--text-secondary)">Prime action window</div></div>
+        <div class="cell" style="text-align:center"><div style="width:12px;height:12px;border-radius:50%;background:rgba(186,117,23,0.4);margin:0 auto 8px;"></div><div class="cell-label" style="text-align:center">Transit</div><div style="font-size:11px;color:var(--text-secondary)">Shift in energy field</div></div>
+        <div class="cell" style="text-align:center"><div style="width:12px;height:12px;border-radius:50%;background:#b53030;margin:0 auto 8px;"></div><div class="cell-label" style="text-align:center">Eclipse</div><div style="font-size:11px;color:var(--text-secondary)">Prepare, don't initiate</div></div>
+      </div>
+    </div>
+
+    <!-- 2026 -->
+    <div class="cal-year">
+      <div class="cal-year-hd">
+        <div class="cal-year-num">2026</div>
+        <div>
+          <div class="cal-year-badge badge-green">Birthday Transmission Year</div>
+          <div class="cal-year-theme">The year is defined by two threshold crossings. May 26 (her 23rd birthday): Venus/Venus antardasha closes and Venus/Sun begins. June 2: Jupiter enters sidereal Cancer (H9, exalted), mirroring her natal Hamsa Yoga at transit level. Sade Sati peaks in late June, the inner refinement reaches its deepest point before the new chapter fully opens. The window from July to October 2026 is the most auspicious single period of the decade for planting. Act from dharma, not strategy.</div>
+        </div>
+      </div>
+      <ul class="cal-events">
+        <li class="cal-event">
+          <div class="ev-date">May 6–25</div>
+          <div class="ev-dot auspicious"></div>
+          <div class="ev-content">
+            <div class="ev-title">Final days of Venus/Venus antardasha: receive the transmission <span class="ev-tag power">Oracle Window</span></div>
+            <div class="ev-body">Menstrual phase + final antardasha weeks: this is a receiving period. The three-year Venus/Venus chapter (identity, values, self-discovery) is completing. What arrives in stillness right now carries the signal of both the chapter closing and the one beginning. Do not push output. Let the knowing surface.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">May 26</div>
+          <div class="ev-dot peak"></div>
+          <div class="ev-content">
+            <div class="ev-title">BIRTHDAY: Venus/Venus closes, Venus/Sun antardasha begins <span class="ev-tag peak">Threshold</span></div>
+            <div class="ev-body">Venus Mahadasha's first antardasha closes on her 23rd birthday: three years of self-discovery through values, beauty, and love. Venus/Sun begins the same day. Sun activates her Rohini H7 identity. A year of stepping into public visibility and being recognized in partnerships. The question shifts from "who am I?" to "who am I in the world?" Mark this day intentionally.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Jun 2</div>
+          <div class="ev-dot peak"></div>
+          <div class="ev-content">
+            <div class="ev-title">JUPITER ENTERS SIDEREAL CANCER: Exalted in H9, Hamsa Yoga at transit level <span class="ev-tag peak">Peak Period</span></div>
+            <div class="ev-body">Jupiter transits into its sign of exaltation (Cancer) and into her natal 9th house, 7 days after her birthday. Her birth chart already has Jupiter exalted in H9, this transit mirrors her natal placement exactly, at transit level, for the first time in her life. H9 governs dharma, teachers, higher wisdom, long-distance travel, teaching, and spiritual expansion. Combined with Venus/Sun antardasha: a rare convergence. This is the event of the decade. Act from purpose.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Jun 27</div>
+          <div class="ev-dot eclipse"></div>
+          <div class="ev-content">
+            <div class="ev-title">SADE SATI PEAK: Saturn crosses natal Moon (20.06° Pisces) <span class="ev-tag eclipse">Hold, Don't Launch</span></div>
+            <div class="ev-body">Saturn reaches 20° Pisces, directly crossing her natal Moon placement. This is the deepest point of the Sade Sati (Saturn's 2.5-year transit through the signs around the natal Moon). Sade Sati is not punishment, it is the soul-level refinement her D-9 Moon in Capricorn requires. Do not launch new projects in this specific window. Use it for inner work, structural review, and receiving what the Saturn crossing is revealing. Note: Saturn may retrograde back across this degree in autumn 2026, creating a second crossing.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Jul 14</div>
+          <div class="ev-dot peak"></div>
+          <div class="ev-content">
+            <div class="ev-title">New Moon in Cancer (H9): First Women's Circle Launch Window <span class="ev-tag peak">First Launch Date</span></div>
+            <div class="ev-body">New Moon in Cancer falls in her natal H9, Jupiter exalted and present. This is the optimal date to launch the first women's circle or intimate gathering. The dharmic container she creates under this configuration carries Jupiter's protective and expansive force. Plant the seed here. Even one small circle on this date anchors the new chapter in the energy it is designed to carry.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Sep 21</div>
+          <div class="ev-dot eclipse"></div>
+          <div class="ev-content">
+            <div class="ev-title">Partial Solar Eclipse (Virgo, H11): Review, Do Not Initiate <span class="ev-tag eclipse">Eclipse Window</span></div>
+            <div class="ev-body">Eclipse on the H11 axis (networks, income, community): a two-week window of disruption and reconfiguration in her network and financial relationships. Do not sign contracts or launch programs in the 2 weeks around eclipse dates. Use this time to review what the Jupiter H9 window has attracted and refine your positioning.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Oct 10</div>
+          <div class="ev-dot auspicious"></div>
+          <div class="ev-content">
+            <div class="ev-title">New Moon: PT/Company Registration Window <span class="ev-tag power">Auspicious</span></div>
+            <div class="ev-body">New Moon in Virgo (H11): networks, income, and community seeding. This is the computed optimal date for official PT Indonesia company registration or any formal structuring of the Bali practice. Jupiter still in H9 (Cancer), providing dharmic backing. Registration before Oct 31 keeps the full H9 Jupiter support in place.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Oct 31</div>
+          <div class="ev-dot transit"></div>
+          <div class="ev-content">
+            <div class="ev-title">Jupiter leaves Cancer, enters Leo (H10): Career Focus Opens <span class="ev-tag power">Transit</span></div>
+            <div class="ev-body">Jupiter's transit through H9 (Cancer) closes. The extraordinary dharmic window of June to October completes. Jupiter enters Leo and her natal H10 (career, vocation, public recognition). Anything initiated before this date carries H9's dharmic backing. After this date, the focus shifts to career visibility and leadership expression.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Nov 9</div>
+          <div class="ev-dot auspicious"></div>
+          <div class="ev-content">
+            <div class="ev-title">New Moon: Container Enrollment Window Opens <span class="ev-tag power">Auspicious</span></div>
+            <div class="ev-body">New Moon in Scorpio (H1, her Ascendant): seeds planted in the self and identity. This is the optimal date to open enrollment for her 6-month container for Indonesian women. Jupiter now in H10 provides career visibility. Ketu in H1 (Ascendant) gives the enrollment a depth and spiritual gravitas that will attract the right women.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Nov – Dec</div>
+          <div class="ev-dot auspicious"></div>
+          <div class="ev-content">
+            <div class="ev-title">Container enrollment period: prepare for Jan 2027 launch</div>
+            <div class="ev-body">Venus/Sun antardasha continues (through May 26, 2027). Jupiter in H10 (Leo) expanding career presence. The container fills in the window between Nov 9 and Jan 19. This is also when the PT legal structure should be fully in place. Prepare the curriculum, the container materials, and the facilitation framework before Jan 19.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 2027 -->
+    <div class="cal-year">
+      <div class="cal-year-hd">
+        <div class="cal-year-num">2027</div>
+        <div>
+          <div class="cal-year-badge badge-gold">Sade Sati Clears + Roots Go Down</div>
+          <div class="cal-year-theme">Venus/Sun antardasha closes May 26, Venus/Moon begins (Moon rules H9, dharma, teaching, travel). Mid-2027: Saturn exits Pisces and Sade Sati fully clears, the first full exhale in 2+ years. Jupiter in Leo (H10) through mid-year, then enters Virgo (H11). The container launched in January begins generating its own momentum.</div>
+        </div>
+      </div>
+      <ul class="cal-events">
+        <li class="cal-event">
+          <div class="ev-date">Jan 19</div>
+          <div class="ev-dot peak"></div>
+          <div class="ev-content">
+            <div class="ev-title">CONTAINER PROGRAM BEGINS: First 6-Month Journey for Indonesian Women <span class="ev-tag peak">Launch Date</span></div>
+            <div class="ev-body">Computed optimal start date: New Moon in Capricorn, Venus/Sun antardasha active (visibility, identity expression), Jupiter in H10 (career recognition). This is the date the container cohort begins. All legal structure (PT registration), enrollment, and prep materials should be complete before this date. What begins here carries the full momentum of the 2026 transmission.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Jan – May</div>
+          <div class="ev-dot auspicious"></div>
+          <div class="ev-content">
+            <div class="ev-title">Venus/Sun antardasha: final arc of public visibility <span class="ev-tag power">Active</span></div>
+            <div class="ev-body">The year-long Venus/Sun antardasha (May 2026 to May 2027) is in its final months. Jupiter in H10 (career) is active through mid-year. The container runs, the practice builds, and Monika is being seen in the role she is designed for. The identity chapter is closing with evidence of who she has become.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">May 26</div>
+          <div class="ev-dot auspicious"></div>
+          <div class="ev-content">
+            <div class="ev-title">Venus/Sun closes, Venus/Moon antardasha begins <span class="ev-tag power">Transition</span></div>
+            <div class="ev-body">Venus/Moon (May 2027 to Jan 2029): Moon rules H9 for Scorpio Ascendant (dharma, higher teaching, long travel, wisdom traditions). A deeply nourishing period of mass emotional connection, intuitive leadership, and potential teaching or healing work at scale. The shift from "being seen" (Sun) to "nourishing many" (Moon) is the theme.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Mid-2027</div>
+          <div class="ev-dot peak"></div>
+          <div class="ev-content">
+            <div class="ev-title">SADE SATI ENDS: Saturn exits Pisces, enters Aries <span class="ev-tag peak">Liberation Point</span></div>
+            <div class="ev-body">Saturn completes its transit through Pisces (H5), the 2.5-year Sade Sati refinement period fully clears. This is the first full exhale since the inner contraction began. The D-9 Moon curriculum (Capricorn: receiving care through structure, emotional security through mastery) has been lived through. What was refined cannot be unlearned. What was released will not return. A new lightness becomes available.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Mid-2027</div>
+          <div class="ev-dot transit"></div>
+          <div class="ev-content">
+            <div class="ev-title">Jupiter moves into Virgo (H11): networks and financial gains <span class="ev-tag power">Transit</span></div>
+            <div class="ev-body">H11 governs income from career, gains, fulfillment of desires, elder siblings, and expanding circles. Jupiter in H11 is one of the most materially favorable annual transits. The seeds planted in H9 (Jun-Oct 2026) and harvested in H10 (late 2026 to mid-2027) now generate financial and network returns in H11.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 2028 -->
+    <div class="cal-year">
+      <div class="cal-year-hd">
+        <div class="cal-year-num">2028</div>
+        <div>
+          <div class="cal-year-badge badge-gold">The Harvest</div>
+          <div class="cal-year-theme">Venus/Moon antardasha runs through January 2029: mass emotional connection, healing at scale, intuitive leadership. Jupiter in Virgo (H11) through most of the year: financial gains, network expansion, fulfillment of long-held desires. The structures built 2026-2027 yield their material harvest. Venus/Mars begins January 2029, Ruchaka Yoga activates.</div>
+        </div>
+      </div>
+      <ul class="cal-events">
+        <li class="cal-event">
+          <div class="ev-date">Jan – Dec</div>
+          <div class="ev-dot auspicious"></div>
+          <div class="ev-content">
+            <div class="ev-title">Venus/Moon antardasha: mass reach and nourishment <span class="ev-tag power">Active</span></div>
+            <div class="ev-body">Moon rules H9 (dharma, teaching, travel) for Scorpio Ascendant. This is the antardasha of nourishing at scale, not just her close container, but potentially a wider teaching presence. Moon's emotional intelligence is amplified through Venus. Her Revati Moon (journey's end, deep compassion) finds its fullest expression in this period.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Jan – Jul</div>
+          <div class="ev-dot auspicious"></div>
+          <div class="ev-content">
+            <div class="ev-title">Jupiter in H11 (Virgo): financial expansion and network gains <span class="ev-tag power">Auspicious</span></div>
+            <div class="ev-body">H11: income from career, gains, fulfillment of desires, community, and the return of long-term investments. Gate 17 (Far-Sightedness) is most visible here, the people she invested in over 2026-2027 return the investment. The Supporter discovers that the support she gave was not a cost, it was a seed.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Mid-2028</div>
+          <div class="ev-dot transit"></div>
+          <div class="ev-content">
+            <div class="ev-title">Jupiter enters Libra (H12): spiritual deepening and foreign reach <span class="ev-tag power">Transit</span></div>
+            <div class="ev-body">H12: foreign lands, spiritual retreat, liberation, dissolution of personal ego in service of something larger. For Ketu-on-Ascendant Monika, H12 Jupiter is deeply resonant, it amplifies the spiritual depth that is already her foundation. This is a year for going deeper, not wider. International teaching or retreat facilitation may emerge.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Jan 2029</div>
+          <div class="ev-dot auspicious"></div>
+          <div class="ev-content">
+            <div class="ev-title">Venus/Mars antardasha begins: Ruchaka Yoga activates <span class="ev-tag power">Breakthrough</span></div>
+            <div class="ev-body">Mars exalted in Capricorn H3 (Ruchaka Yoga) now activates at the antardasha level. H3: bold expression, communication, writing, speaking, short journeys. This is the antardasha of courageous action, saying what she sees, going where the Gate 18 quality-sense directs, and moving with the full force of the warrior energy she was born with. The Supporter who leads with Ruchaka courage.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 2029–2030 -->
+    <div class="cal-year">
+      <div class="cal-year-hd">
+        <div class="cal-year-num">2029 – 2030</div>
+        <div>
+          <div class="cal-year-badge badge-gold">Bold New Ground</div>
+          <div class="cal-year-theme">Venus/Mars (Jan 2029 to Mar 2030): Mars exalted in H3, Ruchaka Yoga in full expression. Bold communication, courageous new territory, writing and speaking at the highest level. Venus/Rahu begins March 2030: rapid evolution, disruption, amplification through relational experiences. Jupiter in Libra (H12) then Scorpio (H1): spiritual depth, then personal reinvention.</div>
+        </div>
+      </div>
+      <ul class="cal-events">
+        <li class="cal-event">
+          <div class="ev-date">2029</div>
+          <div class="ev-dot auspicious"></div>
+          <div class="ev-content">
+            <div class="ev-title">Venus/Mars: Ruchaka courage in full expression <span class="ev-tag power">Active</span></div>
+            <div class="ev-body">The bold communication she was designed for: Gate 17 (Far-Sightedness) and Gate 18 (Integrity) expressed through Mars H3's courageous voice. This is the period for writing that has her actual name on it, for facilitating with visible authority, and for saying the things she has been seeing but holding. The Projector who has received the invitation and is now delivering the guidance without apology.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">2029</div>
+          <div class="ev-dot transit"></div>
+          <div class="ev-content">
+            <div class="ev-title">Jupiter in Libra (H12): foreign expansion and spiritual depth</div>
+            <div class="ev-body">H12 Jupiter: foreign lands, liberation, spiritual retreat. The Ketu/Ascendant depth is supported at the transit level. This is a year for international connections, deep retreat facilitation, and the kind of spiritual work that cannot be marketed, only experienced. Her presence becomes the curriculum.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">Mar 2030</div>
+          <div class="ev-dot transit"></div>
+          <div class="ev-content">
+            <div class="ev-title">Venus/Rahu begins: rapid evolution and amplification <span class="ev-tag power">Transition</span></div>
+            <div class="ev-body">Rahu in H7 Taurus (Krittika): intense relational experiences, amplification of what Venus has attracted, rapid karmic evolution through partnerships. Rahu accelerates whatever Venus Mahadasha has built. The relational field becomes the accelerator. A period of rapid learning through experiences that could not have been planned, only received.</div>
+          </div>
+        </li>
+        <li class="cal-event">
+          <div class="ev-date">2030</div>
+          <div class="ev-dot auspicious"></div>
+          <div class="ev-content">
+            <div class="ev-title">Jupiter enters Scorpio (H1): personal reinvention and embodied authority</div>
+            <div class="ev-body">Jupiter transiting her Ascendant (H1, Scorpio): a rare once-in-12-years expansion of the identity itself. Everything she has built through Venus Mahadasha now integrates into a new sense of self. The Role Model phase of Profile 4/6 is beginning to emerge. She is becoming the person she was always designed to be.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- MASTER WINDOWS -->
+    <div class="card">
+      <div class="card-hd">
+        <div class="card-icon">✦</div>
+        <div>
+          <div class="card-title">Master Windows 2026–2030</div>
+          <div class="card-sub">The six most critical windows in Monika's five-year arc: computed via Swiss Ephemeris and Vimshottari Dasha</div>
+        </div>
+      </div>
+      <div>
+        <div class="mw-row green">
+          <div class="mw-period-wrap"><div class="mw-type">Birthday Transmission</div><div class="mw-period">May 26 – Oct 31, 2026</div></div>
+          <div class="mw-desc">Venus/Sun antardasha begins + Jupiter exalted in H9 (Cancer). The most auspicious single window of the decade. Plant dharmic seeds. First circle Jul 14. PT registration Oct 10. Container enrollment Nov 9. Everything begun here carries Hamsa Yoga force.</div>
+        </div>
+        <div class="mw-row green">
+          <div class="mw-period-wrap"><div class="mw-type">Liberation Point</div><div class="mw-period">Mid-2027</div></div>
+          <div class="mw-desc">Sade Sati ends. Saturn exits Pisces. The 2-year inner refinement lifts. First full exhale. The D-9 Moon curriculum (emotional security through mastery) has been completed. What was refined cannot be unlearned. A new lightness becomes permanently available.</div>
+        </div>
+        <div class="mw-row gold">
+          <div class="mw-period-wrap"><div class="mw-type">Container Launch</div><div class="mw-period">Jan 19, 2027</div></div>
+          <div class="mw-desc">Venus/Sun in its final arc, Jupiter H10 (career visibility) active. The optimal date to begin the 6-month container for Indonesian women. Enrollment opens Nov 9, 2026. All legal structure should be finalized before this date.</div>
+        </div>
+        <div class="mw-row gold">
+          <div class="mw-period-wrap"><div class="mw-type">Mass Reach</div><div class="mw-period">May 2027 – Jan 2029</div></div>
+          <div class="mw-desc">Venus/Moon antardasha. Moon rules H9 (dharma, teaching, travel). Deep emotional nourishment, intuitive leadership, and potential reach at scale. The Supporter nourishing many, not just the intimate container, but a wider presence. Financial returns from H11 Jupiter support the expansion.</div>
+        </div>
+        <div class="mw-row gold">
+          <div class="mw-period-wrap"><div class="mw-type">Ruchaka Bold</div><div class="mw-period">Jan 2029 – Mar 2030</div></div>
+          <div class="mw-desc">Venus/Mars antardasha. Mars exalted in H3 (Ruchaka Yoga). Courageous expression, bold new territory, writing and speaking with full authority. The period to step into public voice without the Supporter's impulse to shrink. Gate 17 and Gate 18 expressed at full volume.</div>
+        </div>
+        <div class="mw-row" style="background:rgba(139,107,139,0.05);border:1px solid rgba(139,107,139,0.15)">
+          <div class="mw-period-wrap"><div class="mw-type">Soul Integration</div><div class="mw-period">2030 onward</div></div>
+          <div class="mw-desc">Jupiter H1 (Ascendant). Venus/Rahu acceleration. The Role Model phase of Profile 4/6 begins its emergence. Everything lived 2026-2030 integrates into a new identity. The person she is becoming in her early 30s is being built by everything happening right now.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SADE SATI CARD -->
+    <div class="card" style="border-color:rgba(139,107,139,0.3);background:rgba(139,107,139,0.03)">
+      <div class="card-hd">
+        <div class="card-icon">♄</div>
+        <div>
+          <div class="card-title">Sade Sati: The Refinement Arc</div>
+          <div class="card-sub">Saturn transiting Aquarius, Pisces, Aries (signs around natal Moon in Pisces H5) · Active 2022-2027</div>
+        </div>
+      </div>
+      <div class="body-text">Sade Sati is the 7.5-year Saturn transit through three signs centered on the natal Moon. It is not a curse, it is the deepest soul-curriculum Saturn can deliver. Monika's natal Moon is at 20.06° Pisces (H5, Revati Pada 2). Saturn has been moving through Pisces since approximately August 2024 (sidereal). The D-9 Moon in Capricorn (debilitated) confirms that this is exactly the curriculum her soul chose: emotional security through structure, receiving care through mastery, not through being needed.</div>
+      <div class="grid2" style="margin-bottom:0">
+        <div class="cell" style="border-left:3px solid rgba(139,107,139,0.6)">
+          <div class="cell-label">Jun 27, 2026: First Exact Crossing</div>
+          <div class="cell-sub">Saturn reaches 20° Pisces, exactly conjunct natal Moon. The peak of the peak. Inner contraction, testing of foundations, the question "what am I actually made of?" is answered not by doing more, by allowing the Saturn pressure to show what is real. Do not initiate. Hold. Receive.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(139,107,139,0.4)">
+          <div class="cell-label">Autumn 2026: Saturn Retrograde Crossing</div>
+          <div class="cell-sub">Saturn retrogrades through Pisces in autumn 2026, likely crossing the 20° natal Moon degree again (second pass). A second wave of the same refinement. What was revealed in June is deepened. The inner knowing that arrived in summer is tested: is it real, or was it circumstance?</div>
+        </div>
+        <div class="cell" style="border-left:3px solid rgba(74,123,94,0.4)">
+          <div class="cell-label">Mid-2027: Sade Sati Clears</div>
+          <div class="cell-sub">Saturn exits Pisces and enters Aries. The Sade Sati period completes. The D-9 Moon curriculum closes. What was refined cannot be lost. The emotional structure she now carries, the ability to receive without collapsing, to hold without over-giving, is the permanent gift of this period.</div>
+        </div>
+        <div class="cell" style="border-left:3px solid var(--gold)">
+          <div class="cell-label">The Gift of Sade Sati</div>
+          <div class="cell-sub">Monika's Sade Sati is happening in her early 20s, unusually early, which means the refinement comes before the major building years (2027-2033). By the time Venus/Jupiter antardasha arrives in 2033 (the peak dharmic abundance window), she will have already done the soul-level inner work. She is building the foundation now.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end main -->
+
+<script>
+  function show(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.nav-item').forEach(el => {
+      if (el.getAttribute('onclick') && el.getAttribute('onclick').includes("'" + id + "'")) {
+        el.classList.add('active');
+      }
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>

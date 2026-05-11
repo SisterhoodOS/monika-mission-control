@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saha Synergy — Ideal Client Profiles</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--cream:#F5F1ED;--deep:#EDE6DC;--sage:#A89968;--sage2:#8C7E51;--char:#2C2C2C;--soft:#4A4A4A;--rule:#D9D0C2;--burg:#5C1A33}
+  html{font-size:10.5pt;scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;font-weight:300;color:var(--char);background:var(--cream);line-height:1.65}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{position:fixed;top:0;left:0;width:260px;height:100vh;background:var(--char);color:var(--cream);padding:28px 22px;overflow-y:auto;transform:translateX(-100%);transition:transform 0.3s ease;z-index:100}
+  .sidebar.open{transform:translateX(0)}
+  @media(min-width:1024px){.sidebar{transform:translateX(0)}.main{margin-left:260px}}
+  .menu-btn{position:fixed;top:14px;left:14px;z-index:200;background:var(--char);color:var(--cream);border:none;border-radius:6px;padding:7px 11px;font-size:15px;cursor:pointer}
+  @media(min-width:1024px){.menu-btn{display:none}}
+  .sb-brand{font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);margin-bottom:6px}
+  .sb-title{font-family:'Cormorant Garamond',serif;font-size:18pt;color:var(--cream);margin-bottom:24px;line-height:1.2}
+  .sb-section{font-size:7.5pt;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin:16px 0 6px}
+  .sb-list{list-style:none}
+  .sb-list a{display:block;font-size:10pt;color:rgba(245,241,237,.65);padding:4px 0 4px 10px;text-decoration:none;border-left:2px solid transparent;transition:color .15s}
+  .sb-list a:hover{color:var(--cream);border-left-color:var(--sage)}
+  .main{flex:1;padding:48px 32px 96px;max-width:100%}
+  @media(min-width:1024px){.main{padding:48px 56px 96px}}
+  .hero{background:linear-gradient(135deg,var(--deep) 0%,#E5D9C8 100%);border-radius:14px;padding:44px 40px;margin-bottom:48px;border:1px solid var(--rule)}
+  .hero-eye{font-size:8pt;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--burg);margin-bottom:14px}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,38px);font-weight:400;color:var(--char);line-height:1.15;margin-bottom:14px}
+  .hero-sub{font-size:11pt;color:var(--soft);max-width:640px;margin-bottom:20px}
+  .hero-tags{display:flex;flex-wrap:wrap;gap:10px}
+  .hero-tags span{font-size:9pt;background:rgba(92,26,51,.08);color:var(--burg);border:1px solid rgba(92,26,51,.2);border-radius:20px;padding:3px 12px}
+  section{margin-bottom:52px;scroll-margin-top:28px}
+  .sec-eye{font-size:8pt;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--sage2);margin-bottom:8px}
+  h2{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.5vw,27px);font-weight:400;color:var(--char);margin-bottom:16px;line-height:1.2}
+  h3{font-size:8pt;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--sage2);margin:20px 0 8px}
+  p{margin-bottom:11px;font-size:10.5pt;color:var(--soft);max-width:720px}
+  ul{padding-left:20px;margin:8px 0 14px;max-width:700px}
+  li{color:var(--soft);margin-bottom:6px;font-size:10.5pt}
+  li::marker{color:var(--sage)}
+  .rule{height:1px;background:var(--rule);margin:36px 0}
+  table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:9.5pt}
+  th{background:var(--burg);color:var(--cream);font-size:7.5pt;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:7px 13px;text-align:left}
+  td{padding:9px 13px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.55;color:var(--soft)}
+  tr:nth-child(even) td{background:var(--deep)}
+  .icp-card{background:var(--cream);border:1px solid var(--rule);border-radius:12px;overflow:hidden;margin-bottom:28px}
+  .icp-hdr{background:var(--burg);color:var(--cream);padding:20px 26px;display:flex;align-items:baseline;gap:14px}
+  .icp-num{font-family:'Cormorant Garamond',serif;font-size:26pt;font-weight:300;color:var(--sage);line-height:1;flex-shrink:0}
+  .icp-hdr-info h3{font-family:'Cormorant Garamond',serif;font-size:16pt;font-weight:400;color:var(--cream);letter-spacing:0;text-transform:none;margin:0 0 3px}
+  .icp-hdr-info .icp-tag{font-size:8.5pt;color:var(--sage);font-style:italic}
+  .icp-body{padding:22px 26px}
+  .icp-body h3{margin-top:0}
+  .signal{background:var(--deep);border-left:3px solid var(--sage);padding:12px 16px;margin:12px 0;font-size:9.5pt;line-height:1.65}
+  .signal strong{color:var(--char);font-weight:600}
+  blockquote{background:var(--deep);border-left:3px solid var(--sage);padding:12px 16px;margin:12px 0;font-family:'Cormorant Garamond',serif;font-size:11.5pt;font-style:italic;color:var(--char);line-height:1.6}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 0}
+  @media(max-width:640px){.two-col{grid-template-columns:1fr}}
+  .mini-card{background:var(--deep);border-radius:8px;padding:14px 16px}
+  .mini-card .label{font-size:7.5pt;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sage2);margin-bottom:6px}
+  .mini-card p{font-size:9.5pt;margin-bottom:0;max-width:none}
+  strong{color:var(--char);font-weight:600}
+</style>
+</head>
+<body>
+
+<button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+
+<div class="layout">
+<nav class="sidebar">
+  <div class="sb-brand">Saha Synergy</div>
+  <div class="sb-title">Ideal Client Profiles</div>
+  <div class="sb-section">Archetypes</div>
+  <ul class="sb-list">
+    <li><a href="#archetype-1">The Growth-Stage Builder</a></li>
+    <li><a href="#archetype-2">The Visionary Innovator</a></li>
+    <li><a href="#archetype-3">The Independent Expert</a></li>
+  </ul>
+  <div class="sb-section">Framework</div>
+  <ul class="sb-list">
+    <li><a href="#signals">Buy Signals</a></li>
+    <li><a href="#disqualifiers">Disqualifiers</a></li>
+    <li><a href="#funnel">Entry Point Logic</a></li>
+  </ul>
+</nav>
+
+<main class="main">
+
+  <div class="hero">
+    <div class="hero-eye">Saha Synergy · ICP Framework</div>
+    <h1>Ideal Client Profiles</h1>
+    <p class="hero-sub">Three founder archetypes who are ready for what Saha Synergy does. The common thread: real ambition, real traction, and a structural gap between where they are and where they are trying to go.</p>
+    <div class="hero-tags">
+      <span>Founders</span>
+      <span>Growth Stage</span>
+      <span>Ops Gap</span>
+      <span>Vision-Heavy</span>
+      <span>International</span>
+    </div>
+  </div>
+
+
+  <!-- CORE PROFILE TABLE -->
+  <section id="overview">
+    <div class="sec-eye">At a Glance</div>
+    <h2>The Saha Synergy Client</h2>
+    <table>
+      <tr><th>Dimension</th><th>Profile</th></tr>
+      <tr><td><strong>Business stage</strong></td><td>Early growth to scaling (2–50 employees, $50K–$2M revenue range)</td></tr>
+      <tr><td><strong>Founder type</strong></td><td>Solo or small founding team. Often doing too much personally.</td></tr>
+      <tr><td><strong>Geography</strong></td><td>International, often Bali/SEA, Africa, Europe, or Southeast Asian diaspora. Timezone-agnostic (all sessions Zoom).</td></tr>
+      <tr><td><strong>Industry</strong></td><td>No specific sector. Pattern is what matters: vision-heavy, execution-lean, operationally stretched.</td></tr>
+      <tr><td><strong>Primary pain</strong></td><td>Business runs on founder energy, not systems. Growth is stalling or will stall without structure.</td></tr>
+      <tr><td><strong>Secondary pain</strong></td><td>Can't hand things over. No clear priority sequence. The business doesn't run if they step back.</td></tr>
+      <tr><td><strong>Awareness level</strong></td><td>Mid to high. They know something is off. They may not know what exactly.</td></tr>
+      <tr><td><strong>Budget reality</strong></td><td>$397–$15K range. Entry is the free audit or $397 Mind Mapping special. DFY ($15K) for those who see the full picture.</td></tr>
+      <tr><td><strong>Decision speed</strong></td><td>Fast when the diagnosis lands precisely. Stalls when they feel misunderstood or unheard.</td></tr>
+    </table>
+  </section>
+
+  <div class="rule"></div>
+
+
+  <!-- ARCHETYPE 1 -->
+  <section id="archetype-1">
+    <div class="sec-eye">Archetype 01</div>
+
+    <div class="icp-card">
+      <div class="icp-hdr">
+        <div class="icp-num">01</div>
+        <div class="icp-hdr-info">
+          <h3>The Growth-Stage Builder</h3>
+          <div class="icp-tag">Real traction, broken infrastructure</div>
+        </div>
+      </div>
+      <div class="icp-body">
+
+        <h3>Who They Are</h3>
+        <p>A founder who has built something genuinely real in a market where that took serious grit. They have customers, revenue, a team of some kind. But the business runs on their personal energy, judgment, and relationships — not on systems. They are growing, and the growth is starting to expose the gaps.</p>
+
+        <div class="two-col">
+          <div class="mini-card">
+            <div class="label">The Strength</div>
+            <p>They have already proven something works. Market fit exists. The product or service has real demand.</p>
+          </div>
+          <div class="mini-card">
+            <div class="label">The Gap</div>
+            <p>Operational infrastructure hasn't kept pace with the growth. Processes live in the founder's head. Delegation fails because there's nothing to hand over.</p>
+          </div>
+        </div>
+
+        <h3>What They Say on the Call</h3>
+        <ul>
+          <li>"I can't step away because everything runs through me."</li>
+          <li>"We've been growing but it feels messier, not cleaner."</li>
+          <li>"I need to hire but I don't know who because I haven't written the job down."</li>
+          <li>"I keep saying I'll build that system eventually."</li>
+        </ul>
+
+        <h3>What They Actually Need</h3>
+        <p>An operational architecture that lets the business run without being personally held by the founder. Documented processes, clear ownership, a priority sequence for what to build first.</p>
+
+        <h3>Best Entry Point</h3>
+        <p><strong>3-Hour Mind Mapping ($397 special).</strong> Enough depth to map the real picture. If the session reveals significant scope, position DFY ($15K) as the path forward.</p>
+
+        <h3>Qualifying Signal</h3>
+        <div class="signal"><strong>Listen for "eventually."</strong> If they say it three or more times in discovery, the business is stuck at exactly those points. That is where the work is.</div>
+
+        <blockquote>"I don't doubt you can figure it out yourself. The question is what it costs you in time and energy to figure it out alone, and whether that is the best use of what you've got right now."</blockquote>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ARCHETYPE 2 -->
+  <section id="archetype-2">
+    <div class="sec-eye">Archetype 02</div>
+
+    <div class="icp-card">
+      <div class="icp-hdr">
+        <div class="icp-num">02</div>
+        <div class="icp-hdr-info">
+          <h3>The Visionary Innovator</h3>
+          <div class="icp-tag">Wide scope, early execution</div>
+        </div>
+      </div>
+      <div class="icp-body">
+
+        <h3>Who They Are</h3>
+        <p>A founder building something with genuine ambition — often in climate, infrastructure, technology, or a multi-vertical portfolio. The vision is large and real. The company is early (2–10 people). Execution is still being built around the vision, not yet driving it.</p>
+        <p>This founder often works across multiple sub-brands or verticals. The strategic priority sequence is unclear. Partners and investors get the vision but struggle to see the executable near-term story.</p>
+
+        <div class="two-col">
+          <div class="mini-card">
+            <div class="label">The Strength</div>
+            <p>The vision is bold and the thinking is non-incremental. This is not a person solving a small problem.</p>
+          </div>
+          <div class="mini-card">
+            <div class="label">The Gap</div>
+            <p>The vision expands faster than the execution. The operational story is not yet legible to external partners. No clear "what is real right now" layer.</p>
+          </div>
+        </div>
+
+        <h3>What They Say on the Call</h3>
+        <ul>
+          <li>"We're working on several things at once — climate, fintech, telecom, AI."</li>
+          <li>"Investors keep asking what the near-term revenue looks like and I'm still building the answer."</li>
+          <li>"I have people but I'm still doing most of the important things myself."</li>
+          <li>"The concept is solid, I just need help on the business architecture side."</li>
+        </ul>
+
+        <h3>What They Actually Need</h3>
+        <p>A priority sequence. A clear distinction between what is real now and what is roadmap. An operational story that makes serious partners say yes. Often a strong AI Implementation fit because technology is core to their product vision.</p>
+
+        <h3>Best Entry Point</h3>
+        <p><strong>Free 30-min Audit</strong> to establish trust and map the real constraint. <strong>AI Implementation</strong> is often the highest-value offer for this profile — lead with it once the technical gap is confirmed in discovery.</p>
+
+        <h3>Qualifying Signal</h3>
+        <div class="signal"><strong>Portfolio breadth is the tell.</strong> If they are working across 3+ verticals with a small team, the operational architecture is almost certainly missing. The vision is real. The structure isn't there yet.</div>
+
+        <blockquote>"The most valuable thing I can do for you is help you see your own situation with clarity. You have enormous vision. What you need is someone who respects that AND asks the grounded questions nobody else is asking you."</blockquote>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ARCHETYPE 3 -->
+  <section id="archetype-3">
+    <div class="sec-eye">Archetype 03</div>
+
+    <div class="icp-card">
+      <div class="icp-hdr">
+        <div class="icp-num">03</div>
+        <div class="icp-hdr-info">
+          <h3>The Independent Expert</h3>
+          <div class="icp-tag">Deep expertise, missing the infrastructure</div>
+        </div>
+      </div>
+      <div class="icp-body">
+
+        <h3>Who They Are</h3>
+        <p>A highly experienced professional — investor, consultant, specialist, creative director — who has 10–20 years of genuine domain expertise and a strong network, but no unified vehicle to leverage it at scale. Often currently employed or working independently without formal structure.</p>
+        <p>They are moving toward building their own thing, or have already started but it's still running through their personal relationships and energy rather than a system.</p>
+
+        <div class="two-col">
+          <div class="mini-card">
+            <div class="label">The Strength</div>
+            <p>Deep expertise, real track record, global network. The raw materials for a leveraged independent practice are already there.</p>
+          </div>
+          <div class="mini-card">
+            <div class="label">The Gap</div>
+            <p>No legibility. The expertise isn't packaged. The network works through personal relationships, not infrastructure. There's no vehicle that scales without their energy.</p>
+          </div>
+        </div>
+
+        <h3>What They Say on the Call</h3>
+        <ul>
+          <li>"I have the experience and the network but I haven't quite built the vehicle yet."</li>
+          <li>"If the right person found me tomorrow they'd have to ask me to explain everything."</li>
+          <li>"I know what I want to build, I just haven't built the infrastructure around it."</li>
+          <li>"My network does the work for me — for now."</li>
+        </ul>
+
+        <h3>What They Actually Need</h3>
+        <p>Positioning that makes the expertise legible. A system that lets the network work for them instead of through them. A vehicle — a brand, a practice, a methodology — that exists independent of their personal capacity.</p>
+
+        <h3>Best Entry Point</h3>
+        <p><strong>Free 30-min Audit</strong> framed as mapping the independent practice. Come as a peer. Do not pitch. Let the conversation show what is possible. Often becomes a referral/partnership relationship even when not yet ready to buy.</p>
+
+        <h3>Qualifying Signal</h3>
+        <div class="signal"><strong>The "for now" tells you everything.</strong> If they are relying on their network "for now," the urgency isn't visible to them yet. Frame the risk of waiting, not the reward of acting. That lands differently for this profile.</div>
+
+        <blockquote>"What you have — the background, the network, the track record — is genuinely rare. What's missing is legibility. The way it's held together in your memory and relationships means it can only ever be as big as your personal capacity."</blockquote>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+
+  <!-- BUY SIGNALS -->
+  <section id="signals">
+    <div class="sec-eye">Qualification</div>
+    <h2>Buy Signals</h2>
+    <p>These indicators, heard in discovery or observed in their profile, signal a client who is close to a decision.</p>
+
+    <table>
+      <tr><th>Signal</th><th>What It Means</th></tr>
+      <tr><td><strong>They say "eventually" 3+ times</strong></td><td>The business is stuck at exactly those points. Highest-leverage work is there.</td></tr>
+      <tr><td><strong>They laugh nervously when describing their ops</strong></td><td>They know it's broken. They've been avoiding the conversation.</td></tr>
+      <tr><td><strong>They've tried to delegate and it failed</strong></td><td>Not a people problem — a systems problem. They are ready to hear that.</td></tr>
+      <tr><td><strong>They repeat the same problem twice</strong></td><td>That is the real pain. Everything else is context.</td></tr>
+      <tr><td><strong>They book a 30-min audit proactively</strong></td><td>High intent. The diagnosis call should convert.</td></tr>
+      <tr><td><strong>They mention a specific upcoming milestone or deadline</strong></td><td>Urgency is present. Make the connection between the gap and the milestone explicit.</td></tr>
+      <tr><td><strong>They ask about AI specifically</strong></td><td>AI Implementation is on the table. Qualify the scope in discovery.</td></tr>
+    </table>
+  </section>
+
+
+  <!-- DISQUALIFIERS -->
+  <section id="disqualifiers">
+    <div class="sec-eye">Qualification</div>
+    <h2>Disqualifiers</h2>
+    <p>Not every founder is the right fit. These patterns signal misalignment.</p>
+
+    <table>
+      <tr><th>Pattern</th><th>Why It Disqualifies</th></tr>
+      <tr><td><strong>Looking for execution, not architecture</strong></td><td>Saha Synergy designs and maps. We do not manage the day-to-day ops or run projects on behalf of clients (below DFY level).</td></tr>
+      <tr><td><strong>No traction or revenue yet</strong></td><td>Pre-revenue founders need a different kind of support. The value of operational structure compounds on something that already exists.</td></tr>
+      <tr><td><strong>Looking for a technical co-founder</strong></td><td>AI Implementation is strategy + specialist delivery. It is not a co-founder arrangement.</td></tr>
+      <tr><td><strong>Resistant to the diagnosis</strong></td><td>If they deflect or disagree when the gap is named precisely, the relationship starts on the wrong footing. Do not push.</td></tr>
+      <tr><td><strong>Expects the map to do the work</strong></td><td>Clarity is only useful if they will act on it. A founder who wants a document and not a decision is not ready.</td></tr>
+    </table>
+  </section>
+
+
+  <!-- FUNNEL ENTRY LOGIC -->
+  <section id="funnel">
+    <div class="sec-eye">Entry Point Logic</div>
+    <h2>Which Offer to Lead With</h2>
+    <table>
+      <tr><th>Situation</th><th>Lead Offer</th><th>Path If Yes</th></tr>
+      <tr><td>Cold outreach or first-touch intro</td><td>Free 30-min Operations Audit</td><td>Audit → Mind Mapping → DFY</td></tr>
+      <tr><td>Warm referral or inbound inquiry</td><td>3-Hour Mind Mapping ($397 special)</td><td>Mind Mapping → DFY or Fractional COO</td></tr>
+      <tr><td>AI interest confirmed in discovery</td><td>AI Implementation (scope first)</td><td>Scoping call → proposal → delivery</td></tr>
+      <tr><td>Enterprise/corporate context</td><td>Strategic Operations Audit ($3K)</td><td>Audit → DFY ($15K) → Fractional COO</td></tr>
+      <tr><td>Not yet ready to buy</td><td>Build the relationship. Offer the audit. They will refer.</td><td>Referral → next engagement</td></tr>
+    </table>
+
+    <div class="signal" style="margin-top:20px">
+      <strong>Pricing anchor (active through June 2026):</strong> The 3-Hour Mind Mapping is at $397 — down from $997. This is a founding-client rate, not a permanent offer. After June 30 it returns to $997. Use this window to bring in case studies.
+    </div>
+  </section>
+
+
+  <div class="rule"></div>
+  <p style="font-size:8.5pt;color:var(--sage2);font-style:italic;text-align:center">Saha Synergy Group Ltd · Structure that frees you · sahasynergy.com</p>
+
+</main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('.sb-list a');
+  const sections = document.querySelectorAll('section[id]');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const a = document.querySelector(`.sb-list a[href="#${e.target.id}"]`);
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
