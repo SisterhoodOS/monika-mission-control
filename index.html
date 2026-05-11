@@ -32,11 +32,11 @@ body { font-family: var(--sans); font-weight: 400; color: var(--ink); background
 }
 .sidebar.open { transform: translateX(0); }
 @media (min-width: 1024px) { .sidebar { transform: translateX(0); } .main { margin-left: 268px; } }
-.main { flex: 1; min-height: 100vh; overflow: hidden; }
+.main { flex: 1; height: 100vh; overflow-y: auto; }
 .main-inner { padding: 44px 36px 80px; max-width: 960px; }
 @media (min-width: 1024px) { .main-inner { padding: 44px 52px 80px; } }
-.section-panel { display: none; width: 100%; height: 100vh; }
-.section-panel.frame-mode { display: flex; flex-direction: column; }
+.section-panel { display: none; width: 100%; }
+.section-panel.frame-mode { display: flex; flex-direction: column; height: 100vh; }
 .section-panel.content-mode { display: block; }
 .section-panel .main-inner { display: block; }
 
@@ -259,6 +259,39 @@ p:last-child { margin-bottom: 0; }
 strong { color: var(--ink); font-weight: 600; }
 .tag { display: inline-block; font-size: 9pt; background: var(--bg-soft); color: var(--clay); border: 1px solid var(--line); border-radius: 20px; padding: 2px 10px; margin: 2px; }
 .empty-state { text-align: center; padding: 40px 20px; color: var(--ink-mute); font-size: 12pt; font-family: var(--serif); font-style: italic; }
+
+/* ── SPRINT TASKS ──────────────────────────────────────────────────── */
+.sprint-page { padding: 0 0 60px; }
+.sprint-progress-wrap { background: #f3f7fb; border-radius: 20px; height: 28px; margin-bottom: 12px; position: relative; overflow: hidden; border: 1px solid #dce6ef; }
+.sprint-progress-fill { height: 100%; border-radius: 20px; background: linear-gradient(90deg, #378ADD, #5BA3E6); transition: width 0.5s ease; }
+.sprint-progress-label { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; color: #1A2C3D; font-family: Arial, sans-serif; }
+.sprint-cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-bottom: 24px; }
+.sprint-cat-card { border-radius: 10px; padding: 10px 12px; border: 1px solid #dce6ef; text-align: center; }
+.sprint-cat-name { font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; font-family: Arial, sans-serif; margin-bottom: 4px; }
+.sprint-cat-count { font-size: 18px; font-weight: bold; }
+.sprint-section { margin-bottom: 20px; }
+.sprint-section-title { font-size: 10px; font-weight: bold; color: #666; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; border-bottom: 1px solid #dce6ef; padding-bottom: 6px; font-family: Arial, sans-serif; display: flex; justify-content: space-between; align-items: center; }
+.sprint-count-badge { font-size: 11px; font-weight: bold; padding: 1px 8px; border-radius: 10px; border: 1px solid transparent; }
+.sprint-task-list { display: flex; flex-direction: column; gap: 5px; }
+.sprint-task { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; padding: 10px 12px; border-radius: 10px; border: 1px solid #dce6ef; background: #fff; }
+.sprint-task.cat-admin    { border-left: 5px solid #7B61A6; background: #F0EAF8; }
+.sprint-task.cat-marketing{ border-left: 5px solid #C9559F; background: #FCEBF4; }
+.sprint-task.cat-sales    { border-left: 5px solid #1D9E75; background: #EAF3DE; }
+.sprint-task.cat-errands  { border-left: 5px solid #D4820A; background: #FFF3E6; }
+.sprint-task.done { opacity: 0.48; }
+.sprint-task.done .sprint-task-text { text-decoration: line-through; }
+.sprint-check { width: 18px; height: 18px; border-radius: 4px; border: 2px solid #dce6ef; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #fff; margin-top: 2px; }
+.sprint-check.checked { background: #378ADD; border-color: #378ADD; }
+.sprint-check.checked::after { content: ""; display: block; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); margin-top: -2px; }
+.sprint-task-content { display: flex; flex-direction: column; gap: 4px; }
+.sprint-task-text { font-size: 13px; color: #1A2C3D; line-height: 1.45; font-family: Georgia, serif; }
+.sprint-task-note { font-size: 10px; color: #666; display: block; margin-top: 3px; font-family: Arial, sans-serif; line-height: 1.4; font-style: italic; }
+.sprint-task-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
+.sprint-time { font-size: 9px; padding: 2px 7px; border-radius: 10px; font-family: Arial, sans-serif; font-weight: bold; background: #f3f7fb; color: #666; border: 1px solid #dce6ef; }
+.sprint-proj { font-size: 9px; padding: 2px 7px; border-radius: 10px; font-family: Arial, sans-serif; font-weight: bold; background: #e6f1fb; color: #185FA5; border: 1px solid #b0cff0; }
+.sprint-urgent { font-size: 9px; padding: 2px 7px; border-radius: 10px; font-family: Arial, sans-serif; font-weight: bold; background: #fcebeb; color: #A32D2D; border: 1px solid #f0c0c0; }
+.sprint-done-toggle { display: inline-block; font-size: 11pt; color: var(--workspace); cursor: pointer; margin-bottom: 14px; font-family: var(--serif); font-style: italic; user-select: none; }
+.sprint-done-toggle:hover { opacity: .75; }
 </style>
 </head>
 <body>
@@ -478,6 +511,7 @@ strong { color: var(--ink); font-weight: 600; }
       <div class="subtabs">
         <div class="subtab active" onclick="showTasksTab('board')" data-tab="board">Board</div>
         <div class="subtab" onclick="showTasksTab('projects')" data-tab="projects">Projects</div>
+        <div class="subtab" onclick="showTasksTab('sprint')" data-tab="sprint">Sprint Tasks</div>
       </div>
 
       <!-- BOARD -->
@@ -498,6 +532,11 @@ strong { color: var(--ink); font-weight: 600; }
         </div>
         <div class="projects-grid" id="projects-grid"></div>
         <div id="projects-empty" class="empty-state" style="display:none">No projects yet. Add one above.</div>
+      </div>
+
+      <!-- SPRINT TASKS -->
+      <div id="tasks-sprint" style="display:none">
+        <div class="sprint-page" id="sprint-content"></div>
       </div>
     </div>
   </div>
@@ -1147,9 +1186,205 @@ function deleteProject(id) {
 function showTasksTab(tab) {
   document.getElementById('tasks-board').style.display = tab === 'board' ? 'block' : 'none';
   document.getElementById('tasks-projects').style.display = tab === 'projects' ? 'block' : 'none';
+  document.getElementById('tasks-sprint').style.display = tab === 'sprint' ? 'block' : 'none';
   document.querySelectorAll('.subtab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
   if (tab === 'board') renderBoard();
   if (tab === 'projects') { renderProjects(); updateProjectFilter(); }
+  if (tab === 'sprint') renderSprint();
+}
+
+// ─── SPRINT DATA ─────────────────────────────────────────────────
+const SPRINT_DATA = {
+  sprint: 'Apr 27 – May 3, 2026',
+  tasks: [
+    // ── PENDING ───────────────────────────────────────────
+    { id:'m29', text:'Add DNS A records: sage.sisterhoodos.io + quiz.sisterhoodos.io → Hetzner server IP', note:'BLOCKS Sophia\'s t44 deploy. Both subdomains must resolve before Certbot SSL step runs.', cat:'admin', done:false, est:30, project:'Sister Sage Launch' },
+    { id:'m30', text:'Create Wix embed pages for Sister Sage + Friendship Quiz iframes', note:'After deploy (t44). Embed both apps so Wix traffic can access without leaving site. Full viewport height, no scrollbars inside iframe.', cat:'admin', done:false, est:60, project:'Sister Sage Launch' },
+    { id:'d3',  text:'Finalize Monika\'s KPIs + task list through June 6', note:'With Sophia. Come prepared with your own draft of KPIs — Sophia will have hers too, then align.', cat:'admin', done:false, est:45, project:'Saha Synergy' },
+    { id:'a11', text:'Order mini whiteboard for Ben and Tami', cat:'admin', done:false },
+    { id:'a12', text:'Humidifier', cat:'admin', done:false },
+    { id:'a14', text:'Order eucalyptus aromatherapy', cat:'admin', done:false },
+    { id:'a15', text:'Request attendee sheet from this week\'s facilitators and update attendance tracking', note:'Saturday recurring. Reach out to whoever facilitated this week\'s circles, events, and retreats. Get the sign-in sheet and update master attendance spreadsheet.', cat:'admin', done:false, est:30, project:'Sisterhood OS' },
+    { id:'a16', text:'Request attendee sheet from this week\'s facilitators and update attendance tracking', note:'May 9 Saturday recurring.', cat:'admin', done:false, est:30, project:'Sisterhood OS' },
+    { id:'m31', text:'QA test Sister Sage + Friendship Quiz — full flows on mobile + desktop', note:'After deploy (t44) is live. Test iframe embed in Wix + Circle.so. Document bugs with screenshots.', cat:'marketing', done:false, est:45, project:'Sister Sage Launch' },
+    { id:'m32', text:'Publish Sister Sage + Friendship Quiz launch content (IG, FB, Circle.so)', note:'Uses Helena\'s launch copy. After deploy + QA pass. Pin launch post to top of profile + Circle.', cat:'marketing', done:false, est:45, project:'Sister Sage Launch' },
+    { id:'m39', text:'BULK CONTENT: Produce reels + stories for May 1–15 (15 days) — edit, caption, schedule uploads', note:'15 reels + 15 testimonial story frames. Use Opus Clip + Canva templates. Schedule in Meta Business Suite or Later.', cat:'marketing', done:false, est:360 },
+    { id:'m41', text:'Embed Friendship Quiz on Wix — iframe into a new sisterhoodos.com page', note:'Quiz is already live. Wix > new blank page > add HTML iframe widget > paste embed URL > set full viewport height. Also add PDF download link.', cat:'marketing', done:false, est:45, project:'Friendship Quiz' },
+    { id:'m45', text:'Check quiz email capture integration with MailerLite — new subscribers flowing into "Friendship Quiz Leads" group', note:'After email capture is wired. Verify subscriber hits MailerLite group.', cat:'marketing', done:false, est:20, project:'Friendship Quiz' },
+    { id:'m49', text:'Set ALL upcoming + queued reels as Trial Reels on IG (toggle in composer)', note:'Every NEW reel from Apr 28+ goes out as a Trial Reel. Apply to anything already scheduled/queued. SEE ALSO m50 — backfill all previously published reels.', cat:'marketing', done:false, est:240, project:'Sisterhood OS', urgent:true },
+    { id:'m50', text:'BACKFILL — convert all previously published @thesisterhood.os reels to Trial Reels', note:'Retroactively toggle every existing reel to Trial Reel format. Tap … menu > Edit > toggle Trial Reel on. Track count + any that won\'t convert.', cat:'marketing', done:false, est:90, project:'Sisterhood OS' },
+    { id:'m44', text:'Anti-HT foundation outreach delivery — send emails Sophia hands you, log in lead tracker', note:'Sophia writes + personalizes. You send from proper account + track responses daily.', cat:'sales', done:false, est:30, project:'Saha Synergy' },
+    // ── COMPLETED ─────────────────────────────────────────
+    { id:'a8',  text:'Payment with Sis Linna', cat:'admin', done:true, est:30 },
+    { id:'a1',  text:'Verify everything is entered in Sophia\'s calendar — including Cartier Women\'s Initiative Grant Application', cat:'admin', done:true, est:30 },
+    { id:'a2',  text:'Cancel ChatGPT subscription', cat:'admin', done:true, est:5 },
+    { id:'a3',  text:'Remind Sophia to update masterclass participant\'s email', cat:'admin', done:true, est:2 },
+    { id:'a4',  text:'Set up console.linktodm.com — login already created, create flow like Instagram. Cancel ManyChat + request refund.', cat:'admin', done:true, est:45 },
+    { id:'a5',  text:'Discuss boundaries with Leny', cat:'admin', done:true, est:30 },
+    { id:'a6',  text:'Assist in Hanuman caretaking duties', cat:'admin', done:true, est:30 },
+    { id:'a7',  text:'Go through stock inventory with Leny', cat:'admin', done:true, est:45 },
+    { id:'a9',  text:'Add better categories to lead tracker for status, temperature, and funnel stage', cat:'admin', done:true, est:60 },
+    { id:'a13', text:'Update finance Monika', cat:'admin', done:true, est:20 },
+    { id:'a10', text:'Make sure cake for Camie', cat:'errands', done:true },
+    { id:'e1',  text:'Order dresser for spare bedroom', cat:'errands', done:true, est:20 },
+    { id:'e2',  text:'Order knee pads for Sophia', cat:'errands', done:true, est:10 },
+    { id:'e3',  text:'Order garbage bins for house', cat:'errands', done:true, est:10 },
+    { id:'e4',  text:'Order shower head for Sophia\'s bathroom', cat:'errands', done:true, est:10 },
+    { id:'e5',  text:'Schedule day to take Samsung to Denpasar for authorized Samsung repair', cat:'errands', done:true, est:15 },
+    { id:'s1',  text:'Outreach to 10 prospective Saha Synergy leads', cat:'sales', done:true, est:60 },
+    { id:'s2',  text:'Outreach and onboard 2 new outreach team members', cat:'sales', done:true, est:90 },
+    { id:'s3',  text:'Make sure Flo sends follow-up text to leads that have responded', cat:'sales', done:true, est:45 },
+    { id:'s4',  text:'Outreach for Saha', cat:'sales', done:true, est:60 },
+    { id:'s5',  text:'Outreach Saha (10–15)', cat:'sales', done:true },
+    { id:'m42', text:'BCS outreach batch 1 — 15 prospects from lead tracker using Sophia\'s new script', cat:'sales', done:true, est:90, project:'Saha Synergy', urgent:true },
+    { id:'d1',  text:'Upload Saha Synergy testimonials to website', cat:'marketing', done:true, est:30 },
+    { id:'d2',  text:'Post testimonials on social media — execute marketing strategy', cat:'marketing', done:true, est:45 },
+    { id:'nl1', text:'Review Sunday Letter newsletter draft before it goes to Sophia for final approval', cat:'marketing', done:true, est:15, project:'Sisterhood OS' },
+    { id:'ml1', text:'Set up 5 MailerLite automations (Seq M, A, B, C, D)', cat:'marketing', done:true, est:20, project:'Sisterhood OS' },
+    { id:'m1',  text:'Instagram story post', cat:'marketing', done:true, est:15 },
+    { id:'m2',  text:'Instagram testimonials post', cat:'marketing', done:true, est:25 },
+    { id:'m3',  text:'Shoot content with Sophia — 30 min', cat:'marketing', done:true, est:30 },
+    { id:'m4',  text:'Post in Sisterhood OS chat about masterclass', cat:'marketing', done:true, est:10 },
+    { id:'m5',  text:'Finish and show Sophia the April social media posting plan', cat:'marketing', done:true, est:60 },
+    { id:'m6',  text:'Facebook group posting strategy', cat:'marketing', done:true, est:40 },
+    { id:'m7',  text:'Ask Amy to use Opus Clip to chop up podcast footage into reels', cat:'marketing', done:true, est:10 },
+    { id:'m8',  text:'Opus Clip reels creation — title hooks + CTAs', cat:'marketing', done:true, est:90 },
+    { id:'m9',  text:'Review social media with Helena', cat:'marketing', done:true, est:45 },
+    { id:'m10', text:'Learn from Sophia: email marketing setup + updates', cat:'marketing', done:true, est:60 },
+    { id:'m11', text:'Fix website', cat:'marketing', done:true, est:60 },
+    { id:'m13', text:'Update email marketing sequences', cat:'marketing', done:true, est:90 },
+    { id:'m14', text:'Chop video ads to begin at 44:23–51:32, start again 1:09:88–end', cat:'marketing', done:true, est:15 },
+    { id:'m15', text:'Create spreadsheet for content inspiration (reels, carousel)', cat:'marketing', done:true },
+    { id:'m16', text:'Create carousel for April (3/week)', cat:'marketing', done:true },
+    { id:'m17', text:'Brief new outreach staff and set expectations for daily reporting on spreadsheet', cat:'marketing', done:true },
+    { id:'m18', text:'Send Sophia all the color codes Monika uses for content', cat:'marketing', done:true },
+    { id:'m19', text:'Input email templates and content into MailerLite once Sophia finishes setting up workflow', cat:'marketing', done:true, est:120, project:'Sisterhood OS' },
+    { id:'m20', text:'Update Calendly link on the landing page', cat:'marketing', done:true, est:15 },
+    { id:'m21', text:'Edit PPT for Masterclass', cat:'marketing', done:true },
+    { id:'m22', text:'Design template: newsletter, follow-up email after masterclass, invitation, registration, reminder emails (3d, 2d, 1d, 5h, 2h, 1h, 10min)', cat:'marketing', done:true },
+    { id:'m23', text:'Move OpusClip into Sisterhood email and out of Monika email', cat:'marketing', done:true, est:60 },
+    { id:'m24', text:'Carousel (3/week) CTA program', cat:'marketing', done:true },
+    { id:'m25', text:'List content inspiration for Reels', cat:'marketing', done:true },
+    { id:'m26', text:'Update correct dates for Japan trip on website', cat:'marketing', done:true, est:30 },
+    { id:'m27', text:'Fix the Japan FAQ (was incorrectly about circles)', cat:'marketing', done:true, est:60 },
+    { id:'m28', text:'Give Japan Trip page the hamburger menu', cat:'marketing', done:true, est:10 },
+    { id:'m33', text:'Review gallery + cut video to 15s clips — upload to Drive under SOPHIA (B-ROLL)', cat:'marketing', done:true, est:60 },
+    { id:'m34', text:'Edit reels daily for masterclass', cat:'marketing', done:true, est:45 },
+    { id:'m35', text:'Upload testimonial', cat:'marketing', done:true, est:15 },
+    { id:'m36', text:'Download all video + audio from podcast, save in Drive under Content/Podcast', cat:'marketing', done:true, est:45 },
+    { id:'m37', text:'Try AI B-roll', cat:'marketing', done:true, est:60 },
+    { id:'m38', text:'BULK CONTENT: Produce reels + stories for Apr 23–30 (8 days) — edit, caption, schedule uploads', cat:'marketing', done:true, est:240 },
+    { id:'m40', text:'BULK CONTENT: Produce reels + stories for May 16–31 (16 days) — edit, caption, schedule uploads', cat:'marketing', done:true, est:360 },
+    { id:'m43', text:'Testimonial content push — 4 IG posts + 4 stories from existing testimonials', cat:'marketing', done:true, est:180, project:'Saha Synergy', urgent:true },
+    { id:'m46', text:'Learn how to use Claude', cat:'marketing', done:true, est:120 },
+    { id:'m47', text:'Carousel for 26th–30th', cat:'marketing', done:true },
+    { id:'m48', text:'Editing reels', cat:'marketing', done:true },
+  ]
+};
+
+const SPRINT_CAT_COLORS = { admin:'#7B61A6', marketing:'#C9559F', sales:'#1D9E75', errands:'#D4820A' };
+const SPRINT_CAT_BG     = { admin:'#F0EAF8', marketing:'#FCEBF4', sales:'#EAF3DE', errands:'#FFF3E6' };
+const SPRINT_CAT_LABELS = { admin:'Admin', marketing:'Marketing', sales:'Sales', errands:'Errands' };
+
+function fmtMin(m) {
+  if (!m) return null;
+  return m < 60 ? m + 'm' : Math.floor(m/60) + 'h' + (m % 60 > 0 ? (m % 60) + 'm' : '');
+}
+
+function renderSprintTask(t) {
+  const color = SPRINT_CAT_COLORS[t.cat] || '#999';
+  const checkInner = t.done ? `<div style="width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);margin-top:-2px"></div>` : '';
+  const checkBg = t.done ? `background:#378ADD;border-color:#378ADD` : `border-color:${color}`;
+  const timeBadge = t.est ? `<span class="sprint-time">⏱ ${fmtMin(t.est)}</span>` : '';
+  const projBadge = t.project ? `<span class="sprint-proj">${esc(t.project)}</span>` : '';
+  const urgBadge  = t.urgent ? `<span class="sprint-urgent">URGENT</span>` : '';
+  const notePart  = t.note ? `<span class="sprint-task-note">${esc(t.note)}</span>` : '';
+  return `<div class="sprint-task cat-${t.cat}${t.done ? ' done' : ''}">
+    <div class="sprint-check" style="${checkBg}">${checkInner}</div>
+    <div class="sprint-task-content">
+      <div class="sprint-task-text">${esc(t.text)}${notePart}</div>
+      <div class="sprint-task-meta">${timeBadge}${projBadge}${urgBadge}</div>
+    </div>
+  </div>`;
+}
+
+function renderSprint() {
+  const container = document.getElementById('sprint-content');
+  if (!container) return;
+  const cats = ['admin','marketing','sales','errands'];
+  const all = SPRINT_DATA.tasks;
+  const pending = all.filter(t => !t.done);
+  const done    = all.filter(t => t.done);
+  const pct = Math.round(done.length / all.length * 100);
+
+  let html = `<div style="margin-bottom:20px">
+    <div style="font-size:9pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--clay);margin-bottom:4px">Sprint Monitor</div>
+    <div style="font-family:var(--serif);font-size:22pt;font-weight:400;color:var(--ink);margin-bottom:2px">${esc(SPRINT_DATA.sprint)}</div>
+    <div style="font-size:11pt;color:var(--ink-mute);font-family:var(--serif);font-style:italic">Synced from sprint monitor. Active tasks shown first.</div>
+  </div>`;
+
+  html += `<div class="sprint-progress-wrap"><div class="sprint-progress-fill" style="width:${pct}%"></div><div class="sprint-progress-label">${done.length} of ${all.length} tasks complete (${pct}%)</div></div>`;
+
+  html += '<div class="sprint-cat-grid">';
+  cats.forEach(c => {
+    const catAll  = all.filter(t => t.cat === c);
+    const catDone = catAll.filter(t => t.done);
+    const col = SPRINT_CAT_COLORS[c];
+    const bg  = SPRINT_CAT_BG[c];
+    html += `<div class="sprint-cat-card" style="background:${bg}">
+      <div class="sprint-cat-name" style="color:${col}">${SPRINT_CAT_LABELS[c]}</div>
+      <div class="sprint-cat-count" style="color:${col}">${catDone.length}<span style="font-size:12px;opacity:.6">/${catAll.length}</span></div>
+    </div>`;
+  });
+  html += '</div>';
+
+  html += `<div style="font-size:12pt;font-family:var(--serif);font-weight:700;color:var(--ink);border-bottom:2px solid var(--line);padding-bottom:8px;margin-bottom:18px">Active Tasks <span style="font-size:10pt;font-weight:400;background:#f3f7fb;padding:2px 10px;border-radius:12px;font-family:Arial,sans-serif;color:#666">${pending.length}</span></div>`;
+
+  cats.forEach(cat => {
+    const catPending = pending.filter(t => t.cat === cat);
+    if (!catPending.length) return;
+    const col = SPRINT_CAT_COLORS[cat];
+    const bg  = SPRINT_CAT_BG[cat];
+    html += `<div class="sprint-section">
+      <div class="sprint-section-title" style="color:${col}">
+        <span>${SPRINT_CAT_LABELS[cat]}</span>
+        <span class="sprint-count-badge" style="background:${bg};color:${col};border-color:${col}40">${catPending.length}</span>
+      </div>
+      <div class="sprint-task-list">${catPending.map(t => renderSprintTask(t)).join('')}</div>
+    </div>`;
+  });
+
+  html += `<div style="margin-top:28px;border-top:1px solid var(--line-soft);padding-top:18px">
+    <div class="sprint-done-toggle" id="sprint-done-toggle" onclick="toggleSprintDone()">▸ Show completed tasks (${done.length})</div>
+    <div id="sprint-done-section" style="display:none">`;
+
+  cats.forEach(cat => {
+    const catDone = done.filter(t => t.cat === cat);
+    if (!catDone.length) return;
+    const col = SPRINT_CAT_COLORS[cat];
+    const bg  = SPRINT_CAT_BG[cat];
+    html += `<div class="sprint-section">
+      <div class="sprint-section-title" style="color:${col};opacity:.7">
+        <span>${SPRINT_CAT_LABELS[cat]} — Completed</span>
+        <span class="sprint-count-badge" style="background:${bg};color:${col};border-color:${col}40">${catDone.length}</span>
+      </div>
+      <div class="sprint-task-list">${catDone.map(t => renderSprintTask(t)).join('')}</div>
+    </div>`;
+  });
+
+  html += '</div></div>';
+  container.innerHTML = html;
+}
+
+function toggleSprintDone() {
+  const sec = document.getElementById('sprint-done-section');
+  const tog = document.getElementById('sprint-done-toggle');
+  if (!sec || !tog) return;
+  const open = sec.style.display === 'none';
+  sec.style.display = open ? 'block' : 'none';
+  tog.textContent = open
+    ? '▾ Hide completed tasks'
+    : `▸ Show completed tasks (${SPRINT_DATA.tasks.filter(t => t.done).length})`;
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────
