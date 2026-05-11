@@ -196,20 +196,6 @@ h3.sub-title { font-size: 11pt; font-weight: 700; color: var(--ink-soft); margin
 .open-new-btn { margin-left: auto; font-size: 9pt; color: rgba(255,255,255,.5); text-decoration: none; transition: color .15s; }
 .open-new-btn:hover { color: #fff; }
 
-/* ── SOUL PATH PERSONAL SECTION ──────────────────────────────────── */
-.spm-card {
-  background: linear-gradient(135deg, #f9f5ff 0%, #f0ebff 100%);
-  border: 1px solid var(--ws-border); border-radius: 14px; padding: 28px 30px; margin-bottom: 20px;
-}
-.spm-eye { font-size: 8.5pt; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--workspace); opacity: .8; margin-bottom: 8px; }
-.spm-title { font-family: var(--serif); font-size: 19pt; font-weight: 400; color: var(--workspace); margin-bottom: 10px; }
-.spm-summary { font-family: var(--serif); font-size: 12pt; color: var(--ink-soft); margin-bottom: 14px; max-width: 680px; font-style: italic; line-height: 1.65; }
-.spm-table { width: 100%; border-collapse: collapse; font-size: 11.5pt; margin-bottom: 12px; }
-.spm-table td { padding: 7px 12px; border-bottom: 1px solid rgba(196,180,224,.3); color: var(--ink-soft); vertical-align: top; }
-.spm-table td:first-child { font-weight: 600; color: var(--ink); width: 180px; }
-.spm-table tr:last-child td { border-bottom: none; }
-.spm-link { display: inline-flex; align-items: center; gap: 6px; font-size: 11pt; color: var(--workspace); font-weight: 600; text-decoration: none; padding: 7px 14px; border: 1px solid var(--ws-border); border-radius: 7px; background: rgba(255,255,255,.7); margin-top: 6px; transition: all .15s; }
-.spm-link:hover { background: white; border-color: var(--workspace); }
 
 /* ── DATA MANAGEMENT ─────────────────────────────────────────────── */
 .data-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line-soft); }
@@ -415,58 +401,24 @@ strong { color: var(--ink); font-weight: 600; }
     <iframe src="kb-icp.html" class="iframe-wrap" title="Ideal Client Profiles"></iframe>
   </div>
 
-  <!-- SOUL PATH MAP (content) -->
-  <div id="panel-soul-path" class="section-panel content-mode" style="display:none">
-    <div class="main-inner">
-      <div class="sec-eye">Personal</div>
-      <h2 class="sec-title">Soul Path Map — Monika (PurMon)</h2>
-
-      <div class="spm-card">
-        <div class="spm-eye">Vedic Astrology + Human Design</div>
-        <div class="spm-title">Monika</div>
-        <p class="spm-summary">Projector in Venus Mahadasha. Diagnostic gift, Splenic Authority, 4/6 profile. Built for guidance, invitation, and the slow emergence of the Role Model. This is your chart read for right now — where you are, where you're headed, and what the energy supports.</p>
-        <table class="spm-table">
-          <tr><td>Date of Birth</td><td>26 May 2003, 19:00 WIB, Sidikalang, Indonesia</td></tr>
-          <tr><td>HD Type</td><td>Projector</td></tr>
-          <tr><td>Authority</td><td>Splenic — first flash, act immediately or release</td></tr>
-          <tr><td>Profile</td><td>4/6 Opportunist / Role Model — mid-Phase 2, building toward Role Model emergence in her 30s</td></tr>
-          <tr><td>Defined Channel</td><td>18-58 (Root to Spleen) — the diagnostic gift, quality assessment</td></tr>
-          <tr><td>Strategy</td><td>Wait for invitation — bitterness is the not-self signal</td></tr>
-          <tr><td>Ascendant</td><td>Scorpio sidereal</td></tr>
-          <tr><td>Moon</td><td>20.06° Pisces sidereal · Revati Pada 2 · Venus Mahadasha</td></tr>
-          <tr><td>Active Dasha</td><td>Venus Mahadasha · Venus/Sun antardasha begins May 26, 2026</td></tr>
-          <tr><td>Sade Sati</td><td>Active since ~August 2024 (Saturn transiting Pisces, natal Moon sign)</td></tr>
-        </table>
-        <a href="assets/soul-path-maps/soul-path-map-PurMon.html" target="_blank" class="spm-link">
-          ✧ Open Full Soul Path Map
-        </a>
-      </div>
+  <!-- SOUL PATH MAP (iframe) -->
+  <div id="panel-soul-path" class="section-panel frame-mode" style="display:none">
+    <div class="frame-header">
+      <span class="frame-title">Soul Path Map — Monika (PurMon)</span>
+      <span class="frame-badge">Personal</span>
+      <a href="assets/soul-path-maps/soul-path-map-PurMon.html" target="_blank" class="open-new-btn">Open in new tab ↗</a>
     </div>
+    <iframe src="assets/soul-path-maps/soul-path-map-PurMon.html" class="iframe-wrap" title="Soul Path Map — Monika"></iframe>
   </div>
 
-  <!-- BUSINESS SYNERGY (content) -->
-  <div id="panel-synergy" class="section-panel content-mode" style="display:none">
-    <div class="main-inner">
-      <div class="sec-eye">Personal</div>
-      <h2 class="sec-title">Business Synergy — Monika × Sophia</h2>
-
-      <div class="spm-card">
-        <div class="spm-eye">Vedic Synastry + Human Design Compatibility</div>
-        <div class="spm-title">Partnership Chart</div>
-        <p class="spm-summary">Both in Venus Mahadasha simultaneously — a rare shared period. Sophia (MG, Emotional Authority) and Monika (Projector, Splenic Authority): classic Generator/Projector pairing. Monika guides Sophia's energy; Sophia provides the motor.</p>
-        <table class="spm-table">
-          <tr><td>Dasha Alignment</td><td>Both in Venus Mahadasha — rare simultaneous identity transformation through the same planetary ruler</td></tr>
-          <tr><td>HD Interaction</td><td>Sophia MG (Emotional) + Monika Projector (Splenic) — Monika guides, Sophia moves</td></tr>
-          <tr><td>Sophia H5 Stellium</td><td>Sophia's 5th house (Jupiter, Mars, Mercury, Venus in Sagittarius) lands in Monika's H2 — Sophia's creative intelligence is Monika's financial activator</td></tr>
-          <tr><td>Structure Recommendation</td><td>Bali PT + Estonia OÜ dual-entity model</td></tr>
-          <tr><td>Role Clarity</td><td>Sophia holds brand/IP/global strategy · Monika holds operational and community container</td></tr>
-          <tr><td>Shadow Watchpoints</td><td>Monika: don't initiate unprompted. Sophia: give full invitations, not hints. Decision fatigue if Monika is asked to respond vs. invited to guide.</td></tr>
-        </table>
-        <a href="assets/soul-path-maps/business-synergy-PurMon-FoxSop.html" target="_blank" class="spm-link">
-          ∞ Open Full Business Synergy Chart
-        </a>
-      </div>
+  <!-- BUSINESS SYNERGY (iframe) -->
+  <div id="panel-synergy" class="section-panel frame-mode" style="display:none">
+    <div class="frame-header">
+      <span class="frame-title">Business Synergy — Monika × Sophia</span>
+      <span class="frame-badge">Personal</span>
+      <a href="assets/soul-path-maps/business-synergy-PurMon-FoxSop.html" target="_blank" class="open-new-btn">Open in new tab ↗</a>
     </div>
+    <iframe src="assets/soul-path-maps/business-synergy-PurMon-FoxSop.html" class="iframe-wrap" title="Business Synergy — Monika × Sophia"></iframe>
   </div>
 
 </main>
