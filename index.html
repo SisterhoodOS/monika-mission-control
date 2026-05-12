@@ -384,6 +384,37 @@ strong { color: var(--ink); font-weight: 600; }
 .cc-edit-hook { font-size: 10pt; color: var(--ink-mute); font-style: italic; margin-top: 3px; line-height: 1.4; outline: none; display: block; }
 .cc-row.editing .cc-edit-hook { background: #f3f0fb; border-radius: 4px; padding: 1px 5px; }
 
+/* ── CHECK-INS ───────────────────────────────────────────────────── */
+.ci-page { padding: 0 0 60px; }
+.ci-hero { background: linear-gradient(135deg, #f8eef5 0%, #f3e4ef 100%); border: 1px solid #e6c8d8; border-radius: 14px; padding: 26px 28px; margin-bottom: 22px; }
+.ci-hero h2 { font-family: var(--serif); font-size: 22pt; font-weight: 400; color: #8d3a6d; margin-bottom: 4px; }
+.ci-hero p { color: #6b3258; font-family: var(--serif); font-style: italic; font-size: 12pt; margin-bottom: 0; }
+.ci-form { background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; padding: 22px 26px; margin-bottom: 22px; }
+.ci-row { margin-bottom: 16px; }
+.ci-label { font-size: 9pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 7px; }
+.ci-scale { display: flex; gap: 6px; flex-wrap: wrap; }
+.ci-scale button { font-family: var(--sans); font-size: 11pt; font-weight: 600; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); color: var(--ink-mute); cursor: pointer; transition: all .15s; }
+.ci-scale button:hover { border-color: var(--clay); color: var(--clay); }
+.ci-scale button.active { background: var(--clay); color: #fff; border-color: var(--clay); }
+.ci-mood { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; }
+.ci-mood button { font-family: var(--serif); font-size: 11pt; padding: 9px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink-soft); cursor: pointer; transition: all .15s; }
+.ci-mood button:hover { border-color: var(--workspace); }
+.ci-mood button.active { background: var(--workspace); color: #fff; border-color: var(--workspace); }
+.ci-textarea { width: 100%; min-height: 70px; border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; font-family: var(--serif); font-size: 12pt; color: var(--ink); background: var(--bg); resize: vertical; outline: none; line-height: 1.55; }
+.ci-textarea:focus { border-color: var(--ws-border); }
+.ci-actions { display: flex; gap: 10px; align-items: center; }
+.ci-save-status { font-size: 9.5pt; color: var(--sage); font-style: italic; }
+.ci-history { background: var(--bg-card); border: 1px solid var(--line); border-radius: 12px; padding: 22px 26px; }
+.ci-history h3 { font-family: var(--serif); font-size: 14pt; font-weight: 400; color: var(--ink); margin-bottom: 14px; }
+.ci-entry { padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+.ci-entry:last-child { border-bottom: none; }
+.ci-entry-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+.ci-entry-date { font-size: 11pt; font-weight: 700; color: var(--ink); font-family: var(--serif); }
+.ci-entry-energy { font-size: 9pt; font-weight: 700; padding: 2px 9px; border-radius: 12px; background: var(--bg-soft); color: var(--clay); border: 1px solid var(--line); }
+.ci-entry-mood { font-size: 9pt; font-weight: 600; padding: 2px 9px; border-radius: 12px; background: var(--ws-light); color: var(--workspace); border: 1px solid var(--ws-border); }
+.ci-entry-field { margin-top: 6px; font-size: 11pt; color: var(--ink-soft); line-height: 1.5; font-family: var(--serif); }
+.ci-entry-field strong { color: var(--ink); font-family: var(--sans); font-size: 9pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+
 /* Dashboard milestone strip (replaces single countdown) */
 .ms-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
 .ms-card { background: rgba(255,255,255,.55); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; border-left: 4px solid var(--clay); }
@@ -420,14 +451,21 @@ strong { color: var(--ink); font-weight: 600; }
     <li><a onclick="navigate('content-calendar')" id="nav-content-calendar"><span class="nav-icon">▦</span> Content Calendar</a></li>
   </ul>
 
-  <div class="nav-group">Knowledge Base</div>
+  <div class="nav-group">Sisterhood OS</div>
   <ul class="nav-list">
     <li><a onclick="navigate('sisterhood-kb')" id="nav-sisterhood-kb"><span class="nav-icon">◎</span> Strategy &amp; Products</a></li>
     <li><a onclick="navigate('marketing-kb')" id="nav-marketing-kb"><span class="nav-icon">◇</span> Marketing &amp; Content</a></li>
-    <li><a onclick="navigate('saha-kb')" id="nav-saha-kb"><span class="nav-icon">◈</span> Saha Synergy</a></li>
-    <ul class="nav-sub">
-      <li><a onclick="navigate('icp')" id="nav-icp"><span class="nav-icon">◉</span> Ideal Clients</a></li>
-    </ul>
+  </ul>
+
+  <div class="nav-group">Saha Synergy</div>
+  <ul class="nav-list">
+    <li><a onclick="navigate('saha-kb')" id="nav-saha-kb"><span class="nav-icon">◈</span> Overview</a></li>
+    <li><a onclick="navigate('icp')" id="nav-icp"><span class="nav-icon">◉</span> Ideal Clients</a></li>
+  </ul>
+
+  <div class="nav-group">Wellbeing</div>
+  <ul class="nav-list">
+    <li><a onclick="navigate('checkins')" id="nav-checkins"><span class="nav-icon">♡</span> Check-ins</a></li>
   </ul>
 
   <div class="nav-group">Personal</div>
@@ -635,9 +673,58 @@ strong { color: var(--ink); font-weight: 600; }
         <div id="projects-empty" class="empty-state" style="display:none">No projects yet. Add one above.</div>
       </div>
 
-      <!-- SPRINT TASKS -->
+      <!-- SPRINT TASKS (iframes the live monika sprint monitor) -->
       <div id="tasks-sprint" style="display:none">
-        <div class="sprint-page" id="sprint-content"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:8px 12px;background:var(--bg-soft);border:1px solid var(--line);border-radius:8px">
+          <div style="font-size:10pt;color:var(--ink-mute);font-family:var(--serif);font-style:italic">Live sprint monitor — synced with sprint-monitor.onrender.com/monika</div>
+          <a href="https://sprint-monitor.onrender.com/monika" target="_blank" style="font-size:9pt;color:var(--workspace);text-decoration:none">Open in new tab ↗</a>
+        </div>
+        <iframe src="https://sprint-monitor.onrender.com/monika" style="width:100%;height:calc(100vh - 220px);border:1px solid var(--line);border-radius:10px;background:#fff" title="Monika Sprint Monitor"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECK-INS -->
+  <div id="panel-checkins" class="section-panel content-mode" style="display:none">
+    <div class="main-inner">
+      <div class="ci-page">
+        <div class="ci-hero">
+          <div class="hero-eye" style="color:#8d3a6d">Wellbeing</div>
+          <h2>How are you today, Queen?</h2>
+          <p id="ci-greeting">A daily check-in for your body, your spirit, and what's actually alive in you right now.</p>
+        </div>
+
+        <div class="ci-form">
+          <div class="ci-row">
+            <div class="ci-label">Energy level (1 low → 10 fire)</div>
+            <div class="ci-scale" id="ci-energy"></div>
+          </div>
+          <div class="ci-row">
+            <div class="ci-label">Mood right now</div>
+            <div class="ci-mood" id="ci-mood"></div>
+          </div>
+          <div class="ci-row">
+            <div class="ci-label">What's alive in you today?</div>
+            <textarea class="ci-textarea" id="ci-alive" placeholder="The thing that's lit up. The unexpected thought. The body sensation. The pull."></textarea>
+          </div>
+          <div class="ci-row">
+            <div class="ci-label">What's blocking or heavy?</div>
+            <textarea class="ci-textarea" id="ci-blockers" placeholder="Optional. Anything you're working through, avoiding, or holding."></textarea>
+          </div>
+          <div class="ci-row">
+            <div class="ci-label">Your one priority for today</div>
+            <textarea class="ci-textarea" id="ci-priority" placeholder="The one thing that makes today a win."></textarea>
+          </div>
+          <div class="ci-actions">
+            <button class="btn btn-primary" onclick="saveCheckin()">Save check-in</button>
+            <span class="ci-save-status" id="ci-save-status"></span>
+          </div>
+        </div>
+
+        <div class="ci-history">
+          <h3>Past check-ins</h3>
+          <div id="ci-history-list"><div class="empty-state">No check-ins yet. The first one is the threshold.</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -788,7 +875,8 @@ function defaultState() {
       cards: [],
       projects: []
     },
-    contentCalendar: { postStatus: {}, openRows: {}, activeTab: 'carousels', overrides: {} }
+    contentCalendar: { postStatus: {}, openRows: {}, activeTab: 'carousels', overrides: {} },
+    checkins: {}
   };
 }
 
@@ -813,7 +901,8 @@ function loadState() {
         openRows: saved.contentCalendar?.openRows || {},
         activeTab: saved.contentCalendar?.activeTab || 'carousels',
         overrides: saved.contentCalendar?.overrides || {}
-      }
+      },
+      checkins: saved.checkins || {}
     };
   } catch(e) { return defaultState(); }
 }
@@ -825,7 +914,9 @@ function saveState(state) {
 let state = loadState();
 
 // ─── NAVIGATION ──────────────────────────────────────────────────
-const panels = ['dashboard','tasks','workspace','content-calendar','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy'];
+const panels = ['dashboard','tasks','workspace','content-calendar','checkins','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy'];
+
+const MOOD_OPTIONS = ['Lit','Soft','Focused','Tender','Tired','Anxious','Grieving','Numb','Magnetic','Slow'];
 
 function navigate(id) {
   panels.forEach(p => {
@@ -849,6 +940,7 @@ function navigate(id) {
 
   if (id === 'dashboard') { renderDashLog(); }
   if (id === 'content-calendar') { renderCC(); }
+  if (id === 'checkins') { renderCheckins(); }
 }
 
 // ─── DASHBOARD MILESTONES ─────────────────────────────────────────
@@ -1893,6 +1985,95 @@ function renderCC() {
   renderCCRules();
   renderCCFilters();
   renderCCList();
+}
+
+// ─── CHECK-INS ────────────────────────────────────────────────────
+function todayKey() {
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+
+function renderCheckins() {
+  // Energy scale 1-10
+  const energyEl = document.getElementById('ci-energy');
+  const today = todayKey();
+  const existing = state.checkins[today] || {};
+  if (energyEl) {
+    energyEl.innerHTML = '';
+    for (let i = 1; i <= 10; i++) {
+      const b = document.createElement('button');
+      b.textContent = i;
+      b.className = existing.energy === i ? 'active' : '';
+      b.onclick = () => { state.checkins[today] = { ...(state.checkins[today]||{}), energy: i, savedAt: null }; saveState(state); renderCheckins(); };
+      energyEl.appendChild(b);
+    }
+  }
+  // Mood buttons
+  const moodEl = document.getElementById('ci-mood');
+  if (moodEl) {
+    moodEl.innerHTML = '';
+    MOOD_OPTIONS.forEach(m => {
+      const b = document.createElement('button');
+      b.textContent = m;
+      b.className = existing.mood === m ? 'active' : '';
+      b.onclick = () => { state.checkins[today] = { ...(state.checkins[today]||{}), mood: m, savedAt: null }; saveState(state); renderCheckins(); };
+      moodEl.appendChild(b);
+    });
+  }
+  // Text fields
+  const aliveEl = document.getElementById('ci-alive');
+  const blockEl = document.getElementById('ci-blockers');
+  const prioEl = document.getElementById('ci-priority');
+  if (aliveEl) aliveEl.value = existing.alive || '';
+  if (blockEl) blockEl.value = existing.blockers || '';
+  if (prioEl) prioEl.value = existing.priority || '';
+  // Status
+  const statusEl = document.getElementById('ci-save-status');
+  if (statusEl && existing.savedAt) {
+    statusEl.textContent = 'Saved ' + new Date(existing.savedAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+  } else if (statusEl) {
+    statusEl.textContent = '';
+  }
+  // History
+  renderCheckinHistory();
+}
+
+function saveCheckin() {
+  const today = todayKey();
+  const current = state.checkins[today] || {};
+  current.alive = (document.getElementById('ci-alive').value || '').trim();
+  current.blockers = (document.getElementById('ci-blockers').value || '').trim();
+  current.priority = (document.getElementById('ci-priority').value || '').trim();
+  current.savedAt = new Date().toISOString();
+  state.checkins[today] = current;
+  saveState(state);
+  const statusEl = document.getElementById('ci-save-status');
+  if (statusEl) statusEl.textContent = 'Saved ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+  showToast('Check-in saved');
+  renderCheckinHistory();
+}
+
+function renderCheckinHistory() {
+  const wrap = document.getElementById('ci-history-list');
+  if (!wrap) return;
+  const entries = Object.entries(state.checkins).filter(([d, c]) => c.savedAt).sort((a,b) => b[0].localeCompare(a[0])).slice(0, 7);
+  if (!entries.length) {
+    wrap.innerHTML = `<div class="empty-state">No saved check-ins yet.</div>`;
+    return;
+  }
+  wrap.innerHTML = entries.map(([d, c]) => {
+    const dateLabel = new Date(d + 'T00:00:00').toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
+    return `<div class="ci-entry">
+      <div class="ci-entry-head">
+        <span class="ci-entry-date">${dateLabel}</span>
+        ${c.energy ? `<span class="ci-entry-energy">Energy ${c.energy}/10</span>` : ''}
+        ${c.mood ? `<span class="ci-entry-mood">${esc(c.mood)}</span>` : ''}
+      </div>
+      ${c.priority ? `<div class="ci-entry-field"><strong>Priority</strong>${esc(c.priority)}</div>` : ''}
+      ${c.alive ? `<div class="ci-entry-field"><strong>Alive</strong>${esc(c.alive)}</div>` : ''}
+      ${c.blockers ? `<div class="ci-entry-field"><strong>Heavy</strong>${esc(c.blockers)}</div>` : ''}
+    </div>`;
+  }).join('');
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────
