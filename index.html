@@ -292,6 +292,78 @@ strong { color: var(--ink); font-weight: 600; }
 .sprint-urgent { font-size: 9px; padding: 2px 7px; border-radius: 10px; font-family: Arial, sans-serif; font-weight: bold; background: #fcebeb; color: #A32D2D; border: 1px solid #f0c0c0; }
 .sprint-done-toggle { display: inline-block; font-size: 11pt; color: var(--workspace); cursor: pointer; margin-bottom: 14px; font-family: var(--serif); font-style: italic; user-select: none; }
 .sprint-done-toggle:hover { opacity: .75; }
+
+/* ── CONTENT CALENDAR ────────────────────────────────────────────── */
+.cc-page { padding: 0 0 60px; }
+.cc-eye { font-size: 9pt; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--clay); margin-bottom: 6px; }
+.cc-title { font-family: var(--serif); font-size: 22pt; font-weight: 400; color: var(--ink); margin-bottom: 2px; }
+.cc-subtitle { font-size: 11pt; color: var(--ink-mute); font-family: var(--serif); font-style: italic; margin-bottom: 18px; }
+
+.cc-milestones { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 18px; }
+.cc-milestone { background: var(--bg-card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; border-left: 4px solid var(--clay); }
+.cc-milestone.next { border-left-color: var(--workspace); background: var(--ws-light); }
+.cc-milestone.past { opacity: .55; }
+.cc-ms-label { font-size: 8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 4px; }
+.cc-ms-name { font-family: var(--serif); font-size: 13pt; color: var(--ink); margin-bottom: 2px; }
+.cc-ms-time { font-size: 10pt; color: var(--ink-mute); }
+.cc-ms-cd { font-size: 10pt; color: var(--clay); font-weight: 600; margin-top: 4px; }
+
+.cc-rules { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin-bottom: 18px; }
+.cc-rules-label { font-size: 8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--clay); margin-bottom: 8px; }
+.cc-rules ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4px 18px; }
+.cc-rules li { font-size: 10.5pt; color: var(--ink-soft); padding-left: 14px; position: relative; line-height: 1.5; }
+.cc-rules li::before { content: '✕'; position: absolute; left: 0; color: #b91c1c; font-weight: 700; font-size: 9pt; top: 2px; }
+.cc-rules .cc-cta { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line-soft); font-size: 10.5pt; color: var(--ink-soft); font-family: var(--serif); font-style: italic; }
+.cc-rules .cc-cta strong { font-style: normal; color: var(--clay); font-weight: 700; }
+
+.cc-filters { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+.cc-filter-label { font-size: 9pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-mute); }
+.cc-filter-select { font-size: 10.5pt; border: 1px solid var(--line); border-radius: 7px; padding: 6px 12px; background: var(--bg-card); color: var(--ink); outline: none; }
+.cc-progress { font-size: 10pt; color: var(--ink-mute); margin-left: auto; font-family: var(--serif); font-style: italic; }
+
+.cc-row { background: var(--bg-card); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px; transition: box-shadow .15s; }
+.cc-row:hover { box-shadow: 0 2px 12px rgba(0,0,0,.04); }
+.cc-row.posted { opacity: .58; }
+.cc-row-head { display: grid; grid-template-columns: 100px 1fr auto auto; gap: 14px; align-items: center; padding: 12px 16px; cursor: pointer; }
+@media (max-width: 720px) { .cc-row-head { grid-template-columns: 80px 1fr; gap: 8px; } .cc-row-head .cc-pillar-pill, .cc-row-head .cc-status-btn { grid-column: 2; justify-self: start; margin-top: 4px; } }
+.cc-row-date { font-size: 10pt; font-weight: 600; color: var(--clay); font-family: var(--sans); }
+.cc-row-date .cc-slot { display: block; font-size: 8.5pt; color: var(--ink-mute); font-weight: 500; margin-top: 1px; }
+.cc-row-title { font-family: var(--serif); font-size: 13pt; color: var(--ink); line-height: 1.3; }
+.cc-row-hook { font-size: 10pt; color: var(--ink-mute); font-style: italic; margin-top: 3px; line-height: 1.4; }
+.cc-pillar-pill { font-size: 8.5pt; font-weight: 700; padding: 3px 10px; border-radius: 14px; letter-spacing: .05em; white-space: nowrap; }
+.cc-status-btn { font-size: 9pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 12px; border-radius: 14px; border: 1px solid; cursor: pointer; transition: all .15s; background: transparent; white-space: nowrap; }
+.cc-status-draft { color: var(--ink-mute); border-color: var(--line); background: var(--bg); }
+.cc-status-scheduled { color: #1d4ed8; border-color: #c5d6f5; background: #e0f0ff; }
+.cc-status-posted { color: #065f46; border-color: #b3e0c8; background: #d1fae5; }
+.cc-status-btn:hover { transform: translateY(-1px); }
+
+.cc-row-body { display: none; border-top: 1px solid var(--line-soft); padding: 16px 18px; }
+.cc-row.open .cc-row-body { display: block; }
+.cc-row.open .cc-row-head .cc-chevron { transform: rotate(90deg); }
+.cc-chevron { display: inline-block; transition: transform .15s; color: var(--ink-mute); margin-right: 6px; }
+
+.cc-meta-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; align-items: center; }
+.cc-phase-tag { font-size: 8.5pt; font-weight: 600; padding: 2px 9px; border-radius: 12px; background: var(--bg-soft); color: var(--ink-soft); border: 1px solid var(--line); }
+.cc-format-tag { font-size: 8.5pt; font-weight: 600; padding: 2px 9px; border-radius: 12px; background: var(--ws-light); color: var(--workspace); border: 1px solid var(--ws-border); }
+
+.cc-block { margin-bottom: 14px; }
+.cc-block-label { font-size: 8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.cc-copy-btn { font-size: 8.5pt; font-weight: 600; color: var(--workspace); cursor: pointer; background: none; border: 1px solid var(--ws-border); border-radius: 5px; padding: 2px 8px; transition: all .15s; }
+.cc-copy-btn:hover { background: var(--workspace); color: #fff; }
+.cc-caption { font-family: var(--serif); font-size: 12pt; color: var(--ink); line-height: 1.65; white-space: pre-wrap; background: var(--bg); border: 1px solid var(--line-soft); border-radius: 8px; padding: 12px 14px; }
+.cc-hashtags { font-size: 10.5pt; color: var(--clay); font-family: var(--mono); background: var(--bg); border: 1px solid var(--line-soft); border-radius: 8px; padding: 10px 12px; word-spacing: 4px; }
+.cc-script { font-family: var(--serif); font-size: 12pt; color: var(--ink); line-height: 1.65; white-space: pre-wrap; background: var(--bg); border: 1px solid var(--line-soft); border-radius: 8px; padding: 12px 14px; }
+.cc-broll { font-size: 10.5pt; color: var(--ink-soft); font-style: italic; background: var(--bg-soft); border: 1px dashed var(--line); border-radius: 8px; padding: 10px 12px; line-height: 1.55; }
+
+.cc-slides { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+.cc-slide { background: var(--bg); border: 1px solid var(--line-soft); border-radius: 8px; padding: 12px 14px; position: relative; min-height: 120px; }
+.cc-slide-num { position: absolute; top: 8px; right: 10px; font-size: 8pt; font-weight: 700; color: var(--ink-mute); opacity: .5; }
+.cc-slide-label { font-size: 8pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--clay); margin-bottom: 6px; }
+.cc-slide-body { font-size: 10pt; color: var(--ink-soft); line-height: 1.5; }
+
+.cc-empty { text-align: center; padding: 40px 20px; color: var(--ink-mute); font-size: 12pt; font-family: var(--serif); font-style: italic; }
+.cc-source-link { display: inline-flex; align-items: center; gap: 5px; font-size: 10pt; color: var(--ink-mute); text-decoration: none; margin-top: 14px; }
+.cc-source-link:hover { color: var(--workspace); }
 </style>
 </head>
 <body>
@@ -312,6 +384,11 @@ strong { color: var(--ink); font-weight: 600; }
     <li><a onclick="navigate('dashboard')" class="active" id="nav-dashboard"><span class="nav-icon">⌂</span> Dashboard</a></li>
     <li><a onclick="navigate('tasks')" id="nav-tasks"><span class="nav-icon">☑</span> Tasks</a></li>
     <li><a onclick="navigate('workspace')" id="nav-workspace"><span class="nav-icon">✦</span> My Workspace</a></li>
+  </ul>
+
+  <div class="nav-group">Content</div>
+  <ul class="nav-list">
+    <li><a onclick="navigate('content-calendar')" id="nav-content-calendar"><span class="nav-icon">▦</span> Content Calendar</a></li>
   </ul>
 
   <div class="nav-group">Knowledge Base</div>
@@ -541,6 +618,43 @@ strong { color: var(--ink); font-weight: 600; }
     </div>
   </div>
 
+  <!-- CONTENT CALENDAR -->
+  <div id="panel-content-calendar" class="section-panel content-mode" style="display:none">
+    <div class="main-inner">
+      <div class="cc-page">
+        <div class="cc-eye">Content</div>
+        <div class="cc-title" id="cc-title">Content Calendar</div>
+        <div class="cc-subtitle" id="cc-subtitle">Loading...</div>
+
+        <div class="cc-milestones" id="cc-milestones"></div>
+        <div class="cc-rules" id="cc-rules"></div>
+
+        <div class="subtabs">
+          <div class="subtab active" onclick="showCCTab('carousels')" data-cc-tab="carousels">Carousels <span id="cc-count-carousels" style="font-size:9pt;color:var(--ink-mute);margin-left:6px"></span></div>
+          <div class="subtab" onclick="showCCTab('reels')" data-cc-tab="reels">Reels <span id="cc-count-reels" style="font-size:9pt;color:var(--ink-mute);margin-left:6px"></span></div>
+        </div>
+
+        <div class="cc-filters">
+          <span class="cc-filter-label">Phase</span>
+          <select class="cc-filter-select" id="cc-filter-phase" onchange="renderCC()"><option value="all">All</option></select>
+          <span class="cc-filter-label">Pillar</span>
+          <select class="cc-filter-select" id="cc-filter-pillar" onchange="renderCC()"><option value="all">All</option></select>
+          <span class="cc-filter-label">Status</span>
+          <select class="cc-filter-select" id="cc-filter-status" onchange="renderCC()">
+            <option value="all">All</option>
+            <option value="draft">Draft</option>
+            <option value="scheduled">Scheduled</option>
+            <option value="posted">Posted</option>
+          </select>
+          <span class="cc-progress" id="cc-progress"></span>
+        </div>
+
+        <div id="cc-list"></div>
+        <a class="cc-source-link" id="cc-source-link" href="#" target="_blank">Open source Google Sheet ↗</a>
+      </div>
+    </div>
+  </div>
+
   <!-- SOUL PATH MAP (iframe) -->
   <div id="panel-soul-path" class="section-panel frame-mode" style="display:none">
     <div class="frame-header">
@@ -619,6 +733,7 @@ strong { color: var(--ink); font-weight: 600; }
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
+<script src="assets/data/content-calendar.js"></script>
 <script>
 // ─── STATE ────────────────────────────────────────────────────────
 const STORAGE_KEY = 'monika-mc-v1';
@@ -648,7 +763,8 @@ function defaultState() {
       ],
       cards: [],
       projects: []
-    }
+    },
+    contentCalendar: { postStatus: {}, openRows: {}, activeTab: 'carousels' }
   };
 }
 
@@ -667,6 +783,11 @@ function loadState() {
         columns: saved.kanban?.columns || def.kanban.columns,
         cards: saved.kanban?.cards || [],
         projects: saved.kanban?.projects || []
+      },
+      contentCalendar: {
+        postStatus: saved.contentCalendar?.postStatus || {},
+        openRows: saved.contentCalendar?.openRows || {},
+        activeTab: saved.contentCalendar?.activeTab || 'carousels'
       }
     };
   } catch(e) { return defaultState(); }
@@ -679,7 +800,7 @@ function saveState(state) {
 let state = loadState();
 
 // ─── NAVIGATION ──────────────────────────────────────────────────
-const panels = ['dashboard','tasks','workspace','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy'];
+const panels = ['dashboard','tasks','workspace','content-calendar','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy'];
 
 function navigate(id) {
   panels.forEach(p => {
@@ -702,6 +823,7 @@ function navigate(id) {
   }
 
   if (id === 'dashboard') { renderDashLog(); }
+  if (id === 'content-calendar') { renderCC(); }
 }
 
 // ─── COUNTDOWN ────────────────────────────────────────────────────
@@ -1387,6 +1509,256 @@ function toggleSprintDone() {
     : `▸ Show completed tasks (${SPRINT_DATA.tasks.filter(t => t.done).length})`;
 }
 
+// ─── CONTENT CALENDAR ─────────────────────────────────────────────
+const CC_STATUS_CYCLE = ['draft','scheduled','posted'];
+const CC_STATUS_LABEL = { draft:'Draft', scheduled:'Scheduled', posted:'Posted' };
+
+function ccData() { return window.CONTENT_CALENDAR || null; }
+
+function ccGetStatus(id) {
+  return state.contentCalendar.postStatus[id] || 'draft';
+}
+
+function ccSetStatus(id, status) {
+  if (!status || status === 'draft') {
+    delete state.contentCalendar.postStatus[id];
+  } else {
+    state.contentCalendar.postStatus[id] = status;
+  }
+  saveState(state);
+}
+
+function cycleCCStatus(id) {
+  const current = ccGetStatus(id);
+  const next = CC_STATUS_CYCLE[(CC_STATUS_CYCLE.indexOf(current) + 1) % CC_STATUS_CYCLE.length];
+  ccSetStatus(id, next);
+  renderCC();
+}
+
+function toggleCCRow(id) {
+  state.contentCalendar.openRows[id] = !state.contentCalendar.openRows[id];
+  saveState(state);
+  const row = document.getElementById('cc-row-' + id);
+  if (row) row.classList.toggle('open', !!state.contentCalendar.openRows[id]);
+}
+
+function showCCTab(tab) {
+  state.contentCalendar.activeTab = tab;
+  saveState(state);
+  document.querySelectorAll('.subtab[data-cc-tab]').forEach(el => {
+    el.classList.toggle('active', el.dataset.ccTab === tab);
+  });
+  renderCC();
+}
+
+function copyToClipboard(text, label) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => showToast((label || 'Copied') + ' copied'));
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); showToast((label || 'Copied') + ' copied'); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+}
+
+function ccCountdown(targetMs) {
+  const now = Date.now();
+  const diff = targetMs - now;
+  if (diff <= 0) return null;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  if (d > 0) return d + 'd ' + h + 'h';
+  const m = Math.floor((diff % 3600000) / 60000);
+  return h + 'h ' + m + 'm';
+}
+
+function renderCCMilestones() {
+  const data = ccData();
+  if (!data) return;
+  const wrap = document.getElementById('cc-milestones');
+  if (!wrap) return;
+  const now = Date.now();
+  const upcoming = data.meta.milestones.filter(m => new Date(m.dateISO).getTime() > now);
+  const nextOne = upcoming[0];
+  wrap.innerHTML = data.meta.milestones.map(m => {
+    const t = new Date(m.dateISO).getTime();
+    const isPast = t < now;
+    const isNext = nextOne && m.name === nextOne.name;
+    const cd = !isPast ? ccCountdown(t) : null;
+    return `<div class="cc-milestone ${isPast ? 'past' : ''} ${isNext ? 'next' : ''}">
+      <div class="cc-ms-label">${isPast ? 'Past' : (isNext ? 'Next up' : 'Coming')}</div>
+      <div class="cc-ms-name">${esc(m.name)}</div>
+      <div class="cc-ms-time">${esc(m.short)}</div>
+      ${cd ? `<div class="cc-ms-cd">${cd} away</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function renderCCRules() {
+  const data = ccData();
+  if (!data) return;
+  const wrap = document.getElementById('cc-rules');
+  if (!wrap) return;
+  wrap.innerHTML = `
+    <div class="cc-rules-label">Hard rules — never break</div>
+    <ul>${data.meta.rules.map(r => `<li>${esc(r)}</li>`).join('')}</ul>
+    <div class="cc-cta">CTA on every post: <strong>${esc(data.meta.cta)}</strong> · ManyChat keyword: <strong>${esc(data.meta.manychatKeyword)}</strong></div>
+  `;
+}
+
+function renderCCFilters() {
+  const data = ccData();
+  if (!data) return;
+  const tab = state.contentCalendar.activeTab;
+  const items = tab === 'reels' ? data.reels : data.carousels;
+  const phaseSelect = document.getElementById('cc-filter-phase');
+  const pillarSelect = document.getElementById('cc-filter-pillar');
+  if (!phaseSelect || !pillarSelect) return;
+
+  const phaseVal = phaseSelect.value || 'all';
+  const pillarVal = pillarSelect.value || 'all';
+
+  if (tab === 'reels') {
+    phaseSelect.disabled = true;
+    phaseSelect.innerHTML = `<option value="all">All</option>`;
+    phaseSelect.value = 'all';
+  } else {
+    phaseSelect.disabled = false;
+    const phases = Array.from(new Set(items.map(i => i.phase)));
+    phaseSelect.innerHTML = `<option value="all">All</option>` + phases.map(p => `<option value="${esc(p)}">${esc(p)}</option>`).join('');
+    phaseSelect.value = phases.includes(phaseVal) ? phaseVal : 'all';
+  }
+
+  const pillars = Array.from(new Set(items.map(i => i.pillar)));
+  pillarSelect.innerHTML = `<option value="all">All</option>` + pillars.map(p => `<option value="${esc(p)}">${esc(p)}</option>`).join('');
+  pillarSelect.value = pillars.includes(pillarVal) ? pillarVal : 'all';
+}
+
+function renderCCList() {
+  const data = ccData();
+  const listEl = document.getElementById('cc-list');
+  if (!listEl) return;
+  if (!data) {
+    listEl.innerHTML = `<div class="cc-empty">Calendar data not loaded. Check assets/data/content-calendar.js</div>`;
+    return;
+  }
+  const tab = state.contentCalendar.activeTab;
+  const items = tab === 'reels' ? data.reels : data.carousels;
+  const phaseVal = document.getElementById('cc-filter-phase').value;
+  const pillarVal = document.getElementById('cc-filter-pillar').value;
+  const statusVal = document.getElementById('cc-filter-status').value;
+
+  const filtered = items.filter(i => {
+    if (tab === 'carousels' && phaseVal !== 'all' && i.phase !== phaseVal) return false;
+    if (pillarVal !== 'all' && i.pillar !== pillarVal) return false;
+    if (statusVal !== 'all' && ccGetStatus(i.id) !== statusVal) return false;
+    return true;
+  });
+
+  if (!filtered.length) {
+    listEl.innerHTML = `<div class="cc-empty">No posts match these filters.</div>`;
+    return;
+  }
+
+  listEl.innerHTML = filtered.map(item => renderCCRow(item, tab, data)).join('');
+
+  // progress
+  const totalActiveTab = items.length;
+  const postedCount = items.filter(i => ccGetStatus(i.id) === 'posted').length;
+  const scheduledCount = items.filter(i => ccGetStatus(i.id) === 'scheduled').length;
+  const progEl = document.getElementById('cc-progress');
+  if (progEl) progEl.textContent = `${postedCount} posted · ${scheduledCount} scheduled · ${totalActiveTab} total`;
+}
+
+function renderCCRow(item, tab, data) {
+  const pillarStyle = data.pillars[item.pillar] || { color: '#666', bg: '#eee' };
+  const status = ccGetStatus(item.id);
+  const isOpen = !!state.contentCalendar.openRows[item.id];
+  const hashtags = (item.hashtags || []).join(' ');
+  const slotLine = tab === 'reels' ? `<span class="cc-slot">${esc(item.slot || '')}</span>` : '';
+
+  let bodyHTML = '';
+  bodyHTML += `<div class="cc-meta-row">
+    <span class="cc-phase-tag">${esc(item.phase || '—')}</span>
+    ${item.format ? `<span class="cc-format-tag">${esc(item.format)}</span>` : ''}
+  </div>`;
+
+  bodyHTML += `<div class="cc-block">
+    <div class="cc-block-label">Hook <button class="cc-copy-btn" onclick="event.stopPropagation();copyToClipboard(${JSON.stringify(item.hook||'').replace(/"/g,'&quot;')},'Hook')">Copy</button></div>
+    <div class="cc-caption">${esc(item.hook || '')}</div>
+  </div>`;
+
+  if (tab === 'reels') {
+    bodyHTML += `<div class="cc-block">
+      <div class="cc-block-label">Script <button class="cc-copy-btn" onclick="event.stopPropagation();copyToClipboard(${JSON.stringify(item.script||'').replace(/"/g,'&quot;')},'Script')">Copy</button></div>
+      <div class="cc-script">${esc(item.script || '')}</div>
+    </div>`;
+    if (item.broll) {
+      bodyHTML += `<div class="cc-block">
+        <div class="cc-block-label">B-roll / Visual</div>
+        <div class="cc-broll">${esc(item.broll)}</div>
+      </div>`;
+    }
+  } else if (item.slides && item.slides.length) {
+    bodyHTML += `<div class="cc-block">
+      <div class="cc-block-label">Slides (5)</div>
+      <div class="cc-slides">${item.slides.map((s, i) => `
+        <div class="cc-slide">
+          <div class="cc-slide-num">${i+1}/5</div>
+          <div class="cc-slide-label">${esc(s.label)}</div>
+          <div class="cc-slide-body">${esc(s.body)}</div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  bodyHTML += `<div class="cc-block">
+    <div class="cc-block-label">Caption <button class="cc-copy-btn" onclick="event.stopPropagation();copyToClipboard(${JSON.stringify(item.caption||'').replace(/"/g,'&quot;')},'Caption')">Copy</button></div>
+    <div class="cc-caption">${esc(item.caption || '')}</div>
+  </div>`;
+
+  bodyHTML += `<div class="cc-block">
+    <div class="cc-block-label">Hashtags <button class="cc-copy-btn" onclick="event.stopPropagation();copyToClipboard(${JSON.stringify(hashtags).replace(/"/g,'&quot;')},'Hashtags')">Copy</button></div>
+    <div class="cc-hashtags">${esc(hashtags)}</div>
+  </div>`;
+
+  return `<div class="cc-row ${isOpen ? 'open' : ''} ${status === 'posted' ? 'posted' : ''}" id="cc-row-${item.id}">
+    <div class="cc-row-head" onclick="toggleCCRow('${item.id}')">
+      <div class="cc-row-date"><span class="cc-chevron">›</span>${esc(item.date)}${slotLine}</div>
+      <div>
+        <div class="cc-row-title">${esc(item.title || item.hook)}</div>
+        ${item.title ? `<div class="cc-row-hook">${esc(item.hook || '')}</div>` : ''}
+      </div>
+      <span class="cc-pillar-pill" style="background:${pillarStyle.bg};color:${pillarStyle.color}">${esc(item.pillar)}</span>
+      <button class="cc-status-btn cc-status-${status}" onclick="event.stopPropagation();cycleCCStatus('${item.id}')">${CC_STATUS_LABEL[status]}</button>
+    </div>
+    <div class="cc-row-body">${bodyHTML}</div>
+  </div>`;
+}
+
+function renderCC() {
+  const data = ccData();
+  const titleEl = document.getElementById('cc-title');
+  const subEl = document.getElementById('cc-subtitle');
+  const linkEl = document.getElementById('cc-source-link');
+  if (titleEl && data) titleEl.textContent = data.meta.title;
+  if (subEl && data) subEl.textContent = data.meta.subtitle;
+  if (linkEl && data) linkEl.href = data.meta.sourceUrl;
+
+  if (data) {
+    const cEl = document.getElementById('cc-count-carousels');
+    const rEl = document.getElementById('cc-count-reels');
+    if (cEl) cEl.textContent = '· ' + data.carousels.length;
+    if (rEl) rEl.textContent = '· ' + data.reels.length;
+  }
+
+  renderCCMilestones();
+  renderCCRules();
+  renderCCFilters();
+  renderCCList();
+}
+
 // ─── INIT ─────────────────────────────────────────────────────────
 function init() {
   renderCountdown();
@@ -1399,6 +1771,12 @@ function init() {
   renderBoard();
   renderProjects();
   updateProjectFilter();
+  // restore CC active tab on init (calendar renders lazily on nav)
+  if (state.contentCalendar?.activeTab === 'reels') {
+    document.querySelectorAll('.subtab[data-cc-tab]').forEach(el => {
+      el.classList.toggle('active', el.dataset.ccTab === 'reels');
+    });
+  }
 }
 
 // Close modal on overlay click
