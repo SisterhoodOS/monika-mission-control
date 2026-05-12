@@ -364,6 +364,35 @@ strong { color: var(--ink); font-weight: 600; }
 .cc-empty { text-align: center; padding: 40px 20px; color: var(--ink-mute); font-size: 12pt; font-family: var(--serif); font-style: italic; }
 .cc-source-link { display: inline-flex; align-items: center; gap: 5px; font-size: 10pt; color: var(--ink-mute); text-decoration: none; margin-top: 14px; }
 .cc-source-link:hover { color: var(--workspace); }
+
+/* Inline edit */
+.cc-edit-btn { font-size: 8.5pt; font-weight: 600; color: var(--workspace); cursor: pointer; background: none; border: 1px solid var(--ws-border); border-radius: 5px; padding: 2px 8px; transition: all .15s; }
+.cc-edit-btn:hover { background: var(--workspace); color: #fff; }
+.cc-edit-btn.active { background: var(--workspace); color: #fff; }
+.cc-row.editing .cc-caption,
+.cc-row.editing .cc-script,
+.cc-row.editing .cc-hashtags,
+.cc-row.editing .cc-broll,
+.cc-row.editing .cc-slide-body { border-color: var(--workspace); background: #fbfaff; }
+.cc-row.editing [contenteditable="true"] { outline: none; cursor: text; }
+.cc-row.editing [contenteditable="true"]:focus { background: #f3f0fb; border-radius: 4px; }
+.cc-modified-badge { font-size: 8pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--workspace); background: var(--ws-light); border: 1px solid var(--ws-border); border-radius: 10px; padding: 1px 7px; margin-left: 6px; }
+.cc-revert-btn { font-size: 8.5pt; font-weight: 600; color: #b91c1c; cursor: pointer; background: none; border: 1px solid #fecaca; border-radius: 5px; padding: 2px 8px; transition: all .15s; margin-left: 6px; }
+.cc-revert-btn:hover { background: #fef2f2; }
+.cc-edit-title { font-family: var(--serif); font-size: 13pt; color: var(--ink); line-height: 1.3; outline: none; }
+.cc-row.editing .cc-edit-title { background: #f3f0fb; border-radius: 4px; padding: 1px 5px; }
+.cc-edit-hook { font-size: 10pt; color: var(--ink-mute); font-style: italic; margin-top: 3px; line-height: 1.4; outline: none; display: block; }
+.cc-row.editing .cc-edit-hook { background: #f3f0fb; border-radius: 4px; padding: 1px 5px; }
+
+/* Dashboard milestone strip (replaces single countdown) */
+.ms-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.ms-card { background: rgba(255,255,255,.55); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; border-left: 4px solid var(--clay); }
+.ms-card.next { border-left-color: var(--workspace); background: rgba(240,238,247,.85); }
+.ms-card.past { opacity: .5; }
+.ms-card-label { font-size: 7.5pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 4px; }
+.ms-card-name { font-family: var(--serif); font-size: 12pt; color: var(--ink); margin-bottom: 2px; line-height: 1.25; }
+.ms-card-time { font-size: 9.5pt; color: var(--ink-mute); }
+.ms-card-cd { font-size: 9.5pt; color: var(--clay); font-weight: 700; margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -419,12 +448,7 @@ strong { color: var(--ink); font-weight: 600; }
         <div class="hero-eye">Welcome Back</div>
         <h1>Good to see you, Monika.</h1>
         <p class="hero-sub">Your operations hub for Sisterhood OS and Saha Synergy. Everything in one place.</p>
-        <div class="countdown-row">
-          <div class="cd-block"><div class="cd-num" id="cd-days">—</div><div class="cd-label">Days</div></div>
-          <div class="cd-block"><div class="cd-num" id="cd-hours">—</div><div class="cd-label">Hours</div></div>
-          <div class="cd-block"><div class="cd-num" id="cd-mins">—</div><div class="cd-label">Mins</div></div>
-          <div class="cd-event">until SPC Launch &mdash; Jan 19, 2027</div>
-        </div>
+        <div class="ms-strip" id="dash-milestones"></div>
       </div>
 
       <div class="focus-box">
@@ -764,7 +788,7 @@ function defaultState() {
       cards: [],
       projects: []
     },
-    contentCalendar: { postStatus: {}, openRows: {}, activeTab: 'carousels' }
+    contentCalendar: { postStatus: {}, openRows: {}, activeTab: 'carousels', overrides: {} }
   };
 }
 
@@ -787,7 +811,8 @@ function loadState() {
       contentCalendar: {
         postStatus: saved.contentCalendar?.postStatus || {},
         openRows: saved.contentCalendar?.openRows || {},
-        activeTab: saved.contentCalendar?.activeTab || 'carousels'
+        activeTab: saved.contentCalendar?.activeTab || 'carousels',
+        overrides: saved.contentCalendar?.overrides || {}
       }
     };
   } catch(e) { return defaultState(); }
@@ -826,24 +851,46 @@ function navigate(id) {
   if (id === 'content-calendar') { renderCC(); }
 }
 
-// ─── COUNTDOWN ────────────────────────────────────────────────────
+// ─── DASHBOARD MILESTONES ─────────────────────────────────────────
+function dashMilestones() {
+  // Pull from CONTENT_CALENDAR if loaded; otherwise fall back to hardcoded SPC date.
+  const cc = window.CONTENT_CALENDAR;
+  if (cc && cc.meta && cc.meta.milestones && cc.meta.milestones.length) {
+    return cc.meta.milestones;
+  }
+  return [{ name: 'SPC Launch', dateISO: '2027-01-19T22:00:00+08:00', short: 'Jan 19, 2027' }];
+}
+
+function fmtCountdown(targetMs) {
+  const diff = targetMs - Date.now();
+  if (diff <= 0) return 'happening now';
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  if (d > 0) return d + 'd ' + h + 'h';
+  if (h > 0) return h + 'h ' + m + 'm';
+  return m + 'm';
+}
+
 function renderCountdown() {
-  const target = new Date('2027-01-19T22:00:00+08:00').getTime();
   function tick() {
+    const wrap = document.getElementById('dash-milestones');
+    if (!wrap) return;
+    const milestones = dashMilestones();
     const now = Date.now();
-    const diff = target - now;
-    if (diff <= 0) {
-      document.getElementById('cd-days').textContent = '0';
-      document.getElementById('cd-hours').textContent = '0';
-      document.getElementById('cd-mins').textContent = '0';
-      return;
-    }
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    document.getElementById('cd-days').textContent = d;
-    document.getElementById('cd-hours').textContent = h;
-    document.getElementById('cd-mins').textContent = m;
+    const upcoming = milestones.filter(m => new Date(m.dateISO).getTime() > now);
+    const nextOne = upcoming[0];
+    wrap.innerHTML = milestones.map(m => {
+      const t = new Date(m.dateISO).getTime();
+      const isPast = t < now;
+      const isNext = nextOne && m.name === nextOne.name;
+      return `<div class="ms-card ${isPast ? 'past' : ''} ${isNext ? 'next' : ''}">
+        <div class="ms-card-label">${isPast ? 'Past' : (isNext ? 'Next up' : 'Coming')}</div>
+        <div class="ms-card-name">${esc(m.name)}</div>
+        <div class="ms-card-time">${esc(m.short)}</div>
+        ${!isPast ? `<div class="ms-card-cd">${fmtCountdown(t)}</div>` : ''}
+      </div>`;
+    }).join('');
   }
   tick();
   setInterval(tick, 30000);
@@ -1542,6 +1589,85 @@ function toggleCCRow(id) {
   if (row) row.classList.toggle('open', !!state.contentCalendar.openRows[id]);
 }
 
+function ccGet(item, field, slideIdx) {
+  const ov = state.contentCalendar.overrides[item.id] || {};
+  if (slideIdx != null) {
+    if (ov.slides && ov.slides[slideIdx] != null) return ov.slides[slideIdx];
+    return (item.slides && item.slides[slideIdx]) ? item.slides[slideIdx].body : '';
+  }
+  if (ov[field] != null) return ov[field];
+  if (field === 'hashtags') return (item.hashtags || []).join(' ');
+  return item[field] || '';
+}
+
+function ccSet(id, field, value, slideIdx) {
+  if (!state.contentCalendar.overrides[id]) state.contentCalendar.overrides[id] = {};
+  const ov = state.contentCalendar.overrides[id];
+  if (slideIdx != null) {
+    if (!ov.slides) ov.slides = {};
+    ov.slides[slideIdx] = value;
+  } else {
+    ov[field] = value;
+  }
+  saveState(state);
+  updateModifiedBadge(id);
+}
+
+function ccIsModified(id) {
+  const ov = state.contentCalendar.overrides[id];
+  if (!ov) return false;
+  if (Object.keys(ov).length === 0) return false;
+  if (ov.slides && Object.keys(ov.slides).length === 0 && Object.keys(ov).length === 1) return false;
+  return true;
+}
+
+function ccRevert(id) {
+  if (!confirm('Revert all edits to this post? This cannot be undone.')) return;
+  delete state.contentCalendar.overrides[id];
+  saveState(state);
+  renderCC();
+  showToast('Reverted');
+}
+
+function toggleEditMode(id) {
+  const row = document.getElementById('cc-row-' + id);
+  if (!row) return;
+  const editing = row.classList.toggle('editing');
+  // Toggle contenteditable on edit-target elements within this row
+  row.querySelectorAll('[data-cc-editable]').forEach(el => {
+    el.setAttribute('contenteditable', editing ? 'true' : 'false');
+  });
+  const btn = row.querySelector('.cc-edit-btn');
+  if (btn) {
+    btn.classList.toggle('active', editing);
+    btn.textContent = editing ? 'Done' : 'Edit';
+  }
+  if (!editing) showToast('Saved');
+}
+
+function ccFieldBlur(el, id, field, slideIdx) {
+  const newVal = el.innerText.replace(/\s+$/,'').trim();
+  ccSet(id, field, newVal, slideIdx);
+}
+
+function updateModifiedBadge(id) {
+  const row = document.getElementById('cc-row-' + id);
+  if (!row) return;
+  const existing = row.querySelector('.cc-modified-badge');
+  const modified = ccIsModified(id);
+  if (modified && !existing) {
+    const head = row.querySelector('.cc-row-title');
+    if (head) {
+      const b = document.createElement('span');
+      b.className = 'cc-modified-badge';
+      b.textContent = 'Modified';
+      head.appendChild(b);
+    }
+  } else if (!modified && existing) {
+    existing.remove();
+  }
+}
+
 function showCCTab(tab) {
   state.contentCalendar.activeTab = tab;
   saveState(state);
@@ -1675,29 +1801,39 @@ function renderCCRow(item, tab, data) {
   const pillarStyle = data.pillars[item.pillar] || { color: '#666', bg: '#eee' };
   const status = ccGetStatus(item.id);
   const isOpen = !!state.contentCalendar.openRows[item.id];
-  const hashtags = (item.hashtags || []).join(' ');
+  const id = item.id;
+
+  const titleVal = ccGet(item, 'title') || ccGet(item, 'hook');
+  const hookVal = ccGet(item, 'hook');
+  const captionVal = ccGet(item, 'caption');
+  const hashtagsVal = ccGet(item, 'hashtags');
+  const scriptVal = ccGet(item, 'script');
+  const brollVal = ccGet(item, 'broll');
+  const modified = ccIsModified(id);
   const slotLine = tab === 'reels' ? `<span class="cc-slot">${esc(item.slot || '')}</span>` : '';
 
   let bodyHTML = '';
   bodyHTML += `<div class="cc-meta-row">
     <span class="cc-phase-tag">${esc(item.phase || '—')}</span>
     ${item.format ? `<span class="cc-format-tag">${esc(item.format)}</span>` : ''}
+    <button class="cc-edit-btn" onclick="event.stopPropagation();toggleEditMode('${id}')">Edit</button>
+    ${modified ? `<button class="cc-revert-btn" onclick="event.stopPropagation();ccRevert('${id}')">Revert all</button>` : ''}
   </div>`;
 
   bodyHTML += `<div class="cc-block">
-    <div class="cc-block-label">Hook <button class="cc-copy-btn" onclick="event.stopPropagation();copyToClipboard(${JSON.stringify(item.hook||'').replace(/"/g,'&quot;')},'Hook')">Copy</button></div>
-    <div class="cc-caption">${esc(item.hook || '')}</div>
+    <div class="cc-block-label">Hook <button class="cc-copy-btn" onclick="event.stopPropagation();copyToClipboard(this.parentElement.nextElementSibling.innerText,'Hook')">Copy</button></div>
+    <div class="cc-caption" data-cc-editable contenteditable="false" onblur="ccFieldBlur(this,'${id}','hook')">${esc(hookVal)}</div>
   </div>`;
 
   if (tab === 'reels') {
     bodyHTML += `<div class="cc-block">
-      <div class="cc-block-label">Script <button class="cc-copy-btn" onclick="event.stopPropagation();copyToClipboard(${JSON.stringify(item.script||'').replace(/"/g,'&quot;')},'Script')">Copy</button></div>
-      <div class="cc-script">${esc(item.script || '')}</div>
+      <div class="cc-block-label">Script <button class="cc-copy-btn" onclick="event.stopPropagation();copyToClipboard(this.parentElement.nextElementSibling.innerText,'Script')">Copy</button></div>
+      <div class="cc-script" data-cc-editable contenteditable="false" onblur="ccFieldBlur(this,'${id}','script')">${esc(scriptVal)}</div>
     </div>`;
-    if (item.broll) {
+    if (item.broll || brollVal) {
       bodyHTML += `<div class="cc-block">
         <div class="cc-block-label">B-roll / Visual</div>
-        <div class="cc-broll">${esc(item.broll)}</div>
+        <div class="cc-broll" data-cc-editable contenteditable="false" onblur="ccFieldBlur(this,'${id}','broll')">${esc(brollVal)}</div>
       </div>`;
     }
   } else if (item.slides && item.slides.length) {
@@ -1707,31 +1843,31 @@ function renderCCRow(item, tab, data) {
         <div class="cc-slide">
           <div class="cc-slide-num">${i+1}/5</div>
           <div class="cc-slide-label">${esc(s.label)}</div>
-          <div class="cc-slide-body">${esc(s.body)}</div>
+          <div class="cc-slide-body" data-cc-editable contenteditable="false" onblur="ccFieldBlur(this,'${id}',null,${i})">${esc(ccGet(item, null, i))}</div>
         </div>`).join('')}
       </div>
     </div>`;
   }
 
   bodyHTML += `<div class="cc-block">
-    <div class="cc-block-label">Caption <button class="cc-copy-btn" onclick="event.stopPropagation();copyToClipboard(${JSON.stringify(item.caption||'').replace(/"/g,'&quot;')},'Caption')">Copy</button></div>
-    <div class="cc-caption">${esc(item.caption || '')}</div>
+    <div class="cc-block-label">Caption <button class="cc-copy-btn" onclick="event.stopPropagation();copyToClipboard(this.parentElement.nextElementSibling.innerText,'Caption')">Copy</button></div>
+    <div class="cc-caption" data-cc-editable contenteditable="false" onblur="ccFieldBlur(this,'${id}','caption')">${esc(captionVal)}</div>
   </div>`;
 
   bodyHTML += `<div class="cc-block">
-    <div class="cc-block-label">Hashtags <button class="cc-copy-btn" onclick="event.stopPropagation();copyToClipboard(${JSON.stringify(hashtags).replace(/"/g,'&quot;')},'Hashtags')">Copy</button></div>
-    <div class="cc-hashtags">${esc(hashtags)}</div>
+    <div class="cc-block-label">Hashtags <button class="cc-copy-btn" onclick="event.stopPropagation();copyToClipboard(this.parentElement.nextElementSibling.innerText,'Hashtags')">Copy</button></div>
+    <div class="cc-hashtags" data-cc-editable contenteditable="false" onblur="ccFieldBlur(this,'${id}','hashtags')">${esc(hashtagsVal)}</div>
   </div>`;
 
-  return `<div class="cc-row ${isOpen ? 'open' : ''} ${status === 'posted' ? 'posted' : ''}" id="cc-row-${item.id}">
-    <div class="cc-row-head" onclick="toggleCCRow('${item.id}')">
+  return `<div class="cc-row ${isOpen ? 'open' : ''} ${status === 'posted' ? 'posted' : ''}" id="cc-row-${id}">
+    <div class="cc-row-head" onclick="toggleCCRow('${id}')">
       <div class="cc-row-date"><span class="cc-chevron">›</span>${esc(item.date)}${slotLine}</div>
       <div>
-        <div class="cc-row-title">${esc(item.title || item.hook)}</div>
-        ${item.title ? `<div class="cc-row-hook">${esc(item.hook || '')}</div>` : ''}
+        <div class="cc-row-title cc-edit-title" data-cc-editable contenteditable="false" onblur="ccFieldBlur(this,'${id}','title')" onclick="event.stopPropagation()">${esc(titleVal)}</div>
+        ${modified ? `<span class="cc-modified-badge">Modified</span>` : ''}
       </div>
       <span class="cc-pillar-pill" style="background:${pillarStyle.bg};color:${pillarStyle.color}">${esc(item.pillar)}</span>
-      <button class="cc-status-btn cc-status-${status}" onclick="event.stopPropagation();cycleCCStatus('${item.id}')">${CC_STATUS_LABEL[status]}</button>
+      <button class="cc-status-btn cc-status-${status}" onclick="event.stopPropagation();cycleCCStatus('${id}')">${CC_STATUS_LABEL[status]}</button>
     </div>
     <div class="cc-row-body">${bodyHTML}</div>
   </div>`;
