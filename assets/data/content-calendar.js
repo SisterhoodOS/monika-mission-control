@@ -18,9 +18,7 @@ window.CONTENT_CALENDAR = {
     cta: "Comment MASTERCLASS to save your spot.",
     manychatKeyword: "MASTERCLASS",
     milestones: [
-      { name: "Cycle Masterclass", dateISO: "2026-05-17T22:00:00+08:00", short: "May 17, 10pm Bali" },
-      { name: "Leaving Corporate Masterclass", dateISO: "2026-05-31T22:00:00+08:00", short: "May 31, 10pm Bali" },
-      { name: "SPC Cohort 1 Opens", dateISO: "2026-06-06T00:00:00+08:00", short: "June 6" }
+      { name: "Cycle Masterclass", dateISO: "2026-05-17T22:00:00+08:00", short: "May 17, 10pm Bali" }
     ],
     brandColors: [
       { name: "Rose Clay", hex: "#C9876A" },

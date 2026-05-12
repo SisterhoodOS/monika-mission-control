@@ -1894,6 +1894,19 @@ function renderCCList() {
     if (view === 'active' && i.dateISO < todayISO) return false;
     if (view === 'archive' && i.dateISO >= todayISO) return false;
     return true;
+  }).sort((a, b) => {
+    if (a.dateISO !== b.dateISO) return a.dateISO < b.dateISO ? -1 : 1;
+    // Within same day: AM before PM, then by id for stability
+    const slotRank = s => {
+      const v = (s || '').toUpperCase();
+      if (v.startsWith('AM')) return 0;
+      if (v.startsWith('PM')) return 1;
+      return 0;
+    };
+    const ra = slotRank(a.slot || (a.date && a.date.includes('PM') ? 'PM' : 'AM'));
+    const rb = slotRank(b.slot || (b.date && b.date.includes('PM') ? 'PM' : 'AM'));
+    if (ra !== rb) return ra - rb;
+    return a.id < b.id ? -1 : 1;
   });
 
   if (!filtered.length) {
