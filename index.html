@@ -757,6 +757,12 @@ strong { color: var(--ink); font-weight: 600; }
             <option value="scheduled">Scheduled</option>
             <option value="posted">Posted</option>
           </select>
+          <span class="cc-filter-label">View</span>
+          <select class="cc-filter-select" id="cc-filter-view" onchange="ccSetView(this.value)">
+            <option value="active">Active (today + future)</option>
+            <option value="archive">Archive (past)</option>
+            <option value="all">All</option>
+          </select>
           <span class="cc-progress" id="cc-progress"></span>
         </div>
 
@@ -875,7 +881,7 @@ function defaultState() {
       cards: [],
       projects: []
     },
-    contentCalendar: { postStatus: {}, openRows: {}, activeTab: 'carousels', overrides: {} },
+    contentCalendar: { postStatus: {}, openRows: {}, activeTab: 'carousels', overrides: {}, viewFilter: 'active' },
     checkins: {}
   };
 }
@@ -900,7 +906,8 @@ function loadState() {
         postStatus: saved.contentCalendar?.postStatus || {},
         openRows: saved.contentCalendar?.openRows || {},
         activeTab: saved.contentCalendar?.activeTab || 'carousels',
-        overrides: saved.contentCalendar?.overrides || {}
+        overrides: saved.contentCalendar?.overrides || {},
+        viewFilter: saved.contentCalendar?.viewFilter || 'active'
       },
       checkins: saved.checkins || {}
     };
@@ -1760,6 +1767,17 @@ function updateModifiedBadge(id) {
   }
 }
 
+function ccSetView(view) {
+  state.contentCalendar.viewFilter = view;
+  saveState(state);
+  renderCC();
+}
+
+function ccTodayISO() {
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+
 function showCCTab(tab) {
   state.contentCalendar.activeTab = tab;
   saveState(state);
@@ -1867,10 +1885,14 @@ function renderCCList() {
   const pillarVal = document.getElementById('cc-filter-pillar').value;
   const statusVal = document.getElementById('cc-filter-status').value;
 
+  const todayISO = ccTodayISO();
+  const view = state.contentCalendar.viewFilter || 'active';
   const filtered = items.filter(i => {
     if (tab === 'carousels' && phaseVal !== 'all' && i.phase !== phaseVal) return false;
     if (pillarVal !== 'all' && i.pillar !== pillarVal) return false;
     if (statusVal !== 'all' && ccGetStatus(i.id) !== statusVal) return false;
+    if (view === 'active' && i.dateISO < todayISO) return false;
+    if (view === 'archive' && i.dateISO >= todayISO) return false;
     return true;
   });
 
@@ -1980,6 +2002,10 @@ function renderCC() {
     if (cEl) cEl.textContent = '· ' + data.carousels.length;
     if (rEl) rEl.textContent = '· ' + data.reels.length;
   }
+
+  // Sync view filter dropdown to state on render
+  const viewEl = document.getElementById('cc-filter-view');
+  if (viewEl) viewEl.value = state.contentCalendar.viewFilter || 'active';
 
   renderCCMilestones();
   renderCCRules();

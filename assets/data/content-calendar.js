@@ -407,6 +407,78 @@ window.CONTENT_CALENDAR = {
         { label: "WHAT'S NEXT", body: "'Soul Path Collective Cohort 1 opens June 6. Different doorway. Different commitment.'" },
         { label: "CTA", body: "'Doors close 9:45pm Bali. Comment MASTERCLASS to save your spot.'" }
       ]
+    },
+    {
+      id: "car-2026-05-14-pm",
+      date: "Thu, May 14 (PM)",
+      dateISO: "2026-05-14",
+      phase: "Cycle Masterclass Promo",
+      pillar: "Method",
+      title: "Inward season retrospective.",
+      hook: "What I'd do differently if I were starting this circle in 2026.",
+      caption: "I would begin in a quieter inward season. I would trust the gathering before the visibility. I would build for the women who already know they want this, not the women who need convincing.\n\nThe first version of this circle was loud. It tried to find women through volume.\n\nThe version I would build now starts smaller. Slower. More cyclical. The women would find each other in the quiet before the brand even spoke.\n\nIf you're starting something this year, this is your reminder. The seasons of business are not optional. Honor the inward one first.\n\nComment MASTERCLASS to save your spot.",
+      hashtags: ["#cyclesynergy","#consciousbusiness","#priestessleadership","#sisterhoodos"],
+      slides: [
+        { label: "COVER", body: "Italic serif: 'What I'd do differently if I were starting this circle in 2026.' Luminous Pearl bg." },
+        { label: "THE THEN", body: "'The first version was loud. It tried to find women through volume.'" },
+        { label: "THE NOW", body: "'I would begin in a quieter inward season. I would trust the gathering before the visibility.'" },
+        { label: "THE TEACHING", body: "'The seasons of business are not optional. Honor the inward one first.'" },
+        { label: "CTA", body: "'Cycle masterclass Sunday May 17. Comment MASTERCLASS to save your spot.'" }
+      ]
+    },
+    {
+      id: "car-2026-05-16-pm",
+      date: "Sat, May 16 (PM)",
+      dateISO: "2026-05-16",
+      phase: "Cycle Masterclass Promo",
+      pillar: "Method",
+      title: "Quiz: Which sacred archetype leads your business?",
+      hook: "Which sacred archetype leads your business? 60 seconds to find out.",
+      caption: "Four archetypes. Most women lead from one, neglect three.\n\nMaiden — visionary, beginner energy, asks before building.\nWild Woman — magnetic, public, builds in the open.\nMother — nurturing, integrating, deepening with what already exists.\nQueen — discerning, editing, pricing, ending what's done.\n\nSwipe through. Save the one that's you right now. Comment ARCHETYPE and I'll DM you the full diagnostic (free).\n\nComment ARCHETYPE.",
+      hashtags: ["#sacredarchetypes","#cyclesynergy","#feminineleadership","#sisterhoodos"],
+      slides: [
+        { label: "COVER", body: "'Which sacred archetype leads your business?' Subtitle: '60 seconds to find out.' Rose Clay bg." },
+        { label: "MAIDEN", body: "Visionary. Beginner energy. Asks before building. The new idea is hers." },
+        { label: "WILD WOMAN", body: "Magnetic. Public. Builds in the open. Sales energy is hers." },
+        { label: "MOTHER + QUEEN", body: "MOTHER: nurturing, integrating. QUEEN: discerning, editing, ending what's done." },
+        { label: "CTA", body: "'Comment ARCHETYPE for the full diagnostic.' (DM funnel keyword.)" }
+      ]
+    },
+    {
+      id: "car-2026-05-26-am",
+      date: "Tue, May 26 (AM)",
+      dateISO: "2026-05-26",
+      phase: "Leaving Corporate Arc",
+      pillar: "Comfort Trap",
+      title: "5 signs you're ready to leave the calendar.",
+      hook: "You're not lazy. You're mis-scheduled for your own biology.",
+      caption: "Five signs the calendar is breaking you, not the other way around.\n\n1. Your Mondays are dread, not direction.\n2. Your wins feel hollow within a week.\n3. Your luteal week feels like a sentence.\n4. You're performing rest, not actually resting.\n5. You secretly want a slower life and call it ambition problems.\n\nYou're not lazy. You're mis-scheduled for your own biology.\n\nComment MASTERCLASS to save your spot.",
+      hashtags: ["#comforttrap","#cyclesynergy","#corporatewoman","#sisterhoodos"],
+      slides: [
+        { label: "COVER", body: "Bold serif: '5 signs you're ready to leave the calendar.' Warm Sand bg." },
+        { label: "SIGNS 1-2", body: "1. Mondays are dread, not direction. 2. Wins feel hollow within a week." },
+        { label: "SIGNS 3-4", body: "3. Luteal week feels like a sentence. 4. Performing rest, not actually resting." },
+        { label: "SIGN 5 + REFRAME", body: "5. You secretly want a slower life and call it ambition problems. Reframe: You're not lazy. You're mis-scheduled for your own biology." },
+        { label: "CTA", body: "'Masterclass May 31. Comment MASTERCLASS to save your spot.'" }
+      ]
+    },
+    {
+      id: "car-2026-05-27-pm",
+      date: "Wed, May 27 (PM)",
+      dateISO: "2026-05-27",
+      phase: "Leaving Corporate Arc",
+      pillar: "Direct Invitation",
+      title: "Comment SOULPATH for the Soul Path Map preview.",
+      hook: "Want the Soul Path Map preview before SPC opens? Comment SOULPATH.",
+      caption: "Five layers of you, made visible.\n\nTurning points. Wounds. Patterns. Gifts. Cycle.\n\nThe Soul Path Map is the diagnostic Cohort 1 of Soul Path Collective will be built from.\n\nIf you want to see what yours looks like before June 6, comment SOULPATH. I'll send you the free preview.\n\nNo pitch, no urgency. Just the map.\n\nComment SOULPATH.",
+      hashtags: ["#soulpathmap","#signatureframework","#soulpathcollective","#sisterhoodos"],
+      slides: [
+        { label: "COVER", body: "Large serif: 'Comment SOULPATH for the preview.' Subtitle: 'Free. No pitch.' Luminous Pearl bg." },
+        { label: "LAYERS 1-2", body: "TURNING POINTS — moments that changed you. WOUNDS — patterns still moving through." },
+        { label: "LAYERS 3-4", body: "GIFTS — what you do effortlessly. CYCLE — phases that shape your energy." },
+        { label: "LAYER 5", body: "SOUL THREAD — the throughline you've been quietly living all along. Made visible." },
+        { label: "CTA", body: "'Comment SOULPATH and I'll DM you the preview.' SPC Cohort 1 opens June 6." }
+      ]
     }
   ],
   reels: [
@@ -721,6 +793,136 @@ window.CONTENT_CALENDAR = {
       broll: "Evening Bali shots. Candle close-up. Hand to heart. Direct soft eye contact.",
       caption: "You don't manifest what you want. You manifest what you are.\n\nTonight closed one doorway. June 6 opens the next.\n\nSoul Path Collective Cohort 1. 6 months. 20 women. The path home.\n\nLink in bio for the clarifying call.",
       hashtags: ["#embodiment","#soulpathcollective","#cohort1","#sisterhoodos"]
+    },
+    {
+      id: "reel-2026-05-13-am",
+      date: "Wed, May 13",
+      dateISO: "2026-05-13",
+      slot: "AM · 8:00 Bali",
+      pillar: "Method",
+      format: "Teaching talking head",
+      hook: "For 500 years women have been asked to build businesses inside a box designed for men.",
+      script: "For 500 years women have been asked to build businesses inside a box designed for men.\n\nThe 9-to-5 is a box. The quarterly review is a box. The sales funnel is a box.\n\nYou are a circle. Your body is cyclical, your energy is cyclical, your creativity is cyclical. And you've been punished for it.\n\nThe alternative is not optimization. It's the circle.",
+      broll: "Open on rice field path. Hand on circular journal. Cut to face, direct. End on candle.",
+      caption: "The circle is the alternative. Cycle masterclass Sunday. Comment MASTERCLASS to save your spot.",
+      hashtags: ["#cyclesynergy","#feminineleadership","#thecycleisthestrategy","#sisterhoodos"]
+    },
+    {
+      id: "reel-2026-05-14-am",
+      date: "Thu, May 14",
+      dateISO: "2026-05-14",
+      slot: "AM · 8:00 Bali",
+      pillar: "Method",
+      format: "Method teaser",
+      hook: "I spent two years building a map that combines human design, Vedic astrology, numerology, and your cycle.",
+      script: "Two years. One map.\n\nHuman design told me my energy. Astrology told me my timing. Numerology told me my path. The cycle told me my body. None of them talked to each other.\n\nSo I built the Soul Path Map. Five layers, one woman. The diagnostic SPC Cohort 1 is built from.",
+      broll: "Flat-lay overhead: hand holding the Soul Path Map document on linen, rose clay tea cup, geometric circular symbols, editorial.",
+      caption: "The map that talks to itself. Comment MASTERCLASS to save your spot.",
+      hashtags: ["#soulpathmap","#signatureframework","#returntoself","#sisterhoodos"]
+    },
+    {
+      id: "reel-2026-05-15-pm",
+      date: "Thu, May 15 (PM)",
+      dateISO: "2026-05-15",
+      slot: "PM · 8:00 Bali",
+      pillar: "Walk-Away Story",
+      format: "Priestess-voice failure reframe",
+      hook: "The thing that didn't grow the way I thought it would.",
+      script: "The circle was smaller than I imagined. For a long time I read that as failure.\n\nIt took me 18 months to read it as initiation.\n\nThe women who showed up were not the women I was performing for. They were the women I was actually for.\n\nThe contraction was the teaching.",
+      broll: "Candle close-up. Hand on chest. Small gathering blurred. End on direct soft face.",
+      caption: "The contraction was the teaching. SPC was built from this season. Comment MASTERCLASS to save your spot.",
+      hashtags: ["#consciousbusiness","#soulpathcollective","#initiation","#sisterhoodos"]
+    },
+    {
+      id: "reel-2026-05-16-am",
+      date: "Sat, May 16",
+      dateISO: "2026-05-16",
+      slot: "AM · 8:00 Bali",
+      pillar: "Direct Invitation",
+      format: "Last call talking head",
+      hook: "24 hours until I pull the masterclass link. Two things I want to say first.",
+      script: "24 hours.\n\nTwo things before the link goes down.\n\nOne. This is not a webinar. It's 90 minutes of actual work in a circle.\n\nTwo. The women coming aren't the women who need convincing. They're the women who've already known for a while.\n\nIf that's you, the doorway closes in 24 hours.",
+      broll: "Close on a phone with link. Sand timer. Direct face. Final eye contact.",
+      caption: "24 hours. Comment MASTERCLASS to save your spot.",
+      hashtags: ["#freemasterclass","#cyclesynergy","#lastcall","#sisterhoodos"]
+    },
+    {
+      id: "reel-2026-05-17-am",
+      date: "Sun, May 17",
+      dateISO: "2026-05-17",
+      slot: "AM · 8:00 Bali",
+      pillar: "Behind the Scenes",
+      format: "Testimonial reuse",
+      hook: "She walked into the circle quiet. She walked out leading one.",
+      script: "She came to the first circle in March. She didn't speak the whole 90 minutes.\n\nIn April, she ran her own.\n\nThis is what the circle does. It doesn't perform you into a leader. It reveals the one you've been quietly hiding.",
+      broll: "Blurred circle footage. Hands holding tea. Final direct face.",
+      caption: "The circle is the doorway. Tonight's masterclass. Comment MASTERCLASS to save your spot.",
+      hashtags: ["#sisterhoodos","#circletestimonials","#feminineleadership","#masterclassday"]
+    },
+    {
+      id: "reel-2026-05-18-pm",
+      date: "Mon, May 18 (PM)",
+      dateISO: "2026-05-18",
+      slot: "PM · 8:00 Bali",
+      pillar: "Walk-Away Story",
+      format: "Specificity hook",
+      hook: "The week before I quit, I cried in three different Singapore bathrooms.",
+      script: "The week before I quit.\n\nMonday. The 28th floor bathroom. Wednesday. The rooftop bar bathroom after a client dinner. Friday. The airport bathroom on the way to Bali for what I told everyone was 'just a holiday.'\n\nThree bathrooms. One body. Telling me what my mouth wasn't ready to say.",
+      broll: "Black and white bathroom mirror tight shot. Window light. End on direct face.",
+      caption: "Three bathrooms. One body. Telling the truth before the mouth was ready. Saturday masterclass. Comment MASTERCLASS to save your spot.",
+      hashtags: ["#leavingcorporate","#bodywisdom","#threshold","#sisterhoodos"]
+    },
+    {
+      id: "reel-2026-05-19-am",
+      date: "Tue, May 19",
+      dateISO: "2026-05-19",
+      slot: "AM · 8:00 Bali",
+      pillar: "Comfort Trap",
+      format: "Reframe",
+      hook: "If you're the woman who gives until you're empty, your business runs the same way.",
+      script: "If you're the woman who gives until you're empty, your business runs the same way.\n\nThe over-giver doesn't have a marketing problem. She has a refilling problem.\n\nYour business is a reflection of how you treat your nervous system. Heal the giver. The business follows.",
+      broll: "Tight on face. Hand to chest. Empty cup, then steaming cup. Direct close.",
+      caption: "Heal the giver. The business follows. Comment MASTERCLASS to save your spot.",
+      hashtags: ["#overgiver","#nervoussystem","#consciousbusiness","#sisterhoodos"]
+    },
+    {
+      id: "reel-2026-05-19-pm",
+      date: "Tue, May 19 (PM)",
+      dateISO: "2026-05-19",
+      slot: "PM · 8:00 Bali",
+      pillar: "Behind the Scenes",
+      format: "Recurring series anchor (Ep 1)",
+      hook: "Inner World Updates. Episode 1. Eighteen days until SPC opens.",
+      script: "Inner World Updates. Episode 1.\n\nWhat's alive in me this week. The rooms where Cohort 1 will gather are already half built in my body. I'm slow on purpose.\n\nWhat I'm noticing about this version of leadership. Less performance. More devotion. Less broadcasting. More listening.\n\nFollow along. This is a recurring series leading to June 6.",
+      broll: "Morning light. Journal. Walking. Brief direct face. Series title card.",
+      caption: "Episode 1. Eighteen days. Comment MASTERCLASS to save your spot.",
+      hashtags: ["#soulpathcollective","#behindthebuild","#innerworldupdates","#sisterhoodos"]
+    },
+    {
+      id: "reel-2026-05-20-pm",
+      date: "Wed, May 20 (PM)",
+      dateISO: "2026-05-20",
+      slot: "PM · 8:00 Bali",
+      pillar: "Walk-Away Story",
+      format: "Origin story rotation",
+      hook: "Why Sisterhood OS exists. The 60-second version.",
+      script: "I left Singapore in 2019. I left a successful business in 2020. I moved to Bali in 2022.\n\nWhat I left was a life that asked me to perform a version of myself that was killing me slowly.\n\nWhat I found in Bali was not a fix. It was a doorway. A room of women asking the same questions. A body that finally got to slow down. A cycle I learned to design my work around.\n\nSisterhood OS exists because the women who walked through that doorway with me needed a structure to keep the becoming.",
+      broll: "Rice fields. Yoga shala. Journal. Singapore skyline B&W flashback. Direct close.",
+      caption: "If you're new here, this is the why. Comment MASTERCLASS to save your spot.",
+      hashtags: ["#originstory","#balilife","#returntoself","#sisterhoodos"]
+    },
+    {
+      id: "reel-2026-05-30-pm",
+      date: "Sat, May 30 (PM)",
+      dateISO: "2026-05-30",
+      slot: "PM · 8:00 Bali",
+      pillar: "Direct Invitation",
+      format: "Reframe",
+      hook: "If you took the leap, you cannot fail.",
+      script: "If you took the leap, you cannot fail.\n\nFailure requires that you didn't move. The women who don't quite make it in business never lacked talent. They lacked the leap.\n\nIf you took it, the worst case is a lesson. The best case is the life you were built for.\n\nTomorrow's masterclass is for the women already mid-leap.",
+      broll: "Golden hour. Walking forward shot. Direct face. End on horizon.",
+      caption: "Tomorrow. The leaving-corporate masterclass. Comment MASTERCLASS to save your spot.",
+      hashtags: ["#leavingcorporate","#consciousexit","#lastcall","#sisterhoodos"]
     }
   ]
 };
