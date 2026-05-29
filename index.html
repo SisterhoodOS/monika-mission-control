@@ -464,6 +464,61 @@ strong { color: var(--ink); font-weight: 600; }
 .ms-card-name { font-family: var(--serif); font-size: 12pt; color: var(--ink); margin-bottom: 2px; line-height: 1.25; }
 .ms-card-time { font-size: 9.5pt; color: var(--ink-mute); }
 .ms-card-cd { font-size: 9.5pt; color: var(--clay); font-weight: 700; margin-top: 4px; }
+
+/* ── AGENT MAP ─────────────────────────────────────────────────── */
+.agent-filter-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; align-items:center; }
+.agent-filter-btn { font-size:9pt; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:5px 14px; border-radius:20px; border:1.5px solid var(--line); background:var(--bg-card); color:var(--ink-mute); cursor:pointer; transition:all .15s; }
+.agent-filter-btn:hover { border-color:var(--gold); color:var(--ink); }
+.agent-filter-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.agent-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:16px; margin-bottom:36px; }
+.agent-card { background:var(--bg-card); border:1px solid var(--line); border-radius:12px; overflow:hidden; cursor:pointer; transition:box-shadow .15s; }
+.agent-card:hover { box-shadow:0 4px 18px rgba(0,0,0,.08); }
+.agent-card-top { padding:18px 20px 14px; border-left:4px solid var(--clay); }
+.agent-card-top.cat-social { border-left-color:var(--sage); }
+.agent-card-top.cat-sales { border-left-color:var(--workspace); }
+.agent-card-top.cat-ops { border-left-color:var(--gold); }
+.agent-card-top.cat-tools { border-left-color:var(--deep-green); }
+.agent-card-top.cat-content { border-left-color:var(--clay); }
+.agent-row1 { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px; }
+.agent-name { font-family:var(--serif); font-size:17pt; font-weight:400; color:var(--ink); line-height:1.1; }
+.agent-cat-badge { font-size:7.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:3px 8px; border-radius:10px; background:var(--bg-soft); color:var(--clay); flex-shrink:0; margin-top:3px; }
+.agent-cat-badge.cat-social { color:var(--sage); }
+.agent-cat-badge.cat-sales { color:var(--workspace); }
+.agent-cat-badge.cat-ops { color:var(--gold); }
+.agent-cat-badge.cat-tools { color:var(--deep-green); }
+.agent-skill-slug { font-size:8.5pt; color:var(--ink-mute); font-family:var(--mono); margin-bottom:8px; }
+.agent-trigger { display:inline-block; font-size:8pt; font-family:var(--mono); background:var(--bg-soft); border:1px solid var(--line); border-radius:5px; padding:2px 8px; color:var(--ink-soft); margin-bottom:8px; }
+.agent-purpose { font-size:10.5pt; color:var(--ink-soft); line-height:1.45; }
+.agent-detail { display:none; padding:14px 20px 18px; border-top:1px solid var(--line-soft); background:var(--bg); }
+.agent-detail.open { display:block; }
+.agent-uses-title { font-size:8pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:8px; }
+.agent-uses-list { list-style:none; }
+.agent-uses-list li { font-size:10pt; color:var(--ink-soft); padding:3px 0 3px 14px; position:relative; line-height:1.4; }
+.agent-uses-list li::before { content:'→'; position:absolute; left:0; color:var(--gold); font-size:9pt; top:4px; }
+.agent-extra { font-size:9.5pt; color:var(--ink-mute); margin-top:10px; font-style:italic; line-height:1.45; }
+.agent-expand-hint { font-size:8.5pt; color:var(--ink-mute); text-align:right; padding:6px 16px 10px; }
+
+/* ── SOPS ──────────────────────────────────────────────────────── */
+.sop-list { display:flex; flex-direction:column; gap:10px; margin-bottom:36px; }
+.sop-item { background:var(--bg-card); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+.sop-header { display:flex; align-items:center; gap:14px; padding:14px 20px; cursor:pointer; transition:background .12s; }
+.sop-header:hover { background:var(--bg-soft); }
+.sop-num { font-size:8pt; font-weight:700; letter-spacing:.1em; color:var(--clay); background:var(--bg-soft); border:1px solid var(--line); border-radius:6px; padding:3px 8px; flex-shrink:0; }
+.sop-info { flex:1; }
+.sop-title { font-family:var(--serif); font-size:13pt; font-weight:400; color:var(--ink); }
+.sop-meta { font-size:8.5pt; color:var(--ink-mute); margin-top:2px; }
+.sop-owner-badge { font-size:7.5pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:2px 8px; border-radius:8px; background:var(--bg-soft); color:var(--sage); flex-shrink:0; }
+.sop-chevron { font-size:10pt; color:var(--ink-mute); transition:transform .2s; flex-shrink:0; }
+.sop-chevron.open { transform:rotate(90deg); }
+.sop-body { display:none; padding:0 24px 20px; border-top:1px solid var(--line-soft); }
+.sop-body.open { display:block; }
+.sop-section { margin-top:16px; }
+.sop-section-title { font-size:8.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:8px; }
+.sop-steps { list-style:none; }
+.sop-steps li { display:flex; gap:10px; padding:5px 0; font-size:10pt; color:var(--ink-soft); line-height:1.45; border-bottom:1px solid var(--line-soft); }
+.sop-steps li:last-child { border-bottom:none; }
+.sop-check { width:14px; height:14px; border:1.5px solid var(--line); border-radius:3px; flex-shrink:0; margin-top:2px; }
+.sop-note { font-size:9.5pt; color:var(--ink-mute); font-style:italic; margin-top:12px; padding:10px 14px; background:var(--bg-soft); border-radius:6px; border-left:3px solid var(--gold); }
 </style>
 </head>
 <body>
@@ -486,6 +541,8 @@ strong { color: var(--ink); font-weight: 600; }
     <li><a onclick="navigate('tasks')" id="nav-tasks"><span class="nav-icon">☑</span> Tasks</a></li>
     <li><a onclick="navigate('workspace')" id="nav-workspace"><span class="nav-icon">✦</span> My Workspace</a></li>
     <li><a onclick="navigate('signed-docs')" id="nav-signed-docs"><span class="nav-icon">✎</span> Signed Documents</a></li>
+    <li><a onclick="navigate('agents')" id="nav-agents"><span class="nav-icon">◈</span> Agent Map</a></li>
+    <li><a onclick="navigate('sops')" id="nav-sops"><span class="nav-icon">☰</span> Playbooks &amp; SOPs</a></li>
   </ul>
 
   <div class="nav-group">Content</div>
@@ -937,6 +994,27 @@ strong { color: var(--ink); font-weight: 600; }
     </div>
   </div>
 
+  <!-- AGENT MAP -->
+  <div id="panel-agents" class="section-panel content-mode" style="display:none">
+    <div class="main-inner">
+      <div class="sec-eye">AI Team</div>
+      <h2 class="sec-title">Your Agent Map</h2>
+      <p style="font-family:var(--serif);font-size:12pt;color:var(--ink-mute);margin-bottom:28px;font-style:italic">21 specialized agents built into your Claude Code setup. Each one is a skill triggered by a keyword or slash command. Click any card to see real-world uses.</p>
+      <div class="agent-filter-row" id="agent-filters"></div>
+      <div class="agent-grid" id="agent-grid"></div>
+    </div>
+  </div>
+
+  <!-- SOPS / PLAYBOOKS -->
+  <div id="panel-sops" class="section-panel content-mode" style="display:none">
+    <div class="main-inner">
+      <div class="sec-eye">Playbooks</div>
+      <h2 class="sec-title">SOPs &amp; Operating Procedures</h2>
+      <p style="font-family:var(--serif);font-size:12pt;color:var(--ink-mute);margin-bottom:28px;font-style:italic">The sacred manuals of the house. Every ritual in this folder is a way of holding the Sisterhood with care.</p>
+      <div class="sop-list" id="sop-list"></div>
+    </div>
+  </div>
+
 </main>
 </div>
 
@@ -1136,7 +1214,7 @@ function saveState(state) {
 let state = loadState();
 
 // ─── NAVIGATION ──────────────────────────────────────────────────
-const panels = ['dashboard','console','tasks','workspace','content-calendar','checkins','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy'];
+const panels = ['dashboard','console','tasks','workspace','content-calendar','checkins','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy','agents','sops','signed-docs'];
 
 const CONSOLE_DEFAULT_SYSTEM = `You are an assistant inside Monika's Mission Control for Sisterhood OS (Sophia Fox's women's empowerment brand based in Bali).
 
@@ -1187,6 +1265,8 @@ function navigate(id) {
   if (id === 'dashboard') { renderDashLog(); }
   if (id === 'content-calendar') { renderCC(); }
   if (id === 'checkins') { renderCheckins(); }
+  if (id === 'agents') { renderAgentMap(); }
+  if (id === 'sops') { renderSOPs(); }
   if (id === 'console') { renderConsole(); }
 }
 
@@ -2490,6 +2570,259 @@ function renderCheckinHistory() {
       ${c.blockers ? `<div class="ci-entry-field"><strong>Heavy</strong>${esc(c.blockers)}</div>` : ''}
     </div>`;
   }).join('');
+}
+
+// ─── AGENT MAP DATA ───────────────────────────────────────────────
+const AGENTS = [
+  { id:'nova',   name:'Nova',   skill:'content-lab',           cat:'content', trigger:'"content lab"',
+    purpose:'End-to-end post pipeline: theme → 15 hooks → 3 formats → Airtable draft. Chains 5 subagents.',
+    uses:['Generate this week\'s posts on Monday morning','Batch 10 concepts for weekly review in one run','Test a new niche angle before committing content days to it'],
+    detail:'4 modes: full pipeline, niche-lock only, single agent, batch. Costs ~$0.05-0.55/batch for Flux images. Reads brand-voice/voice-profile.md first.' },
+  { id:'ash',    name:'Ash',    skill:'hook-lab',              cat:'content', trigger:'"hook lab"',
+    purpose:'Generate 5 scored hook types + full reel scripts and carousel decks on any topic.',
+    uses:['Write 15 hook variations for this week\'s reel','Find the winning first line for a podcast moment','Generate carousel cover slides for a new pillar'],
+    detail:'5 hook types: curiosity gap, pattern interrupt, loss aversion, belief reversal, direct address. Each with 60-90s reel script + CTA. Saves to hook-lab/hooks-log.md.' },
+  { id:'iris',   name:'Iris',   skill:'story-creator',         cat:'content', trigger:'"story creator"',
+    purpose:'Generate 5-10 frame daily IG Story sequences (text, polls, BTS, questions, funnel CTAs).',
+    uses:['Daily BTS story from the Ubud office or podcast recording day','Poll-driven funnel to capture CYCLE keyword sign-ups','Contrast arc: before/after corporate → sovereign'],
+    detail:'5 structures: Arc, Poll-Driven Funnel, Contrast, BTS Confession, Daily Reminder. Optionally generates Flux images for frames marked [needs image].' },
+  { id:'ruby',   name:'Ruby',   skill:'podcast-reel-creator',  cat:'content', trigger:'"podcast reel creator"',
+    purpose:'Mine Sophia\'s podcast transcripts for quotable moments and generate scored reel scripts.',
+    uses:['After episode publishes, extract 5-7 reel-worthy moments automatically','Pull the top 10 moments across ALL episodes for a bulk reel batch','Search all episodes for a specific topic (e.g. "cycle syncing" or "SPC")'],
+    detail:'Reads JSON + markdown transcript files with timestamps. Logs to Airtable as Drafts. Part 5 (Sophia on SPC/matrix/origin, 1258 segments) is the goldmine.' },
+  { id:'juno',   name:'Juno',   skill:'trial-reel-creator',    cat:'content', trigger:'"trial reel"',
+    purpose:'Build polished reels from your raw video clips, Sophia\'s Flux LoRA face images, or MyRoll AI B-roll library.',
+    uses:['Turn a raw phone clip into a reel with captions + CTA overlay','Generate hero images of Sophia\'s face (Flux LoRA) for brand account reels','Auto-match a script to B-roll from MyRoll (270-clip library)'],
+    detail:'3 modes: A=user video, B=Flux LoRA face, C=MyRoll AI B-roll. Strategy calibrated to IG audit findings. Logs to Airtable Content table. Outputs MP4 or spec sheet.' },
+  { id:'sable',  name:'Sable',  skill:'workbook-creator',      cat:'content', trigger:'"workbook creator"',
+    purpose:'Generate branded Sisterhood OS workbooks as HTML + PDF (Cormorant Garamond, rose clay palette).',
+    uses:['Lead magnet workbook (5 pages, free opt-in): "Walking Away"','SPC module companion (15 pages, integration exercises)','Masterclass follow-up workbook aligned to video timestamps'],
+    detail:'4 types: Framework, Reflection Journal, Process, Masterclass Companion. Saves to ~/sisterhood-os-social/workbooks/[slug]/. Ready to upload to Drive or MailerLite.' },
+  { id:'paloma', name:'Paloma', skill:'social-media-manager',  cat:'social',  trigger:'"social media manager"',
+    purpose:'Full weekly social operations: calendar, competitor pulls, audits, launch campaigns, video intelligence.',
+    uses:['Monday: generate the week\'s 7-day content calendar (pillar-balanced, competitor gaps filled)','Thursday: audit last week\'s performance + pattern recommendations','Launch: 14-day SPC doors-open campaign with email integration'],
+    detail:'Orchestrates hook-lab and email-lab as subagents. Informed by Cora\'s competitor intelligence. Reads IG audit findings and brand voice profile first.' },
+  { id:'mira',   name:'Mira',   skill:'monday-check-in',       cat:'social',  trigger:'Monday reminder',
+    purpose:'Weekly content approval gate — pulls Airtable drafts for the week, lets Sophia confirm/edit/reject in one pass.',
+    uses:['Every Monday 9am: review 5-9 drafted posts before they go live','Flip approved posts to Scheduled so Zapier can post them','Log voice patterns that emerge across the week\'s approvals'],
+    detail:'Gate between AI drafts and live posts. Updates voice-profile.md if patterns emerge. Logs to ~/sisterhood-os-social/performance/weekly-reviews/. Blocks posts from going live unreviewed.' },
+  { id:'ivy',    name:'Ivy',    skill:'engagement-os',          cat:'social',  trigger:'"engagement os"',
+    purpose:'Manual 15-min/day engagement system replacing paid growth services. 6 modules across the week.',
+    uses:['Daily 15-min engagement block: curated Tier 1 high-intent accounts to interact with','Weekly competitor pattern check: what formats are winning this week','Monthly hashtag audit: which tags are dead, which are climbing'],
+    detail:'6 modules: Daily Targets, Weekly Competitor Audit, Hashtag Audit, Trending Audio, Collab Scout, Meta Audience Builder. Replaces OniGrow/HypeFlare/Virallized ($0 vs ~$200/mo).' },
+  { id:'cora',   name:'Cora',   skill:'competitor-watcher',    cat:'social',  trigger:'"cora"',
+    purpose:'Three cadences of IG competitor scanning (daily brief, weekly, monthly) across 5-8 tracked accounts.',
+    uses:['Daily 8:07am WITA brief: what\'s performing in your niche right now','Weekly Friday pull: identify trending hooks Sophia isn\'t using yet','Monthly deep-dive: spot format shifts, flag outliers, strategic opportunities'],
+    detail:'Autonomous daily 8:07am + monthly 28th 10:07am WITA. Briefs emailed to purbamonika610@gmail.com + hello@sisterhoodos.io. Informs Paloma\'s Monday calendar.' },
+  { id:'luna',   name:'Luna',   skill:'lead-nurture',          cat:'sales',   trigger:'"luna"',
+    purpose:'Move Notion CRM leads through stages, draft personalized follow-ups, flag hot leads daily at 9am WITA.',
+    uses:['Daily 30-min batch: review 5-10 hot leads Sophia needs to follow up with','Draft a personalized DM reply to a masterclass attendee who went quiet','Move a confirmed Calendly booking to "Call Booked" stage in Notion'],
+    detail:'Autonomous daily 9am WITA. Drafts sent to Notion comments (not auto-sent — Sophia approves). Auto-moves stages on Calendly confirms. Integrates with Luna\'s email sequencing.' },
+  { id:'dalia',  name:'Dalia',  skill:'discovery-call-prep',   cat:'sales',   trigger:'"dalia"',
+    purpose:'Morning brief (7am WITA) for Sophia\'s upcoming Calendly bookings — context, questions, objections.',
+    uses:['Sophia walks into every call warm, not cold — knows the lead\'s context before opening Zoom','Pre-drafted 3-5 opening questions calibrated to where this lead is in their journey','Objection map: the 1-2 objections most likely to come up + how to handle them'],
+    detail:'Autonomous daily 7am WITA. Pulls Notion CRM + past DM history. Brief at ~/sisterhood-os-social/call-briefs/YYYY-MM-DD.md. Takes 5 min to review pre-call.' },
+  { id:'eden',   name:'Eden',   skill:'email-lab',             cat:'sales',   trigger:'"email lab"',
+    purpose:'Generate scored email content (newsletters, nurture sequences, launch flows) in Sophia\'s voice.',
+    uses:['Weekly newsletter from brand voice (Friend Test scored before sending)','5-email nurture moving a lead from opt-in → SPC-ready','7-email launch sequence: doors open → objection reversal → 48hr close'],
+    detail:'Every email scored: Friend Test / Specificity / Brand Voice Match. Saves to ~/sisterhood-os-social/emails/[date]-[type]-[topic].md. 5 subject-line variants + 3 P.S. options per email.' },
+  { id:'nora',   name:'Nora',   skill:'notion-task-update',    cat:'ops',     trigger:'"notion task update"',
+    purpose:'Speak what happened → Nora translates into Notion database updates (tasks, leads, KPIs).',
+    uses:['After standup: "Helena\'s community activation done, 35 responses, add follow-up for Monika"','Mark a task done + create the next task in one voice note','Update a lead stage + log why in the same breath'],
+    detail:'Requires Notion MCP connection. Updates Status, Completed Date, assignee, priority. Creates tasks with full fields. Confirms all changes before committing.' },
+  { id:'wren',   name:'Wren',   skill:'wellness-steward',      cat:'ops',     trigger:'"wren"',
+    purpose:'Match Sophia\'s daily tasks to her cycle phase. Flag protect-calendar days. Energy-aware scheduling.',
+    uses:['Daily 7am: "You\'re in luteal — protect your calendar, move outbound to Thursday"','Flag a heavy week when period + big launch overlap: suggest rescheduling','Suggest follicular weeks for new product launches (peak creative energy)'],
+    detail:'Autonomous daily 7am WITA. Reads sprint-monitor check-ins (phase, energy, sleep). 10-line brief, non-judgmental. Logs to steward-operations via Rosa.' },
+  { id:'rosa',   name:'Rosa',   skill:'chief-steward',         cat:'ops',     trigger:'"steward audit"',
+    purpose:'Weekly business integrity check across 6 domains (marketing, financial, legal, ops, strategy, tech).',
+    uses:['Monday morning audit: flag anything that\'s drifted across systems this week','Run a single-domain audit: "steward marketing" to check content/CRM alignment','Build and review the questions queue for issues Rosa can\'t fix autonomously'],
+    detail:'Autonomous Mon 8am Bali. Coordinates 6 sub-stewards. Saves audit to ~/.claude/stewards/audits/YYYY-MM-DD.md. Logs autonomous fixes + escalation queue separately.' },
+  { id:'lio',    name:'Lio',    skill:'launch-readiness',      cat:'ops',     trigger:'"lio"',
+    purpose:'Pre-flight checklist before any launch — payment flow, emails, SSL, DNS, mobile, pixel, copy, refund.',
+    uses:['Before SPC cohort doors open on June 6: "lio, is the SPC sales page ready?"','Before every masterclass: confirm the Zoom link, email sequence, and confirmation page work','Pre-flight for Sister Sage feature deploys'],
+    detail:'Returns go/no-go verdict + blocker table with fix estimates + recommended owner per issue. Report at ~/sisterhood-os-social/launches/{launch-name}-{YYYY-MM-DD}.md.' },
+  { id:'gus',    name:'Gus',    skill:'gsd',                   cat:'tools',   trigger:'"use GSD"',
+    purpose:'4-phase development framework (Discuss → Plan → Execute → Verify) for complex builds.',
+    uses:['Building a new feature from scratch: "use GSD to plan the Sister Sage onboarding flow"','Multi-phase product work with multiple stakeholders and parallel tasks','Brownfield refactors where context rot is the main risk'],
+    detail:'11 specialized agents, wave-based parallel execution, atomic tasks. Produces .planning/ folder with CONTEXT, PLAN, SUMMARY, UAT docs. Ask: "Would you like to use the GSD framework for this?"' },
+  { id:'sage',   name:'Sage',   skill:'skill-creator',         cat:'tools',   trigger:'"create a skill"',
+    purpose:'Meta-skill for building, scaffolding, and quality-evaluating new Claude Code skills.',
+    uses:['Build a new custom skill from an intent statement: "create a skill for event promotion"','Evaluate the quality of an existing skill before deploying it','Adapt an external skill template to Sophia\'s brand conventions'],
+    detail:'Produces complete SKILL.md + optional evals.json (5+ test cases) + Quality Checklist pass/fail. Saves to ~/.claude/skills/{skill-name}/. Used to build Luna, Cora, Lio, Wren, Dalia.' },
+  { id:'play',   name:'Play',   skill:'playwright-skill',      cat:'tools',   trigger:'"go to" / "click"',
+    purpose:'CLI browser automation: navigate, click, fill forms, screenshot, extract data, scrape.',
+    uses:['Download a competitor IG reel for analysis (yt-dlp integration)','Test the full payment flow before a launch — end to end, no manual clicking','Extract data from Airtable or Google Sheets without going through the API'],
+    detail:'50+ commands. CLI primary (token-efficient), MCP fallback, Python for batch/cron. Persistent browser sessions. Works with Google SSO via Chrome CDP pattern.' },
+  { id:'voice',  name:'Voice',  skill:'speak-human',           cat:'tools',   trigger:'"/speak-human"',
+    purpose:'Detect AI writing patterns, strip slop, inject authentic human voice. Three modes: detect / rewrite / edit.',
+    uses:['Scrub an AI-generated email before sending — remove every robot tell','Build Sophia\'s voice profile from her own writing (--build-voice)','In-place file edit: humanize a generated caption without copy-pasting'],
+    detail:'Modes: detect (scan only), rewrite (full humanization), edit (in-place). --my-voice for saved profile. Saves voice profile to ~/.speak-human/voice-profile.md. Zero em dashes, high burstiness, specific claims.' }
+];
+
+const AGENT_CATEGORIES = [
+  { id:'all',     label:'All 21' },
+  { id:'content', label:'Content Creation' },
+  { id:'social',  label:'Social & Strategy' },
+  { id:'sales',   label:'Sales & CRM' },
+  { id:'ops',     label:'Operations' },
+  { id:'tools',   label:'Builder Tools' }
+];
+
+let agentFilter = 'all';
+const openAgents = {};
+
+function renderAgentMap() {
+  const filterRow = document.getElementById('agent-filters');
+  if (!filterRow) return;
+  filterRow.innerHTML = AGENT_CATEGORIES.map(c =>
+    `<button class="agent-filter-btn${agentFilter===c.id?' active':''}" onclick="setAgentFilter('${c.id}')">${c.label}</button>`
+  ).join('');
+  const grid = document.getElementById('agent-grid');
+  const visible = agentFilter==='all' ? AGENTS : AGENTS.filter(a=>a.cat===agentFilter);
+  grid.innerHTML = visible.map(a => {
+    const isOpen = openAgents[a.id];
+    return `<div class="agent-card" onclick="toggleAgent('${a.id}')">
+      <div class="agent-card-top cat-${a.cat}">
+        <div class="agent-row1">
+          <div class="agent-name">${a.name}</div>
+          <span class="agent-cat-badge cat-${a.cat}">${catLabel(a.cat)}</span>
+        </div>
+        <div class="agent-skill-slug">${a.skill}</div>
+        <div class="agent-trigger">${a.trigger}</div>
+        <div class="agent-purpose">${a.purpose}</div>
+      </div>
+      <div class="agent-expand-hint">${isOpen?'▲ less':'▼ real-world uses'}</div>
+      <div class="agent-detail${isOpen?' open':''}">
+        <div class="agent-uses-title">What Monika actually uses it for</div>
+        <ul class="agent-uses-list">${a.uses.map(u=>`<li>${u}</li>`).join('')}</ul>
+        <p class="agent-extra">${a.detail}</p>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function catLabel(cat) {
+  return {content:'Content',social:'Social',sales:'Sales',ops:'Ops',tools:'Tools'}[cat]||cat;
+}
+
+function setAgentFilter(cat) {
+  agentFilter = cat;
+  renderAgentMap();
+}
+
+function toggleAgent(id) {
+  openAgents[id] = !openAgents[id];
+  renderAgentMap();
+}
+
+// ─── SOP DATA ─────────────────────────────────────────────────────
+const SOPS = [
+  { id:'content-scheduling', num:'01', title:'Content Scheduling Ritual', owner:'Monika', cadence:'After every approved post',
+    note:'Schedule via Meta Business Suite + update Airtable status to Scheduled.',
+    sections:[
+      { title:'Before you schedule', steps:['Confirm caption is approved by Sophia (Status = Approved in Airtable)','Check image/video is exported at correct specs (1:1 or 4:5 ratio, under 100MB)','Verify hashtags are in first comment, not caption','Confirm posting time (see Email Send Times in memory: peak Sunday 8PM WITA)'] },
+      { title:'Scheduling in Meta Business Suite', steps:['Open business.facebook.com → Planner → Create post','Select both Instagram + Facebook Page','Paste caption, upload media, paste hashtags in comment field','Set date/time in WITA (Bali timezone, UTC+8)','Click Schedule — confirm it appears in the queue'] },
+      { title:'After scheduling', steps:['Update Airtable record: Status → Scheduled, add Posted Date','Log in Mission Control Activity Log: "Scheduled: [post title] for [date]"','Tag Sophia in Notion task as Done if this was sprint work'] }
+    ]
+  },
+  { id:'dm-lead-handling', num:'02', title:'DM & Lead Handling', owner:'Monika', cadence:'2x daily check + real-time during working hours',
+    note:'Every DM is a woman in motion. Triage within 2 hours during working hours.',
+    sections:[
+      { title:'Triage first (do this before replying)', steps:['Check if this is a new lead — search name in Notion Lead CRM','Identify intent: curious / warm / sales question / support / spam','If already in CRM, check current stage before replying','Flag for Luna if lead is hot (watched MC, asked about SPC price, booked a call)'] },
+      { title:'Reply tone rules', steps:['Use her name if visible in profile','Match her energy (short DMs get short replies)','One clear next step per message — never two CTAs','No em dashes, no "hey love", no generic affirmations without specifics','Soft close: question, invitation, or "take your time"'] },
+      { title:'After replying', steps:['Add/update lead in Notion CRM (Name, Contact, Stage, Source, Notes)','Log notable DM conversations in Mission Control Activity Log','If she asked about SPC or pricing: immediately flag to Sophia via Notion comment or WhatsApp'] }
+    ]
+  },
+  { id:'story-posting', num:'03', title:'Story Posting Practice', owner:'Monika', cadence:'Daily — publish between 7-9am and 6-8pm WITA',
+    note:'Stories are the heartbeat. Consistency here matters more than perfection.',
+    sections:[
+      { title:'Daily story sequence (minimum viable)', steps:['Frame 1: Good morning / orientation (what today holds, where Sophia is)','Frame 2-3: BTS or real-life content (not polished — authentic wins)','Frame 4: Educational nugget or quote pull from recent content','Frame 5: Engagement (poll, question sticker, or DM prompt)'] },
+      { title:'Before posting each frame', steps:['Add text overlay if needed (Canva story template or native IG text)','Check brand consistency: earthy palette, clean font, no neon or clutter','If using a poll: keyword = MASTERCLASS or CYCLE depending on campaign','Tag location if at a Sisterhood event or known Bali spot'] },
+      { title:'After posting', steps:['Check first 15 mins: reply to any quick poll responses or DM replies','Save any story with strong engagement to the matching Highlight','Log in Airtable if this story was planned content (mark as Posted)'] }
+    ]
+  },
+  { id:'comment-moderation', num:'04', title:'Comment Tending Practice', owner:'Monika', cadence:'Within 1hr of post going live + twice daily sweep',
+    note:'A comment is a woman raising her hand in the room. Tend to every one.',
+    sections:[
+      { title:'Reply windows', steps:['Within 1 hour of post going live: reply to ALL comments (algorithm signal)','12:00 PM WITA daily: sweep all posts from last 48 hours','8:00 PM WITA daily: final sweep, reply to evening comments','24-hour rule: no comment goes more than 24 hours without acknowledgment'] },
+      { title:'Reply voice rules', steps:['Use her name if visible in profile','Mirror her energy (emoji-heavy if she is, plain if she is plain)','Add ONE specific detail referencing her actual comment','Soft close: question, witness statement, or invitation','Length: 1 to 3 sentences max — never an essay in comments'] },
+      { title:'Escalate immediately if', steps:['Comment is accusatory, harmful, or involves personal trauma disclosure','She tags a competitor account directly and it could cause drama','Comment reveals a data or privacy issue','It is hate speech, harassment, or community safety concern — escalate to Crisis SOP'] }
+    ]
+  },
+  { id:'crisis-escalation', num:'05', title:'Crisis & Critique Response', owner:'Monika → Sophia', cadence:'As needed — respond within 2 hours max',
+    note:'Pause before reacting. Protect the brand. Escalate to Sophia for anything public-facing.',
+    sections:[
+      { title:'Triage: is this a crisis or a critique?', steps:['Critique: one person disagreeing or expressing disappointment — handle with grace','Crisis: accusation of harm, viral negative thread, media inquiry, legal threat','When unsure: treat it as a crisis and escalate to Sophia before replying'] },
+      { title:'Immediate steps (do within 15 min)', steps:['Screenshot the post/comment/DM and send to Sophia via WhatsApp','Do NOT reply publicly until Sophia has approved the response','If it is abusive: hide the comment immediately (do not delete — hiding preserves evidence)','If it is spam or bot: delete immediately'] },
+      { title:'Response protocol', steps:['Sophia drafts the public response, Monika reviews tone and timing','Post response within 2 hours of the incident going public','Follow up privately in DM if the person is a real community member','Log the incident in the Activity Log with timestamp and resolution'] }
+    ]
+  },
+  { id:'weekly-report', num:'06', title:'Weekly Performance Report', owner:'Monika', cadence:'Every Monday morning before 10am WITA',
+    note:'This report feeds Paloma\'s content strategy and Sophia\'s weekly review.',
+    sections:[
+      { title:'Metrics to pull (from Meta Business Suite)', steps:['Reach and impressions for the week (vs prior week)','Top 3 performing posts: format, hook, engagement rate','Stories views average and any spike days','Follower change: net gain/loss for the week','DM volume: how many new conversations started'] },
+      { title:'Report format (paste into Notion or Mission Control)', steps:['Date range + week number','Top stat headline: "Best week for reach in 30 days" or honest summary','3 bullets: what worked / what underperformed / one pattern noticed','Recommendation for next week (one specific change)','Flag to Sophia: anything that needs her input or decision'] },
+      { title:'After report is done', steps:['Post in Notion: Task Manager → Weekly Report task → mark Done','Share in team WhatsApp with a one-line summary','Archive the raw metrics in Google Drive → Sisterhood OS → Reports → 2026'] }
+    ]
+  },
+  { id:'event-scheduling', num:'07', title:'Event Scheduling Ritual', owner:'Monika → Sophia', cadence:'At least 2 weeks before each event',
+    note:'Events are the heartbeat of the community. Every detail communicates care.',
+    sections:[
+      { title:'Event intake (when Sophia confirms a new event)', steps:['Log in Facilitator Spreadsheet: Facilitator, Date, Time, Address, Description, Notes','Add to Mission Control Tasks as a project with sub-tasks','Set reminders: 2 weeks out, 1 week out, 48 hours, day-of'] },
+      { title:'Promotion production', steps:['Create event flyer in Canva (use Sisterhood brand kit: clay/sage/gold palette)','Write caption using Event Scheduling tone: warm, experiential, non-urgent','Post story announcement 2 weeks + 1 week + 3 days + day before','Send email announcement 1 week out if Sophia confirms email list send'] },
+      { title:'Day-of checklist', steps:['Confirm venue details are correct (address, parking, entrance notes)','Post day-of story with exact location details and arrival note','Monitor DMs for "where is it?" and RSVPs','After event: collect photos/video for content, send to Sophia or post same day'] }
+    ]
+  },
+  { id:'story-posting-2', num:'08', title:'Story Posting — Campaign Mode', owner:'Monika', cadence:'During launch windows and masterclass weeks',
+    note:'During launch windows, stories become the funnel. Every frame has a job.',
+    sections:[
+      { title:'Campaign story structure (5-day sequence)', steps:['Day 1: Tease — "Something is coming. Are you ready?" + countdown sticker','Day 2: Education — one transformation story or powerful stat','Day 3: Social proof — real testimonial or DM screenshot (with permission)','Day 4: Objection handling — answer the main hesitation directly','Day 5: CTA — CYCLE or MASTERCLASS keyword + link in bio + swipe up if eligible'] },
+      { title:'ManyChat keyword setup', steps:['Confirm ManyChat keyword is active: CYCLE (masterclass) or MASTERCLASS (SPC)','Test the flow yourself before the campaign starts','Mention keyword in story frame text AND voice narration if recording video','Monitor DM responses for 30 min after each CTA frame posts'] }
+    ]
+  },
+  { id:'content-day', num:'09', title:'Content Day Checklist', owner:'Monika', cadence:'On any designated content creation day',
+    note:'Content days are sacred. Protect Sophia\'s energy and creative flow.',
+    sections:[
+      { title:'Before the shoot / recording session', steps:['Confirm the day\'s content plan: which posts, which formats, which pillar','Prepare all reference materials: scripts from hook-lab, story frames from Iris','Charge all devices, clear SD card storage, test lighting','Send Sophia the brief by 8am so she can mentally prepare'] },
+      { title:'During creation', steps:['Capture 3x more than you think you need — editing is easy, reshooting is hard','Get both wide shots and close-ups for maximum flexibility in editing','Record ambient B-roll: hands, details, space — these become story frames','Note any spontaneous gold moments that could become podcast reel clips'] },
+      { title:'End of content day', steps:['Upload everything to Google Drive → Sisterhood OS → Content → [YYYY-MM-DD]','Log the day in Activity Log with a summary of what was captured','Send top 3 clips/images to Sophia for her pick before batch editing','Update Airtable: mark content day tasks as Done, add media URLs'] }
+    ]
+  }
+];
+
+const openSOPs = {};
+
+function renderSOPs() {
+  const list = document.getElementById('sop-list');
+  if (!list) return;
+  list.innerHTML = SOPS.map(s => {
+    const isOpen = openSOPs[s.id];
+    return `<div class="sop-item">
+      <div class="sop-header" onclick="toggleSOP('${s.id}')">
+        <span class="sop-num">SOP ${s.num}</span>
+        <div class="sop-info">
+          <div class="sop-title">${s.title}</div>
+          <div class="sop-meta">${s.cadence}</div>
+        </div>
+        <span class="sop-owner-badge">${s.owner}</span>
+        <span class="sop-chevron${isOpen?' open':''}">▶</span>
+      </div>
+      <div class="sop-body${isOpen?' open':''}">
+        <div class="sop-note">${s.note}</div>
+        ${s.sections.map(sec => `
+          <div class="sop-section">
+            <div class="sop-section-title">${sec.title}</div>
+            <ul class="sop-steps">${sec.steps.map(step=>`<li><div class="sop-check"></div><span>${step}</span></li>`).join('')}</ul>
+          </div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleSOP(id) {
+  openSOPs[id] = !openSOPs[id];
+  renderSOPs();
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────
