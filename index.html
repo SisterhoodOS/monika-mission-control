@@ -2719,7 +2719,7 @@ function renderJuneCard(p) {
       <div class="june-grid-13">
         <div class="june-field">
           <div class="june-field-label">📍 Shoot Location</div>
-          <div class="june-field-value">${esc(p.shootLocation)}</div>
+          <div class="june-field-value">${escNL(p.shootLocation)}</div>
         </div>
         <div class="june-field">
           <div class="june-field-label">🎯 Content Purpose</div>
@@ -2735,11 +2735,11 @@ function renderJuneCard(p) {
         </div>
         <div class="june-field-full">
           <div class="june-field-label">💬 Topic — What You Will Say</div>
-          <div class="june-field-value">${esc(p.topic)}</div>
+          <div class="june-field-value">${escNL(p.topic)}</div>
         </div>
         <div class="june-field-full">
           <div class="june-field-label">📋 Full Script</div>
-          <div class="june-script-block">${esc(p.script)}</div>
+          <div class="june-script-block">${escNL(p.script)}</div>
         </div>
         <div class="june-field">
           <div class="june-field-label">🎵 Background Music</div>
@@ -2777,9 +2777,8 @@ function cycleJuneStatus(e, id) {
   renderJune();
 }
 
-function esc(s) {
-  if (!s) return '';
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+function escNL(s) {
+  return esc(s).replace(/&lt;br&gt;/g,'<br>').replace(/\n/g,'<br>');
 }
 
 // ─── AGENT MAP DATA ───────────────────────────────────────────────
