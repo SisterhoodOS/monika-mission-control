@@ -467,7 +467,7 @@ strong { color: var(--ink); font-weight: 600; }
 .ms-card-cd { font-size: 9.5pt; color: var(--clay); font-weight: 700; margin-top: 4px; }
 
 /* ── JUNE CALENDAR ─────────────────────────────────────────────── */
-#cc-june-panel { display:none; }
+#cc-june-panel { display:block; }
 .june-toolbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px; }
 .june-filters { display:flex; gap:8px; flex-wrap:wrap; }
 .june-filter-btn { font-size:8.5pt; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:5px 13px; border-radius:16px; border:1.5px solid var(--line); background:var(--bg-card); color:var(--ink-mute); cursor:pointer; transition:all .15s; }
@@ -1323,7 +1323,7 @@ function navigate(id) {
   }
 
   if (id === 'dashboard') { renderDashLog(); }
-  if (id === 'content-calendar') { showCCMonth('june'); }
+  if (id === 'content-calendar') { showCCMonth('june'); renderJune(); }
   if (id === 'checkins') { renderCheckins(); }
   if (id === 'agents') { renderAgentMap(); }
   if (id === 'sops') { renderSOPs(); }
@@ -3053,6 +3053,7 @@ function init() {
     });
   }
   syncFromSupabase();
+  renderJune();
 }
 
 // Close modal on overlay click
