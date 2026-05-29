@@ -6,6 +6,7 @@
 <title>Monika's Mission Control — Saha Synergy</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/data/june-calendar.js"></script>
 <style>
 :root {
   --bg: #fbf8f4; --bg-card: #ffffff; --bg-soft: #f5edde; --bg-accent: #ede0c5;
@@ -465,6 +466,49 @@ strong { color: var(--ink); font-weight: 600; }
 .ms-card-time { font-size: 9.5pt; color: var(--ink-mute); }
 .ms-card-cd { font-size: 9.5pt; color: var(--clay); font-weight: 700; margin-top: 4px; }
 
+/* ── JUNE CALENDAR ─────────────────────────────────────────────── */
+#cc-june-panel { display:none; }
+.june-toolbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px; }
+.june-filters { display:flex; gap:8px; flex-wrap:wrap; }
+.june-filter-btn { font-size:8.5pt; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:5px 13px; border-radius:16px; border:1.5px solid var(--line); background:var(--bg-card); color:var(--ink-mute); cursor:pointer; transition:all .15s; }
+.june-filter-btn:hover { border-color:var(--gold); color:var(--ink); }
+.june-filter-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.june-count { font-size:9pt; color:var(--ink-mute); white-space:nowrap; }
+.june-week { margin-bottom:32px; }
+.june-week-label { font-size:8pt; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid var(--line-soft); }
+.june-card { background:var(--bg-card); border:1px solid var(--line); border-radius:12px; margin-bottom:10px; overflow:hidden; }
+.june-card-header { display:grid; grid-template-columns:90px 70px 1fr auto; gap:12px; align-items:center; padding:14px 18px; cursor:pointer; transition:background .12s; }
+.june-card-header:hover { background:var(--bg-soft); }
+.june-date-block { text-align:center; }
+.june-date-day { font-size:8pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-mute); }
+.june-date-num { font-family:var(--serif); font-size:20pt; font-weight:400; color:var(--ink); line-height:1; }
+.june-date-time { font-size:7.5pt; color:var(--ink-mute); margin-top:1px; }
+.june-format-badge { font-size:8pt; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:4px 10px; border-radius:8px; text-align:center; }
+.june-format-reel { background:#FBE9DF; color:#A33D1F; }
+.june-format-carousel { background:#E6F1FB; color:#185FA5; }
+.june-card-mid { flex:1; min-width:0; }
+.june-purpose-badge { display:inline-block; font-size:7.5pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:2px 9px; border-radius:8px; margin-bottom:5px; }
+.june-hook { font-family:var(--serif); font-size:12pt; font-weight:400; color:var(--ink); line-height:1.35; }
+.june-location-tag { font-size:8.5pt; color:var(--ink-mute); margin-top:3px; }
+.june-chevron { font-size:10pt; color:var(--ink-mute); transition:transform .2s; padding:4px; flex-shrink:0; }
+.june-chevron.open { transform:rotate(90deg); }
+.june-card-body { display:none; border-top:1px solid var(--line-soft); }
+.june-card-body.open { display:block; }
+.june-grid-13 { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+@media(max-width:680px) { .june-grid-13 { grid-template-columns:1fr; } }
+.june-field { padding:14px 20px; border-bottom:1px solid var(--line-soft); }
+.june-field:nth-child(odd) { border-right:1px solid var(--line-soft); }
+.june-field-full { padding:14px 20px; border-bottom:1px solid var(--line-soft); grid-column:1/-1; }
+.june-field-label { font-size:7.5pt; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--clay); margin-bottom:5px; }
+.june-field-value { font-size:10.5pt; color:var(--ink-soft); line-height:1.55; }
+.june-script-block { font-size:9.5pt; color:var(--ink-soft); font-family:var(--mono); line-height:1.7; white-space:pre-wrap; background:var(--bg-soft); border-radius:6px; padding:12px 14px; }
+.june-hashtags { display:flex; flex-wrap:wrap; gap:6px; margin-top:4px; }
+.june-hashtag { font-size:8.5pt; color:var(--workspace); background:var(--ws-light); border-radius:6px; padding:2px 8px; }
+.june-cta-box { background:linear-gradient(135deg,var(--bg-soft),var(--pearl)); border:1px solid var(--line); border-radius:8px; padding:10px 14px; font-size:11pt; font-family:var(--serif); color:var(--ink); font-style:italic; }
+.june-status-btn { font-size:8pt; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:4px 12px; border-radius:8px; border:none; cursor:pointer; transition:all .15s; }
+.june-status-draft { background:var(--bg-soft); color:var(--ink-mute); }
+.june-status-scheduled { background:#E6F1FB; color:#185FA5; }
+.june-status-posted { background:#EAF0E4; color:#4A6741; }
 /* ── AGENT MAP ─────────────────────────────────────────────────── */
 .agent-filter-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; align-items:center; }
 .agent-filter-btn { font-size:9pt; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:5px 14px; border-radius:20px; border:1.5px solid var(--line); background:var(--bg-card); color:var(--ink-mute); cursor:pointer; transition:all .15s; }
@@ -902,6 +946,11 @@ strong { color: var(--ink); font-weight: 600; }
         <div class="cc-rules" id="cc-rules"></div>
 
         <div class="subtabs">
+          <div class="subtab" onclick="showCCMonth('may')" data-cc-month="may">May 2026</div>
+          <div class="subtab active" onclick="showCCMonth('june')" data-cc-month="june">June 2026 <span style="font-size:8pt;background:var(--clay);color:#fff;border-radius:8px;padding:1px 7px;margin-left:5px">NEW</span></div>
+        </div>
+        <div id="cc-may-tabs" style="display:none">
+        <div class="subtabs" style="margin-top:0;border-top:none">
           <div class="subtab active" onclick="showCCTab('carousels')" data-cc-tab="carousels">Carousels <span id="cc-count-carousels" style="font-size:9pt;color:var(--ink-mute);margin-left:6px"></span></div>
           <div class="subtab" onclick="showCCTab('reels')" data-cc-tab="reels">Reels <span id="cc-count-reels" style="font-size:9pt;color:var(--ink-mute);margin-left:6px"></span></div>
         </div>
@@ -929,6 +978,17 @@ strong { color: var(--ink); font-weight: 600; }
 
         <div id="cc-list"></div>
         <a class="cc-source-link" id="cc-source-link" href="#" target="_blank">Open source Google Sheet ↗</a>
+        </div><!-- end cc-may-tabs -->
+
+        <!-- JUNE CALENDAR -->
+        <div id="cc-june-panel">
+          <div class="june-toolbar">
+            <div class="june-filters" id="june-filters"></div>
+            <span class="june-count" id="june-count"></span>
+          </div>
+          <div id="june-list"></div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1263,7 +1323,7 @@ function navigate(id) {
   }
 
   if (id === 'dashboard') { renderDashLog(); }
-  if (id === 'content-calendar') { renderCC(); }
+  if (id === 'content-calendar') { showCCMonth('june'); }
   if (id === 'checkins') { renderCheckins(); }
   if (id === 'agents') { renderAgentMap(); }
   if (id === 'sops') { renderSOPs(); }
@@ -2570,6 +2630,156 @@ function renderCheckinHistory() {
       ${c.blockers ? `<div class="ci-entry-field"><strong>Heavy</strong>${esc(c.blockers)}</div>` : ''}
     </div>`;
   }).join('');
+}
+
+// ─── JUNE CALENDAR ────────────────────────────────────────────────
+let juneFilter = 'all';
+const juneOpen = {};
+const juneStatus = {};
+
+function showCCMonth(month) {
+  document.querySelectorAll('.subtab[data-cc-month]').forEach(t =>
+    t.classList.toggle('active', t.dataset.ccMonth === month));
+  document.getElementById('cc-may-tabs').style.display = month === 'may' ? 'block' : 'none';
+  document.getElementById('cc-june-panel').style.display = month === 'june' ? 'block' : 'none';
+  if (month === 'june') renderJune();
+  if (month === 'may') renderCC();
+}
+
+function renderJuneFilters() {
+  const purposes = ['all','trust','awareness','brand-identity','educate','entertain','convert','community'];
+  const labels = {all:'All 32',trust:'Trust',awareness:'Awareness','brand-identity':'Brand ID',educate:'Educate',entertain:'Entertain',convert:'Convert',community:'Community'};
+  document.getElementById('june-filters').innerHTML = purposes.map(p =>
+    `<button class="june-filter-btn${juneFilter===p?' active':''}" onclick="setJuneFilter('${p}')">${labels[p]}</button>`
+  ).join('');
+}
+
+function setJuneFilter(f) { juneFilter = f; renderJune(); }
+
+function renderJune() {
+  if (!window.JUNE_CALENDAR) return;
+  renderJuneFilters();
+  const cal = window.JUNE_CALENDAR;
+  const posts = juneFilter === 'all' ? cal.posts : cal.posts.filter(p => p.purpose === juneFilter);
+  document.getElementById('june-count').textContent = posts.length + ' posts';
+
+  const weeks = {};
+  posts.forEach(p => {
+    const d = new Date(p.schedule.date);
+    const wk = getWeekOf(d);
+    if (!weeks[wk]) weeks[wk] = [];
+    weeks[wk].push(p);
+  });
+
+  document.getElementById('june-list').innerHTML = Object.entries(weeks).map(([wk, wPosts]) => `
+    <div class="june-week">
+      <div class="june-week-label">${wk}</div>
+      ${wPosts.map(p => renderJuneCard(p)).join('')}
+    </div>`).join('');
+}
+
+function getWeekOf(d) {
+  const day = d.getDate();
+  if (day <= 7) return 'Week 1 — June 1–7 · Pre-Launch + SPC Launch Day';
+  if (day <= 14) return 'Week 2 — June 8–14 · Post-Launch Nurture';
+  if (day <= 21) return 'Week 3 — June 15–21 · Sisterhood Depth';
+  return 'Week 4 — June 22–30 · Momentum + July Bridge';
+}
+
+function renderJuneCard(p) {
+  const cal = window.JUNE_CALENDAR;
+  const purp = cal.purposes[p.purpose] || { label: p.purpose, color: '#888', bg: '#eee' };
+  const st = juneStatus[p.id] || p.status || 'draft';
+  const isOpen = juneOpen[p.id];
+  const d = new Date(p.schedule.date);
+  const dayName = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()];
+  const dateNum = d.getDate();
+  const fmtClass = p.format === 'Reel' ? 'june-format-reel' : 'june-format-carousel';
+  const stClass = 'june-status-' + st;
+
+  return `<div class="june-card">
+    <div class="june-card-header" onclick="toggleJuneCard('${p.id}')">
+      <div class="june-date-block">
+        <div class="june-date-day">${dayName}</div>
+        <div class="june-date-num">${dateNum}</div>
+        <div class="june-date-time">${p.schedule.time}</div>
+      </div>
+      <div><span class="june-format-badge ${fmtClass}">${p.format}</span></div>
+      <div class="june-card-mid">
+        <span class="june-purpose-badge" style="background:${purp.bg};color:${purp.color}">${purp.label}</span>
+        <div class="june-hook">${esc(p.verbalHook)}</div>
+        <div class="june-location-tag">📍 ${esc(p.shootLocation.split('—')[0].trim())}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        <button class="june-status-btn ${stClass}" onclick="cycleJuneStatus(event,'${p.id}')">${st.charAt(0).toUpperCase()+st.slice(1)}</button>
+        <span class="june-chevron${isOpen?' open':''}">▶</span>
+      </div>
+    </div>
+    <div class="june-card-body${isOpen?' open':''}">
+      <div class="june-grid-13">
+        <div class="june-field">
+          <div class="june-field-label">📍 Shoot Location</div>
+          <div class="june-field-value">${esc(p.shootLocation)}</div>
+        </div>
+        <div class="june-field">
+          <div class="june-field-label">🎯 Content Purpose</div>
+          <div class="june-field-value"><span class="june-purpose-badge" style="background:${purp.bg};color:${purp.color}">${purp.label}</span></div>
+        </div>
+        <div class="june-field">
+          <div class="june-field-label">📦 Quantity to Shoot</div>
+          <div class="june-field-value">${p.quantity} piece${p.quantity>1?'s':''}</div>
+        </div>
+        <div class="june-field">
+          <div class="june-field-label">🎬 Visual Hook</div>
+          <div class="june-field-value">${esc(p.visualHook)}</div>
+        </div>
+        <div class="june-field-full">
+          <div class="june-field-label">💬 Topic — What You Will Say</div>
+          <div class="june-field-value">${esc(p.topic)}</div>
+        </div>
+        <div class="june-field-full">
+          <div class="june-field-label">📋 Full Script</div>
+          <div class="june-script-block">${esc(p.script)}</div>
+        </div>
+        <div class="june-field">
+          <div class="june-field-label">🎵 Background Music</div>
+          <div class="june-field-value">${esc(p.music)}</div>
+        </div>
+        <div class="june-field">
+          <div class="june-field-label">✨ Visual Look</div>
+          <div class="june-field-value">${esc(p.visualLook)}</div>
+        </div>
+        <div class="june-field-full">
+          <div class="june-field-label">📝 Caption (1 paragraph)</div>
+          <div class="june-field-value" style="font-family:var(--serif);font-size:11pt;font-style:italic">${esc(p.caption)}</div>
+        </div>
+        <div class="june-field">
+          <div class="june-field-label"># Hashtags</div>
+          <div class="june-hashtags">${p.hashtags.map(h=>`<span class="june-hashtag">${h}</span>`).join('')}</div>
+        </div>
+        <div class="june-field">
+          <div class="june-field-label">🔑 Unique CTA</div>
+          <div class="june-cta-box">${esc(p.cta)}</div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function toggleJuneCard(id) { juneOpen[id] = !juneOpen[id]; renderJune(); }
+
+function cycleJuneStatus(e, id) {
+  e.stopPropagation();
+  const cycle = ['draft','scheduled','posted'];
+  const cur = juneStatus[id] || 'draft';
+  juneStatus[id] = cycle[(cycle.indexOf(cur)+1) % cycle.length];
+  saveState(state);
+  renderJune();
+}
+
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
 }
 
 // ─── AGENT MAP DATA ───────────────────────────────────────────────
