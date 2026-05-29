@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Monika's Mission Control — Saha Synergy</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root {
   --bg: #fbf8f4; --bg-card: #ffffff; --bg-soft: #f5edde; --bg-accent: #ede0c5;
@@ -1065,8 +1066,71 @@ function loadState() {
   } catch(e) { return defaultState(); }
 }
 
+// ─── SUPABASE SYNC ────────────────────────────────────────────────
+const _SB = supabase.createClient(
+  'https://hseffkdzxyiescyrvvzr.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhzZWZma2R6eHlpZXNjeXJ2dnpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5OTM2NzIsImV4cCI6MjA5NDU2OTY3Mn0.X6upfM8BUyyvQiFSrS7WkDd5iR08qEp3p8tE9nn2bmQ'
+);
+
+async function sbSave(s) {
+  try {
+    await _SB.from('mc_settings').upsert({ key: 'full_state', value: JSON.stringify(s) });
+  } catch(e) { console.warn('Supabase save failed', e); }
+}
+
+async function sbLoad() {
+  try {
+    const { data } = await _SB.from('mc_settings').select('value').eq('key', 'full_state').single();
+    if (data?.value) return JSON.parse(data.value);
+  } catch(e) { console.warn('Supabase load failed', e); }
+  return null;
+}
+
+async function syncFromSupabase() {
+  const remote = await sbLoad();
+  if (!remote) return;
+  const def = defaultState();
+  state = {
+    notes: { ...def.notes, ...remote.notes },
+    leads: remote.leads || [],
+    log: remote.log || [],
+    todaysFocus: remote.todaysFocus || '',
+    stats: remote.stats || def.stats,
+    kanban: {
+      columns: remote.kanban?.columns || def.kanban.columns,
+      cards: remote.kanban?.cards || [],
+      projects: remote.kanban?.projects || []
+    },
+    contentCalendar: {
+      postStatus: remote.contentCalendar?.postStatus || {},
+      openRows: remote.contentCalendar?.openRows || {},
+      activeTab: remote.contentCalendar?.activeTab || 'carousels',
+      overrides: remote.contentCalendar?.overrides || {},
+      viewFilter: remote.contentCalendar?.viewFilter || 'active'
+    },
+    checkins: remote.checkins || {},
+    console: {
+      apiKey: remote.console?.apiKey || '',
+      model: remote.console?.model || 'claude-sonnet-4-6',
+      system: remote.console?.system || '',
+      messages: remote.console?.messages || []
+    }
+  };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  renderStats();
+  initFocus();
+  initNotes();
+  renderLeads();
+  renderLog();
+  renderDashLog();
+  renderBoard();
+  renderProjects();
+  updateProjectFilter();
+}
+
 function saveState(state) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  sbSave(state);
 }
 
 let state = loadState();
@@ -2446,6 +2510,7 @@ function init() {
       el.classList.toggle('active', el.dataset.ccTab === 'reels');
     });
   }
+  syncFromSupabase();
 }
 
 // Close modal on overlay click
