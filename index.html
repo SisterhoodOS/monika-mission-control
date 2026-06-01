@@ -2647,17 +2647,20 @@ function showCCMonth(month) {
 }
 
 function renderJuneFilters() {
-  const purposes = ['all','trust','awareness','brand-identity','educate','entertain','convert','community'];
-  const labels = {all:'All 32',trust:'Trust',awareness:'Awareness','brand-identity':'Brand ID',educate:'Educate',entertain:'Entertain',convert:'Convert',community:'Community'};
+  const purposes = ['all','Trust','Awareness','Brand Identity','Educate','Entertain','Convert','Community'];
+  const labels = {'all':'All 32','Trust':'Trust','Awareness':'Awareness','Brand Identity':'Brand ID','Educate':'Educate','Entertain':'Entertain','Convert':'Convert','Community':'Community'};
   document.getElementById('june-filters').innerHTML = purposes.map(p =>
-    `<button class="june-filter-btn${juneFilter===p?' active':''}" onclick="setJuneFilter('${p}')">${labels[p]}</button>`
+    `<button class="june-filter-btn${juneFilter===p?' active':''}" onclick="setJuneFilter('${p.replace(/'/g,"\\'")}')">${labels[p]}</button>`
   ).join('');
 }
 
 function setJuneFilter(f) { juneFilter = f; renderJune(); }
 
 function renderJune() {
-  if (!window.JUNE_CALENDAR) return;
+  if (!window.JUNE_CALENDAR) {
+    document.getElementById('june-list').innerHTML = '<p style="color:var(--ink-mute);padding:20px">Calendar data not loaded.</p>';
+    return;
+  }
   renderJuneFilters();
   const cal = window.JUNE_CALENDAR;
   const posts = juneFilter === 'all' ? cal.posts : cal.posts.filter(p => p.purpose === juneFilter);
@@ -2665,8 +2668,11 @@ function renderJune() {
 
   const weeks = {};
   posts.forEach(p => {
-    const d = new Date(p.schedule.date);
-    const wk = getWeekOf(d);
+    const day = parseInt((p.date || '').split('-')[2] || '1', 10);
+    const wk = day <= 7  ? 'Week 1 — June 1–7 · Pre-Launch + SPC Launch Day'
+              : day <= 14 ? 'Week 2 — June 8–14 · Post-Launch Nurture'
+              : day <= 21 ? 'Week 3 — June 15–21 · Sisterhood Depth'
+              :             'Week 4 — June 22–30 · Momentum + July Bridge';
     if (!weeks[wk]) weeks[wk] = [];
     weeks[wk].push(p);
   });
@@ -2678,37 +2684,29 @@ function renderJune() {
     </div>`).join('');
 }
 
-function getWeekOf(d) {
-  const day = d.getDate();
-  if (day <= 7) return 'Week 1 — June 1–7 · Pre-Launch + SPC Launch Day';
-  if (day <= 14) return 'Week 2 — June 8–14 · Post-Launch Nurture';
-  if (day <= 21) return 'Week 3 — June 15–21 · Sisterhood Depth';
-  return 'Week 4 — June 22–30 · Momentum + July Bridge';
-}
-
 function renderJuneCard(p) {
   const cal = window.JUNE_CALENDAR;
   const purp = cal.purposes[p.purpose] || { label: p.purpose, color: '#888', bg: '#eee' };
   const st = juneStatus[p.id] || p.status || 'draft';
   const isOpen = juneOpen[p.id];
-  const d = new Date(p.schedule.date);
-  const dayName = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()];
-  const dateNum = d.getDate();
   const fmtClass = p.format === 'Reel' ? 'june-format-reel' : 'june-format-carousel';
   const stClass = 'june-status-' + st;
+  const day = parseInt((p.date || '').split('-')[2] || '1', 10);
+  const dayName = p.day ? p.day.slice(0,3) : '';
+  const tags = (p.hashtags || '').split(' ').filter(Boolean).map(h => `<span class="june-hashtag">${h}</span>`).join('');
 
   return `<div class="june-card">
     <div class="june-card-header" onclick="toggleJuneCard('${p.id}')">
       <div class="june-date-block">
         <div class="june-date-day">${dayName}</div>
-        <div class="june-date-num">${dateNum}</div>
-        <div class="june-date-time">${p.schedule.time}</div>
+        <div class="june-date-num">${day}</div>
+        <div class="june-date-time">${esc(p.time||'')}</div>
       </div>
       <div><span class="june-format-badge ${fmtClass}">${p.format}</span></div>
       <div class="june-card-mid">
         <span class="june-purpose-badge" style="background:${purp.bg};color:${purp.color}">${purp.label}</span>
-        <div class="june-hook">${esc(p.verbalHook)}</div>
-        <div class="june-location-tag">📍 ${esc(p.shootLocation.split('—')[0].trim())}</div>
+        <div class="june-hook">${esc(p.verbal_hook||'')}</div>
+        <div class="june-location-tag">📍 ${esc((p.shoot||'').split('—')[0].trim())}</div>
       </div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
         <button class="june-status-btn ${stClass}" onclick="cycleJuneStatus(event,'${p.id}')">${st.charAt(0).toUpperCase()+st.slice(1)}</button>
@@ -2719,47 +2717,43 @@ function renderJuneCard(p) {
       <div class="june-grid-13">
         <div class="june-field">
           <div class="june-field-label">📍 Shoot Location</div>
-          <div class="june-field-value">${escNL(p.shootLocation)}</div>
+          <div class="june-field-value">${escNL(p.shoot||'')}</div>
         </div>
         <div class="june-field">
-          <div class="june-field-label">🎯 Content Purpose</div>
+          <div class="june-field-label">🎯 Purpose</div>
           <div class="june-field-value"><span class="june-purpose-badge" style="background:${purp.bg};color:${purp.color}">${purp.label}</span></div>
         </div>
         <div class="june-field">
-          <div class="june-field-label">📦 Quantity to Shoot</div>
-          <div class="june-field-value">${p.quantity} piece${p.quantity>1?'s':''}</div>
-        </div>
-        <div class="june-field">
           <div class="june-field-label">🎬 Visual Hook</div>
-          <div class="june-field-value">${esc(p.visualHook)}</div>
-        </div>
-        <div class="june-field-full">
-          <div class="june-field-label">💬 Topic — What You Will Say</div>
-          <div class="june-field-value">${escNL(p.topic)}</div>
-        </div>
-        <div class="june-field-full">
-          <div class="june-field-label">📋 Full Script</div>
-          <div class="june-script-block">${escNL(p.script)}</div>
-        </div>
-        <div class="june-field">
-          <div class="june-field-label">🎵 Background Music</div>
-          <div class="june-field-value">${esc(p.music)}</div>
+          <div class="june-field-value">${escNL(p.visual_hook||'')}</div>
         </div>
         <div class="june-field">
           <div class="june-field-label">✨ Visual Look</div>
-          <div class="june-field-value">${esc(p.visualLook)}</div>
+          <div class="june-field-value">${escNL(p.visual_look||'')}</div>
         </div>
         <div class="june-field-full">
-          <div class="june-field-label">📝 Caption (1 paragraph)</div>
-          <div class="june-field-value" style="font-family:var(--serif);font-size:11pt;font-style:italic">${esc(p.caption)}</div>
+          <div class="june-field-label">💬 Topic</div>
+          <div class="june-field-value">${escNL(p.topic||'')}</div>
+        </div>
+        <div class="june-field-full">
+          <div class="june-field-label">📋 Full Script</div>
+          <div class="june-script-block">${escNL(p.script||'')}</div>
         </div>
         <div class="june-field">
+          <div class="june-field-label">🎵 Music</div>
+          <div class="june-field-value">${esc(p.music||'')}</div>
+        </div>
+        <div class="june-field">
+          <div class="june-field-label">🔑 CTA</div>
+          <div class="june-cta-box">${esc(p.cta||'')}</div>
+        </div>
+        <div class="june-field-full">
+          <div class="june-field-label">📝 Caption</div>
+          <div class="june-field-value" style="font-family:var(--serif);font-size:11pt;font-style:italic">${esc(p.caption||'')}</div>
+        </div>
+        <div class="june-field-full">
           <div class="june-field-label"># Hashtags</div>
-          <div class="june-hashtags">${p.hashtags.map(h=>`<span class="june-hashtag">${h}</span>`).join('')}</div>
-        </div>
-        <div class="june-field">
-          <div class="june-field-label">🔑 Unique CTA</div>
-          <div class="june-cta-box">${esc(p.cta)}</div>
+          <div class="june-hashtags">${tags}</div>
         </div>
       </div>
     </div>
