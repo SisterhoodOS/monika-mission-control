@@ -1280,6 +1280,8 @@ strong { color: var(--ink); font-weight: 600; }
         <div class="ep-controls">
           <button class="ep-add-btn" onclick="openAddEvent()">+ Add Event</button>
           <span class="ep-count" id="ep-count"></span>
+          <button onclick="epExportData()" style="font-size:11px;padding:5px 12px;background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;cursor:pointer;color:var(--ink);font-weight:600">↓ Backup</button>
+          <label style="font-size:11px;padding:5px 12px;background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;cursor:pointer;color:var(--ink);font-weight:600">↑ Restore <input type="file" accept=".json" style="display:none" onchange="epImportData(this)"></label>
         </div>
         <div class="ep-event-list" id="ep-event-list">
           <div class="ep-empty">No events yet. Add your first one above.</div>
@@ -3603,6 +3605,33 @@ function epUploadFlyer(id, input) {
 function epRemoveFlyer(id) {
   localStorage.removeItem('ep-img-' + id);
   toggleEPPack(id); toggleEPPack(id);
+}
+
+function epExportData() {
+  const data = {};
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k.startsWith('ep-')) data[k] = localStorage.getItem(k);
+  }
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'mission-control-backup.json';
+  a.click();
+}
+
+function epImportData(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      Object.entries(data).forEach(([k, v]) => localStorage.setItem(k, v));
+      location.reload();
+    } catch { alert('Invalid backup file.'); }
+  };
+  reader.readAsText(file);
 }
 
 function epDownloadFlyer(src) {
