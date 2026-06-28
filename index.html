@@ -563,6 +563,196 @@ strong { color: var(--ink); font-weight: 600; }
 .sop-steps li:last-child { border-bottom:none; }
 .sop-check { width:14px; height:14px; border:1.5px solid var(--line); border-radius:3px; flex-shrink:0; margin-top:2px; }
 .sop-note { font-size:9.5pt; color:var(--ink-mute); font-style:italic; margin-top:12px; padding:10px 14px; background:var(--bg-soft); border-radius:6px; border-left:3px solid var(--gold); }
+
+/* ── WA TEMPLATES ────────────────────────────────────────────────── */
+.wat-page { padding:0 0 60px; }
+.wat-hero { background:linear-gradient(135deg,#e8f5e9 0%,#dcedc8 100%); border:1px solid #a5d6a7; border-radius:14px; padding:26px 28px; margin-bottom:22px; }
+.wat-hero h2 { font-family:var(--serif); font-size:22pt; font-weight:400; color:#2e7d32; margin-bottom:4px; }
+.wat-hero p { color:#388e3c; font-family:var(--serif); font-style:italic; font-size:12pt; margin-bottom:0; }
+.wat-grid { display:flex; flex-direction:column; gap:18px; }
+.wat-card { background:var(--bg-card); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+.wat-card-head { padding:16px 22px 14px; border-left:4px solid #43a047; display:flex; align-items:center; gap:12px; }
+.wat-card-name { font-family:var(--serif); font-size:15pt; font-weight:400; color:var(--ink); flex:1; }
+.wat-card-cat { font-size:8pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:3px 9px; border-radius:10px; background:#e8f5e9; color:#2e7d32; }
+.wat-fields { padding:14px 22px; border-top:1px solid var(--line-soft); background:var(--bg-soft); display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; }
+.wat-field-group { display:flex; flex-direction:column; gap:4px; min-width:160px; }
+.wat-field-label { font-size:8pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-mute); }
+.wat-field-input { border:1px solid var(--line); border-radius:7px; padding:7px 11px; font-family:var(--sans); font-size:11pt; color:var(--ink); background:var(--bg-card); outline:none; transition:border-color .15s; width:100%; }
+.wat-field-input:focus { border-color:#43a047; }
+.wat-preview-wrap { padding:14px 22px 18px; border-top:1px solid var(--line-soft); }
+.wat-preview-label { font-size:8pt; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:8px; display:flex; align-items:center; justify-content:space-between; }
+.wat-preview-body { font-family:var(--serif); font-size:12pt; color:var(--ink); line-height:1.7; white-space:pre-wrap; background:var(--bg); border:1px solid var(--line-soft); border-radius:8px; padding:14px 16px; user-select:text; }
+.wat-copy-btn { font-size:9pt; font-weight:700; padding:5px 14px; background:#43a047; color:#fff; border:none; border-radius:6px; cursor:pointer; transition:all .15s; }
+.wat-copy-btn:hover { background:#2e7d32; }
+.wat-copy-btn.copied { background:var(--sage); }
+.wat-add-row { padding:14px 22px; border-top:1px solid var(--line-soft); background:var(--bg-soft); }
+.wat-add-btn { font-family:var(--serif); font-size:11pt; color:var(--workspace); cursor:pointer; background:none; border:1px dashed var(--ws-border); border-radius:7px; padding:9px 18px; transition:all .15s; font-style:italic; }
+.wat-add-btn:hover { background:var(--ws-light); }
+
+/* ── EVENT PLANNER ───────────────────────────────────────────────── */
+.ep-page { padding:0 0 80px; }
+.ep-hero { background:linear-gradient(135deg,#eef4e8 0%,#ddecd4 100%); border:1px solid #b5c9ae; border-radius:14px; padding:26px 28px; margin-bottom:22px; }
+.ep-hero h2 { font-family:var(--serif); font-size:22pt; font-weight:400; color:var(--deep-green); margin-bottom:4px; }
+.ep-hero p { color:#4a6741; font-family:var(--serif); font-style:italic; font-size:12pt; margin-bottom:0; max-width:100%; }
+.ep-controls { display:flex; gap:12px; align-items:center; margin-bottom:22px; flex-wrap:wrap; }
+.ep-add-btn { background:var(--deep-green); color:#fff; border:none; border-radius:8px; padding:9px 20px; font-size:11pt; font-weight:600; cursor:pointer; transition:all .15s; font-family:var(--sans); }
+.ep-add-btn:hover { background:#2d5016; }
+.ep-count { font-size:10pt; color:var(--ink-mute); font-family:var(--serif); font-style:italic; margin-left:auto; }
+.ep-empty { text-align:center; padding:48px 20px; color:var(--ink-mute); font-size:13pt; font-family:var(--serif); font-style:italic; }
+.ep-event-list { display:flex; flex-direction:column; gap:12px; }
+.ep-event { background:var(--bg-card); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+.ep-event-head { display:flex; align-items:center; gap:12px; padding:14px 20px; cursor:pointer; transition:background .12s; }
+.ep-event-head:hover { background:var(--bg-soft); }
+.ep-event-dot { width:11px; height:11px; border-radius:50%; flex-shrink:0; }
+.ep-event-name { font-family:var(--serif); font-size:14pt; color:var(--ink); flex:1; line-height:1.2; }
+.ep-event-date { font-size:10pt; color:var(--ink-mute); font-weight:600; white-space:nowrap; }
+.ep-pack-btn { font-size:9pt; font-weight:700; padding:5px 13px; background:#eef4e8; color:var(--deep-green); border:1px solid #b5c9ae; border-radius:6px; cursor:pointer; transition:all .15s; white-space:nowrap; }
+.ep-pack-btn:hover, .ep-pack-btn.open { background:var(--deep-green); color:#fff; border-color:var(--deep-green); }
+.ep-delete-btn { font-size:13px; color:var(--ink-mute); cursor:pointer; background:none; border:none; opacity:.35; transition:opacity .15s; padding:3px 6px; flex-shrink:0; }
+.ep-delete-btn:hover { opacity:1; color:#b91c1c; }
+.ep-pack { display:none; border-top:1px solid var(--line-soft); }
+.ep-pack.open { display:block; }
+.ep-pack-inner { padding:22px 24px 24px; }
+.ep-pack-title { font-family:var(--serif); font-size:15pt; font-weight:400; color:var(--deep-green); margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid #c8dcc0; }
+.ep-field { margin-bottom:16px; }
+.ep-field-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; gap:8px; flex-wrap:wrap; }
+.ep-field-label { font-size:8pt; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-mute); display:flex; align-items:center; gap:6px; }
+.ep-field-rec { font-size:7.5pt; font-weight:700; padding:1px 7px; border-radius:8px; background:#fff8e1; color:#e65100; border:1px solid #ffe082; }
+.ep-field-copy { font-size:8.5pt; font-weight:700; padding:4px 12px; background:var(--bg-soft); color:var(--ink); border:1px solid var(--line); border-radius:5px; cursor:pointer; transition:all .15s; flex-shrink:0; }
+.ep-field-copy:hover { background:var(--deep-green); color:#fff; border-color:var(--deep-green); }
+.ep-field-copy.copied { background:var(--sage); color:#fff; border-color:var(--sage); }
+.ep-field-value { font-family:var(--serif); font-size:12pt; color:var(--ink); line-height:1.65; white-space:pre-wrap; background:var(--bg); border:1px solid var(--line-soft); border-radius:8px; padding:11px 14px; user-select:text; }
+.ep-field-input { width:100%; border:1.5px solid #b5c9ae; border-radius:8px; padding:9px 13px; font-family:var(--sans); font-size:11pt; color:var(--ink); background:var(--bg-card); outline:none; transition:border-color .15s; }
+.ep-field-input:focus { border-color:var(--deep-green); }
+.ep-field-input::placeholder { color:var(--ink-mute); opacity:.6; }
+.ep-section-divider { height:1px; background:var(--line-soft); margin:20px 0; }
+
+/* flyer image upload */
+.ep-flyer-zone { border:2px dashed var(--line); border-radius:10px; overflow:hidden; cursor:pointer; transition:border-color .15s; position:relative; min-height:120px; display:flex; align-items:center; justify-content:center; background:var(--bg); }
+.ep-flyer-zone:hover { border-color:var(--deep-green); }
+.ep-flyer-placeholder { text-align:center; padding:28px 20px; color:var(--ink-mute); pointer-events:none; }
+.ep-flyer-placeholder-icon { font-size:28px; margin-bottom:8px; }
+.ep-flyer-placeholder-text { font-size:11pt; font-family:var(--serif); font-style:italic; }
+.ep-flyer-placeholder-sub { font-size:9pt; color:var(--ink-mute); margin-top:4px; opacity:.7; }
+.ep-flyer-img { width:100%; max-height:320px; object-fit:contain; display:block; }
+.ep-flyer-actions { display:flex; gap:8px; margin-top:8px; }
+.ep-flyer-change { font-size:9pt; font-weight:600; padding:5px 12px; background:var(--bg-soft); color:var(--ink); border:1px solid var(--line); border-radius:5px; cursor:pointer; transition:all .15s; }
+.ep-flyer-change:hover { background:var(--deep-green); color:#fff; border-color:var(--deep-green); }
+.ep-flyer-remove { font-size:9pt; font-weight:600; padding:5px 12px; background:#fef2f2; color:#b91c1c; border:1px solid #fecaca; border-radius:5px; cursor:pointer; transition:all .15s; }
+.ep-flyer-remove:hover { background:#fee2e2; }
+.ep-flyer-download { font-size:9pt; font-weight:600; padding:5px 12px; background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; border-radius:5px; cursor:pointer; transition:all .15s; text-decoration:none; display:inline-flex; align-items:center; gap:4px; }
+.ep-flyer-download:hover { background:#15803d; color:#fff; border-color:#15803d; }
+
+/* month folders */
+.ep-month-folder { margin-bottom:14px; }
+.ep-month-header { display:flex; align-items:center; gap:12px; padding:13px 20px; background:var(--bg-soft); border:1px solid var(--line); border-radius:10px; cursor:pointer; transition:all .15s; user-select:none; }
+.ep-month-header:hover { background:var(--bg-accent); }
+.ep-month-header.open { border-bottom-left-radius:0; border-bottom-right-radius:0; }
+.ep-month-arrow { font-size:10pt; color:var(--ink-mute); transition:transform .2s; flex-shrink:0; }
+.ep-month-arrow.open { transform:rotate(90deg); }
+.ep-month-name { font-family:var(--serif); font-size:15pt; font-weight:400; color:var(--ink); flex:1; }
+.ep-month-count { font-size:9pt; font-weight:700; padding:2px 10px; border-radius:12px; background:var(--bg-accent); color:var(--ink-mute); border:1px solid var(--line); }
+.ep-month-events { border:1px solid var(--line); border-top:none; border-radius:0 0 10px 10px; overflow:hidden; display:none; }
+.ep-month-events.open { display:block; }
+.ep-month-events .ep-event { border-radius:0; border:none; border-bottom:1px solid var(--line-soft); }
+.ep-month-events .ep-event:last-child { border-bottom:none; }
+
+/* facilitator schedule */
+.fs-toolbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:20px; padding:14px 0; border-bottom:1px solid var(--line-soft); }
+.fs-sync-btn { font-family:var(--sans); font-size:10pt; font-weight:600; padding:9px 18px; background:var(--deep-green); color:#fff; border:none; border-radius:8px; cursor:pointer; transition:opacity .15s; }
+.fs-sync-btn:hover { opacity:.85; }
+.fs-copy-btn { font-family:var(--sans); font-size:10pt; font-weight:600; padding:9px 18px; background:#f0f4ee; color:var(--deep-green); border:2px solid #b5c9ae; border-radius:8px; cursor:pointer; transition:all .15s; }
+.fs-copy-btn:hover { background:#dde8d9; }
+.fs-count { font-size:9.5pt; color:var(--ink-mute); font-family:var(--serif); font-style:italic; margin-left:auto; }
+.fs-month-group { margin-bottom:28px; }
+.fs-month-label { font-size:10pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--deep-green); margin-bottom:10px; padding-bottom:6px; border-bottom:2px solid #b5c9ae; display:flex; align-items:center; gap:10px; }
+.fs-month-copy { font-size:9pt; font-weight:600; padding:3px 12px; background:#f0f4ee; color:var(--deep-green); border:1px solid #b5c9ae; border-radius:6px; cursor:pointer; letter-spacing:0; text-transform:none; }
+.fs-month-copy:hover { background:#dde8d9; }
+.fs-cal-btn { background:#e8f0fe; color:#1a56db; border-color:#93c5fd; }
+.fs-cal-btn:hover { background:#dbeafe; }
+.fs-report-btn { background:#fef3c7; color:#92400e; border-color:#fcd34d; }
+.fs-report-btn:hover { background:#fde68a; }
+.fs-table { width:100%; border-collapse:collapse; font-family:var(--serif); font-size:11.5pt; }
+.fs-table th { font-family:var(--sans); font-size:8pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-mute); padding:8px 12px; text-align:left; border-bottom:1px solid var(--line); background:var(--bg-soft); }
+.fs-table td { padding:10px 12px; border-bottom:1px solid var(--line-soft); vertical-align:middle; color:var(--ink); }
+.fs-table tr:last-child td { border-bottom:none; }
+.fs-table tr:hover td { background:#faf9f5; }
+.fs-date-cell { font-size:10.5pt; color:var(--ink-mute); white-space:nowrap; }
+.fs-event-cell { font-weight:500; }
+.fs-time-cell { font-size:10.5pt; color:var(--ink-mute); white-space:nowrap; }
+.fs-loc-cell { font-size:10.5pt; color:var(--ink-mute); }
+.fs-fac-select { font-family:var(--serif); font-size:11pt; color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:5px 8px; background:var(--bg); width:100%; min-width:140px; cursor:pointer; }
+.fs-fac-select:focus { outline:2px solid var(--deep-green); }
+.fs-notes-input { font-family:var(--serif); font-size:11pt; color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:5px 8px; background:var(--bg); width:100%; min-width:120px; }
+.fs-notes-input:focus { outline:2px solid var(--deep-green); }
+.fs-status { display:inline-block; font-family:var(--sans); font-size:8.5pt; font-weight:700; letter-spacing:.08em; padding:3px 10px; border-radius:12px; cursor:pointer; user-select:none; white-space:nowrap; }
+.fs-status.upcoming  { background:#eef4e8; color:#4a6741; border:1px solid #b5c9ae; }
+.fs-status.next-event { background:#fff8e1; color:#f57f17; border:1px solid #ffe082; }
+.fs-status.done      { background:#e8f5e9; color:#2e7d32; border:1px solid #a5d6a7; }
+.fs-status.canceled  { background:#fce4ec; color:#c62828; border:1px solid #ef9a9a; }
+.fs-empty { text-align:center; padding:40px 20px; color:var(--ink-mute); font-family:var(--serif); font-size:12pt; font-style:italic; }
+
+/* monthly checklist */
+.ep-cl-wrap { border-bottom:1px solid var(--line-soft); background:#fafaf7; }
+.ep-cl-toggle { display:flex; align-items:center; gap:10px; padding:11px 20px; }
+.ep-cl-label { font-size:9.5pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--deep-green); flex:1; }
+.ep-cl-progress { font-size:9pt; font-weight:700; padding:2px 10px; border-radius:12px; background:#eef4e8; color:var(--deep-green); border:1px solid #b5c9ae; }
+.ep-cl-arrow { font-size:9pt; color:var(--ink-mute); transition:transform .15s; }
+.ep-cl-arrow.open { transform:rotate(90deg); }
+.ep-cl-body { display:block; padding:14px 22px 18px; }
+.ep-cl-group { margin-bottom:14px; }
+.ep-cl-group:last-child { margin-bottom:0; }
+.ep-cl-group-title { font-size:8pt; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:8px; }
+.ep-cl-item { display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px solid var(--line-soft); cursor:pointer; }
+.ep-cl-item:last-child { border-bottom:none; }
+.ep-cl-item:hover { opacity:.8; }
+.ep-cl-box { width:18px; height:18px; border:2px solid var(--line); border-radius:4px; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all .15s; background:#fff; }
+.ep-cl-box.checked { background:var(--deep-green); border-color:var(--deep-green); }
+.ep-cl-box.checked::after { content:""; display:block; width:5px; height:9px; border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg); margin-top:-2px; }
+.ep-cl-text { font-size:11pt; color:var(--ink-soft); font-family:var(--serif); line-height:1.4; }
+.ep-cl-text.checked { text-decoration:line-through; opacity:.55; }
+.ep-cl-progress-month { font-size:8.5pt; font-weight:700; padding:2px 9px; border-radius:12px; background:#eef4e8; color:var(--deep-green); border:1px solid #b5c9ae; margin-left:auto; }
+
+/* email preview modal */
+.ep-email-modal-inner { max-width:620px; width:95vw; max-height:88vh; overflow-y:auto; }
+.ep-email-modal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; }
+.ep-email-meta { background:var(--bg-soft); border:1px solid var(--line); border-radius:8px; padding:4px 16px; margin-bottom:16px; }
+.ep-email-meta-row { display:flex; gap:14px; padding:8px 0; border-bottom:1px solid var(--line-soft); align-items:flex-start; }
+.ep-email-meta-row:last-child { border-bottom:none; }
+.ep-email-meta-label { font-size:8.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-mute); min-width:58px; padding-top:2px; flex-shrink:0; }
+.ep-email-meta-val { font-size:11.5pt; color:var(--ink); font-family:var(--serif); line-height:1.4; }
+.ep-email-body-preview { font-family:var(--serif); font-size:12pt; color:var(--ink); line-height:1.75; white-space:pre-wrap; background:var(--bg); border:1px solid var(--line-soft); border-radius:8px; padding:18px 20px; max-height:400px; overflow-y:auto; margin-bottom:22px; }
+
+/* facilitator sheet export button */
+.ep-export-row { margin-top:14px; padding:12px 0 0; border-top:1px solid var(--line-soft); display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.ep-export-btn { font-family:var(--sans); font-size:10pt; font-weight:600; padding:9px 18px; background:#f0f4ee; color:var(--deep-green); border:2px solid #b5c9ae; border-radius:8px; cursor:pointer; transition:all .15s; display:flex; align-items:center; gap:7px; }
+.ep-export-btn:hover { background:#dde8d9; border-color:var(--deep-green); }
+.ep-export-hint { font-size:9.5pt; color:var(--ink-mute); font-family:var(--serif); font-style:italic; }
+
+/* sophia confirmation email button */
+.ep-sophia-btn { font-family:var(--sans); font-size:10.5pt; font-weight:600; padding:10px 20px; background:var(--clay); color:#fff; border:none; border-radius:8px; cursor:pointer; transition:all .15s; display:flex; align-items:center; gap:8px; }
+.ep-sophia-btn:hover { opacity:.85; }
+.ep-sophia-btn.all-done { background:var(--deep-green); box-shadow:0 0 0 3px rgba(74,103,65,.2); }
+.ep-sophia-row { margin-top:18px; padding-top:16px; border-top:1px solid var(--line-soft); display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.ep-sophia-hint { font-size:9.5pt; color:var(--ink-mute); font-family:var(--serif); font-style:italic; }
+
+/* per-event reminder checklist */
+.ep-reminders-wrap { margin-top:4px; }
+.ep-reminders-title { font-size:8pt; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+.ep-reminder-item { display:flex; align-items:center; gap:10px; padding:7px 0; border-bottom:1px solid var(--line-soft); cursor:pointer; }
+.ep-reminder-item:last-child { border-bottom:none; }
+.ep-reminder-item:hover { opacity:.8; }
+.ep-r-box { width:17px; height:17px; border:2px solid var(--line); border-radius:4px; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all .15s; background:#fff; }
+.ep-r-box.checked { background:var(--clay); border-color:var(--clay); }
+.ep-r-box.checked::after { content:""; display:block; width:4px; height:8px; border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg); margin-top:-2px; }
+.ep-r-text { font-size:11pt; color:var(--ink-soft); font-family:var(--serif); }
+.ep-r-text.checked { text-decoration:line-through; opacity:.5; }
+.ep-r-date-hint { font-size:9pt; color:var(--ink-mute); font-family:var(--sans); margin-left:auto; white-space:nowrap; }
+
+/* add event modal */
+.ep-modal { background:var(--bg-card); border-radius:14px; padding:32px 36px; width:480px; max-width:95vw; max-height:90vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,.2); }
+.ep-modal h3 { font-family:var(--serif); font-size:20pt; font-weight:400; color:var(--deep-green); margin-bottom:6px; }
+.ep-modal-sub { font-size:11pt; color:var(--ink-mute); font-family:var(--serif); font-style:italic; margin-bottom:22px; }
 </style>
 </head>
 <body>
@@ -598,6 +788,9 @@ strong { color: var(--ink); font-weight: 600; }
   <ul class="nav-list">
     <li><a onclick="navigate('sisterhood-kb')" id="nav-sisterhood-kb"><span class="nav-icon">◎</span> Strategy &amp; Products</a></li>
     <li><a onclick="navigate('marketing-kb')" id="nav-marketing-kb"><span class="nav-icon">◇</span> Marketing &amp; Content</a></li>
+    <li><a onclick="navigate('wa-templates')" id="nav-wa-templates"><span class="nav-icon">💬</span> WA Templates</a></li>
+    <li><a onclick="navigate('event-planner')" id="nav-event-planner"><span class="nav-icon">📅</span> Event Planner</a></li>
+    <li><a href="#" onclick="navigate('facilitator-schedule');return false" data-panel="facilitator-schedule">👩 Facilitators</a></li>
   </ul>
 
   <div class="nav-group">Saha Synergy</div>
@@ -1075,6 +1268,52 @@ strong { color: var(--ink); font-weight: 600; }
     </div>
   </div>
 
+  <!-- EVENT PLANNER -->
+  <div id="panel-event-planner" class="section-panel content-mode" style="display:none">
+    <div class="main-inner">
+      <div class="ep-page">
+        <div class="ep-hero">
+          <div class="sec-eye" style="color:#6a1b9a">Sisterhood OS</div>
+          <h2>Event Planner</h2>
+          <p>Add your events for the month. Click Pack on any event to get every field ready to copy into Nomeo — title, date, location, description, WA message, all of it.</p>
+        </div>
+        <div class="ep-controls">
+          <button class="ep-add-btn" onclick="openAddEvent()">+ Add Event</button>
+          <span class="ep-count" id="ep-count"></span>
+        </div>
+        <div class="ep-event-list" id="ep-event-list">
+          <div class="ep-empty">No events yet. Add your first one above.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FACILITATOR SCHEDULE -->
+  <div class="panel" id="panel-facilitator-schedule">
+    <div class="panel-header">
+      <h2 style="font-family:var(--serif);font-size:22pt;font-weight:400;color:var(--ink);margin:0">Facilitator Schedule</h2>
+      <p style="color:var(--ink-mute);font-size:11pt;margin:6px 0 0;font-family:var(--serif)">Assign facilitators, track status, sync from Event Planner</p>
+    </div>
+    <div id="fs-root"></div>
+  </div>
+
+  <!-- WA TEMPLATES -->
+  <div id="panel-wa-templates" class="section-panel content-mode" style="display:none">
+    <div class="main-inner">
+      <div class="wat-page">
+        <div class="wat-hero">
+          <div class="sec-eye" style="color:#2e7d32">Sisterhood OS</div>
+          <h2>WA Templates</h2>
+          <p>Fill in the dates, copy, and paste straight into WhatsApp. No reformatting needed.</p>
+        </div>
+        <div class="wat-grid" id="wat-grid"></div>
+        <div style="margin-top:18px">
+          <button class="wat-add-btn" onclick="openAddTemplate()">+ Add a new template</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </main>
 </div>
 
@@ -1126,6 +1365,67 @@ strong { color: var(--ink); font-weight: 600; }
     <div class="modal-actions">
       <button class="btn btn-secondary" onclick="closeAddLead()">Cancel</button>
       <button class="btn btn-primary" onclick="saveLead()">Add Lead</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD EVENT MODAL -->
+<div class="modal-overlay" id="ep-add-modal">
+  <div class="modal ep-modal">
+    <h3>Add Event</h3>
+    <div class="ep-modal-sub">Fill in the details — everything else is pre-filled from the template.</div>
+    <div class="form-row">
+      <label class="form-label">Event Type *</label>
+      <select class="form-select" id="ep-type-select">
+        <option value="women-circle">Women Circle</option>
+        <option value="coworking">Co-Working Day</option>
+        <option value="give-it-all">Give It All — Live Event</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Date *</label>
+      <input type="date" class="form-input" id="ep-date-picker" style="cursor:pointer">
+    </div>
+    <div class="form-row">
+      <label class="form-label">Nomeo Link <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional — add later)</span></label>
+      <input type="text" class="form-input" id="ep-nomeo-input" placeholder="https://nomeo.io/m/...">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeAddEvent()">Cancel</button>
+      <button class="btn btn-primary" style="background:#4a6741" onclick="submitAddEvent()">Add Event</button>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL PREVIEW MODAL -->
+<div class="modal-overlay" id="ep-email-modal">
+  <div class="modal ep-email-modal-inner">
+    <div class="ep-email-modal-header">
+      <h3 style="font-family:var(--serif);font-size:19pt;font-weight:400;color:var(--ink);margin:0">Email Preview</h3>
+      <button onclick="closeEpEmailModal()" style="background:none;border:none;font-size:18px;cursor:pointer;color:var(--ink-mute);padding:2px 6px;line-height:1">×</button>
+    </div>
+    <div class="ep-email-meta">
+      <div class="ep-email-meta-row"><span class="ep-email-meta-label">To</span><span class="ep-email-meta-val">sophlfox@outlook.com</span></div>
+      <div class="ep-email-meta-row"><span class="ep-email-meta-label">Subject</span><span class="ep-email-meta-val" id="ep-email-subject-preview"></span></div>
+    </div>
+    <div class="ep-email-body-preview" id="ep-email-body-preview"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeEpEmailModal()">Cancel</button>
+      <button class="btn btn-primary" id="ep-confirm-send-btn" style="background:var(--clay)" onclick="epConfirmEmailSend()">Confirm &amp; Send ✉</button>
+    </div>
+  </div>
+</div>
+
+<!-- CALENDAR CONFIRM MODAL -->
+<div class="modal-overlay" id="fs-cal-confirm-modal">
+  <div class="modal" style="max-width:420px;text-align:center;padding:32px 28px">
+    <div style="font-size:36px;margin-bottom:12px">📅</div>
+    <h3 style="font-family:var(--serif);font-weight:400;font-size:19pt;color:var(--ink);margin:0 0 10px">Add to Google Calendar?</h3>
+    <p style="font-family:var(--serif);color:var(--ink-mute);font-size:11.5pt;margin:0 0 8px">All <strong id="fs-cal-confirm-month" style="color:var(--ink)"></strong> events will be downloaded as a calendar file.</p>
+    <p style="font-family:var(--serif);color:var(--ink-mute);font-size:10.5pt;margin:0 0 26px;font-style:italic">Then open Google Calendar → ⚙️ Settings → Import → select the file.</p>
+    <div style="display:flex;gap:12px;justify-content:center">
+      <button class="btn btn-secondary" onclick="document.getElementById('fs-cal-confirm-modal').classList.remove('open')">Cancel</button>
+      <button class="btn btn-primary" style="background:#1a56db;border-color:#1a56db" onclick="fsConfirmCalendar()">Yes, Download & Import</button>
     </div>
   </div>
 </div>
@@ -1274,7 +1574,7 @@ function saveState(state) {
 let state = loadState();
 
 // ─── NAVIGATION ──────────────────────────────────────────────────
-const panels = ['dashboard','console','tasks','workspace','content-calendar','checkins','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy','agents','sops','signed-docs'];
+const panels = ['dashboard','console','tasks','workspace','content-calendar','checkins','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy','agents','sops','signed-docs','wa-templates','event-planner','facilitator-schedule'];
 
 const CONSOLE_DEFAULT_SYSTEM = `You are an assistant inside Monika's Mission Control for Sisterhood OS (Sophia Fox's women's empowerment brand based in Bali).
 
@@ -1328,6 +1628,9 @@ function navigate(id) {
   if (id === 'agents') { renderAgentMap(); }
   if (id === 'sops') { renderSOPs(); }
   if (id === 'console') { renderConsole(); }
+  if (id === 'wa-templates') { renderWATemplates(); }
+  if (id === 'event-planner') { renderEventPlanner(); }
+  if (id === 'facilitator-schedule') { renderFacSchedule(); }
 }
 
 // ─── DASHBOARD MILESTONES ─────────────────────────────────────────
@@ -3026,6 +3329,1003 @@ function renderSOPs() {
 function toggleSOP(id) {
   openSOPs[id] = !openSOPs[id];
   renderSOPs();
+}
+
+// ─── EVENT PLANNER ────────────────────────────────────────────────
+const EP_TYPES = {
+  'women-circle': {
+    name: 'Women Circle',
+    color: '#388e3c',
+    location: "De'Topaz Café, Bali",
+    time: '10:30 AM – 1:00 PM',
+    minSpend: 'IDR 150.000 (150K)',
+    coverText: 'Gather. Share. Rise.',
+    shortDesc: "A sacred, confidential circle where women gather in truth, presence, and mutual respect. Every voice is honored. Every journey welcomed.\n\nSoften, connect, and sit as equals in sisterhood. Come exactly as you are.\n\nMinimum spend 150K to support the venue.",
+    watId: 'women-circle'
+  },
+  'coworking': {
+    name: 'Co-Working Day',
+    color: '#c2185b',
+    location: 'AT06, Bali',
+    time: '12:00 PM – 5:00 PM  |  Sunset Walk 5:00–6:30 PM',
+    minSpend: 'IDR 150.000',
+    coverText: 'Work. Connect. Create.',
+    shortDesc: "A cozy co-working space for women who want to work, connect, and create in a supportive soft energy environment.\n\nFocused productivity, meaningful conversations, and a sunset walk to ground after the day.\n\n10% OFF all F&B for Sisterhood Members. Minimum spend IDR 150.000.",
+    watId: 'coworking-reminder'
+  },
+  'give-it-all': {
+    name: 'Give It All — Live Event',
+    color: '#1565c0',
+    location: 'AMAVI, Bali',
+    time: '6:00 PM (arrive early)',
+    minSpend: 'Per ticket — see booking link',
+    coverText: 'Women Who Lead.',
+    shortDesc: "An inspiring live speaker event featuring transformation coaches and community builders from the Bali Sisterhood.\n\nHear powerful women share their stories, strategies, and wisdom. Open to the whole Bali community.",
+    watId: 'give-it-all'
+  }
+};
+
+const openEPPacks = {};
+const openMonths = {};
+
+const MONTH_ORDER = {January:1,February:2,March:3,April:4,May:5,June:6,July:7,August:8,September:9,October:10,November:11,December:12};
+
+function epExtractMonth(dateLabel) {
+  const months = Object.keys(MONTH_ORDER);
+  const lower = (dateLabel||'').toLowerCase();
+  for (const m of months) { if (lower.includes(m.toLowerCase().slice(0,3))) return m; }
+  return 'Upcoming';
+}
+
+function epEvents() {
+  return JSON.parse(localStorage.getItem('ep-events') || '[]');
+}
+function epSaveAll(events) {
+  localStorage.setItem('ep-events', JSON.stringify(events));
+}
+
+function renderEventPlanner() {
+  const list = document.getElementById('ep-event-list');
+  const countEl = document.getElementById('ep-count');
+  if (!list) return;
+  const events = epEvents();
+  if (countEl) countEl.textContent = events.length ? events.length + ' event' + (events.length !== 1 ? 's' : '') : '';
+  if (events.length === 0) {
+    list.innerHTML = '<div class="ep-empty">No events yet. Add your first one above.</div>';
+    return;
+  }
+
+  // Group by monthKey
+  const groups = {};
+  events.forEach(ev => {
+    const key = ev.monthKey || (epExtractMonth(ev.dateLabel) + ' ' + (ev.year || '2026'));
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(ev);
+  });
+
+  // Sort month keys chronologically
+  const sortedKeys = Object.keys(groups).sort((a, b) => {
+    const [am, ay] = a.split(' '); const [bm, by] = b.split(' ');
+    return (parseInt(ay)||2026) - (parseInt(by)||2026) || (MONTH_ORDER[am]||13) - (MONTH_ORDER[bm]||13);
+  });
+
+  list.innerHTML = sortedKeys.map(key => {
+    const monthEvents = groups[key];
+    const isOpen = openMonths[key] !== false; // default open
+    const eventsHtml = monthEvents.map(ev => {
+      const type = EP_TYPES[ev.type] || { name: ev.type, color: '#999' };
+      const packOpen = openEPPacks[ev.id];
+      return `<div class="ep-event" id="epev-${ev.id}">
+        <div class="ep-event-head">
+          <div class="ep-event-dot" style="background:${type.color}"></div>
+          <div class="ep-event-name">${esc(type.name)}</div>
+          <div class="ep-event-date">${esc(ev.dayLabel)}, ${esc(ev.dateLabel)}</div>
+          <button class="ep-pack-btn${packOpen?' open':''}" onclick="toggleEPPack('${ev.id}')">Pack ${packOpen?'▲':'▼'}</button>
+          <button class="ep-delete-btn" onclick="epDelete('${ev.id}')" title="Delete">×</button>
+        </div>
+        <div class="ep-pack${packOpen?' open':''}" id="ep-pack-${ev.id}">${packOpen ? buildEPPack(ev) : ''}</div>
+      </div>`;
+    }).join('');
+
+    const { done: clDone, total: clTotal } = epMonthProgress(key);
+    const clHtml = isOpen ? buildMonthChecklist(key) : '';
+    return `<div class="ep-month-folder">
+      <div class="ep-month-header${isOpen?' open':''}" onclick="toggleMonth('${key}')">
+        <span class="ep-month-arrow${isOpen?' open':''}">▶</span>
+        <span class="ep-month-name">${esc(key)}</span>
+        <span class="ep-month-count">${monthEvents.length} event${monthEvents.length!==1?'s':''}</span>
+        <span class="ep-cl-progress-month" id="ep-month-prog-${key}">✓ ${clDone}/${clTotal}</span>
+      </div>
+      <div class="ep-month-events${isOpen?' open':''}">
+        ${clHtml}
+        ${eventsHtml}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleMonth(key) {
+  openMonths[key] = openMonths[key] === false ? true : false;
+  renderEventPlanner();
+}
+
+function buildEPPack(ev) {
+  const type = EP_TYPES[ev.type] || {};
+  const watTpl = WAT_DEFAULTS.find(t => t.id === type.watId);
+  let waMsg = '(No template linked)';
+  if (watTpl) {
+    const lv = {};
+    watTpl.fields.forEach(f => {
+      if (f.key === 'DAY')          lv[f.key] = ev.dayLabel || f.default;
+      else if (f.key === 'DATE')    lv[f.key] = ev.dateLabel || f.default;
+      else if (f.key === 'LINK')    lv[f.key] = ev.nomeoLink || f.default;
+      else if (f.key === 'MAPS_LINK')    lv[f.key] = ev.mapsLink || f.default;
+      else if (f.key === 'BOOKING_LINK') lv[f.key] = ev.bookingLink || f.default;
+      else lv[f.key] = f.default;
+    });
+    waMsg = watTpl.body;
+    watTpl.fields.forEach(f => { waMsg = waMsg.split('{{'+f.key+'}}').join(lv[f.key]); });
+  }
+
+  const savedImg = localStorage.getItem('ep-img-' + ev.id) || '';
+  const autoFlyer = epAutoFlyerPath(ev);
+  const flyerSrc = savedImg || (autoFlyer ? autoFlyer : '');
+  const flyerHtml = flyerSrc
+    ? `<img class="ep-flyer-img" src="${flyerSrc}" alt="Event flyer">
+       <div class="ep-flyer-actions">
+         <label class="ep-flyer-change">Change image <input type="file" accept="image/*" style="display:none" onchange="epUploadFlyer('${ev.id}',this)"></label>
+         <button class="ep-flyer-download" onclick="epDownloadFlyer('${flyerSrc}')">↓ Download PNG</button>
+         <button class="ep-flyer-remove" onclick="epRemoveFlyer('${ev.id}')">Remove</button>
+       </div>`
+    : `<label style="width:100%;cursor:pointer;display:block">
+         <div class="ep-flyer-placeholder">
+           <div class="ep-flyer-placeholder-icon">🖼</div>
+           <div class="ep-flyer-placeholder-text">Click to upload flyer image</div>
+           <div class="ep-flyer-placeholder-sub">JPG, PNG — any size</div>
+         </div>
+         <input type="file" accept="image/*" style="display:none" onchange="epUploadFlyer('${ev.id}',this)">
+       </label>`;
+
+  return `<div class="ep-pack-inner">
+    <div class="ep-pack-title">📋 Nomeo Pack — ${esc(type.name||ev.type)} · ${esc(ev.dayLabel)}, ${esc(ev.dateLabel)}</div>
+
+    <div class="ep-field">
+      <div class="ep-field-head"><span class="ep-field-label">FLYER IMAGE</span></div>
+      <div class="ep-flyer-zone" id="epf-flyer-${ev.id}">${flyerHtml}</div>
+    </div>
+
+    ${epPackField('TITLE', (type.name||ev.type) + ' — Bali', 'epf-title-'+ev.id)}
+    ${epPackField('DATE', ev.dayLabel + ', ' + ev.dateLabel + ', 2026', 'epf-date-'+ev.id)}
+    ${epPackField('TIME', type.time||'', 'epf-time-'+ev.id)}
+    ${epPackField('LOCATION', type.location||'', 'epf-loc-'+ev.id)}
+    ${epPackField('WHATSAPP MESSAGE', waMsg, 'epf-wa-'+ev.id)}
+
+    <div class="ep-section-divider"></div>
+    ${epPackField('MINIMUM SPEND', type.minSpend||'', 'epf-spend-'+ev.id, true)}
+    ${epPackField('COVER IMAGE TEXT', type.coverText||'', 'epf-cover-'+ev.id, true)}
+
+    <div class="ep-section-divider"></div>
+    <div class="ep-field">
+      <div class="ep-field-head"><span class="ep-field-label">NOMEO LINK <span class="ep-field-rec">paste after creating event</span></span></div>
+      <input class="ep-field-input" id="epf-nomeo-${ev.id}" placeholder="https://nomeo.io/m/..." value="${esc(ev.nomeoLink||'')}" oninput="epSaveNomeo('${ev.id}',this.value)">
+    </div>
+    <div class="ep-section-divider"></div>
+    <div class="ep-field">
+      ${buildEventReminders(ev)}
+    </div>
+  </div>`;
+}
+
+function epPackField(label, value, id, recommended=false) {
+  return `<div class="ep-field">
+    <div class="ep-field-head">
+      <span class="ep-field-label">${label}${recommended ? ' <span class="ep-field-rec">★ recommended</span>' : ''}</span>
+      <button class="ep-field-copy" id="btn-${id}" onclick="epCopyField('${id}')">Copy</button>
+    </div>
+    <div class="ep-field-value" id="${id}">${esc(value)}</div>
+  </div>`;
+}
+
+function epCopyField(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  navigator.clipboard.writeText(el.textContent).then(() => {
+    const btn = document.getElementById('btn-'+id);
+    if (btn) { btn.textContent='Copied!'; btn.classList.add('copied'); setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},1800); }
+    showToast('Copied — paste into Nomeo');
+  });
+}
+
+function toggleEPPack(id) {
+  openEPPacks[id] = !openEPPacks[id];
+  renderEventPlanner();
+}
+
+function epDelete(id) {
+  if (!confirm('Delete this event?')) return;
+  epSaveAll(epEvents().filter(e => e.id !== id));
+  delete openEPPacks[id];
+  renderEventPlanner();
+  showToast('Event deleted');
+}
+
+function epSaveNomeo(id, val) {
+  const events = epEvents();
+  const ev = events.find(e => e.id === id);
+  if (!ev) return;
+  ev.nomeoLink = val;
+  epSaveAll(events);
+  // live-update the WA message preview
+  const type = EP_TYPES[ev.type] || {};
+  const watTpl = WAT_DEFAULTS.find(t => t.id === type.watId);
+  if (!watTpl) return;
+  const lv = {};
+  watTpl.fields.forEach(f => {
+    if (f.key === 'DAY')           lv[f.key] = ev.dayLabel || f.default;
+    else if (f.key === 'DATE')     lv[f.key] = ev.dateLabel || f.default;
+    else if (f.key === 'LINK')     lv[f.key] = val || f.default;
+    else if (f.key === 'MAPS_LINK')    lv[f.key] = ev.mapsLink || f.default;
+    else if (f.key === 'BOOKING_LINK') lv[f.key] = ev.bookingLink || f.default;
+    else lv[f.key] = f.default;
+  });
+  let waMsg = watTpl.body;
+  watTpl.fields.forEach(f => { waMsg = waMsg.split('{{'+f.key+'}}').join(lv[f.key]); });
+  const previewEl = document.getElementById('epf-wa-' + id);
+  if (previewEl) previewEl.textContent = waMsg;
+}
+
+const MONTH_NUM = {January:'01',February:'02',March:'03',April:'04',May:'05',June:'06',July:'07',August:'08',September:'09',October:'10',November:'11',December:'12'};
+function epAutoFlyerPath(ev) {
+  const typeMap = { 'coworking': 'coworking', 'women-circle': 'circle' };
+  const prefix = typeMap[ev.type];
+  if (!prefix) return '';
+  const parts = (ev.dateLabel || '').split(' ');
+  if (parts.length < 2) return '';
+  const month = MONTH_NUM[parts[0]];
+  const day = (parts[1] || '').replace(/\D/g,'').padStart(2,'0');
+  const year = ev.year || '2026';
+  if (!month || !day) return '';
+  return `assets/flyers/${prefix}-${year}-${month}-${day}.png`;
+}
+
+function epUploadFlyer(id, input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    localStorage.setItem('ep-img-' + id, e.target.result);
+    toggleEPPack(id); toggleEPPack(id);
+    showToast('Flyer uploaded');
+  };
+  reader.readAsDataURL(file);
+}
+
+function epRemoveFlyer(id) {
+  localStorage.removeItem('ep-img-' + id);
+  toggleEPPack(id); toggleEPPack(id);
+}
+
+function epDownloadFlyer(src) {
+  const filename = src.startsWith('data:') ? 'flyer.png' : src.split('/').pop();
+  const a = document.createElement('a');
+  a.href = src;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+function openAddEvent() {
+  document.getElementById('ep-type-select').value = 'women-circle';
+  document.getElementById('ep-date-picker').value = '';
+  document.getElementById('ep-nomeo-input').value = '';
+  document.getElementById('ep-add-modal').classList.add('open');
+  setTimeout(()=>document.getElementById('ep-date-picker').focus(), 100);
+}
+
+function closeAddEvent() {
+  document.getElementById('ep-add-modal').classList.remove('open');
+}
+
+function submitAddEvent() {
+  const type = document.getElementById('ep-type-select').value;
+  const dateVal = document.getElementById('ep-date-picker').value;
+  const nomeoLink = document.getElementById('ep-nomeo-input').value.trim();
+  if (!dateVal) { alert('Please pick a date.'); return; }
+  const d = new Date(dateVal + 'T12:00:00');
+  const dayLabel  = d.toLocaleDateString('en-US', { weekday: 'long' });
+  const dateLabel = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+  const year      = d.getFullYear().toString();
+  const month     = d.toLocaleDateString('en-US', { month: 'long' });
+  const monthKey  = month + ' ' + year;
+  const events = epEvents();
+  events.push({ id: 'ev-'+Date.now(), type, dayLabel, dateLabel, nomeoLink, year, monthKey });
+  epSaveAll(events);
+  if (openMonths[monthKey] === undefined) openMonths[monthKey] = true;
+  closeAddEvent();
+  renderEventPlanner();
+  showToast('Event added — click Pack to get your Nomeo fields');
+}
+
+document.getElementById('ep-add-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeAddEvent();
+});
+document.getElementById('ep-email-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeEpEmailModal();
+});
+document.getElementById('fs-cal-confirm-modal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+
+// ─── WA TEMPLATES ─────────────────────────────────────────────────
+const WAT_DEFAULTS = [
+  {
+    id: 'women-circle',
+    name: 'Women Circle',
+    category: 'Events',
+    fields: [
+      { key: 'DAY',       label: 'Day (e.g. Saturday)',  default: 'Saturday' },
+      { key: 'DATE',      label: 'Date (e.g. June 27)',  default: 'June 27' },
+      { key: 'MAPS_LINK', label: 'Google Maps link',     default: 'https://maps.app.goo.gl/VWFen1xHN9QzMihJ9' },
+      { key: 'LINK',      label: 'Nomeo link',           default: 'https://nomeo.io/m/wrJ4C' }
+    ],
+    body: '📆 {{DAY}} 📆\n\nImagine sitting in circle with women who truly listen.\nWhere your stories, emotions, and journey are all welcome.\n\n{{DAY}}, {{DATE}} • 10:30–13:00\n📍 De\'Topaz Café, Bali\n{{MAPS_LINK}}\n\nWe gather to create a sacred, confidential, and nurturing space where women come together in truth, presence, and mutual respect. This circle invites us to soften, connect, and sit as equals honoring every woman\'s voice and personal journey.\n\nThis is a gentle space of reflection, sovereignty, and authentic connection, where every woman is welcomed exactly as she is. Come with empowerment in your heart, trust your path, and know you are deeply welcome here.\n\n💖 A gentle reminder:\n\nOur circles are a sacred container. Doors will close at 10:55AM, as we begin together at 11:00AM sharp.\n\nArriving on time helps us all soften, settle, and flow into presence with ease.🌺\n\nWe can\'t wait to sit in circle with you, to share, connect, and rise together in sisterhood 💗✨\n\nMinimum spend 150K to support the venue🌺\n\nFor more details 👇🔗\n{{LINK}}'
+  },
+  {
+    id: 'give-it-all',
+    name: 'Give It All — Live Event',
+    category: 'Events',
+    fields: [
+      { key: 'DATE',         label: 'Date (e.g. June 25th)', default: 'June 25th' },
+      { key: 'MAPS_LINK',    label: 'Google Maps link',      default: 'https://share.google/3wvK8EZ92VVGtrU3p' },
+      { key: 'BOOKING_LINK', label: 'Booking link',          default: 'https://checkout.giveitallevent.com/give-it-all-bali-booking' }
+    ],
+    body: '🚨TONIGHT LIVE🚨\n\nWe are so proud of our beautiful sisters Denise and Sophia who are speaking at Give It All tonight! \n\nDenise is a transformation coach who has created the HOME method for her clients; she has been a council member and sister sage with us since early on in the Bali Sisterhood community!\n\nSophia is the founder and creator of Bali Sisterhood and Sisterhood OS! She is a business strategist, AI prodigy, and most importantly - a creator of community that brings women closer together to each other and themselves.\n\n📅 TONIGHT, {{DATE}}\n🕕 6:00PM (arrive early to get your drink and settle in!)\n📍 AMAVI {{MAPS_LINK}}\n\nThere are also 4 other incredible speakers on the lineup, so come support the Bali community!\nWe would love nothing more than to look out and see your face in that crowd. ❤️ \n\nSecure your spot : \n{{BOOKING_LINK}}'
+  },
+  {
+    id: 'coworking-reminder',
+    name: 'Co-Working Day',
+    category: 'Events',
+    fields: [
+      { key: 'DAY',  label: 'Day (e.g. Tuesday)',  default: 'Tuesday' },
+      { key: 'DATE', label: 'Date (e.g. June 16)', default: 'June 16' },
+      { key: 'LINK', label: 'Nomeo link',           default: 'https://nomeo.io/m/6tYH5' }
+    ],
+    body: '📆 {{DAY}} 📆\n\nJoin us for a cozy co-working day created especially for women who want to work, connect, and create in a supportive, soft energy environment.\n\nThis is a space to focus on your work, gentle connection, and a sense of sisterhood no pressure, just presence.\n\nAfter co-working, we go on a sunset walk close by and ground after a busy day 🌅\n\n📍 Location: AT06\n🗓 Date: {{DAY}}, {{DATE}}\n⏰ Time: 12:00 PM – 5:00 PM\nSunset Walk 5:00PM - 6:30PM\n\n✨ Special for Our Sisters\n•  10% OFF all F&B purchases for Sisterhood Members☕🥐\n•  Comfortable air-conditioned (AC) room\n\nMinimum spend: IDR 150.000\n\nCome for the productivity, stay for the connection.\nBring your laptop, your projects, and your beautiful energy.\n\nWe\'d love to have you with us 💗✨\n\nFor more details 👇🔗\n{{LINK}}'
+  }
+  ,{
+    id: 'monthly-schedule',
+    name: 'Monthly Schedule',
+    category: 'Monthly',
+    fields: [
+      { key: 'MONTH',           label: 'Month name',        default: 'July' },
+      { key: 'LINKTREE',        label: 'Linktree link',     default: 'https://linktr.ee/officialsisterhub' },
+      { key: 'CIRCLE_DATES',    label: 'Circle dates',      default: 'Saturday, July 12 & 26' },
+      { key: 'COWORKING_DATES', label: 'Coworking dates',   default: 'Every Tuesday (July 1, 8, 15, 22, 29)' },
+      { key: 'WORKSHOP_DATES',  label: 'Workshop dates',    default: 'Monday, July 7 & 14' }
+    ],
+    body: '✨ {{MONTH}} WITH SISTERHOOD ✨\n\n👉 All event details & RSVP via Linktree: {{LINKTREE}}\n\n🌸 Bali Sisterhood Circle\nA safe and nurturing space for honest sharing, deep listening, and meaningful connection.\n{{CIRCLE_DATES}}\n⏰ 10.30–13.00\n📍 de\'TOPAZ Cafe, Seseh\nhttps://share.google/0VcyxZ7JSSAhjpNEw\n\n💻 Coworking Day\nA shared space to focus, create, and build momentum alongside ambitious, aligned women.\n{{COWORKING_DATES}}\n⏰ 12.00–17.00\n📍 AT06 Cafe, Canggu\nhttps://share.google/aZViohKv8lrq3yGx0\n\n🌙 Online Workshop\nA powerful session to expand your mindset, learn, and grow wherever you are in the world.\n{{WORKSHOP_DATES}}\n⏰ 08.00am (Bali Time)\n📍 Online\n\nAs {{MONTH}} unfolds, may you stand firm in who you are becoming, surrounded by sisters who reflect your light back to you, and reminded that the path forward is walked together.'
+  }
+];
+
+const WAT_VERSION = '4';
+function watTemplates() {
+  if (localStorage.getItem('wat-version') !== WAT_VERSION) {
+    localStorage.removeItem('wat-templates');
+    localStorage.setItem('wat-version', WAT_VERSION);
+  }
+  return JSON.parse(localStorage.getItem('wat-templates') || 'null') || WAT_DEFAULTS;
+}
+
+function watSave(templates) {
+  localStorage.setItem('wat-templates', JSON.stringify(templates));
+}
+
+function watFieldValues(id) {
+  return JSON.parse(localStorage.getItem('wat-fields-' + id) || '{}');
+}
+
+function watSaveField(id, key, value) {
+  const vals = watFieldValues(id);
+  vals[key] = value;
+  localStorage.setItem('wat-fields-' + id, JSON.stringify(vals));
+}
+
+function watResolve(body, id, liveValues) {
+  const saved = watFieldValues(id);
+  const tpl = watTemplates().find(t => t.id === id);
+  let out = body;
+  (tpl ? tpl.fields : []).forEach(f => {
+    const val = (liveValues && liveValues[f.key] !== undefined) ? liveValues[f.key] : (saved[f.key] || f.default);
+    out = out.split('{{' + f.key + '}}').join(val);
+  });
+  return out;
+}
+
+function renderWATemplates() {
+  const grid = document.getElementById('wat-grid');
+  if (!grid) return;
+  const templates = watTemplates();
+  grid.innerHTML = templates.map(t => {
+    const saved = watFieldValues(t.id);
+    const fieldsHtml = t.fields.map(f => {
+      const val = saved[f.key] !== undefined ? saved[f.key] : f.default;
+      return `<div class="wat-field-group">
+        <label class="wat-field-label">${f.label}</label>
+        <input class="wat-field-input" data-tpl="${t.id}" data-key="${f.key}" value="${esc(val)}" oninput="watFieldChanged('${t.id}',this)">
+      </div>`;
+    }).join('');
+    const preview = watResolve(t.body, t.id, null);
+    return `<div class="wat-card" id="watcard-${t.id}">
+      <div class="wat-card-head">
+        <span class="wat-card-name">${esc(t.name)}</span>
+        <span class="wat-card-cat">${esc(t.category)}</span>
+        <button class="btn btn-danger btn-sm" onclick="watDelete('${t.id}')" title="Delete template">×</button>
+      </div>
+      <div class="wat-fields">${fieldsHtml}</div>
+      <div class="wat-preview-wrap">
+        <div class="wat-preview-label">
+          Preview
+          <button class="wat-copy-btn" id="watcopy-${t.id}" onclick="watCopy('${t.id}')">Copy for WhatsApp</button>
+        </div>
+        <div class="wat-preview-body" id="watprev-${t.id}">${esc(preview)}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function watFieldChanged(id, inputEl) {
+  const key = inputEl.dataset.key;
+  watSaveField(id, key, inputEl.value);
+  const tpl = watTemplates().find(t => t.id === id);
+  if (!tpl) return;
+  const liveValues = {};
+  document.querySelectorAll(`.wat-field-input[data-tpl="${id}"]`).forEach(el => {
+    liveValues[el.dataset.key] = el.value;
+  });
+  const preview = watResolve(tpl.body, id, liveValues);
+  const prevEl = document.getElementById('watprev-' + id);
+  if (prevEl) prevEl.textContent = preview;
+}
+
+function watCopy(id) {
+  const prevEl = document.getElementById('watprev-' + id);
+  if (!prevEl) return;
+  navigator.clipboard.writeText(prevEl.textContent).then(() => {
+    const btn = document.getElementById('watcopy-' + id);
+    if (btn) { btn.textContent = 'Copied!'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = 'Copy for WhatsApp'; btn.classList.remove('copied'); }, 2000); }
+    showToast('Message copied — paste into WhatsApp');
+  });
+}
+
+function watDelete(id) {
+  if (!confirm('Delete this template?')) return;
+  const templates = watTemplates().filter(t => t.id !== id);
+  watSave(templates);
+  renderWATemplates();
+}
+
+function openAddTemplate() {
+  const name = prompt('Template name:');
+  if (!name) return;
+  const templates = watTemplates();
+  const newTpl = {
+    id: 'tpl-' + Date.now(),
+    name: name.trim(),
+    category: 'Events',
+    fields: [
+      { key: 'DAY',  label: 'Day of week', default: 'Tuesday' },
+      { key: 'DATE', label: 'Date',        default: 'June 26'  }
+    ],
+    body: 'Edit this template body — use {{DAY}} and {{DATE}} as placeholders.'
+  };
+  templates.push(newTpl);
+  watSave(templates);
+  renderWATemplates();
+  showToast('Template added — click the fields to edit it');
+}
+
+// ─── MONTHLY CHECKLIST ────────────────────────────────────────────
+const EP_MONTHLY_CHECKS = [
+  { id:'events-added',      group:'📋 Setup',         label:'All events added to planner' },
+  { id:'monthly-flyer',     group:'📋 Setup',         label:'Monthly schedule flyer created' },
+  { id:'event-flyers',      group:'📋 Setup',         label:'Individual event flyers done' },
+  { id:'nomeo-upload',      group:'🚀 Publish',       label:'All events uploaded on Nomeo' },
+  { id:'linktree',          group:'🚀 Publish',       label:'All Nomeo links added to Linktree' },
+  { id:'calendar',          group:'🚀 Publish',       label:'Schedule added to Google Calendar' },
+  { id:'fac-sheet',         group:'👩 Facilitators',  label:'Facilitator schedule updated' },
+  { id:'fac-group',         group:'👩 Facilitators',  label:'Sent to facilitator group (ask availability)' },
+  { id:'promo-ig',          group:'📣 Monthly Promo', label:'Monthly schedule posted on Instagram' },
+  { id:'promo-wa',          group:'📣 Monthly Promo', label:'Monthly schedule sent to WhatsApp groups' },
+];
+
+const EP_EVENT_CHECKS = [
+  { id:'alarm-5', label:'Phone alarm set',             hint:'5 days before', offset:5 },
+  { id:'alarm-2', label:'Phone alarm set',             hint:'2 days before', offset:2 },
+  { id:'ig-5',    label:'Instagram Story on Meta',     hint:'5 days before', offset:5 },
+  { id:'ig-2',    label:'Instagram Story on Meta',     hint:'2 days before', offset:2 },
+];
+
+const openClLists = {};
+
+function epMonthChecks(monthKey) {
+  return JSON.parse(localStorage.getItem('ep-cl-'+monthKey) || '{}');
+}
+function epSaveMonthCheck(monthKey, id, val) {
+  const d = epMonthChecks(monthKey); d[id] = val;
+  localStorage.setItem('ep-cl-'+monthKey, JSON.stringify(d));
+}
+function epMonthProgress(monthKey) {
+  const d = epMonthChecks(monthKey);
+  const done = EP_MONTHLY_CHECKS.filter(c => d[c.id]).length;
+  return { done, total: EP_MONTHLY_CHECKS.length };
+}
+
+function epEventChecks(evId) {
+  return JSON.parse(localStorage.getItem('ep-ec-'+evId) || '{}');
+}
+function epSaveEventCheck(evId, id, val) {
+  const d = epEventChecks(evId); d[id] = val;
+  localStorage.setItem('ep-ec-'+evId, JSON.stringify(d));
+}
+
+function toggleClList(monthKey) {
+  openClLists[monthKey] = !openClLists[monthKey];
+  const body = document.getElementById('ep-cl-body-'+CSS.escape(monthKey));
+  const arrow = document.getElementById('ep-cl-arrow-'+CSS.escape(monthKey));
+  if (body) body.classList.toggle('open', openClLists[monthKey]);
+  if (arrow) arrow.classList.toggle('open', openClLists[monthKey]);
+}
+
+function epToggleMonthCheck(monthKey, id) {
+  const d = epMonthChecks(monthKey);
+  const newVal = !d[id];
+  epSaveMonthCheck(monthKey, id, newVal);
+  const box = document.getElementById('ep-cl-box-'+monthKey+'-'+id);
+  const txt = document.getElementById('ep-cl-txt-'+monthKey+'-'+id);
+  if (box) box.classList.toggle('checked', newVal);
+  if (txt) txt.classList.toggle('checked', newVal);
+  const { done, total } = epMonthProgress(monthKey);
+  const pill = document.getElementById('ep-cl-prog-'+monthKey);
+  if (pill) pill.textContent = done+'/'+total;
+  const hpill = document.getElementById('ep-month-prog-'+monthKey);
+  if (hpill) hpill.textContent = '✓ '+done+'/'+total;
+  const allDone = done === total;
+  const sBtn = document.getElementById('ep-sophia-btn-'+monthKey);
+  const sBtnTxt = document.getElementById('ep-sophia-btntxt-'+monthKey);
+  const sHint = document.getElementById('ep-sophia-hint-'+monthKey);
+  if (sBtn) sBtn.classList.toggle('all-done', allDone);
+  if (sBtnTxt) sBtnTxt.textContent = allDone ? 'Send Confirmation to Sophia' : 'Email Sophia (in progress)';
+  if (sHint) sHint.textContent = allDone ? 'All done! Opens your email pre-filled.' : done+'/'+total+' items done — you can still send a progress update.';
+}
+
+function epToggleEventCheck(evId, id) {
+  const d = epEventChecks(evId);
+  const newVal = !d[id];
+  epSaveEventCheck(evId, id, newVal);
+  const box = document.getElementById('ep-r-box-'+evId+'-'+id);
+  const txt = document.getElementById('ep-r-txt-'+evId+'-'+id);
+  if (box) box.classList.toggle('checked', newVal);
+  if (txt) txt.classList.toggle('checked', newVal);
+}
+
+let _epEmailDraft = { subject: '', body: '' };
+
+const EP_FAC_MAP = {
+  'women-circle': { description: 'Circle',        time: '10:30-13:00', address: "de'TOPAZ" },
+  'coworking':    { description: 'Coworking day', time: '12:00-17:00', address: 'AT06'     },
+  'give-it-all':  { description: 'Give It All',   time: '18:00',       address: 'AMAVI'    },
+};
+
+function epExportFacilitatorSheet(monthKey) {
+  const events = epEvents()
+    .filter(e => e.monthKey === monthKey)
+    .sort((a, b) => {
+      const da = new Date((a.dateLabel || '') + ', ' + (a.year || '2026'));
+      const db = new Date((b.dateLabel || '') + ', ' + (b.year || '2026'));
+      return da - db;
+    });
+
+  if (!events.length) { showToast('No events in ' + monthKey + ' yet.'); return; }
+
+  const rows = events.map(ev => {
+    const m = EP_FAC_MAP[ev.type] || { description: ev.type || '', time: '', address: '' };
+    const d = new Date((ev.dateLabel || '') + ', ' + (ev.year || '2026'));
+    const dd = String(d.getDate()).padStart(2, '0');
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const yyyy = d.getFullYear();
+    const dateStr = dd + '/' + mm + '/' + yyyy;
+    // Facilitator | INFO | Date | Time | Address | Description | Notes
+    return ['', '', dateStr, m.time, m.address, m.description, ''].join('\t');
+  });
+
+  const text = rows.join('\n');
+  navigator.clipboard.writeText(text)
+    .then(() => showToast('✓ ' + events.length + ' rows copied — go to Google Sheets and paste!'))
+    .catch(() => showToast('Could not copy. Please try again.'));
+}
+
+function epSendSophiaEmail(monthKey) {
+  const events = epEvents().filter(e => e.monthKey === monthKey);
+  const checks = epMonthChecks(monthKey);
+  const { done, total } = epMonthProgress(monthKey);
+  const allDone = done === total;
+
+  const eventsList = events.length
+    ? events.map(ev => {
+        const type = EP_TYPES[ev.type] || { name: ev.type };
+        const nomeo = ev.nomeoLink ? '\n   Nomeo: ' + ev.nomeoLink : '';
+        return '• ' + type.name + ' — ' + ev.dayLabel + ', ' + ev.dateLabel + nomeo;
+      }).join('\n')
+    : '(no events added yet)';
+
+  const groups = {};
+  EP_MONTHLY_CHECKS.forEach(c => { if (!groups[c.group]) groups[c.group]=[]; groups[c.group].push(c); });
+  const checklistText = Object.entries(groups).map(([g, items]) =>
+    g + '\n' + items.map(c => (checks[c.id] ? '✓' : '○') + '  ' + c.label).join('\n')
+  ).join('\n\n');
+
+  _epEmailDraft.subject = allDone
+    ? '✅ ' + monthKey + ' Events — All Ready, Sophia!'
+    : '📋 ' + monthKey + ' Progress Update (' + done + '/' + total + ' done)';
+
+  _epEmailDraft.body =
+    'Hi Sophia,\n\n'
+    + (allDone
+        ? 'Everything for ' + monthKey + ' is confirmed and ready for the community! 🎉\n\nHere\'s a full summary:'
+        : 'Here\'s the current status for ' + monthKey + '. Still working through a few items (' + done + '/' + total + ' done):')
+    + '\n\n━━━━━━━━━━━━━━━━━━━━━━━\n📅 EVENTS THIS MONTH\n━━━━━━━━━━━━━━━━━━━━━━━\n'
+    + eventsList
+    + '\n\n━━━━━━━━━━━━━━━━━━━━━━━\n✅ CHECKLIST (' + done + '/' + total + ')\n━━━━━━━━━━━━━━━━━━━━━━━\n'
+    + checklistText
+    + '\n\n'
+    + (allDone
+        ? 'All done and ready for the community! 💗\n\nLet me know if you need anything else.\n\nWarm,\nMonika'
+        : 'I\'ll send you a confirmation once everything is complete!\n\nWarm,\nMonika');
+
+  // show preview modal
+  document.getElementById('ep-email-subject-preview').textContent = _epEmailDraft.subject;
+  document.getElementById('ep-email-body-preview').textContent = _epEmailDraft.body;
+  const sendBtn = document.getElementById('ep-confirm-send-btn');
+  if (sendBtn) { sendBtn.textContent = allDone ? 'Confirm & Send ✉' : 'Send Progress Update ✉'; }
+  document.getElementById('ep-email-modal').classList.add('open');
+}
+
+function closeEpEmailModal() {
+  document.getElementById('ep-email-modal').classList.remove('open');
+}
+
+function epConfirmEmailSend() {
+  const mailto = 'mailto:sophlfox@outlook.com'
+    + '?subject=' + encodeURIComponent(_epEmailDraft.subject)
+    + '&body=' + encodeURIComponent(_epEmailDraft.body);
+  closeEpEmailModal();
+  window.location.href = mailto;
+  showToast('Opening email — review and hit send!');
+}
+
+function buildMonthChecklist(monthKey) {
+  const d = epMonthChecks(monthKey);
+  const { done, total } = epMonthProgress(monthKey);
+  // group items
+  const groups = {};
+  EP_MONTHLY_CHECKS.forEach(c => { if (!groups[c.group]) groups[c.group]=[]; groups[c.group].push(c); });
+  const groupsHtml = Object.entries(groups).map(([g, items]) => `
+    <div class="ep-cl-group">
+      <div class="ep-cl-group-title">${g}</div>
+      ${items.map(c => {
+        const checked = !!d[c.id];
+        return `<div class="ep-cl-item" onclick="epToggleMonthCheck('${monthKey}','${c.id}')">
+          <div class="ep-cl-box${checked?' checked':''}" id="ep-cl-box-${monthKey}-${c.id}"></div>
+          <span class="ep-cl-text${checked?' checked':''}" id="ep-cl-txt-${monthKey}-${c.id}">${c.label}</span>
+        </div>`;
+      }).join('')}
+    </div>`).join('');
+
+  const allDone = done === total;
+  const sophiaBtn = `<div class="ep-export-row">
+    <button class="ep-export-btn" onclick="epExportFacilitatorSheet('${monthKey}')">
+      📋 Copy to Facilitator Sheet
+    </button>
+    <span class="ep-export-hint">Tab-separated — paste straight into Google Sheets</span>
+  </div>
+  <div class="ep-sophia-row" style="border-top:none;margin-top:10px;padding-top:0">
+    <button class="ep-sophia-btn${allDone?' all-done':''}" id="ep-sophia-btn-${monthKey}" onclick="epSendSophiaEmail('${monthKey}')">
+      ✉ <span id="ep-sophia-btntxt-${monthKey}">${allDone ? 'Send Confirmation to Sophia' : 'Email Sophia (in progress)'}</span>
+    </button>
+    <span class="ep-sophia-hint" id="ep-sophia-hint-${monthKey}">${allDone ? 'All done! Opens your email pre-filled.' : done+'/'+total+' items done — you can still send a progress update.'}</span>
+  </div>`;
+
+  return `<div class="ep-cl-wrap">
+    <div class="ep-cl-toggle">
+      <span class="ep-cl-label">📋 Monthly Checklist</span>
+      <span class="ep-cl-progress" id="ep-cl-prog-${monthKey}">${done}/${total}</span>
+    </div>
+    <div class="ep-cl-body" id="ep-cl-body-${monthKey}">${groupsHtml}${sophiaBtn}</div>
+  </div>`;
+}
+
+function buildEventReminders(ev) {
+  const d = epEventChecks(ev.id);
+  const items = EP_EVENT_CHECKS.map(c => {
+    const checked = !!d[c.id];
+    return `<div class="ep-reminder-item" onclick="epToggleEventCheck('${ev.id}','${c.id}')">
+      <div class="ep-r-box${checked?' checked':''}" id="ep-r-box-${ev.id}-${c.id}"></div>
+      <span class="ep-r-text${checked?' checked':''}" id="ep-r-txt-${ev.id}-${c.id}">${c.label}</span>
+      <span class="ep-r-date-hint">${c.hint}</span>
+    </div>`;
+  }).join('');
+  return `<div class="ep-reminders-wrap">
+    <div class="ep-reminders-title">⏰ Reminders</div>
+    ${items}
+  </div>`;
+}
+
+// ─── FACILITATOR SCHEDULE ─────────────────────────────────────────
+const FAC_ROSTER = [
+  '', // blank = unassigned
+  'Sophia Fox',
+  'Kalinda Winda',
+  'Amy',
+  'Winda',
+  'Camie',
+  'Navina',
+  'Dinara',
+  'Narley',
+];
+
+const FAC_STATUS_CYCLE = ['UPCOMING','NEXT EVENT','DONE','CANCELED'];
+
+const FAC_TYPE_MAP = {
+  'women-circle': { description:'Circle',        time:'10:30-13:00', address:"de'TOPAZ" },
+  'coworking':    { description:'Coworking day', time:'12:00-17:00', address:'AT06'     },
+  'give-it-all':  { description:'Give It All',   time:'18:00',       address:'AMAVI'    },
+};
+
+function getFacRows() {
+  return JSON.parse(localStorage.getItem('fac-rows') || '[]');
+}
+function saveFacRows(rows) {
+  localStorage.setItem('fac-rows', JSON.stringify(rows));
+}
+
+function fsSyncFromEP() {
+  const epEvs = epEvents();
+  const rows = getFacRows();
+  const existingIds = new Set(rows.map(r => r.evId));
+  let added = 0;
+  epEvs.forEach(ev => {
+    if (existingIds.has(ev.id)) return;
+    const m = FAC_TYPE_MAP[ev.type] || { description: ev.type || '', time:'', address:'' };
+    const d = new Date((ev.dateLabel||'') + ', ' + (ev.year||'2026'));
+    const dd = String(d.getDate()).padStart(2,'0');
+    const mm2 = String(d.getMonth()+1).padStart(2,'0');
+    const dateStr = dd+'/'+mm2+'/'+d.getFullYear();
+    rows.push({
+      id: 'fac-'+ev.id,
+      evId: ev.id,
+      facilitator: '',
+      info: 'UPCOMING',
+      date: dateStr,
+      rawDate: (ev.dateLabel||'')+', '+(ev.year||'2026'),
+      time: m.time,
+      address: m.address,
+      description: m.description,
+      monthKey: ev.monthKey || '',
+      notes: ''
+    });
+    added++;
+  });
+  // sort by date
+  rows.sort((a,b) => new Date(a.rawDate) - new Date(b.rawDate));
+  saveFacRows(rows);
+  renderFacSchedule();
+  showToast(added > 0 ? added+' new event'+(added>1?'s':'')+' synced from Event Planner!' : 'All events already synced.');
+}
+
+function fsDeleteRow(id) {
+  const rows = getFacRows().filter(r => r.id !== id);
+  saveFacRows(rows);
+  renderFacSchedule();
+}
+
+function fsSetFacilitator(id, val) {
+  const rows = getFacRows();
+  const r = rows.find(r => r.id === id);
+  if (r) { r.facilitator = val; saveFacRows(rows); }
+}
+
+function fsSetNotes(id, val) {
+  const rows = getFacRows();
+  const r = rows.find(r => r.id === id);
+  if (r) { r.notes = val; saveFacRows(rows); }
+}
+
+function fsCycleStatus(id) {
+  const rows = getFacRows();
+  const r = rows.find(r => r.id === id);
+  if (!r) return;
+  const idx = FAC_STATUS_CYCLE.indexOf(r.info);
+  r.info = FAC_STATUS_CYCLE[(idx+1) % FAC_STATUS_CYCLE.length];
+  saveFacRows(rows);
+  const el = document.getElementById('fs-status-'+id);
+  if (el) { el.textContent = r.info; el.className = 'fs-status '+fsStatusClass(r.info); }
+}
+
+function fsStatusClass(info) {
+  if (info==='DONE') return 'done';
+  if (info==='CANCELED') return 'canceled';
+  if (info==='NEXT EVENT') return 'next-event';
+  return 'upcoming';
+}
+
+function fsCopyMonth(monthKey) {
+  const rows = getFacRows().filter(r => r.monthKey === monthKey);
+  if (!rows.length) { showToast('No rows for '+monthKey); return; }
+  const text = rows.map(r =>
+    [r.facilitator, r.info, r.date, r.time, r.address, r.description, r.notes].join('\t')
+  ).join('\n');
+  navigator.clipboard.writeText(text)
+    .then(() => showToast('✓ '+rows.length+' rows copied — paste into Google Sheets!'))
+    .catch(() => showToast('Could not copy. Try again.'));
+}
+
+function fsCopyAll() {
+  const rows = getFacRows();
+  if (!rows.length) { showToast('No rows to copy.'); return; }
+  const text = rows.map(r =>
+    [r.facilitator, r.info, r.date, r.time, r.address, r.description, r.notes].join('\t')
+  ).join('\n');
+  navigator.clipboard.writeText(text)
+    .then(() => showToast('✓ All '+rows.length+' rows copied!'))
+    .catch(() => showToast('Could not copy. Try again.'));
+}
+
+function fsAddToCalendar(monthKey) {
+  const rows = getFacRows().filter(r => r.monthKey === monthKey);
+  if (!rows.length) { showToast('No events in ' + monthKey + ' yet. Sync from Event Planner first.'); return; }
+  document.getElementById('fs-cal-confirm-month').textContent = monthKey + ' (' + rows.length + ' events)';
+  window._fsCalPendingMonth = monthKey;
+  document.getElementById('fs-cal-confirm-modal').classList.add('open');
+}
+
+function fsConfirmCalendar() {
+  document.getElementById('fs-cal-confirm-modal').classList.remove('open');
+  const monthKey = window._fsCalPendingMonth;
+  const rows = getFacRows().filter(r => r.monthKey === monthKey);
+  if (!rows.length) return;
+
+  const pad = n => String(n).padStart(2,'0');
+  const fmtDt = d => d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+
+  const TYPE_NAMES = {
+    'Circle':        'Women Circle — Sisterhood OS',
+    'Coworking day': 'Co-Working Day — Sisterhood OS',
+    'Give It All':   'Give It All — Sisterhood OS',
+  };
+  const TYPE_LOCS = {
+    'Circle':        "de'Topaz Café, Seseh, Bali",
+    'Coworking day': 'AT06 Café, Canggu, Bali',
+    'Give It All':   'AMAVI, Bali',
+  };
+
+  const vevents = rows.map(r => {
+    const [dd, mm, yyyy] = r.date.split('/');
+    const timeParts = r.time.split('-');
+    const [sh, sm] = (timeParts[0]||'10:00').trim().split(':').map(Number);
+    const [eh, em] = (timeParts[1]||'13:00').trim().split(':').map(Number);
+    // Bali WITA = UTC+8, subtract 8h for UTC
+    const dtS = new Date(Date.UTC(+yyyy, +mm-1, +dd, sh-8, sm||0));
+    const dtE = new Date(Date.UTC(+yyyy, +mm-1, +dd, eh-8, em||0));
+    const uid = 'sisterhoodOS-' + r.id + '@missioncontrol';
+    return [
+      'BEGIN:VEVENT',
+      'UID:' + uid,
+      'SUMMARY:' + (TYPE_NAMES[r.description] || r.description + ' — Sisterhood OS'),
+      'DTSTART:' + fmtDt(dtS),
+      'DTEND:' + fmtDt(dtE),
+      'LOCATION:' + (TYPE_LOCS[r.description] || r.address),
+      'DESCRIPTION:Sisterhood OS — ' + r.description + (r.facilitator ? '\\nFacilitator: ' + r.facilitator : ''),
+      'END:VEVENT'
+    ].join('\r\n');
+  }).join('\r\n');
+
+  const ics = ['BEGIN:VCALENDAR','VERSION:2.0','CALSCALE:GREGORIAN',
+    'PRODID:-//Sisterhood OS//Mission Control//EN', vevents, 'END:VCALENDAR'].join('\r\n');
+
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = monthKey.replace(' ','-') + '-Sisterhood-Events.ics';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+
+  setTimeout(() => window.open('https://calendar.google.com/calendar/r/settings/export', '_blank'), 600);
+  showToast('📅 Downloaded! In Google Calendar: ⚙️ → Import & Export → Import');
+}
+
+function fsCopyReportData(monthKey) {
+  const rows = getFacRows().filter(r => r.monthKey === monthKey);
+  if (!rows.length) { showToast('No events in ' + monthKey + ' yet.'); return; }
+  const done     = rows.filter(r => r.info === 'DONE').length;
+  const canceled = rows.filter(r => r.info === 'CANCELED').length;
+  const upcoming = rows.filter(r => r.info === 'UPCOMING' || r.info === 'NEXT EVENT').length;
+  const lines = rows.map(r =>
+    [r.facilitator || '—', r.info, r.date, r.time, r.address, r.description, r.notes || ''].join('\t')
+  ).join('\n');
+  const text = 'SISTERHOOD_REPORT:' + monthKey
+    + '\nTotal: ' + rows.length + ' | Done: ' + done + ' | Canceled: ' + canceled + ' | Upcoming: ' + upcoming
+    + '\n' + lines;
+  navigator.clipboard.writeText(text)
+    .then(() => showToast('📤 Copied! Paste to Claude and say: save ' + monthKey + ' report to Drive'))
+    .catch(() => showToast('Could not copy. Try again.'));
+}
+
+function renderFacSchedule() {
+  const root = document.getElementById('fs-root');
+  if (!root) return;
+  const rows = getFacRows();
+
+  if (!rows.length) {
+    root.innerHTML = `
+      <div class="fs-toolbar">
+        <button class="fs-sync-btn" onclick="fsSyncFromEP()">⟳ Sync from Event Planner</button>
+      </div>
+      <div class="fs-empty">No events yet — click "Sync from Event Planner" to pull your schedule.</div>`;
+    return;
+  }
+
+  // group by monthKey
+  const groups = {};
+  const monthOrder = [];
+  rows.forEach(r => {
+    const mk = r.monthKey || 'Other';
+    if (!groups[mk]) { groups[mk]=[]; monthOrder.push(mk); }
+    groups[mk].push(r);
+  });
+
+  const monthsHtml = monthOrder.map(mk => {
+    const mrows = groups[mk];
+    const rowsHtml = mrows.map(r => {
+      const facOptions = FAC_ROSTER.map(f =>
+        `<option value="${f}"${r.facilitator===f?' selected':''}>${f||'— unassigned —'}</option>`
+      ).join('');
+      return `<tr>
+        <td class="fs-date-cell">${r.date}</td>
+        <td class="fs-event-cell">${r.description}</td>
+        <td class="fs-time-cell">${r.time}</td>
+        <td class="fs-loc-cell">${r.address}</td>
+        <td><select class="fs-fac-select" onchange="fsSetFacilitator('${r.id}',this.value)">${facOptions}</select></td>
+        <td><span class="fs-status ${fsStatusClass(r.info)}" id="fs-status-${r.id}" onclick="fsCycleStatus('${r.id}')">${r.info}</span></td>
+        <td><input class="fs-notes-input" placeholder="Notes..." value="${(r.notes||'').replace(/"/g,'&quot;')}" onchange="fsSetNotes('${r.id}',this.value)"></td>
+      </tr>`;
+    }).join('');
+    return `<div class="fs-month-group">
+      <div class="fs-month-label">
+        ${mk}
+        <button class="fs-month-copy" onclick="fsCopyMonth('${mk}')">📋 Sheets</button>
+        <button class="fs-month-copy fs-cal-btn" onclick="fsAddToCalendar('${mk}')">📅 Calendar</button>
+        <button class="fs-month-copy fs-report-btn" onclick="fsCopyReportData('${mk}')">📤 Save Report</button>
+      </div>
+      <table class="fs-table">
+        <thead><tr>
+          <th>Date</th><th>Event</th><th>Time</th><th>Location</th><th>Facilitator</th><th>Status</th><th>Notes</th>
+        </tr></thead>
+        <tbody>${rowsHtml}</tbody>
+      </table>
+    </div>`;
+  }).join('');
+
+  root.innerHTML = `
+    <div class="fs-toolbar">
+      <button class="fs-sync-btn" onclick="fsSyncFromEP()">⟳ Sync from Event Planner</button>
+      <button class="fs-copy-btn" onclick="fsCopyAll()">📋 Copy all to Sheets</button>
+      <span class="fs-count">${rows.length} events total</span>
+    </div>
+    ${monthsHtml}`;
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────
