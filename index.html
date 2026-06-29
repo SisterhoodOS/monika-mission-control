@@ -3503,6 +3503,7 @@ function buildEPPack(ev) {
     ${epPackField('DATE', ev.dayLabel + ', ' + ev.dateLabel + ', 2026', 'epf-date-'+ev.id)}
     ${epPackField('TIME', type.time||'', 'epf-time-'+ev.id)}
     ${epPackField('LOCATION', type.location||'', 'epf-loc-'+ev.id)}
+    ${type.mapsUrl ? `<div style="margin-top:-4px;margin-bottom:12px;padding-left:2px"><a href="${type.mapsUrl}" target="_blank" rel="noopener" style="font-size:10pt;color:#1565c0;text-decoration:none;font-weight:500">📍 Open in Google Maps ↗</a></div>` : ''}
     ${type.nomeoDesc ? epPackField('DESCRIPTION', type.nomeoDesc.replace('{DAY}', ev.dayLabel).replace('{DATE}', ev.dateLabel + ', 2026'), 'epf-desc-'+ev.id) : ''}
     ${epPackField('WHATSAPP MESSAGE', waMsg, 'epf-wa-'+ev.id)}
 
