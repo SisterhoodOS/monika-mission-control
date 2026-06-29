@@ -3339,6 +3339,7 @@ const EP_TYPES = {
     name: 'Women Circle',
     color: '#388e3c',
     location: "De'Topaz Café, Bali",
+    mapsUrl: 'https://maps.app.goo.gl/mhdKGmDQGsCTyLs5A',
     time: '10:30 AM – 1:00 PM',
     minSpend: 'IDR 150.000 (150K)',
     coverText: 'Gather. Share. Rise.',
@@ -3349,6 +3350,7 @@ const EP_TYPES = {
     name: 'Co-Working Day',
     color: '#c2185b',
     location: 'AT06, Bali',
+    mapsUrl: 'https://maps.app.goo.gl/32cuKfehDHcecH6W7',
     time: '12:00 PM – 5:00 PM  |  Sunset Walk 5:00–6:30 PM',
     minSpend: 'IDR 150.000',
     coverText: 'Work. Connect. Create.',
@@ -3500,6 +3502,12 @@ function buildEPPack(ev) {
     ${epPackField('DATE', ev.dayLabel + ', ' + ev.dateLabel + ', 2026', 'epf-date-'+ev.id)}
     ${epPackField('TIME', type.time||'', 'epf-time-'+ev.id)}
     ${epPackField('LOCATION', type.location||'', 'epf-loc-'+ev.id)}
+    ${type.mapsUrl ? `<div style="margin-top:-6px;margin-bottom:10px;padding-left:2px">
+      <a href="${type.mapsUrl}" target="_blank" rel="noopener"
+        style="font-size:10pt;color:#1565c0;text-decoration:none;display:inline-flex;align-items:center;gap:5px;font-weight:500">
+        📍 Open in Google Maps
+      </a>
+    </div>` : ''}
     ${epPackField('WHATSAPP MESSAGE', waMsg, 'epf-wa-'+ev.id)}
 
     <div class="ep-section-divider"></div>
