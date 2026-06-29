@@ -610,6 +610,37 @@ strong { color: var(--ink); font-weight: 600; }
 .ep-pack-btn:hover, .ep-pack-btn.open { background:var(--deep-green); color:#fff; border-color:var(--deep-green); }
 .ep-delete-btn { font-size:13px; color:var(--ink-mute); cursor:pointer; background:none; border:none; opacity:.35; transition:opacity .15s; padding:3px 6px; flex-shrink:0; }
 .ep-delete-btn:hover { opacity:1; color:#b91c1c; }
+.ep-edit-btn { font-size:11px; color:var(--ink-mute); cursor:pointer; background:none; border:1px solid var(--line); border-radius:5px; padding:3px 9px; opacity:.6; transition:all .15s; flex-shrink:0; }
+.ep-edit-btn:hover { opacity:1; background:var(--bg-soft); color:var(--ink); }
+.ep-edit-form { padding:14px 20px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; background:#f9f7f4; border-top:1px solid var(--line-soft); }
+.ep-edit-form select, .ep-edit-form input[type=text] { font-size:10pt; padding:6px 10px; border:1px solid var(--line); border-radius:6px; background:#fff; color:var(--ink); }
+.ep-edit-form select { min-width:140px; }
+.ep-edit-form input[type=text] { width:120px; }
+.ep-edit-form .ep-edit-save { font-size:9.5pt; font-weight:700; padding:6px 16px; background:var(--deep-green); color:#fff; border:none; border-radius:6px; cursor:pointer; }
+.ep-edit-form .ep-edit-cancel { font-size:9.5pt; padding:6px 14px; background:none; color:var(--ink-mute); border:1px solid var(--line); border-radius:6px; cursor:pointer; }
+.wat-edit-body-wrap { margin-top:10px; }
+.wat-edit-body-wrap textarea { width:100%; min-height:180px; font-size:11pt; font-family:inherit; padding:10px; border:1px solid var(--line); border-radius:7px; background:#fff; resize:vertical; box-sizing:border-box; }
+.wat-edit-body-actions { display:flex; gap:8px; margin-top:8px; }
+.wat-edit-body-actions .btn-save { font-size:9.5pt; font-weight:700; padding:6px 16px; background:var(--deep-green); color:#fff; border:none; border-radius:6px; cursor:pointer; }
+.wat-edit-body-actions .btn-cancel { font-size:9.5pt; padding:6px 14px; background:none; color:var(--ink-mute); border:1px solid var(--line); border-radius:6px; cursor:pointer; }
+.wat-fields-editor { margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft); }
+.wat-fields-editor-title { font-size:8pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:10px; }
+.wat-field-edit-row { display:flex; gap:6px; align-items:center; margin-bottom:6px; }
+.wat-field-edit-row input { font-size:9.5pt; padding:5px 8px; border:1px solid var(--line); border-radius:5px; background:#fff; }
+.wat-field-edit-row input.fkey { width:90px; font-family:monospace; }
+.wat-field-edit-row input.flabel { flex:1.2; }
+.wat-field-edit-row input.fdefault { flex:1.5; }
+.wat-field-edit-row .rem-field { font-size:11px; padding:4px 8px; background:none; border:1px solid #fca5a5; color:#dc2626; border-radius:5px; cursor:pointer; opacity:.7; }
+.wat-field-edit-row .rem-field:hover { opacity:1; background:#fef2f2; }
+.wat-add-field-btn { font-size:9pt; font-weight:600; padding:5px 13px; background:none; border:1px dashed var(--line); border-radius:6px; color:var(--ink-mute); cursor:pointer; margin-top:4px; }
+.wat-add-field-btn:hover { border-color:var(--deep-green); color:var(--deep-green); background:#f0f7ee; }
+.ep-type-settings { margin-top:12px; padding:12px 16px; background:#f5f8f5; border:1px solid #c8dcc0; border-radius:8px; }
+.ep-type-settings-title { font-size:8pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--deep-green); margin-bottom:10px; }
+.ep-type-row { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--line-soft); }
+.ep-type-row:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.ep-type-row label { font-size:9pt; font-weight:600; color:var(--ink-mute); min-width:70px; }
+.ep-type-row input { font-size:9.5pt; padding:5px 8px; border:1px solid var(--line); border-radius:5px; background:#fff; flex:1; min-width:120px; }
+.ep-type-row .ep-type-save { font-size:9pt; font-weight:700; padding:5px 13px; background:var(--deep-green); color:#fff; border:none; border-radius:6px; cursor:pointer; }
 .ep-pack { display:none; border-top:1px solid var(--line-soft); }
 .ep-pack.open { display:block; }
 .ep-pack-inner { padding:22px 24px 24px; }
@@ -3420,14 +3451,25 @@ function renderEventPlanner() {
     const eventsHtml = monthEvents.map(ev => {
       const type = EP_TYPES[ev.type] || { name: ev.type, color: '#999' };
       const packOpen = openEPPacks[ev.id];
+      const isEditing = editingEPEvents[ev.id];
+      const typeOptions = Object.entries(EP_TYPES).map(([k,v]) => `<option value="${k}"${ev.type===k?' selected':''}>${v.name}</option>`).join('');
       return `<div class="ep-event" id="epev-${ev.id}">
         <div class="ep-event-head">
           <div class="ep-event-dot" style="background:${type.color}"></div>
           <div class="ep-event-name">${esc(type.name)}</div>
           <div class="ep-event-date">${esc(ev.dayLabel)}, ${esc(ev.dateLabel)}</div>
           <button class="ep-pack-btn${packOpen?' open':''}" onclick="toggleEPPack('${ev.id}')">Pack ${packOpen?'▲':'▼'}</button>
+          <button class="ep-edit-btn" onclick="epToggleEdit('${ev.id}')" title="Edit event">${isEditing?'Cancel':'✏️ Edit'}</button>
           <button class="ep-delete-btn" onclick="epDelete('${ev.id}')" title="Delete">×</button>
         </div>
+        ${isEditing ? `<div class="ep-edit-form">
+          <select id="epedit-type-${ev.id}">${typeOptions}</select>
+          <input type="text" id="epedit-day-${ev.id}" value="${esc(ev.dayLabel)}" placeholder="Day (e.g. Tuesday)" style="width:100px">
+          <input type="text" id="epedit-date-${ev.id}" value="${esc(ev.dateLabel)}" placeholder="Date (e.g. July 7)" style="width:100px">
+          <input type="text" id="epedit-nomeo-${ev.id}" value="${esc(ev.nomeoLink||'')}" placeholder="Nomeo link" style="width:160px">
+          <button class="ep-edit-save" onclick="epSaveEdit('${ev.id}')">💾 Save</button>
+          <button class="ep-edit-cancel" onclick="epToggleEdit('${ev.id}')">Cancel</button>
+        </div>` : ''}
         <div class="ep-pack${packOpen?' open':''}" id="ep-pack-${ev.id}">${packOpen ? buildEPPack(ev) : ''}</div>
       </div>`;
     }).join('');
@@ -3548,10 +3590,40 @@ function toggleEPPack(id) {
   renderEventPlanner();
 }
 
+const editingEPEvents = {};
+
+function epToggleEdit(id) {
+  editingEPEvents[id] = !editingEPEvents[id];
+  renderEventPlanner();
+}
+
+function epSaveEdit(id) {
+  const events = epEvents();
+  const ev = events.find(e => e.id === id);
+  if (!ev) return;
+  const typeEl = document.getElementById('epedit-type-' + id);
+  const dayEl  = document.getElementById('epedit-day-'  + id);
+  const dateEl = document.getElementById('epedit-date-' + id);
+  const nomeoEl = document.getElementById('epedit-nomeo-' + id);
+  if (typeEl)  ev.type     = typeEl.value;
+  if (dayEl)   ev.dayLabel = dayEl.value.trim();
+  if (dateEl) {
+    ev.dateLabel = dateEl.value.trim();
+    const parts = ev.dateLabel.split(' ');
+    ev.monthKey  = (parts[0] || '') + ' ' + (ev.year || '2026');
+  }
+  if (nomeoEl) ev.nomeoLink = nomeoEl.value.trim();
+  epSaveAll(events);
+  delete editingEPEvents[id];
+  renderEventPlanner();
+  showToast('Event updated');
+}
+
 function epDelete(id) {
   if (!confirm('Delete this event?')) return;
   epSaveAll(epEvents().filter(e => e.id !== id));
   delete openEPPacks[id];
+  delete editingEPEvents[id];
   renderEventPlanner();
   showToast('Event deleted');
 }
@@ -3789,6 +3861,13 @@ function renderWATemplates() {
         <input class="wat-field-input" data-tpl="${t.id}" data-key="${f.key}" value="${esc(val)}" oninput="watFieldChanged('${t.id}',this)">
       </div>`;
     }).join('');
+    const fieldsEditorHtml = t.fields.map((f, i) => `
+      <div class="wat-field-edit-row">
+        <input class="fkey"     value="${esc(f.key)}"     placeholder="KEY"     onchange="watUpdateField('${t.id}',${i},'key',this.value)">
+        <input class="flabel"   value="${esc(f.label)}"   placeholder="Label"   onchange="watUpdateField('${t.id}',${i},'label',this.value)">
+        <input class="fdefault" value="${esc(f.default)}" placeholder="Default" onchange="watUpdateField('${t.id}',${i},'default',this.value)">
+        <button class="rem-field" onclick="watRemoveField('${t.id}',${i})" title="Remove field">×</button>
+      </div>`).join('');
     const preview = watResolve(t.body, t.id, null);
     return `<div class="wat-card" id="watcard-${t.id}">
       <div class="wat-card-head">
@@ -3800,9 +3879,28 @@ function renderWATemplates() {
       <div class="wat-preview-wrap">
         <div class="wat-preview-label">
           Preview
-          <button class="wat-copy-btn" id="watcopy-${t.id}" onclick="watCopy('${t.id}')">Copy for WhatsApp</button>
+          <div style="display:flex;gap:6px">
+            <button style="font-size:9pt;padding:4px 11px;border:1px solid var(--line);border-radius:5px;background:none;cursor:pointer;color:var(--ink-mute)" onclick="watToggleEdit('${t.id}')">✏️ Edit Body</button>
+            <button class="wat-copy-btn" id="watcopy-${t.id}" onclick="watCopy('${t.id}')">Copy for WhatsApp</button>
+          </div>
         </div>
-        <div class="wat-preview-body" id="watprev-${t.id}">${esc(preview)}</div>
+        <div id="watview-${t.id}">
+          <div class="wat-preview-body" id="watprev-${t.id}">${esc(preview)}</div>
+        </div>
+        <div id="watedit-${t.id}" style="display:none">
+          <div class="wat-edit-body-wrap">
+            <textarea id="watbody-${t.id}">${esc(t.body)}</textarea>
+          </div>
+          <div class="wat-edit-body-actions">
+            <button class="btn-save" onclick="watSaveBodyEdit('${t.id}')">💾 Save Body</button>
+            <button class="btn-cancel" onclick="watToggleEdit('${t.id}')">Cancel</button>
+          </div>
+          <div class="wat-fields-editor">
+            <div class="wat-fields-editor-title">Fields (key · label · default)</div>
+            <div id="watfedit-${t.id}">${fieldsEditorHtml}</div>
+            <button class="wat-add-field-btn" onclick="watAddField('${t.id}')">+ Add Field</button>
+          </div>
+        </div>
       </div>
     </div>`;
   }).join('');
@@ -3837,6 +3935,58 @@ function watDelete(id) {
   const templates = watTemplates().filter(t => t.id !== id);
   watSave(templates);
   renderWATemplates();
+}
+
+function watToggleEdit(id) {
+  const view = document.getElementById('watview-' + id);
+  const edit = document.getElementById('watedit-' + id);
+  if (!view || !edit) return;
+  const opening = edit.style.display === 'none';
+  view.style.display = opening ? 'none' : '';
+  edit.style.display = opening ? '' : 'none';
+}
+
+function watSaveBodyEdit(id) {
+  const bodyEl = document.getElementById('watbody-' + id);
+  if (!bodyEl) return;
+  const templates = watTemplates();
+  const tpl = templates.find(t => t.id === id);
+  if (!tpl) return;
+  tpl.body = bodyEl.value;
+  watSave(templates);
+  const prevEl = document.getElementById('watprev-' + id);
+  if (prevEl) prevEl.textContent = watResolve(tpl.body, id, null);
+  watToggleEdit(id);
+  showToast('Template body saved');
+}
+
+function watUpdateField(id, index, prop, value) {
+  const templates = watTemplates();
+  const tpl = templates.find(t => t.id === id);
+  if (!tpl || !tpl.fields[index]) return;
+  tpl.fields[index][prop] = value;
+  watSave(templates);
+}
+
+function watAddField(id) {
+  const templates = watTemplates();
+  const tpl = templates.find(t => t.id === id);
+  if (!tpl) return;
+  tpl.fields.push({ key: 'NEW_KEY', label: 'New field', default: '' });
+  watSave(templates);
+  // Re-render just the fields editor section
+  renderWATemplates();
+  requestAnimationFrame(() => { watToggleEdit(id); });
+}
+
+function watRemoveField(id, index) {
+  const templates = watTemplates();
+  const tpl = templates.find(t => t.id === id);
+  if (!tpl) return;
+  tpl.fields.splice(index, 1);
+  watSave(templates);
+  renderWATemplates();
+  requestAnimationFrame(() => { watToggleEdit(id); });
 }
 
 function openAddTemplate() {
