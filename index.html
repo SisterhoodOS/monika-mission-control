@@ -3344,6 +3344,7 @@ const EP_TYPES = {
     minSpend: 'IDR 150.000 (150K)',
     coverText: 'Gather. Share. Rise.',
     shortDesc: "A sacred, confidential circle where women gather in truth, presence, and mutual respect. Every voice is honored. Every journey welcomed.\n\nSoften, connect, and sit as equals in sisterhood. Come exactly as you are.\n\nMinimum spend 150K to support the venue.",
+    nomeoDesc: "We gather to create a sacred, confidential, and nurturing space where women come together in truth, presence, and mutual respect.\n\nThis circle invites us to soften, connect, and sit as equals — honoring every woman's voice and journey. Come exactly as you are. 🌸\n\n📍 Location: De'Topaz Café\nhttps://maps.app.goo.gl/mhdKGmDQGsCTyLs5A\n\n🗓 Date: {DAY}, {DATE}\n\n⏰ Time: 10:30 AM – 1:00 PM\n\nMinimum spend IDR 150.000 to support the venue.\n\nWe'd love to have you with us 💗✨",
     watId: 'women-circle'
   },
   'coworking': {
@@ -3355,6 +3356,7 @@ const EP_TYPES = {
     minSpend: 'IDR 150.000',
     coverText: 'Work. Connect. Create.',
     shortDesc: "A cozy co-working space for women who want to work, connect, and create in a supportive soft energy environment.\n\nFocused productivity, meaningful conversations, and a sunset walk to ground after the day.\n\n10% OFF all F&B for Sisterhood Members. Minimum spend IDR 150.000.",
+    nomeoDesc: "Join us for a cozy co-working day created especially for women who want to work, connect, and create in a supportive, soft energy environment. This is a space to focus on your work, gentle connection, and a sense of sisterhood — no pressure, just presence.\n\nAfter co-working, we go on a sunset walk close by and ground after a busy day 🌅\n\n📍 Location: AT06\nhttps://maps.app.goo.gl/32cuKfehDHcecH6W7\n\n🗓 Date: {DAY}, {DATE}\n\n⏰ Time: 12:00 PM – 5:00 PM\n\n⏰ Sunset Walk 5:00PM – 6:30PM\n\n✨ Special for Our Sisters\n\n• 10% OFF all F&B purchases for Sisterhood Members ☕🥐\n\n• Comfortable air-conditioned (AC) room\n\nMinimum spend: IDR 150.000\n\nCome for the productivity, stay for the connection.\n\nBring your laptop, your projects, and your beautiful energy.\n\nWe'd love to have you with us 💗✨",
     watId: 'coworking-reminder'
   },
   'give-it-all': {
@@ -3502,12 +3504,7 @@ function buildEPPack(ev) {
     ${epPackField('DATE', ev.dayLabel + ', ' + ev.dateLabel + ', 2026', 'epf-date-'+ev.id)}
     ${epPackField('TIME', type.time||'', 'epf-time-'+ev.id)}
     ${epPackField('LOCATION', type.location||'', 'epf-loc-'+ev.id)}
-    ${type.mapsUrl ? `<div style="margin-top:-6px;margin-bottom:10px;padding-left:2px">
-      <a href="${type.mapsUrl}" target="_blank" rel="noopener"
-        style="font-size:10pt;color:#1565c0;text-decoration:none;display:inline-flex;align-items:center;gap:5px;font-weight:500">
-        📍 Open in Google Maps
-      </a>
-    </div>` : ''}
+    ${type.nomeoDesc ? epPackField('DESCRIPTION', type.nomeoDesc.replace('{DAY}', ev.dayLabel).replace('{DATE}', ev.dateLabel + ', 2026'), 'epf-desc-'+ev.id) : ''}
     ${epPackField('WHATSAPP MESSAGE', waMsg, 'epf-wa-'+ev.id)}
 
     <div class="ep-section-divider"></div>
