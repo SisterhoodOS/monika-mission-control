@@ -3811,10 +3811,36 @@ const WAT_DEFAULTS = [
       { key: 'WORKSHOP_DATES',  label: 'Workshop dates',    default: 'Monday, July 7 & 14' }
     ],
     body: '✨ {{MONTH}} WITH SISTERHOOD ✨\n\n👉 All event details & RSVP via Linktree: {{LINKTREE}}\n\n🌸 Bali Sisterhood Circle\nA safe and nurturing space for honest sharing, deep listening, and meaningful connection.\n{{CIRCLE_DATES}}\n⏰ 10.30–13.00\n📍 de\'TOPAZ Cafe, Seseh\nhttps://share.google/0VcyxZ7JSSAhjpNEw\n\n💻 Coworking Day\nA shared space to focus, create, and build momentum alongside ambitious, aligned women.\n{{COWORKING_DATES}}\n⏰ 12.00–17.00\n📍 AT06 Cafe, Canggu\nhttps://share.google/aZViohKv8lrq3yGx0\n\n🌙 Online Workshop\nA powerful session to expand your mindset, learn, and grow wherever you are in the world.\n{{WORKSHOP_DATES}}\n⏰ 08.00am (Bali Time)\n📍 Online\n\nAs {{MONTH}} unfolds, may you stand firm in who you are becoming, surrounded by sisters who reflect your light back to you, and reminded that the path forward is walked together.'
+  },
+  {
+    id: 'sunset-music',
+    name: "Women's Sunset Music",
+    category: 'Other Event',
+    fields: [
+      { key: 'DATE',      label: 'Date (e.g. July 18)',  default: 'July 18' },
+      { key: 'TIME',      label: 'Time (e.g. 5:00 PM)',  default: '5:00 PM' },
+      { key: 'LOCATION',  label: 'Venue name',            default: 'Sunset Point, Bali' },
+      { key: 'MAPS_LINK', label: 'Google Maps link',      default: '' },
+      { key: 'LINK',      label: 'Booking / Nomeo link',  default: '' }
+    ],
+    body: '🌅 SATURDAY WITH THE GIRLS 🌅\n\nThe sun sets, the music plays, and the conversations get even better.\n\nJoin us for an evening of live music, golden hour vibes, and the kind of connection that only happens when women come together. 🎶\n\n📅 {{DATE}}\n⏰ {{TIME}}\n📍 {{LOCATION}}\n{{MAPS_LINK}}\n\nCome as you are, stay for the whole sky. Let\'s watch it change together. 🌸\n\nWomen Only ✨\n\nWe\'d love to have you there 💗\n\n{{LINK}}'
+  },
+  {
+    id: 'womens-brunch',
+    name: "Women's Day Brunch",
+    category: 'Other Event',
+    fields: [
+      { key: 'DATE',      label: 'Date (e.g. July 4)',   default: 'July 4' },
+      { key: 'TIME',      label: 'Time (e.g. 11:00 AM)', default: '11:00 AM' },
+      { key: 'LOCATION',  label: 'Venue name',            default: 'Oshom, Bali' },
+      { key: 'MAPS_LINK', label: 'Google Maps link',      default: '' },
+      { key: 'LINK',      label: 'Booking / Nomeo link',  default: '' }
+    ],
+    body: '🥂 SATURDAY WITH THE GIRLS 🥂\n\nA table full of women, a morning full of laughter, and a brunch you won\'t want to rush.\n\nPut on your favorite dress, bring your camera smile, and let\'s make this one to remember. 🌸\n\n📅 {{DATE}}\n⏰ {{TIME}}\n📍 {{LOCATION}}\n{{MAPS_LINK}}\n\nGood food, great company, and the kind of morning that fills your cup for the whole week. ✨\n\nWomen Only 💗\n\nWe can\'t wait to share the table with you\n\n{{LINK}}'
   }
 ];
 
-const WAT_VERSION = '4';
+const WAT_VERSION = '5';
 function watTemplates() {
   if (localStorage.getItem('wat-version') !== WAT_VERSION) {
     localStorage.removeItem('wat-templates');
