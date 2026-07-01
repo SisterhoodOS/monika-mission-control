@@ -4306,12 +4306,14 @@ const PT_DEFAULTS = [
   { id:'pt-fu-2', category:'🌟 Fun & Lighthearted', question:'If Sisterhood was a drink, what would it be?', options:['🍵 Warm herbal tea','🥂 Champagne toast','🧋 Iced coffee on the go','🍹 Tropical mocktail'] },
   { id:'pt-fu-3', category:'🌟 Fun & Lighthearted', question:'Pick a sticker that matches your mood today:', options:['🌸 Soft and blooming','⚡ Buzzing with energy','🌊 Flowing, going with it','🔥 Fired up'] },
   { id:'pt-fu-4', category:'🌟 Fun & Lighthearted', question:"What's your go-to self-care move?", options:['🛁 Bath and candles','🚶‍♀️ Walk in nature','📓 Journaling','💃 Dancing it out'] },
-  { id:'pt-fu-5', category:'🌟 Fun & Lighthearted', question:'Choose your Sisterhood superpower:', options:['👂 Deep listening','🎨 Creative magic','🔥 Fierce encouragement','🌊 Calm presence'] }
+  { id:'pt-fu-5', category:'🌟 Fun & Lighthearted', question:'Choose your Sisterhood superpower:', options:['👂 Deep listening','🎨 Creative magic','🔥 Fierce encouragement','🌊 Calm presence'] },
+  // 🎬 Reels strategy
+  { id:'pt-rs-1', category:'Reels strategy', question:'What kind of Reels do you want to see more of from Sisterhood OS?', options:['🎬 Behind the scenes','💬 Real talk / storytime','✨ Aesthetic + b-roll','📚 Teaching / value drops'] }
 ];
 
 let ptActiveFilter = 'All';
 
-const PT_VERSION = '1';
+const PT_VERSION = '2';
 function pollTemplates() {
   if (localStorage.getItem('pt-version') !== PT_VERSION) {
     localStorage.removeItem('pt-templates');
