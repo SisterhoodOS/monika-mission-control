@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Monika's Mission Control — Saha Synergy</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display+SC:wght@700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/data/june-calendar.js?v=3"></script>
 <style>
@@ -589,6 +589,95 @@ strong { color: var(--ink); font-weight: 600; }
 .wat-add-btn { font-family:var(--serif); font-size:11pt; color:var(--workspace); cursor:pointer; background:none; border:1px dashed var(--ws-border); border-radius:7px; padding:9px 18px; transition:all .15s; font-style:italic; }
 .wat-add-btn:hover { background:var(--ws-light); }
 
+/* ── POLL TEMPLATES ──────────────────────────────────────────────── */
+.pt-hero { background:linear-gradient(135deg,#fce4ec 0%,#f8bbd0 100%); border:1px solid #f48fb1; border-radius:14px; padding:26px 28px; margin-bottom:20px; }
+.pt-hero h2 { font-family:var(--serif); font-size:22pt; font-weight:400; color:#ad1457; margin-bottom:4px; }
+.pt-hero p { color:#c2185b; font-family:var(--serif); font-style:italic; font-size:12pt; margin-bottom:0; }
+.pt-filter-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+.pt-filter-chip { font-size:9.5pt; font-weight:600; padding:6px 14px; border-radius:20px; border:1px solid var(--line); background:var(--bg-card); color:var(--ink-mute); cursor:pointer; transition:all .15s; }
+.pt-filter-chip:hover { border-color:#f48fb1; color:#ad1457; }
+.pt-filter-chip.active { background:#ad1457; border-color:#ad1457; color:#fff; }
+.pt-progress { font-size:9.5pt; color:var(--ink-mute); margin-bottom:16px; }
+.pt-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; }
+.pt-card { background:var(--bg-card); border:1px solid var(--line); border-radius:12px; overflow:hidden; transition:opacity .15s; display:flex; flex-direction:column; }
+.pt-card.sent { opacity:.55; }
+.pt-card-head { padding:14px 18px 10px; border-left:4px solid #ec407a; display:flex; align-items:flex-start; gap:10px; }
+.pt-card-cat { font-size:7.5pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:3px 8px; border-radius:10px; background:#fce4ec; color:#ad1457; white-space:nowrap; }
+.pt-card-q { font-family:var(--serif); font-size:12.5pt; color:var(--ink); line-height:1.4; padding:0 18px 12px; flex:1; white-space:pre-wrap; }
+.pt-card-options { padding:0 18px 12px; display:flex; flex-direction:column; gap:6px; }
+.pt-option { font-size:10.5pt; color:var(--ink-soft); background:var(--bg-soft); border-radius:7px; padding:6px 10px; }
+.pt-card-foot { padding:10px 18px; border-top:1px solid var(--line-soft); display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.pt-sent-label { display:flex; align-items:center; gap:6px; font-size:9.5pt; color:var(--ink-mute); cursor:pointer; user-select:none; }
+.pt-sent-label input { cursor:pointer; }
+.pt-copy-btn { font-size:9pt; font-weight:700; padding:5px 14px; background:#ec407a; color:#fff; border:none; border-radius:6px; cursor:pointer; transition:all .15s; }
+.pt-copy-btn:hover { background:#ad1457; }
+.pt-copy-btn.copied { background:var(--sage); }
+.pt-card-head { justify-content:space-between; }
+.pt-edit-btn { background:none; border:none; cursor:pointer; font-size:11pt; opacity:.6; transition:opacity .15s; padding:2px 4px; }
+.pt-edit-btn:hover { opacity:1; }
+.pt-edit-wrap { padding:14px 18px 18px; display:flex; flex-direction:column; gap:6px; }
+.pt-edit-label { font-size:7.5pt; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-mute); margin-top:6px; }
+.pt-edit-wrap input.pt-edit-cat, .pt-edit-wrap textarea { width:100%; box-sizing:border-box; font-family:inherit; font-size:10.5pt; padding:8px 10px; border:1px solid var(--line); border-radius:7px; background:#fff; }
+.pt-edit-wrap textarea { min-height:80px; resize:vertical; }
+.pt-edit-options { display:flex; flex-direction:column; gap:6px; }
+.pt-edit-option { width:100%; box-sizing:border-box; font-family:inherit; font-size:10.5pt; padding:7px 10px; border:1px solid var(--line); border-radius:7px; background:#fff; }
+.pt-edit-actions { display:flex; gap:8px; margin-top:8px; }
+.pt-edit-actions .btn-save { font-size:9.5pt; font-weight:700; padding:6px 16px; background:#ad1457; color:#fff; border:none; border-radius:6px; cursor:pointer; }
+.pt-edit-actions .btn-cancel { font-size:9.5pt; padding:6px 14px; background:none; color:var(--ink-mute); border:1px solid var(--line); border-radius:6px; cursor:pointer; }
+
+/* ── CAROUSEL STUDIO (Client Work) ──────────────────────────────── */
+.cs-hero { background:linear-gradient(135deg,#4F0115 0%,#7a0a28 100%); border:1px solid #4F0115; border-radius:14px; padding:26px 28px; margin-bottom:22px; }
+.cs-hero h2 { font-family:var(--serif); font-size:22pt; font-weight:400; color:#F5EEE8; margin-bottom:4px; }
+.cs-hero p { color:#C0B3A6; font-family:var(--serif); font-style:italic; font-size:12pt; margin-bottom:0; }
+
+.cs-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:18px; }
+.cs-file-card { background:#F5EEE8; border:1px solid #C0B3A6; border-radius:16px; padding:32px 22px; text-align:center; cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.cs-file-card:hover { transform:translateY(-4px); box-shadow:0 12px 26px rgba(79,1,21,.18); border-color:#4F0115; }
+.cs-file-seal { width:56px; height:56px; border-radius:50%; background:#4F0115; color:#F5EEE8; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-family:var(--serif); font-weight:600; font-size:14pt; letter-spacing:.02em; box-shadow:0 4px 10px rgba(79,1,21,.25); }
+.cs-file-name { font-family:var(--serif); font-size:15pt; color:#4F0115; margin-bottom:4px; line-height:1.25; }
+.cs-file-brand { font-size:8pt; letter-spacing:.14em; text-transform:uppercase; color:#a08b76; margin-bottom:10px; }
+.cs-file-meta { font-size:9pt; color:#a08b76; }
+
+.cs-modal-overlay { display:none; position:fixed; inset:0; background:rgba(10,7,6,.72); z-index:300; align-items:flex-start; justify-content:center; padding:40px 16px; overflow-y:auto; }
+.cs-modal-overlay.open { display:flex; }
+.cs-modal { background:#F5EEE8; border-radius:18px; max-width:720px; width:100%; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,.35); margin-bottom:40px; }
+.cs-modal-head { background:#4F0115; padding:24px 28px; display:flex; align-items:center; gap:16px; position:sticky; top:0; z-index:2; }
+.cs-modal-seal { width:46px; height:46px; border-radius:50%; background:#F5EEE8; color:#4F0115; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:600; font-size:12.5pt; flex-shrink:0; }
+.cs-modal-head-text { flex:1; }
+.cs-modal-head-text h3 { font-family:'Playfair Display SC', var(--serif); font-size:16pt; color:#F5EEE8; font-weight:700; letter-spacing:.01em; line-height:1.25; }
+.cs-modal-head-text span { font-size:9pt; color:#C0B3A6; letter-spacing:.05em; }
+.cs-modal-close { background:none; border:1px solid rgba(245,238,232,.35); color:#F5EEE8; width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:14px; flex-shrink:0; transition:all .15s; }
+.cs-modal-close:hover { background:rgba(245,238,232,.15); }
+.cs-modal-body { padding:22px 26px 30px; display:flex; flex-direction:column; gap:14px; }
+.cs-modal-intro { font-family:var(--serif); font-style:italic; color:#6e5645; font-size:11pt; border-bottom:1px solid #C0B3A6; padding-bottom:16px; margin-bottom:2px; }
+
+.cs-post { border:1px solid #C0B3A6; border-radius:12px; overflow:hidden; background:#fff; }
+.cs-post-head { display:flex; align-items:center; gap:12px; padding:14px 18px; cursor:pointer; transition:background .12s; }
+.cs-post-head:hover { background:#f8f2ec; }
+.cs-post-tag { font-size:7.5pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:3px 9px; border-radius:10px; background:#efe2d3; color:#4F0115; white-space:nowrap; flex-shrink:0; }
+.cs-post-date { font-size:8.5pt; color:#a08b76; white-space:nowrap; flex-shrink:0; }
+.cs-post-title { font-family:var(--serif); font-size:13pt; color:#1c1a17; flex:1; line-height:1.3; }
+.cs-post-chevron { font-size:11px; color:#a08b76; transition:transform .2s; flex-shrink:0; }
+.cs-post.open .cs-post-chevron { transform:rotate(180deg); }
+.cs-post-body { display:none; padding:0 20px 22px; border-top:1px solid #ebe1d1; }
+.cs-post.open .cs-post-body { display:block; padding-top:16px; }
+
+.cs-slide-list { list-style:none; display:flex; flex-direction:column; gap:8px; margin-bottom:16px; }
+.cs-slide-list li { display:flex; gap:10px; align-items:flex-start; font-size:10.5pt; color:#2a2118; line-height:1.5; }
+.cs-slide-num { flex-shrink:0; width:20px; height:20px; border-radius:50%; background:#C0B3A6; color:#fff; font-size:8.5pt; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+
+.cs-cta { display:flex; align-items:center; gap:8px; background:#4F0115; color:#F5EEE8; border-radius:9px; padding:10px 14px; font-size:10.5pt; font-weight:600; margin-bottom:16px; }
+.cs-cta .cs-cta-icon { font-size:12px; }
+
+.cs-caption-label, .cs-hashtag-label { font-size:7.5pt; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#a08b76; margin-bottom:6px; }
+.cs-caption-box { font-family:var(--serif); font-style:italic; font-size:11pt; color:#2a2118; line-height:1.65; background:#faf5ee; border:1px solid #ebe1d1; border-radius:9px; padding:14px 16px; margin-bottom:8px; }
+.cs-hashtags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
+.cs-hashtag { font-size:9.5pt; color:#4F0115; background:#efe2d3; border-radius:14px; padding:4px 11px; }
+.cs-post-actions { display:flex; gap:8px; flex-wrap:wrap; }
+.cs-copy-btn { font-size:9pt; font-weight:700; padding:6px 14px; background:none; border:1px solid #4F0115; color:#4F0115; border-radius:6px; cursor:pointer; transition:all .15s; }
+.cs-copy-btn:hover { background:#4F0115; color:#F5EEE8; }
+.cs-copy-btn.copied { background:#7a8c6a; border-color:#7a8c6a; color:#fff; }
+
 /* ── EVENT PLANNER ───────────────────────────────────────────────── */
 .ep-page { padding:0 0 80px; }
 .ep-hero { background:linear-gradient(135deg,#eef4e8 0%,#ddecd4 100%); border:1px solid #b5c9ae; border-radius:14px; padding:26px 28px; margin-bottom:22px; }
@@ -822,6 +911,12 @@ strong { color: var(--ink); font-weight: 600; }
     <li><a onclick="navigate('wa-templates')" id="nav-wa-templates"><span class="nav-icon">💬</span> WA Templates</a></li>
     <li><a onclick="navigate('event-planner')" id="nav-event-planner"><span class="nav-icon">📅</span> Event Planner</a></li>
     <li><a href="#" onclick="navigate('facilitator-schedule');return false" data-panel="facilitator-schedule">👩 Facilitators</a></li>
+    <li><a onclick="navigate('poll-templates')" id="nav-poll-templates"><span class="nav-icon">🗳️</span> Poll Templates</a></li>
+  </ul>
+
+  <div class="nav-group">Client Work</div>
+  <ul class="nav-list">
+    <li><a onclick="navigate('carousel-studio')" id="nav-carousel-studio"><span class="nav-icon">🗂️</span> Carousel Studio</a></li>
   </ul>
 
   <div class="nav-group">Saha Synergy</div>
@@ -1347,7 +1442,42 @@ strong { color: var(--ink); font-weight: 600; }
     </div>
   </div>
 
+  <!-- POLL TEMPLATES -->
+  <div id="panel-poll-templates" class="section-panel content-mode" style="display:none">
+    <div class="main-inner">
+      <div class="wat-page">
+        <div class="pt-hero">
+          <div class="sec-eye" style="color:#ad1457">Sisterhood Group</div>
+          <h2>Poll Templates</h2>
+          <p>Post an event one day, a poll the next. Pick one, copy, paste into the WhatsApp group, and check it off once it's live.</p>
+        </div>
+        <div class="pt-filter-row" id="pt-filter-row"></div>
+        <div class="pt-progress" id="pt-progress"></div>
+        <div class="pt-grid" id="pt-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAROUSEL STUDIO -->
+  <div id="panel-carousel-studio" class="section-panel content-mode" style="display:none">
+    <div class="main-inner">
+      <div class="wat-page">
+        <div class="cs-hero">
+          <div class="sec-eye" style="color:#C0B3A6">Client Work</div>
+          <h2>Carousel Studio</h2>
+          <p>Ready-to-post carousel drafts, one file per brand. Click a file to open it.</p>
+        </div>
+        <div class="cs-grid" id="cs-grid"></div>
+      </div>
+    </div>
+  </div>
+
 </main>
+</div>
+
+<!-- CAROUSEL STUDIO FILE MODAL -->
+<div class="cs-modal-overlay" id="cs-modal-overlay" onclick="if(event.target===this) csCloseFile()">
+  <div class="cs-modal" id="cs-modal"></div>
 </div>
 
 <!-- ADD LEAD MODAL -->
@@ -1408,12 +1538,11 @@ strong { color: var(--ink); font-weight: 600; }
     <h3>Add Event</h3>
     <div class="ep-modal-sub">Fill in the details — everything else is pre-filled from the template.</div>
     <div class="form-row">
-      <label class="form-label">Event Type *</label>
-      <select class="form-select" id="ep-type-select">
-        <option value="women-circle">Women Circle</option>
-        <option value="coworking">Co-Working Day</option>
-        <option value="give-it-all">Give It All — Live Event</option>
-      </select>
+      <label class="form-label" style="display:flex;justify-content:space-between;align-items:center;">
+        Event Type *
+        <span onclick="openManageTypes()" style="font-size:9pt;font-weight:500;color:#4a6741;cursor:pointer;text-transform:none;letter-spacing:0;">+ Manage Types</span>
+      </label>
+      <select class="form-select" id="ep-type-select"></select>
     </div>
     <div class="form-row">
       <label class="form-label">Date *</label>
@@ -1426,6 +1555,23 @@ strong { color: var(--ink); font-weight: 600; }
     <div class="modal-actions">
       <button class="btn btn-secondary" onclick="closeAddEvent()">Cancel</button>
       <button class="btn btn-primary" style="background:#4a6741" onclick="submitAddEvent()">Add Event</button>
+    </div>
+  </div>
+</div>
+
+<!-- MANAGE EVENT TYPES MODAL -->
+<div class="modal-overlay" id="ep-manage-types-modal">
+  <div class="modal ep-modal" style="max-width:420px">
+    <h3>Manage Event Types</h3>
+    <div class="ep-modal-sub">Add, rename, or remove event types from the dropdown.</div>
+    <div id="ep-type-list" style="display:flex;flex-direction:column;gap:8px;margin:16px 0;max-height:300px;overflow-y:auto;"></div>
+    <div style="display:flex;gap:8px;margin-top:8px;">
+      <input type="text" class="form-input" id="ep-new-type-name" placeholder="New event type name..." style="flex:1">
+      <input type="color" id="ep-new-type-color" value="#4a6741" style="width:40px;height:40px;border:none;border-radius:8px;cursor:pointer;padding:2px">
+      <button class="btn btn-primary" style="background:#4a6741;white-space:nowrap" onclick="addCustomType()">Add</button>
+    </div>
+    <div class="modal-actions" style="margin-top:16px">
+      <button class="btn btn-secondary" onclick="closeManageTypes()">Done</button>
     </div>
   </div>
 </div>
@@ -1607,7 +1753,7 @@ function saveState(state) {
 let state = loadState();
 
 // ─── NAVIGATION ──────────────────────────────────────────────────
-const panels = ['dashboard','console','tasks','workspace','content-calendar','checkins','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy','agents','sops','signed-docs','wa-templates','event-planner','facilitator-schedule'];
+const panels = ['dashboard','console','tasks','workspace','content-calendar','checkins','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy','agents','sops','signed-docs','wa-templates','event-planner','facilitator-schedule','poll-templates','carousel-studio'];
 
 const CONSOLE_DEFAULT_SYSTEM = `You are an assistant inside Monika's Mission Control for Sisterhood OS (Sophia Fox's women's empowerment brand based in Bali).
 
@@ -1664,6 +1810,8 @@ function navigate(id) {
   if (id === 'wa-templates') { renderWATemplates(); }
   if (id === 'event-planner') { renderEventPlanner(); }
   if (id === 'facilitator-schedule') { renderFacSchedule(); }
+  if (id === 'poll-templates') { renderPollTemplates(); }
+  if (id === 'carousel-studio') { renderCarouselStudio(); }
 }
 
 // ─── DASHBOARD MILESTONES ─────────────────────────────────────────
@@ -3398,8 +3546,90 @@ const EP_TYPES = {
     coverText: 'Women Who Lead.',
     shortDesc: "An inspiring live speaker event featuring transformation coaches and community builders from the Bali Sisterhood.\n\nHear powerful women share their stories, strategies, and wisdom. Open to the whole Bali community.",
     watId: 'give-it-all'
+  },
+  'sunset-music': {
+    name: "Women's Sunset Music",
+    color: '#ef6c00',
+    location: 'Bali, Indonesia',
+    mapsUrl: 'https://maps.app.goo.gl/1earoxp7ZHBVR1jS9',
+    time: '5:00 PM',
+    minSpend: '',
+    coverText: 'Sun, Music & Sisterhood.',
+    shortDesc: "The sun sets, the music plays, and the conversations get even better.\n\nJoin us for an evening of live music, golden hour vibes, and the kind of connection that only happens when women come together.\n\nCome as you are, stay for the whole sky. Let's watch it change together.\n\nWomen Only.",
+    watId: 'sunset-music'
+  },
+  'womens-brunch': {
+    name: "Women's Day Brunch",
+    color: '#ad1457',
+    location: 'Beraban, Bali, Indonesia',
+    mapsUrl: 'https://maps.app.goo.gl/yZ6ZQiK4zqKqCyZEA',
+    time: '11:00 AM',
+    minSpend: '',
+    coverText: 'Dress up. Show up. Fill up.',
+    shortDesc: "A table full of women, a morning full of laughter, and a brunch you won't want to rush.\n\nPut on your favorite dress, bring your camera smile, and let's make this one to remember.\n\nGood food, great company, and the kind of morning that fills your cup for the whole week.\n\nWomen Only.",
+    watId: 'womens-brunch'
   }
 };
+
+// ─── CUSTOM EVENT TYPES (stored in localStorage) ──────────────────
+function epGetCustomTypes() {
+  return JSON.parse(localStorage.getItem('ep-custom-types') || '[]');
+}
+function epSaveCustomTypes(arr) {
+  localStorage.setItem('ep-custom-types', JSON.stringify(arr));
+}
+
+function epAllTypes() {
+  const builtIn = Object.entries(EP_TYPES).map(([key, t]) => ({ key, name: t.name, color: t.color, builtin: true }));
+  const custom = epGetCustomTypes();
+  return [...builtIn, ...custom];
+}
+
+function epPopulateSelect() {
+  const sel = document.getElementById('ep-type-select');
+  if (!sel) return;
+  const all = epAllTypes();
+  sel.innerHTML = all.map(t => `<option value="${t.key}">${t.name}</option>`).join('');
+}
+
+function openManageTypes() {
+  renderTypeList();
+  document.getElementById('ep-manage-types-modal').classList.add('open');
+}
+function closeManageTypes() {
+  document.getElementById('ep-manage-types-modal').classList.remove('open');
+  epPopulateSelect();
+}
+
+function renderTypeList() {
+  const all = epAllTypes();
+  const list = document.getElementById('ep-type-list');
+  list.innerHTML = all.map(t => `
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:#f9f6f0;border-radius:8px;">
+      <div style="width:14px;height:14px;border-radius:50%;background:${t.color};flex-shrink:0"></div>
+      <span style="flex:1;font-size:11pt">${t.name}</span>
+      ${t.builtin ? '<span style="font-size:9pt;color:#aaa">built-in</span>' : `<button onclick="deleteCustomType('${t.key}')" style="border:none;background:none;color:#c62828;font-size:13pt;cursor:pointer;line-height:1">×</button>`}
+    </div>
+  `).join('');
+}
+
+function addCustomType() {
+  const name = document.getElementById('ep-new-type-name').value.trim();
+  const color = document.getElementById('ep-new-type-color').value;
+  if (!name) return;
+  const key = 'custom-' + name.toLowerCase().replace(/[^a-z0-9]/g, '-') + '-' + Date.now();
+  const custom = epGetCustomTypes();
+  custom.push({ key, name, color, builtin: false });
+  epSaveCustomTypes(custom);
+  document.getElementById('ep-new-type-name').value = '';
+  renderTypeList();
+}
+
+function deleteCustomType(key) {
+  const custom = epGetCustomTypes().filter(t => t.key !== key);
+  epSaveCustomTypes(custom);
+  renderTypeList();
+}
 
 const openEPPacks = {};
 const openMonths = {};
@@ -3722,6 +3952,7 @@ function epDownloadFlyer(src) {
 }
 
 function openAddEvent() {
+  epPopulateSelect();
   document.getElementById('ep-type-select').value = 'women-circle';
   document.getElementById('ep-date-picker').value = '';
   document.getElementById('ep-nomeo-input').value = '';
@@ -4033,6 +4264,401 @@ function openAddTemplate() {
   watSave(templates);
   renderWATemplates();
   showToast('Template added — click the fields to edit it');
+}
+
+// ─── POLL TEMPLATES ───────────────────────────────────────────────
+const PT_DEFAULTS = [
+  // 💼 New Idea
+  { id:'pt-idea-mastermind', category:'💼 New Idea', question:"🌿 Imagine a space where your biggest business dreams meet your most trusted sisters.\n\nWe're thinking about launching a Business Mastermind inside Sisterhood OS, and we want to know if this is something you've been waiting for. 💛", options:['🚀 Yes, I\'m so in!','💛 Tell me more first','🌱 Maybe someday','🙅‍♀️ Not my thing'] },
+  // ✨ Sisterhood General
+  { id:'pt-sh-1', category:'✨ Sisterhood', question:"What does \"sisterhood\" mean to you today?", options:['🤍 A safe space to be myself','🌿 Growth alongside women who get it','🔥 Accountability and encouragement','🫂 A soft place to land'] },
+  { id:'pt-sh-2', category:'✨ Sisterhood', question:'What brought you into this community?', options:['🌸 Wanted deeper connection','💫 Craving personal growth','🙋‍♀️ A friend invited me','🔍 Searching for "my people"'] },
+  { id:'pt-sh-3', category:'✨ Sisterhood', question:"What's one word for how Sisterhood makes you feel?", options:['🏡 Held','🌱 Expanded','💗 Seen','✨ Free'] },
+  { id:'pt-sh-4', category:'✨ Sisterhood', question:'What do you love most about being here?', options:['👯‍♀️ The friendships','🎯 The events','🧘‍♀️ The inner work','📚 The wisdom shared'] },
+  { id:'pt-sh-5', category:'✨ Sisterhood', question:'If Sisterhood were a season, what would it be?', options:['🌸 Spring, new beginnings','☀️ Summer, full bloom','🍂 Autumn, quiet release','❄️ Winter, deep rest'] },
+  { id:'pt-sh-6', category:'✨ Sisterhood', question:"We're always curious about our sisters' stories...\n\nHow did you first find your way to Sisterhood OS? 🌿", options:['📸 Saw it on Instagram','👯‍♀️ A sister told me about it','🔍 Found it searching online','🎉 Met you all at an event'] },
+  // 💻 Coworking Day
+  { id:'pt-cw-1', category:'💻 Coworking Day', question:"What's your Coworking Day vibe?", options:['📝 Deep focus mode','☕ Coffee and soft chats','🎧 Headphones on, zoning in','🤝 Networking and connecting'] },
+  { id:'pt-cw-2', category:'💻 Coworking Day', question:'What do you love most about Coworking Day?', options:['💻 Getting things done','🌅 The sunset walk after','👋 Meeting new sisters','🧋 The food and drinks'] },
+  { id:'pt-cw-3', category:'💻 Coworking Day', question:"What's on your to-do list this Coworking Day?", options:['📧 Emails and admin','🎨 A creative project','💰 Business planning','📖 Journaling and reflecting'] },
+  { id:'pt-cw-4', category:'💻 Coworking Day', question:'How do you feel after a Coworking Day?', options:['⚡ Energized','🧘‍♀️ Calm and clear','🎉 Inspired','😌 Relieved to have company while working'] },
+  { id:'pt-cw-5', category:'💻 Coworking Day', question:'What would make Coworking Day even better?', options:['🎵 Background music','🍰 More snacks','⏰ Longer hours','🧑‍🤝‍🧑 More sisters showing up'] },
+  // 🌸 Circle
+  { id:'pt-ci-1', category:'🌸 Circle', question:'What are you hoping to release in circle this week?', options:['😮‍💨 Stress','💔 An old story','🥊 Self-doubt','🌊 Whatever comes up'] },
+  { id:'pt-ci-2', category:'🌸 Circle', question:'What do you need most from circle right now?', options:['👂 To be heard','🤲 To hold space for others','🧘‍♀️ Stillness','💬 Honest conversation'] },
+  { id:'pt-ci-3', category:'🌸 Circle', question:'How are you showing up to circle today?', options:['🌤️ Open and curious','😴 Tired but here','🔥 Ready to go deep','🫧 Just here to receive'] },
+  { id:'pt-ci-4', category:'🌸 Circle', question:"What's one thing circle has taught you?", options:['🪞 To see myself clearly','🗣️ My voice matters','🤝 I\'m not alone','🌱 Healing isn\'t linear'] },
+  { id:'pt-ci-5', category:'🌸 Circle', question:'What keeps you coming back to circle?', options:['💗 The sisters','🕯️ The container','🎁 What I discover about myself','🌀 The ritual of showing up'] },
+  // 🎉 Gathering
+  { id:'pt-ga-1', category:'🎉 Gathering', question:"What's your gathering personality?", options:['🎤 First on the dance floor','🍷 Deep 1:1 conversations','📸 Capturing the memories','🧘‍♀️ Soaking in the energy quietly'] },
+  { id:'pt-ga-2', category:'🎉 Gathering', question:'What are you most looking forward to at our next gathering?', options:['👗 Dressing up','🍽️ The food','🎶 The music','💞 The people'] },
+  { id:'pt-ga-3', category:'🎉 Gathering', question:'How do you like to connect at gatherings?', options:['🗣️ Big group energy','👯‍♀️ Small intimate chats','🎨 Shared activities','🤗 Just being near good energy'] },
+  { id:'pt-ga-4', category:'🎉 Gathering', question:'What\'s the best part of a Sisterhood gathering for you?', options:['✨ New friendships','🌙 Feeling part of something','📷 The photos after','💃 Letting loose'] },
+  { id:'pt-ga-5', category:'🎉 Gathering', question:'What theme should our next gathering have?', options:['🌺 Tropical and golden hour','🕯️ Cozy and intimate','🎊 Celebration and sparkle','🌊 Beachside and barefoot'] },
+  // 🌙 Feelings & Energy Check
+  { id:'pt-fe-1', category:'🌙 Feelings & Energy', question:"How's your energy today?", options:['⚡ High and buzzing','🌤️ Steady and calm','🌧️ Low, need rest','🌊 Up and down'] },
+  { id:'pt-fe-2', category:'🌙 Feelings & Energy', question:"What phase do you feel you're in right now?", options:['🌱 Growth mode','🍂 Releasing, letting go','🌙 Resting, turning inward','🌸 Blooming, celebrating'] },
+  { id:'pt-fe-3', category:'🌙 Feelings & Energy', question:"What's your heart craving this week?", options:['🛌 Rest','🎉 Fun','🗣️ Connection','🎯 Momentum'] },
+  { id:'pt-fe-4', category:'🌙 Feelings & Energy', question:'How are you really feeling today, sisters?', options:['💗 Good, grateful','😮‍💨 A little heavy','🔥 Motivated','🫠 Honestly, exhausted'] },
+  { id:'pt-fe-5', category:'🌙 Feelings & Energy', question:'What\'s one thing you need to hear today?', options:['🌟 You\'re doing enough','🤍 You\'re not alone','🌸 Rest is productive','💪 You\'re stronger than you know'] },
+  // 🌟 Fun & Lighthearted
+  { id:'pt-fu-1', category:'🌟 Fun & Lighthearted', question:'Pick your Sisterhood era:', options:['☕ Soft girl era','🔥 CEO era','🌙 Healing era','🎉 Main character era'] },
+  { id:'pt-fu-2', category:'🌟 Fun & Lighthearted', question:'If Sisterhood was a drink, what would it be?', options:['🍵 Warm herbal tea','🥂 Champagne toast','🧋 Iced coffee on the go','🍹 Tropical mocktail'] },
+  { id:'pt-fu-3', category:'🌟 Fun & Lighthearted', question:'Pick a sticker that matches your mood today:', options:['🌸 Soft and blooming','⚡ Buzzing with energy','🌊 Flowing, going with it','🔥 Fired up'] },
+  { id:'pt-fu-4', category:'🌟 Fun & Lighthearted', question:"What's your go-to self-care move?", options:['🛁 Bath and candles','🚶‍♀️ Walk in nature','📓 Journaling','💃 Dancing it out'] },
+  { id:'pt-fu-5', category:'🌟 Fun & Lighthearted', question:'Choose your Sisterhood superpower:', options:['👂 Deep listening','🎨 Creative magic','🔥 Fierce encouragement','🌊 Calm presence'] }
+];
+
+let ptActiveFilter = 'All';
+
+const PT_VERSION = '1';
+function pollTemplates() {
+  if (localStorage.getItem('pt-version') !== PT_VERSION) {
+    localStorage.removeItem('pt-templates');
+    localStorage.setItem('pt-version', PT_VERSION);
+  }
+  return JSON.parse(localStorage.getItem('pt-templates') || 'null') || PT_DEFAULTS;
+}
+
+function ptSaveTemplates(templates) {
+  localStorage.setItem('pt-templates', JSON.stringify(templates));
+}
+
+function ptSentMap() {
+  return JSON.parse(localStorage.getItem('pt-sent') || '{}');
+}
+
+function ptToggleSent(id) {
+  const map = ptSentMap();
+  map[id] = !map[id];
+  localStorage.setItem('pt-sent', JSON.stringify(map));
+  renderPollTemplates();
+}
+
+function ptSetFilter(cat) {
+  ptActiveFilter = cat;
+  renderPollTemplates();
+}
+
+function ptFormat(poll) {
+  return poll.question + '\n\n' + poll.options.map(o => o).join('\n');
+}
+
+function ptCopy(id) {
+  const poll = pollTemplates().find(p => p.id === id);
+  if (!poll) return;
+  navigator.clipboard.writeText(ptFormat(poll)).then(() => {
+    const btn = document.getElementById('ptcopy-' + id);
+    if (btn) { btn.textContent = 'Copied!'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = 'Copy Poll'; btn.classList.remove('copied'); }, 2000); }
+    showToast('Poll copied — paste into the group');
+  });
+}
+
+function ptToggleEdit(id) {
+  const view = document.getElementById('ptview-' + id);
+  const edit = document.getElementById('ptedit-' + id);
+  if (!view || !edit) return;
+  const opening = edit.style.display === 'none';
+  view.style.display = opening ? 'none' : '';
+  edit.style.display = opening ? '' : 'none';
+}
+
+function ptSaveEdit(id) {
+  const templates = pollTemplates();
+  const poll = templates.find(p => p.id === id);
+  if (!poll) return;
+  const qEl = document.getElementById('ptq-edit-' + id);
+  poll.question = qEl.value;
+  poll.options = poll.options.map((opt, i) => {
+    const el = document.getElementById('ptopt-edit-' + id + '-' + i);
+    return el ? el.value : opt;
+  });
+  const catEl = document.getElementById('ptcat-edit-' + id);
+  if (catEl) poll.category = catEl.value;
+  ptSaveTemplates(templates);
+  renderPollTemplates();
+  showToast('Poll updated');
+}
+
+function renderPollTemplates() {
+  const grid = document.getElementById('pt-grid');
+  const filterRow = document.getElementById('pt-filter-row');
+  const progressEl = document.getElementById('pt-progress');
+  if (!grid || !filterRow) return;
+
+  const templates = pollTemplates();
+  const sentMap = ptSentMap();
+  const categories = ['All', ...Array.from(new Set(templates.map(p => p.category)))];
+
+  filterRow.innerHTML = categories.map(cat =>
+    `<button class="pt-filter-chip${cat === ptActiveFilter ? ' active' : ''}" onclick="ptSetFilter('${esc(cat)}')">${esc(cat)}</button>`
+  ).join('');
+
+  const visible = ptActiveFilter === 'All' ? templates : templates.filter(p => p.category === ptActiveFilter);
+  const sentCount = visible.filter(p => sentMap[p.id]).length;
+  progressEl.textContent = `${sentCount} of ${visible.length} posted`;
+
+  grid.innerHTML = visible.map(poll => {
+    const isSent = !!sentMap[poll.id];
+    const optionsHtml = poll.options.map(o => `<div class="pt-option">${esc(o)}</div>`).join('');
+    const optionEditHtml = poll.options.map((o, i) =>
+      `<input class="pt-edit-option" id="ptopt-edit-${poll.id}-${i}" value="${esc(o)}">`
+    ).join('');
+    return `<div class="pt-card${isSent ? ' sent' : ''}" id="ptcard-${poll.id}">
+      <div id="ptview-${poll.id}">
+        <div class="pt-card-head">
+          <span class="pt-card-cat">${esc(poll.category)}</span>
+          <button class="pt-edit-btn" onclick="ptToggleEdit('${poll.id}')" title="Edit poll">✏️</button>
+        </div>
+        <div class="pt-card-q">${esc(poll.question)}</div>
+        <div class="pt-card-options">${optionsHtml}</div>
+        <div class="pt-card-foot">
+          <label class="pt-sent-label">
+            <input type="checkbox" ${isSent ? 'checked' : ''} onchange="ptToggleSent('${poll.id}')">
+            Posted
+          </label>
+          <button class="pt-copy-btn" id="ptcopy-${poll.id}" onclick="ptCopy('${poll.id}')">Copy Poll</button>
+        </div>
+      </div>
+      <div id="ptedit-${poll.id}" style="display:none">
+        <div class="pt-edit-wrap">
+          <label class="pt-edit-label">Category</label>
+          <input class="pt-edit-cat" id="ptcat-edit-${poll.id}" value="${esc(poll.category)}">
+          <label class="pt-edit-label">Question</label>
+          <textarea id="ptq-edit-${poll.id}">${esc(poll.question)}</textarea>
+          <label class="pt-edit-label">Options</label>
+          <div class="pt-edit-options">${optionEditHtml}</div>
+          <div class="pt-edit-actions">
+            <button class="btn-save" onclick="ptSaveEdit('${poll.id}')">💾 Save</button>
+            <button class="btn-cancel" onclick="ptToggleEdit('${poll.id}')">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── CAROUSEL STUDIO (Client Work) ─────────────────────────────────
+const CAROUSEL_STUDIO_DATA = {
+  bwb: {
+    seal: 'BWB',
+    name: 'Betches Walking Betches',
+    tagline: 'The luxury choice in LA for devoted pet parents',
+    intro: 'Every carousel below is DM-first: hook on slide one, proof in the middle, a clear "DM this word" close on the last slide. Caption and hashtags are ready to paste as-is.',
+    posts: [
+      {
+        id: 'tumbler', date: 'Jul 4, 2026', tag: 'Brand / Product',
+        title: 'Walking Betches Tumbler — VIP',
+        slides: [
+          `Meet the tumbler that comes with VIP status attached.`,
+          `No tiers. No fine print. Every BWB client is already VIP, from day one.`,
+          `Cold coffee stays cold. Your dog's walker still shows up exactly on time.`,
+          `This isn't merch, it's a thank you for trusting us with your favorite creature.`
+        ],
+        cta: `DM "TUMBLER" and it's yours.`,
+        caption: `There's no VIP tier here because you already are one. Every client who trusts us with their dog gets the same standard, the same care team, the same peace of mind, no upsell required. The tumbler is just our way of saying thank you for being part of the family, one iced coffee at a time. DM "TUMBLER" and it's yours.`,
+        hashtags: ['#BWBVIP', '#NoTiersJustLoyalty', '#WestLADogMom', '#PeaceOfMindPets', '#YourDogsSecondFavorite']
+      },
+      {
+        id: 'concierge-vs-app', date: 'Jul 11, 2026', tag: 'Educational',
+        title: 'What a Pet Concierge does that a dog walker app never will',
+        slides: [
+          `What a Pet Concierge does that a dog walker app never will.`,
+          `Sends the same trusted face every time. Never a stranger from a rotating queue.`,
+          `Signs an NDA before ever stepping into your home. Your privacy is part of the job.`,
+          `Leaves a report card after every visit, photos and all, not just a checkmark.`,
+          `Caps every pack walk at five dogs, so your pup is watched, not just counted.`
+        ],
+        cta: `This is the BWB standard. DM "CARE TEAM" and we'll introduce you to yours.`,
+        caption: `An app can send you someone. It can't send you someone who knows your dog gets anxious at the mailman, or that he needs five extra minutes to sniff the same tree every single day. That's the difference between a booking and a relationship. DM "CARE TEAM" and we'll introduce you to yours.`,
+        hashtags: ['#PetConciergeLA', '#NotJustAnApp', '#TrustedCareTeam', '#WestsideDogParents', '#BWBStandard']
+      },
+      {
+        id: 'three-questions', date: 'Jul 12, 2026', tag: 'Educational',
+        title: '3 questions to ask before you call anyone a "pet specialist"',
+        slides: [
+          `3 questions to ask before you call anyone a "pet specialist."`,
+          `Will the same person show up every time? Consistency is the whole job.`,
+          `Are they vetted, insured, and NDA-signed? Ask to see it, not just hear it.`,
+          `What do you actually get back after a visit? You deserve a report, not a guess.`
+        ],
+        cta: `If the answer isn't yes, yes, and a report card, keep looking. DM "SPECIALIST" and we'll answer all three, honestly.`,
+        caption: `"Specialist" gets thrown around a lot in this industry, and most of the time it means nothing more than "available." Before you hand over your house key and your dog's leash, ask the three questions that actually separate real care from a convenient stranger. DM "SPECIALIST" and we'll answer all three, honestly.`,
+        hashtags: ['#AskTheRightQuestions', '#VettedCareLA', '#DogParentsOfLA', '#NoGigWorkers', '#RealPetSpecialists']
+      },
+      {
+        id: 'vetted-nda-cpr', date: 'Jul 15, 2026', tag: 'Educational',
+        title: `Our Care Team is vetted, NDA-signed, CPR-certified. Here's what that actually means.`,
+        slides: [
+          `"Vetted, NDA-signed, CPR-certified." Here's what those words actually mean.`,
+          `Vetted: background-checked, interviewed, and trial-walked. Not just "available today."`,
+          `NDA-signed: what happens in your home stays in your home. Real discretion, not a buzzword.`,
+          `CPR-certified: trained for the moment you pray never happens, so you don't have to.`,
+          `Insured and bonded: you're covered, always, no exceptions.`
+        ],
+        cta: `That's the difference between a Care Team and a stranger with a leash. DM "VETTED" for the full story on how we hire.`,
+        caption: `Anyone can put "vetted" in their bio. Very few can tell you what it took to earn that word. Every person on our Care Team is background-checked, trial-walked, NDA-signed, and CPR-certified before they ever meet your dog, because your peace of mind isn't something we guess at. DM "VETTED" for the full story on how we hire.`,
+        hashtags: ['#VettedNotJustAvailable', '#NDASigned', '#CPRCertifiedCare', '#TrustYourCareTeam', '#BWBFamily']
+      },
+      {
+        id: 'five-signs', date: 'Jul 18, 2026', tag: 'Educational',
+        title: '5 signs your dog deserves a Pet Concierge, not an app',
+        slides: [
+          `5 signs your dog deserves a Pet Concierge, not an app.`,
+          `You travel and spend the whole trip refreshing a tracking app anyway.`,
+          `You've been burned by a flaky, last-minute booking before, once is enough.`,
+          `Your dog is family, not a task to check off before 9am.`,
+          `You want one trusted face, not a rotation of strangers with a five-star rating.`
+        ],
+        cta: `Sound like you? DM "CONCIERGE" if you nodded twice.`,
+        caption: `If you've ever landed at LAX and immediately checked your phone for proof your dog is okay, this one's for you. There's a difference between "handled" and "cared for," and once you feel the difference, you don't go back. DM "CONCIERGE" if you nodded twice.`,
+        hashtags: ['#FiveSigns', '#NotAnApp', '#DogIsFamily', '#ConciergeNotChaos', '#WestLAPetCare']
+      },
+      {
+        id: 'week-in-life', date: 'Jul 22, 2026', tag: 'Owner',
+        title: 'A week in the life of a Westside Pet Concierge',
+        slides: [
+          `A week in the life of a Westside Pet Concierge.`,
+          `Monday: sunrise pack walk in Brentwood, five dogs, perfectly size-matched.`,
+          `Wednesday: a solo senior-dog stroll, slow, shaded, and unhurried.`,
+          `Friday: an overnight sit while a family flies out for the weekend, worry-free.`,
+          `Every day: report cards, fresh water, and a familiar face at the door.`
+        ],
+        cta: `This is the standard, every single day. DM "WEEK" and let's plan yours.`,
+        caption: `Quiet luxury doesn't always look like much from the outside, sometimes it's just the same person showing up at the same time, every time, so you never have to think twice. This is what a week actually looks like behind the leash. DM "WEEK" and let's plan yours.`,
+        hashtags: ['#AWeekInTheLife', '#QuietLuxury', '#BrentwoodDogWalker', '#PackWalkStandard', '#BehindTheLeash']
+      },
+      {
+        id: 'walker-vs-specialist', date: 'Jul 25, 2026', tag: 'Educational',
+        title: 'The difference between a dog walker and a Pet Specialist',
+        slides: [
+          `The difference between a dog walker and a Pet Specialist.`,
+          `A walker shows up. A specialist knows your dog's pace, quirks, and moods.`,
+          `A walker sends whoever's free. A specialist is the same trusted face, always.`,
+          `A walker leaves. A specialist leaves a report card.`
+        ],
+        cta: `Same word on the hashtag, very different standard. DM "ASK" and get the specialist standard for your dog.`,
+        caption: `Two businesses can use the exact same word in their bio and mean completely different things by it. One sends whoever's free. The other sends someone who already knows your dog's favorite tree. Know the difference before you hand over the leash. DM "ASK" and get the specialist standard for your dog.`,
+        hashtags: ['#DogWalkerVsSpecialist', '#AskForTheSpecialist', '#SameWordDifferentStandard', '#LAPetCare', '#BWBDifference']
+      },
+      {
+        id: 'vet-checklist', date: 'Jul 29, 2026', tag: 'Educational',
+        title: 'How to actually vet a Pet Concierge (steal our checklist)',
+        slides: [
+          `How to actually vet a Pet Concierge. Steal our checklist.`,
+          `Ask for proof of insurance and bonding, in writing, not just a promise.`,
+          `Ask if they sign an NDA. Your privacy in your own home isn't optional.`,
+          `Ask who actually shows up: the same person, or whoever's free that day.`,
+          `Ask what you get back after a visit: a real report, or radio silence.`
+        ],
+        cta: `Save this checklist. And if you want the easy answer, DM "CHECKLIST" and we'll send you ours.`,
+        caption: `You wouldn't hire a nanny without asking a single question, so why do it for the creature who greets you at the door every day like it's the best day of their life? Here's the exact checklist we'd want a stranger to hold us to. DM "CHECKLIST" and we'll send you ours.`,
+        hashtags: ['#StealOurChecklist', '#VetYourVet', '#InsuredAndBonded', '#PetCareChecklist', '#AskBeforeYouBook']
+      }
+    ]
+  }
+};
+
+function renderCarouselStudio() {
+  const grid = document.getElementById('cs-grid');
+  if (!grid) return;
+  grid.innerHTML = Object.entries(CAROUSEL_STUDIO_DATA).map(([id, client]) => `
+    <div class="cs-file-card" onclick="csOpenFile('${id}')">
+      <div class="cs-file-seal">${esc(client.seal)}</div>
+      <div class="cs-file-name">${esc(client.name)}</div>
+      <div class="cs-file-brand">Client File</div>
+      <div class="cs-file-meta">${client.posts.length} carousels ready</div>
+    </div>
+  `).join('');
+}
+
+function csOpenFile(id) {
+  const client = CAROUSEL_STUDIO_DATA[id];
+  const overlay = document.getElementById('cs-modal-overlay');
+  const modal = document.getElementById('cs-modal');
+  if (!client || !overlay || !modal) return;
+
+  modal.innerHTML = `
+    <div class="cs-modal-head">
+      <div class="cs-modal-seal">${esc(client.seal)}</div>
+      <div class="cs-modal-head-text">
+        <h3>${esc(client.name)}</h3>
+        <span>${esc(client.tagline)}</span>
+      </div>
+      <button class="cs-modal-close" onclick="csCloseFile()" title="Close">✕</button>
+    </div>
+    <div class="cs-modal-body">
+      <div class="cs-modal-intro">${esc(client.intro)}</div>
+      ${client.posts.map((p, i) => csRenderPost(id, p, i)).join('')}
+    </div>
+  `;
+  overlay.classList.add('open');
+}
+
+function csCloseFile() {
+  const overlay = document.getElementById('cs-modal-overlay');
+  if (overlay) overlay.classList.remove('open');
+}
+
+function csRenderPost(clientId, post, index) {
+  const slidesHtml = post.slides.map((s, i) => `
+    <li><span class="cs-slide-num">${i + 1}</span><span>${esc(s)}</span></li>
+  `).join('');
+  const hashtagsHtml = post.hashtags.map(h => `<span class="cs-hashtag">${esc(h)}</span>`).join('');
+  return `
+    <div class="cs-post${index === 0 ? ' open' : ''}" id="cs-post-${post.id}">
+      <div class="cs-post-head" onclick="csTogglePost('${post.id}')">
+        <span class="cs-post-tag">${esc(post.tag)}</span>
+        <span class="cs-post-date">${esc(post.date)}</span>
+        <span class="cs-post-title">${esc(post.title)}</span>
+        <span class="cs-post-chevron">▾</span>
+      </div>
+      <div class="cs-post-body">
+        <ol class="cs-slide-list">${slidesHtml}</ol>
+        <div class="cs-cta"><span class="cs-cta-icon">📩</span> ${esc(post.cta)}</div>
+        <div class="cs-caption-label">Caption</div>
+        <div class="cs-caption-box">${esc(post.caption)}</div>
+        <div class="cs-hashtag-label">Hashtags</div>
+        <div class="cs-hashtags">${hashtagsHtml}</div>
+        <div class="cs-post-actions">
+          <button class="cs-copy-btn" id="cs-copy-caption-${post.id}" onclick="csCopyCaption('${clientId}','${post.id}')">Copy Caption + Hashtags</button>
+          <button class="cs-copy-btn" id="cs-copy-slides-${post.id}" onclick="csCopySlides('${clientId}','${post.id}')">Copy Slide Script</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function csTogglePost(postId) {
+  const el = document.getElementById('cs-post-' + postId);
+  if (el) el.classList.toggle('open');
+}
+
+function csFindPost(clientId, postId) {
+  const client = CAROUSEL_STUDIO_DATA[clientId];
+  return client ? client.posts.find(p => p.id === postId) : null;
+}
+
+function csCopyCaption(clientId, postId) {
+  const post = csFindPost(clientId, postId);
+  if (!post) return;
+  const text = post.caption + '\n\n' + post.hashtags.join(' ');
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('cs-copy-caption-' + postId);
+    if (btn) { btn.textContent = 'Copied!'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = 'Copy Caption + Hashtags'; btn.classList.remove('copied'); }, 2000); }
+    showToast('Caption copied — paste under the carousel');
+  });
+}
+
+function csCopySlides(clientId, postId) {
+  const post = csFindPost(clientId, postId);
+  if (!post) return;
+  const text = post.slides.map((s, i) => `Slide ${i + 1}: ${s}`).join('\n\n') + `\n\nSlide ${post.slides.length + 1} (CTA): ${post.cta}`;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('cs-copy-slides-' + postId);
+    if (btn) { btn.textContent = 'Copied!'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = 'Copy Slide Script'; btn.classList.remove('copied'); }, 2000); }
+    showToast('Slide script copied');
+  });
 }
 
 // ─── MONTHLY CHECKLIST ────────────────────────────────────────────

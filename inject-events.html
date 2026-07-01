@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Loading events...</title>
+<style>body{font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#f5f0e8;color:#3a3a2e;}</style>
+</head>
+<body>
+<p>Adding events... redirecting in a moment.</p>
+<script>
+localStorage.setItem('ep-events', JSON.stringify([
+  { id:'ev-1001', type:'coworking',     dayLabel:'Tuesday',  dateLabel:'July 7',  nomeoLink:'https://nomeo.io/m/6tYH5', year:2026, monthKey:'July 2026' },
+  { id:'ev-1002', type:'coworking',     dayLabel:'Tuesday',  dateLabel:'July 14', nomeoLink:'https://nomeo.io/m/6tYH5', year:2026, monthKey:'July 2026' },
+  { id:'ev-1003', type:'coworking',     dayLabel:'Tuesday',  dateLabel:'July 21', nomeoLink:'https://nomeo.io/m/6tYH5', year:2026, monthKey:'July 2026' },
+  { id:'ev-1004', type:'coworking',     dayLabel:'Tuesday',  dateLabel:'July 28', nomeoLink:'https://nomeo.io/m/6tYH5', year:2026, monthKey:'July 2026' },
+  { id:'ev-1005', type:'women-circle',  dayLabel:'Saturday', dateLabel:'July 11', nomeoLink:'https://nomeo.io/m/wrJ4C', year:2026, monthKey:'July 2026' },
+  { id:'ev-1006', type:'women-circle',  dayLabel:'Saturday', dateLabel:'July 25', nomeoLink:'https://nomeo.io/m/wrJ4C', year:2026, monthKey:'July 2026' },
+  { id:'ev-1007', type:'womens-brunch', dayLabel:'Saturday', dateLabel:'July 4',  nomeoLink:'https://nomeo.io/m/If7H6', year:2026, monthKey:'July 2026' },
+  { id:'ev-1008', type:'sunset-music',  dayLabel:'Saturday', dateLabel:'July 18', nomeoLink:'https://nomeo.io/m/achr7', year:2026, monthKey:'July 2026' }
+]));
+window.location.href = 'index.html#event-planner';
+</script>
+</body>
+</html>
