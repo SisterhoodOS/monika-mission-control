@@ -625,6 +625,31 @@ strong { color: var(--ink); font-weight: 600; }
 .pt-edit-actions .btn-save { font-size:9.5pt; font-weight:700; padding:6px 16px; background:#ad1457; color:#fff; border:none; border-radius:6px; cursor:pointer; }
 .pt-edit-actions .btn-cancel { font-size:9.5pt; padding:6px 14px; background:none; color:var(--ink-mute); border:1px solid var(--line); border-radius:6px; cursor:pointer; }
 
+/* ── REELS STRATEGY ──────────────────────────────────────────────── */
+.rs-table { width:100%; border-collapse:collapse; font-size:10pt; background:var(--bg-card); }
+.rs-table th { text-align:left; font-size:8pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-mute); padding:8px 10px; border-bottom:2px solid var(--line); cursor:pointer; white-space:nowrap; user-select:none; }
+.rs-table th:hover { color:#5e35b1; }
+.rs-table td { padding:7px 10px; border-bottom:1px solid var(--line-soft); vertical-align:middle; }
+.rs-table td.rs-name { max-width:220px; }
+.rs-thumb-wrap { display:flex; align-items:center; gap:10px; text-decoration:none; min-width:0; }
+.rs-thumb { width:64px; height:36px; object-fit:cover; border-radius:5px; background:var(--bg-soft); flex-shrink:0; border:1px solid var(--line-soft); }
+.rs-thumb-wrap .rs-drive-link { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.rs-table select { font-size:9.5pt; padding:3px 6px; border:1px solid var(--line); border-radius:6px; background:#fff; color:var(--ink); }
+.rs-table a.rs-drive-link { font-size:9pt; font-weight:700; color:#5e35b1; text-decoration:none; }
+.rs-table a.rs-drive-link:hover { text-decoration:underline; }
+.rs-usage-btn { font-size:9pt; font-weight:700; padding:3px 10px; background:none; border:1px solid #b39ddb; border-radius:14px; color:#5e35b1; cursor:pointer; }
+.rs-usage-btn:hover { background:#ede7f6; }
+.rs-plan-header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+.rs-plan-header select { font-size:9.5pt; padding:6px 10px; border:1px solid var(--line); border-radius:7px; background:#fff; }
+.rs-slot-card { background:var(--bg-card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:8px; }
+.rs-slot-card.posted { opacity:.55; }
+.rs-slot-head { display:flex; align-items:center; justify-content:space-between; font-size:9pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#5e35b1; }
+.rs-slot-card label { font-size:7.5pt; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-mute); margin-top:4px; }
+.rs-slot-card input, .rs-slot-card textarea { width:100%; box-sizing:border-box; font-family:inherit; font-size:10.5pt; padding:7px 9px; border:1px solid var(--line); border-radius:7px; background:#fff; }
+.rs-slot-card textarea { min-height:60px; resize:vertical; }
+.rs-suggested-tags { font-size:9pt; color:var(--ink-mute); font-style:italic; }
+.rs-slot-posted-label { display:flex; align-items:center; gap:6px; font-size:9.5pt; color:var(--ink-mute); cursor:pointer; user-select:none; margin-top:4px; }
+
 /* ── CAROUSEL STUDIO (Client Work) ──────────────────────────────── */
 .cs-hero { background:linear-gradient(135deg,#4F0115 0%,#7a0a28 100%); border:1px solid #4F0115; border-radius:14px; padding:26px 28px; margin-bottom:22px; }
 .cs-hero h2 { font-family:var(--serif); font-size:22pt; font-weight:400; color:#F5EEE8; margin-bottom:4px; }
@@ -632,17 +657,17 @@ strong { color: var(--ink); font-weight: 600; }
 
 .cs-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:18px; }
 .cs-file-card { background:#F5EEE8; border:1px solid #C0B3A6; border-radius:16px; padding:32px 22px; text-align:center; cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
-.cs-file-card:hover { transform:translateY(-4px); box-shadow:0 12px 26px rgba(79,1,21,.18); border-color:#4F0115; }
-.cs-file-seal { width:56px; height:56px; border-radius:50%; background:#4F0115; color:#F5EEE8; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-family:var(--serif); font-weight:600; font-size:14pt; letter-spacing:.02em; box-shadow:0 4px 10px rgba(79,1,21,.25); }
-.cs-file-name { font-family:var(--serif); font-size:15pt; color:#4F0115; margin-bottom:4px; line-height:1.25; }
+.cs-file-card:hover { transform:translateY(-4px); box-shadow:0 12px 26px rgba(0,0,0,.18); border-color:var(--cs-accent,#4F0115); }
+.cs-file-seal { width:56px; height:56px; border-radius:50%; background:var(--cs-accent,#4F0115); color:#F5EEE8; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-family:var(--serif); font-weight:600; font-size:14pt; letter-spacing:.02em; box-shadow:0 4px 10px rgba(0,0,0,.25); }
+.cs-file-name { font-family:var(--serif); font-size:15pt; color:var(--cs-accent,#4F0115); margin-bottom:4px; line-height:1.25; }
 .cs-file-brand { font-size:8pt; letter-spacing:.14em; text-transform:uppercase; color:#a08b76; margin-bottom:10px; }
 .cs-file-meta { font-size:9pt; color:#a08b76; }
 
 .cs-modal-overlay { display:none; position:fixed; inset:0; background:rgba(10,7,6,.72); z-index:300; align-items:flex-start; justify-content:center; padding:40px 16px; overflow-y:auto; }
 .cs-modal-overlay.open { display:flex; }
 .cs-modal { background:#F5EEE8; border-radius:18px; max-width:720px; width:100%; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,.35); margin-bottom:40px; }
-.cs-modal-head { background:#4F0115; padding:24px 28px; display:flex; align-items:center; gap:16px; position:sticky; top:0; z-index:2; }
-.cs-modal-seal { width:46px; height:46px; border-radius:50%; background:#F5EEE8; color:#4F0115; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:600; font-size:12.5pt; flex-shrink:0; }
+.cs-modal-head { background:var(--cs-accent,#4F0115); padding:24px 28px; display:flex; align-items:center; gap:16px; position:sticky; top:0; z-index:2; }
+.cs-modal-seal { width:46px; height:46px; border-radius:50%; background:#F5EEE8; color:var(--cs-accent,#4F0115); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:600; font-size:12.5pt; flex-shrink:0; }
 .cs-modal-head-text { flex:1; }
 .cs-modal-head-text h3 { font-family:'Playfair Display SC', var(--serif); font-size:16pt; color:#F5EEE8; font-weight:700; letter-spacing:.01em; line-height:1.25; }
 .cs-modal-head-text span { font-size:9pt; color:#C0B3A6; letter-spacing:.05em; }
@@ -888,6 +913,11 @@ strong { color: var(--ink); font-weight: 600; }
   <div class="sb-subtitle">Operations · Community · Growth</div>
   <div class="sb-divider"></div>
 
+  <div class="nav-group">MONIKA</div>
+  <ul class="nav-list">
+    <li><a href="http://localhost:5182" target="_blank" id="nav-monika-ops-hub"><span class="nav-icon">◆</span> Documents</a></li>
+  </ul>
+
   <div class="nav-group">Command</div>
   <ul class="nav-list">
     <li><a onclick="navigate('dashboard')" class="active" id="nav-dashboard"><span class="nav-icon">⌂</span> Dashboard</a></li>
@@ -912,6 +942,7 @@ strong { color: var(--ink); font-weight: 600; }
     <li><a onclick="navigate('event-planner')" id="nav-event-planner"><span class="nav-icon">📅</span> Event Planner</a></li>
     <li><a href="#" onclick="navigate('facilitator-schedule');return false" data-panel="facilitator-schedule">👩 Facilitators</a></li>
     <li><a onclick="navigate('poll-templates')" id="nav-poll-templates"><span class="nav-icon">🗳️</span> Poll Templates</a></li>
+    <li><a onclick="navigate('reels-strategy')" id="nav-reels-strategy"><span class="nav-icon">🎬</span> Reels Strategy</a></li>
   </ul>
 
   <div class="nav-group">Client Work</div>
@@ -1434,6 +1465,7 @@ strong { color: var(--ink); font-weight: 600; }
           <h2>WA Templates</h2>
           <p>Fill in the dates, copy, and paste straight into WhatsApp. No reformatting needed.</p>
         </div>
+        <div class="pt-filter-row" id="wat-filter-row"></div>
         <div class="wat-grid" id="wat-grid"></div>
         <div style="margin-top:18px">
           <button class="wat-add-btn" onclick="openAddTemplate()">+ Add a new template</button>
@@ -1454,6 +1486,51 @@ strong { color: var(--ink); font-weight: 600; }
         <div class="pt-filter-row" id="pt-filter-row"></div>
         <div class="pt-progress" id="pt-progress"></div>
         <div class="pt-grid" id="pt-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REELS STRATEGY -->
+  <div id="panel-reels-strategy" class="section-panel content-mode" style="display:none">
+    <div class="main-inner">
+      <div class="wat-page">
+        <div class="wat-hero" style="background:linear-gradient(135deg,#ede7f6 0%,#d1c4e9 100%);border-color:#b39ddb">
+          <div class="sec-eye" style="color:#5e35b1">Marketing & Content</div>
+          <h2 style="color:#5e35b1">Reels Strategy</h2>
+          <p style="color:#6a1b9a">B-roll library + daily Reels plan for Sisterhood OS — all in one place.</p>
+        </div>
+        <div class="pt-filter-row">
+          <button class="pt-filter-chip" id="rs-tab-catalog" onclick="rsSwitchTab('catalog')">🎞️ B-Roll Catalog</button>
+          <button class="pt-filter-chip" id="rs-tab-plan" onclick="rsSwitchTab('plan')">📋 Reels Plan</button>
+        </div>
+
+        <div id="rs-view-catalog">
+          <div class="pt-progress" id="rs-catalog-progress"></div>
+          <div style="overflow-x:auto">
+            <table class="rs-table" id="rs-catalog-table">
+              <thead>
+                <tr>
+                  <th onclick="rsSortBy('name')">Name (click to open)</th>
+                  <th onclick="rsSortBy('event')">Event</th>
+                  <th onclick="rsSortBy('orientation')">Orientation</th>
+                  <th onclick="rsSortBy('people')">People</th>
+                  <th onclick="rsSortBy('mood')">Mood</th>
+                  <th onclick="rsSortBy('fileSizeMB')">Size</th>
+                  <th onclick="rsSortBy('usageCount')">Usage</th>
+                </tr>
+              </thead>
+              <tbody id="rs-catalog-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="rs-view-plan" style="display:none">
+          <div class="rs-plan-header">
+            <div class="pt-progress" id="rs-plan-progress"></div>
+            <select id="rs-plan-date-select" onchange="rsPlanChangeDate(this.value)"></select>
+          </div>
+          <div class="pt-grid" id="rs-plan-grid"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1753,7 +1830,7 @@ function saveState(state) {
 let state = loadState();
 
 // ─── NAVIGATION ──────────────────────────────────────────────────
-const panels = ['dashboard','console','tasks','workspace','content-calendar','checkins','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy','agents','sops','signed-docs','wa-templates','event-planner','facilitator-schedule','poll-templates','carousel-studio'];
+const panels = ['dashboard','console','tasks','workspace','content-calendar','checkins','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy','agents','sops','signed-docs','wa-templates','event-planner','facilitator-schedule','poll-templates','reels-strategy','carousel-studio'];
 
 const CONSOLE_DEFAULT_SYSTEM = `You are an assistant inside Monika's Mission Control for Sisterhood OS (Sophia Fox's women's empowerment brand based in Bali).
 
@@ -1811,6 +1888,7 @@ function navigate(id) {
   if (id === 'event-planner') { renderEventPlanner(); }
   if (id === 'facilitator-schedule') { renderFacSchedule(); }
   if (id === 'poll-templates') { renderPollTemplates(); }
+  if (id === 'reels-strategy') { renderReelsStrategy(); }
   if (id === 'carousel-studio') { renderCarouselStudio(); }
 }
 
@@ -3941,14 +4019,20 @@ function epImportData(input) {
   reader.readAsText(file);
 }
 
-function epDownloadFlyer(src) {
+async function epDownloadFlyer(src) {
   const filename = src.startsWith('data:') ? 'flyer.png' : src.split('/').pop();
+  let href = src;
+  try {
+    const blob = await (await fetch(src)).blob();
+    href = URL.createObjectURL(blob);
+  } catch (e) { /* fall back to direct src below */ }
   const a = document.createElement('a');
-  a.href = src;
+  a.href = href;
   a.download = filename;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
+  if (href !== src) URL.revokeObjectURL(href);
 }
 
 function openAddEvent() {
@@ -3999,7 +4083,7 @@ const WAT_DEFAULTS = [
   {
     id: 'women-circle',
     name: 'Women Circle',
-    category: 'Events',
+    category: 'Event',
     fields: [
       { key: 'DAY',       label: 'Day (e.g. Saturday)',  default: 'Saturday' },
       { key: 'DATE',      label: 'Date (e.g. June 27)',  default: 'June 27' },
@@ -4011,7 +4095,7 @@ const WAT_DEFAULTS = [
   {
     id: 'give-it-all',
     name: 'Give It All — Live Event',
-    category: 'Events',
+    category: 'Event',
     fields: [
       { key: 'DATE',         label: 'Date (e.g. June 25th)', default: 'June 25th' },
       { key: 'MAPS_LINK',    label: 'Google Maps link',      default: 'https://share.google/3wvK8EZ92VVGtrU3p' },
@@ -4022,7 +4106,7 @@ const WAT_DEFAULTS = [
   {
     id: 'coworking-reminder',
     name: 'Co-Working Day',
-    category: 'Events',
+    category: 'Event',
     fields: [
       { key: 'DAY',  label: 'Day (e.g. Tuesday)',  default: 'Tuesday' },
       { key: 'DATE', label: 'Date (e.g. June 16)', default: 'June 16' },
@@ -4033,7 +4117,7 @@ const WAT_DEFAULTS = [
   ,{
     id: 'monthly-schedule',
     name: 'Monthly Schedule',
-    category: 'Monthly',
+    category: 'Event',
     fields: [
       { key: 'MONTH',           label: 'Month name',        default: 'July' },
       { key: 'LINKTREE',        label: 'Linktree link',     default: 'https://linktr.ee/officialsisterhub' },
@@ -4046,7 +4130,7 @@ const WAT_DEFAULTS = [
   {
     id: 'sunset-music',
     name: "Women's Sunset Music",
-    category: 'Other Event',
+    category: 'Event',
     fields: [
       { key: 'DATE',      label: 'Date (e.g. July 18)',  default: 'July 18' },
       { key: 'TIME',      label: 'Time (e.g. 5:00 PM)',  default: '5:00 PM' },
@@ -4059,7 +4143,7 @@ const WAT_DEFAULTS = [
   {
     id: 'womens-brunch',
     name: "Women's Day Brunch",
-    category: 'Other Event',
+    category: 'Event',
     fields: [
       { key: 'DATE',      label: 'Date (e.g. July 4)',   default: 'July 4' },
       { key: 'TIME',      label: 'Time (e.g. 11:00 AM)', default: '11:00 AM' },
@@ -4068,10 +4152,43 @@ const WAT_DEFAULTS = [
       { key: 'LINK',      label: 'Booking / Nomeo link',  default: '' }
     ],
     body: '🥂 SATURDAY WITH THE GIRLS 🥂\n\nA table full of women, a morning full of laughter, and a brunch you won\'t want to rush.\n\nPut on your favorite dress, bring your camera smile, and let\'s make this one to remember. 🌸\n\n📅 {{DATE}}\n⏰ {{TIME}}\n📍 {{LOCATION}}\n{{MAPS_LINK}}\n\nGood food, great company, and the kind of morning that fills your cup for the whole week. ✨\n\nWomen Only 💗\n\nWe can\'t wait to share the table with you\n\n{{LINK}}'
+  },
+  {
+    id: 'thankyou-coworking',
+    name: 'Thank You — Co-Working Day',
+    category: 'Thank You',
+    fields: [],
+    variants: [
+      'Girlss 🤍✨\n\nThank you so much to everyone who joined us for Co-Working Day. It was SO special having you all in that space, heads down on your own projects yet still fully held in that warm sisterhood energy.\n\nEvery time we work like this side by side, I\'m reminded of how much lighter everything feels in good company. Thank you for the focus, the presence, and the hearts you all brought into the room.\n\nCan\'t wait to co-work with you all again 🤍',
+      'Girlss 🤍✨\n\nThank you for showing up to Co-Working Day and bringing your whole self, laptop, to-do list, and all. There\'s something so grounding about working next to women who just get it.\n\nWatching everyone quietly build their own thing in the same room, that\'s sisterhood too. Thank you for the focus and the softness you brought with you.\n\nSee you at the next one 🤍',
+      'Girlss 🤍✨\n\nThank you to every sister who came through for Co-Working Day. Some of you crushed your to-do list, some of you just needed a change of scenery, and both are so valid.\n\nThere\'s a quiet kind of magic in working alongside women who are building their own dreams too. Thank you for the energy you brought into that room.\n\nCan\'t wait to work alongside you all again 🤍'
+    ]
+  },
+  {
+    id: 'thankyou-women-circle',
+    name: 'Thank You — Women Circle',
+    category: 'Thank You',
+    fields: [],
+    variants: [
+      'Girlss 🤍✨\n\nThank you so much to everyone who sat in circle with us. It was SO special having all of you there, sharing your truth, listening deeply, and holding space for each other in that warm sisterhood energy.\n\nEvery time we circle up like this, I\'m reminded of how powerful we are when we choose honesty and presence together. Thank you for the vulnerability, the trust, and the hearts you all brought into the room.\n\nCan\'t wait to sit in circle with you all again 🤍',
+      'Girlss 🤍✨\n\nThank you for sitting in circle with us today. What we shared in that space, the honesty, the tears, the laughter, isn\'t something everyone gets to experience.\n\nEvery circle reminds me that we heal so much faster when we\'re witnessed by other women. Thank you for showing up as your full, honest self.\n\nSee you in circle again soon 🤍',
+      'Girlss 🤍✨\n\nThank you to every woman who showed up to circle today. Holding space like that takes courage, and every single one of you brought it.\n\nI keep being reminded that when women choose truth over performance, real magic happens. Thank you for your presence, your stories, and your trust.\n\nCan\'t wait to be in circle with you all again 🤍'
+    ]
+  },
+  {
+    id: 'thankyou-gathering',
+    name: 'Thank You — Gathering',
+    category: 'Thank You',
+    fields: [],
+    variants: [
+      'Girlss 🤍✨\n\nThank you so much to everyone who came to our gathering. It was SO special having all of you there, sharing stories, laughing, and just being in that warm sisterhood energy together.\n\nEvery time we gather like this, I\'m reminded of how powerful we are as a community. Thank you for the energy, presence, and hearts you all brought to the table.\n\nCan\'t wait to see you all again at our next gathering 🤍',
+      'Girlss 🤍✨\n\nThank you to every single one of you who came out for our gathering. The laughter, the stories, the way this group just lights up a room, it never gets old.\n\nMoments like this remind me why this community exists in the first place. Thank you for bringing your full self to the table.\n\nCan\'t wait to gather again soon 🤍',
+      'Girlss 🤍✨\n\nThank you for coming to our gathering and making it feel so full and alive. From the conversations to the little moments in between, that\'s the energy that makes this community what it is.\n\nEvery gathering reminds me how much we need spaces like this, just women, being together, no agenda. Thank you for showing up.\n\nSee you at the next one 🤍'
+    ]
   }
 ];
 
-const WAT_VERSION = '5';
+const WAT_VERSION = '7';
 function watTemplates() {
   if (localStorage.getItem('wat-version') !== WAT_VERSION) {
     localStorage.removeItem('wat-templates');
@@ -4105,11 +4222,46 @@ function watResolve(body, id, liveValues) {
   return out;
 }
 
+function watVariantIndex(id) {
+  return parseInt(localStorage.getItem('wat-variant-' + id) || '0', 10);
+}
+
+function watActiveBody(t) {
+  if (!t.variants || !t.variants.length) return t.body;
+  return t.variants[watVariantIndex(t.id) % t.variants.length];
+}
+
+function watMarkSent(id) {
+  const templates = watTemplates();
+  const tpl = templates.find(t => t.id === id);
+  if (!tpl || !tpl.variants || !tpl.variants.length) return;
+  const next = (watVariantIndex(id) + 1) % tpl.variants.length;
+  localStorage.setItem('wat-variant-' + id, String(next));
+  showToast('Marked sent — next message ready so it doesn\'t repeat');
+  renderWATemplates();
+}
+
+let watActiveFilter = 'All';
+function watSetFilter(cat) {
+  watActiveFilter = cat;
+  renderWATemplates();
+}
+
 function renderWATemplates() {
   const grid = document.getElementById('wat-grid');
+  const filterRow = document.getElementById('wat-filter-row');
   if (!grid) return;
   const templates = watTemplates();
-  grid.innerHTML = templates.map(t => {
+
+  if (filterRow) {
+    const folders = ['All', ...Array.from(new Set(templates.map(t => t.category)))];
+    filterRow.innerHTML = folders.map(cat =>
+      `<button class="pt-filter-chip${cat === watActiveFilter ? ' active' : ''}" onclick="watSetFilter('${esc(cat)}')">${esc(cat)}</button>`
+    ).join('');
+  }
+
+  const visible = watActiveFilter === 'All' ? templates : templates.filter(t => t.category === watActiveFilter);
+  grid.innerHTML = visible.map(t => {
     const saved = watFieldValues(t.id);
     const fieldsHtml = t.fields.map(f => {
       const val = saved[f.key] !== undefined ? saved[f.key] : f.default;
@@ -4125,11 +4277,20 @@ function renderWATemplates() {
         <input class="fdefault" value="${esc(f.default)}" placeholder="Default" onchange="watUpdateField('${t.id}',${i},'default',this.value)">
         <button class="rem-field" onclick="watRemoveField('${t.id}',${i})" title="Remove field">×</button>
       </div>`).join('');
-    const preview = watResolve(t.body, t.id, null);
+    const activeBody = watActiveBody(t);
+    const preview = watResolve(activeBody, t.id, null);
+    const hasVariants = t.variants && t.variants.length > 1;
+    const variantBadge = hasVariants
+      ? `<span class="wat-card-cat" style="background:var(--sage);color:#fff" title="Rotates automatically so repeat attendees don't see the same message twice">Message ${watVariantIndex(t.id) % t.variants.length + 1} of ${t.variants.length}</span>`
+      : '';
+    const markSentBtn = hasVariants
+      ? `<button style="font-size:9pt;padding:4px 11px;border:none;border-radius:5px;background:var(--sage);cursor:pointer;color:#fff" onclick="watMarkSent('${t.id}')" title="Rotates to the next phrasing for next time">✅ Mark Sent</button>`
+      : '';
     return `<div class="wat-card" id="watcard-${t.id}">
       <div class="wat-card-head">
         <span class="wat-card-name">${esc(t.name)}</span>
         <span class="wat-card-cat">${esc(t.category)}</span>
+        ${variantBadge}
         <button class="btn btn-danger btn-sm" onclick="watDelete('${t.id}')" title="Delete template">×</button>
       </div>
       <div class="wat-fields">${fieldsHtml}</div>
@@ -4138,6 +4299,7 @@ function renderWATemplates() {
           Preview
           <div style="display:flex;gap:6px">
             <button style="font-size:9pt;padding:4px 11px;border:1px solid var(--line);border-radius:5px;background:none;cursor:pointer;color:var(--ink-mute)" onclick="watToggleEdit('${t.id}')">✏️ Edit Body</button>
+            ${markSentBtn}
             <button class="wat-copy-btn" id="watcopy-${t.id}" onclick="watCopy('${t.id}')">Copy for WhatsApp</button>
           </div>
         </div>
@@ -4146,7 +4308,7 @@ function renderWATemplates() {
         </div>
         <div id="watedit-${t.id}" style="display:none">
           <div class="wat-edit-body-wrap">
-            <textarea id="watbody-${t.id}">${esc(t.body)}</textarea>
+            <textarea id="watbody-${t.id}">${esc(activeBody)}</textarea>
           </div>
           <div class="wat-edit-body-actions">
             <button class="btn-save" onclick="watSaveBodyEdit('${t.id}')">💾 Save Body</button>
@@ -4172,7 +4334,7 @@ function watFieldChanged(id, inputEl) {
   document.querySelectorAll(`.wat-field-input[data-tpl="${id}"]`).forEach(el => {
     liveValues[el.dataset.key] = el.value;
   });
-  const preview = watResolve(tpl.body, id, liveValues);
+  const preview = watResolve(watActiveBody(tpl), id, liveValues);
   const prevEl = document.getElementById('watprev-' + id);
   if (prevEl) prevEl.textContent = preview;
 }
@@ -4209,10 +4371,14 @@ function watSaveBodyEdit(id) {
   const templates = watTemplates();
   const tpl = templates.find(t => t.id === id);
   if (!tpl) return;
-  tpl.body = bodyEl.value;
+  if (tpl.variants && tpl.variants.length) {
+    tpl.variants[watVariantIndex(id) % tpl.variants.length] = bodyEl.value;
+  } else {
+    tpl.body = bodyEl.value;
+  }
   watSave(templates);
   const prevEl = document.getElementById('watprev-' + id);
-  if (prevEl) prevEl.textContent = watResolve(tpl.body, id, null);
+  if (prevEl) prevEl.textContent = watResolve(watActiveBody(tpl), id, null);
   watToggleEdit(id);
   showToast('Template body saved');
 }
@@ -4253,7 +4419,7 @@ function openAddTemplate() {
   const newTpl = {
     id: 'tpl-' + Date.now(),
     name: name.trim(),
-    category: 'Events',
+    category: 'Event',
     fields: [
       { key: 'DAY',  label: 'Day of week', default: 'Tuesday' },
       { key: 'DATE', label: 'Date',        default: 'June 26'  }
@@ -4306,14 +4472,12 @@ const PT_DEFAULTS = [
   { id:'pt-fu-2', category:'🌟 Fun & Lighthearted', question:'If Sisterhood was a drink, what would it be?', options:['🍵 Warm herbal tea','🥂 Champagne toast','🧋 Iced coffee on the go','🍹 Tropical mocktail'] },
   { id:'pt-fu-3', category:'🌟 Fun & Lighthearted', question:'Pick a sticker that matches your mood today:', options:['🌸 Soft and blooming','⚡ Buzzing with energy','🌊 Flowing, going with it','🔥 Fired up'] },
   { id:'pt-fu-4', category:'🌟 Fun & Lighthearted', question:"What's your go-to self-care move?", options:['🛁 Bath and candles','🚶‍♀️ Walk in nature','📓 Journaling','💃 Dancing it out'] },
-  { id:'pt-fu-5', category:'🌟 Fun & Lighthearted', question:'Choose your Sisterhood superpower:', options:['👂 Deep listening','🎨 Creative magic','🔥 Fierce encouragement','🌊 Calm presence'] },
-  // 🎬 Reels strategy
-  { id:'pt-rs-1', category:'Reels strategy', question:'What kind of Reels do you want to see more of from Sisterhood OS?', options:['🎬 Behind the scenes','💬 Real talk / storytime','✨ Aesthetic + b-roll','📚 Teaching / value drops'] }
+  { id:'pt-fu-5', category:'🌟 Fun & Lighthearted', question:'Choose your Sisterhood superpower:', options:['👂 Deep listening','🎨 Creative magic','🔥 Fierce encouragement','🌊 Calm presence'] }
 ];
 
 let ptActiveFilter = 'All';
 
-const PT_VERSION = '2';
+const PT_VERSION = '1';
 function pollTemplates() {
   if (localStorage.getItem('pt-version') !== PT_VERSION) {
     localStorage.removeItem('pt-templates');
@@ -4440,12 +4604,342 @@ function renderPollTemplates() {
   }).join('');
 }
 
+// ─── REELS STRATEGY ─────────────────────────────────────────────────
+const RS_CATALOG_DEFAULTS = [
+  // ── GIVE IT ALL ──
+  { id:'rs-1TNk0zKj3zWXZyLu6RmphqaUpx_lClNqn', fileId:'1TNk0zKj3zWXZyLu6RmphqaUpx_lClNqn', name:'DSC_1282.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1TNk0zKj3zWXZyLu6RmphqaUpx_lClNqn/view', fileSizeMB:132.3, tags:{orientation:'portrait',people:'solo',mood:'energetic'}, usageCount:0 },
+  { id:'rs-13K4TwRIyJ8pX26o9N4p-7eBzMfr7ycfn', fileId:'13K4TwRIyJ8pX26o9N4p-7eBzMfr7ycfn', name:'DSC_1231.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/13K4TwRIyJ8pX26o9N4p-7eBzMfr7ycfn/view', fileSizeMB:433.9, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1b-yYPupo1Qmx3LwrxjdIuohvaRt80d4h', fileId:'1b-yYPupo1Qmx3LwrxjdIuohvaRt80d4h', name:'DSC_1227.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1b-yYPupo1Qmx3LwrxjdIuohvaRt80d4h/view', fileSizeMB:268.2, tags:{orientation:'portrait',people:'solo',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1H6EODAqZOFvXVOxIDwkvCHqM8bWxtkWT', fileId:'1H6EODAqZOFvXVOxIDwkvCHqM8bWxtkWT', name:'DSC_1226.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1H6EODAqZOFvXVOxIDwkvCHqM8bWxtkWT/view', fileSizeMB:371.8, tags:{orientation:'portrait',people:'solo',mood:'posed'}, usageCount:0 },
+  { id:'rs-1UB-eLS0vGupnnPUUR126QepNX3y9EDjP', fileId:'1UB-eLS0vGupnnPUUR126QepNX3y9EDjP', name:'WhatsApp Video 2026-06-26 at 11.37.37 (1).mp4', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1UB-eLS0vGupnnPUUR126QepNX3y9EDjP/view', fileSizeMB:10, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1sH86SLkWqHkNEKp5UeO5K2iInbdcwdLK', fileId:'1sH86SLkWqHkNEKp5UeO5K2iInbdcwdLK', name:'WhatsApp Video 2026-06-26 at 11.37.30 (1).mp4', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1sH86SLkWqHkNEKp5UeO5K2iInbdcwdLK/view', fileSizeMB:7, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1a1Tww6CMw16eFXdsEy_AHda3rNElM2S_', fileId:'1a1Tww6CMw16eFXdsEy_AHda3rNElM2S_', name:'WhatsApp Video 2026-06-26 at 11.31.45 (1).mp4', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1a1Tww6CMw16eFXdsEy_AHda3rNElM2S_/view', fileSizeMB:7.5, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1OhJcwho3_-pKrtcdqcQjQqEy5pQ1u2d0', fileId:'1OhJcwho3_-pKrtcdqcQjQqEy5pQ1u2d0', name:'WhatsApp Video 2026-06-26 at 09.57.07.mp4', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1OhJcwho3_-pKrtcdqcQjQqEy5pQ1u2d0/view', fileSizeMB:1.5, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1w8PssL1xP51el6m70cBZ4dSsZOUpBKIY', fileId:'1w8PssL1xP51el6m70cBZ4dSsZOUpBKIY', name:'WhatsApp Video 2026-06-26 at 09.57.05.mp4', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1w8PssL1xP51el6m70cBZ4dSsZOUpBKIY/view', fileSizeMB:4.9, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1__-IpDOkKU8Y8UMn0Oz6xKsIi8-szDaM', fileId:'1__-IpDOkKU8Y8UMn0Oz6xKsIi8-szDaM', name:'WhatsApp Video 2026-06-26 at 09.56.54.mp4', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1__-IpDOkKU8Y8UMn0Oz6xKsIi8-szDaM/view', fileSizeMB:4.7, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1NWzsVrd0OaireLuJyTTo5808lO3oIMoF', fileId:'1NWzsVrd0OaireLuJyTTo5808lO3oIMoF', name:'WhatsApp Video 2026-06-26 at 09.56.44.mp4', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1NWzsVrd0OaireLuJyTTo5808lO3oIMoF/view', fileSizeMB:2, tags:{orientation:'landscape',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1CdzKm-UNbKIMgg1R2xBcOd3h_bxXqRGf', fileId:'1CdzKm-UNbKIMgg1R2xBcOd3h_bxXqRGf', name:'WhatsApp Video 2026-06-26 at 11.37.37.mp4', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1CdzKm-UNbKIMgg1R2xBcOd3h_bxXqRGf/view', fileSizeMB:10, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1tsXMgz-fCtF0ob1kFozMqQYosv8hrgKI', fileId:'1tsXMgz-fCtF0ob1kFozMqQYosv8hrgKI', name:'WhatsApp Video 2026-06-26 at 11.37.30.mp4', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1tsXMgz-fCtF0ob1kFozMqQYosv8hrgKI/view', fileSizeMB:7, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1Nng2yGt4Rcm2cjnNV_bwhoKq14Gp2lAp', fileId:'1Nng2yGt4Rcm2cjnNV_bwhoKq14Gp2lAp', name:'WhatsApp Video 2026-06-25 at 21.59.26.mp4', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1Nng2yGt4Rcm2cjnNV_bwhoKq14Gp2lAp/view', fileSizeMB:1.8, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1-BbZjd05V9g4SchDVhoP2IEkw20gS9IN', fileId:'1-BbZjd05V9g4SchDVhoP2IEkw20gS9IN', name:'WhatsApp Video 2026-06-25 at 21.59.22.mp4', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1-BbZjd05V9g4SchDVhoP2IEkw20gS9IN/view', fileSizeMB:2.3, tags:{orientation:'landscape',people:'group',mood:'posed'}, usageCount:0 },
+  { id:'rs-1gCxYwsuWoRk4LWW0-riIq2jVZJBFccwy', fileId:'1gCxYwsuWoRk4LWW0-riIq2jVZJBFccwy', name:'WhatsApp Video 2026-06-26 at 11.31.45.mp4', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1gCxYwsuWoRk4LWW0-riIq2jVZJBFccwy/view', fileSizeMB:7.5, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1l61UIy0pf_oGLVm5ntmpOALVSNt_WMbm', fileId:'1l61UIy0pf_oGLVm5ntmpOALVSNt_WMbm', name:'WhatsApp Video 2026-06-25 at 21.59.06.mp4', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1l61UIy0pf_oGLVm5ntmpOALVSNt_WMbm/view', fileSizeMB:4.6, tags:{orientation:'landscape',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1sp2QGMqxSc2l2_CZep-3zflTIA-oiB2E', fileId:'1sp2QGMqxSc2l2_CZep-3zflTIA-oiB2E', name:'DSC_1260.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1sp2QGMqxSc2l2_CZep-3zflTIA-oiB2E/view', fileSizeMB:85.3, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1uDjSoh2lLtpi3C9zTPUCMwxC4WWeIvhR', fileId:'1uDjSoh2lLtpi3C9zTPUCMwxC4WWeIvhR', name:'DSC_1248.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1uDjSoh2lLtpi3C9zTPUCMwxC4WWeIvhR/view', fileSizeMB:133.8, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-14sa38bDPRnaOG8dbqZjt_VzEe-Bos5jN', fileId:'14sa38bDPRnaOG8dbqZjt_VzEe-Bos5jN', name:'DSC_1187.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/14sa38bDPRnaOG8dbqZjt_VzEe-Bos5jN/view', fileSizeMB:87.6, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1kLbZs80kTtJt_IvQgIyGzZvk8zOa4XNr', fileId:'1kLbZs80kTtJt_IvQgIyGzZvk8zOa4XNr', name:'DSC_1186.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1kLbZs80kTtJt_IvQgIyGzZvk8zOa4XNr/view', fileSizeMB:139.2, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-19Np8iiRY_kWZIHHDVJL8iyDIXnODedhN', fileId:'19Np8iiRY_kWZIHHDVJL8iyDIXnODedhN', name:'DSC_1185.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/19Np8iiRY_kWZIHHDVJL8iyDIXnODedhN/view', fileSizeMB:106.3, tags:{orientation:'landscape',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1_tCyP6cstWTFKa94FIf_6oOxLMh-aVvL', fileId:'1_tCyP6cstWTFKa94FIf_6oOxLMh-aVvL', name:'DSC_1184.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1_tCyP6cstWTFKa94FIf_6oOxLMh-aVvL/view', fileSizeMB:63.7, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1jxCIY0-5WSimgwfT5DxXWeflLj4vvxb7', fileId:'1jxCIY0-5WSimgwfT5DxXWeflLj4vvxb7', name:'DSC_1172.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1jxCIY0-5WSimgwfT5DxXWeflLj4vvxb7/view', fileSizeMB:58.6, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1l9FR9w3kkJlyqSLZA5hDJPEuy3IGe7s9', fileId:'1l9FR9w3kkJlyqSLZA5hDJPEuy3IGe7s9', name:'DSC_1169.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1l9FR9w3kkJlyqSLZA5hDJPEuy3IGe7s9/view', fileSizeMB:184.1, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1i9MMuyxtxjYQzrFQKZMGen0loVPHPGxo', fileId:'1i9MMuyxtxjYQzrFQKZMGen0loVPHPGxo', name:'DSC_1160.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1i9MMuyxtxjYQzrFQKZMGen0loVPHPGxo/view', fileSizeMB:861.6, tags:{orientation:'portrait',people:'solo',mood:'posed'}, usageCount:0 },
+  { id:'rs-1MtXBOylSj7AzVc6SWZWH7KwpOHB4H9bU', fileId:'1MtXBOylSj7AzVc6SWZWH7KwpOHB4H9bU', name:'DSC_1157.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1MtXBOylSj7AzVc6SWZWH7KwpOHB4H9bU/view', fileSizeMB:265.8, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-19lTgd1ntr4bwCJDZc_fSGo7iW9ODy3yh', fileId:'19lTgd1ntr4bwCJDZc_fSGo7iW9ODy3yh', name:'DSC_1156.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/19lTgd1ntr4bwCJDZc_fSGo7iW9ODy3yh/view', fileSizeMB:493.9, tags:{orientation:'landscape',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1mykRd2rrq3nGvX2GtiD3VHpsbahhU8f4', fileId:'1mykRd2rrq3nGvX2GtiD3VHpsbahhU8f4', name:'DSC_1281.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1mykRd2rrq3nGvX2GtiD3VHpsbahhU8f4/view', fileSizeMB:173.6, tags:{orientation:'portrait',people:'solo',mood:'posed'}, usageCount:0 },
+  { id:'rs-1u95lfYUk5dpLRMniDXHg7istNus87W6J', fileId:'1u95lfYUk5dpLRMniDXHg7istNus87W6J', name:'DSC_1273.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1u95lfYUk5dpLRMniDXHg7istNus87W6J/view', fileSizeMB:865.7, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1J0nPSvh2KAChu2FpE8kIX5-DXKw-qTwv', fileId:'1J0nPSvh2KAChu2FpE8kIX5-DXKw-qTwv', name:'DSC_1272.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1J0nPSvh2KAChu2FpE8kIX5-DXKw-qTwv/view', fileSizeMB:82.5, tags:{orientation:'portrait',people:'group',mood:'posed'}, usageCount:0 },
+  { id:'rs-1kLqXcY5Adb1jL3CuURlc0sSlbFDfe6Xb', fileId:'1kLqXcY5Adb1jL3CuURlc0sSlbFDfe6Xb', name:'DSC_1267.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1kLqXcY5Adb1jL3CuURlc0sSlbFDfe6Xb/view', fileSizeMB:100, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1T0AYyanedCVPCvyzExqAeRIWJquwyuBM', fileId:'1T0AYyanedCVPCvyzExqAeRIWJquwyuBM', name:'DSC_1266.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1T0AYyanedCVPCvyzExqAeRIWJquwyuBM/view', fileSizeMB:110.8, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1PPNr6xFfg12jPuNofzn5Phx8BJCbfhyQ', fileId:'1PPNr6xFfg12jPuNofzn5Phx8BJCbfhyQ', name:'DSC_1265.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1PPNr6xFfg12jPuNofzn5Phx8BJCbfhyQ/view', fileSizeMB:105.2, tags:{orientation:'landscape',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1CoOVAnyRafYvhnt9CHqJRRwFmToIs1_I', fileId:'1CoOVAnyRafYvhnt9CHqJRRwFmToIs1_I', name:'DSC_1264.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1CoOVAnyRafYvhnt9CHqJRRwFmToIs1_I/view', fileSizeMB:100.4, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1bkL0cSfpycBE5a9f1C6kvJI6kL_Hb_pj', fileId:'1bkL0cSfpycBE5a9f1C6kvJI6kL_Hb_pj', name:'DSC_1263.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1bkL0cSfpycBE5a9f1C6kvJI6kL_Hb_pj/view', fileSizeMB:115.8, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1CIbutrF6zsyTj2QwXvcCzvtqlx-rc1Rj', fileId:'1CIbutrF6zsyTj2QwXvcCzvtqlx-rc1Rj', name:'DSC_1262.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1CIbutrF6zsyTj2QwXvcCzvtqlx-rc1Rj/view', fileSizeMB:86.1, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1KjnFIXkO7qzrBHa3-3g_43_ZMJH7TC3z', fileId:'1KjnFIXkO7qzrBHa3-3g_43_ZMJH7TC3z', name:'DSC_1230.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1KjnFIXkO7qzrBHa3-3g_43_ZMJH7TC3z/view', fileSizeMB:87.6, tags:{orientation:'landscape',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1JBuNOgMXW_AD5jQ31YDzNjzRQ0paZyiO', fileId:'1JBuNOgMXW_AD5jQ31YDzNjzRQ0paZyiO', name:'DSC_1229.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1JBuNOgMXW_AD5jQ31YDzNjzRQ0paZyiO/view', fileSizeMB:767.9, tags:{orientation:'portrait',people:'solo',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1IVOMGlW1oUicS-GrOTrYKCZaclw962fG', fileId:'1IVOMGlW1oUicS-GrOTrYKCZaclw962fG', name:'DSC_1228.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1IVOMGlW1oUicS-GrOTrYKCZaclw962fG/view', fileSizeMB:336.8, tags:{orientation:'portrait',people:'solo',mood:'posed'}, usageCount:0 },
+  { id:'rs-1sKyH5Yjh2SIi5-EM1QrV0MfEh3Ekyoob', fileId:'1sKyH5Yjh2SIi5-EM1QrV0MfEh3Ekyoob', name:'DSC_1225.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1sKyH5Yjh2SIi5-EM1QrV0MfEh3Ekyoob/view', fileSizeMB:705.2, tags:{orientation:'portrait',people:'solo',mood:'posed'}, usageCount:0 },
+  { id:'rs-1J6asLWsQSZjbweRT-ro2Egprl-muE9AI', fileId:'1J6asLWsQSZjbweRT-ro2Egprl-muE9AI', name:'DSC_1224.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1J6asLWsQSZjbweRT-ro2Egprl-muE9AI/view', fileSizeMB:289.4, tags:{orientation:'portrait',people:'solo',mood:'posed'}, usageCount:0 },
+  { id:'rs-1rwSDkdfJRPqQ5s6N1K_8oiuiPb9mXxPq', fileId:'1rwSDkdfJRPqQ5s6N1K_8oiuiPb9mXxPq', name:'DSC_1223.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1rwSDkdfJRPqQ5s6N1K_8oiuiPb9mXxPq/view', fileSizeMB:108.6, tags:{orientation:'portrait',people:'solo',mood:'posed'}, usageCount:0 },
+  { id:'rs-19Mem0YgDt4vI8g4IRke5SPleBNdt8e4K', fileId:'19Mem0YgDt4vI8g4IRke5SPleBNdt8e4K', name:'DSC_1222.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/19Mem0YgDt4vI8g4IRke5SPleBNdt8e4K/view', fileSizeMB:330.6, tags:{orientation:'portrait',people:'solo',mood:'posed'}, usageCount:0 },
+  { id:'rs-1gL79b_V9GzFqtejV4WKXAV_StS_9oaiq', fileId:'1gL79b_V9GzFqtejV4WKXAV_StS_9oaiq', name:'DSC_1221.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1gL79b_V9GzFqtejV4WKXAV_StS_9oaiq/view', fileSizeMB:203.8, tags:{orientation:'portrait',people:'solo',mood:'energetic'}, usageCount:0 },
+  { id:'rs-15wKtloWJV8z-fRxymkuzS_suTvtp8pmo', fileId:'15wKtloWJV8z-fRxymkuzS_suTvtp8pmo', name:'DSC_1220.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/15wKtloWJV8z-fRxymkuzS_suTvtp8pmo/view', fileSizeMB:444.6, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-13nBd9IY7Km7jwhfdA8apP1zYHigP-aGM', fileId:'13nBd9IY7Km7jwhfdA8apP1zYHigP-aGM', name:'DSC_1219.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/13nBd9IY7Km7jwhfdA8apP1zYHigP-aGM/view', fileSizeMB:366.5, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1gufIR9lxBWH6hCcrS8y-EYf8wh66MbgU', fileId:'1gufIR9lxBWH6hCcrS8y-EYf8wh66MbgU', name:'DSC_1217.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1gufIR9lxBWH6hCcrS8y-EYf8wh66MbgU/view', fileSizeMB:151.1, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1Jq_SSXWE_oSttiTeFbmi8wBswzBMhouF', fileId:'1Jq_SSXWE_oSttiTeFbmi8wBswzBMhouF', name:'DSC_1216.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1Jq_SSXWE_oSttiTeFbmi8wBswzBMhouF/view', fileSizeMB:86.4, tags:{orientation:'landscape',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1_AAJ3ctnU7-siUvYPpKaDoQ4v4ok7dg2', fileId:'1_AAJ3ctnU7-siUvYPpKaDoQ4v4ok7dg2', name:'DSC_1215.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1_AAJ3ctnU7-siUvYPpKaDoQ4v4ok7dg2/view', fileSizeMB:72.9, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1nTkcu9Xdqv_HPsUAmXTyJa2zkqvQ3Nkp', fileId:'1nTkcu9Xdqv_HPsUAmXTyJa2zkqvQ3Nkp', name:'DSC_1206.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1nTkcu9Xdqv_HPsUAmXTyJa2zkqvQ3Nkp/view', fileSizeMB:117.4, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-19cWp-9t5xtSASHykPHHQiuLmTLCwSK03', fileId:'19cWp-9t5xtSASHykPHHQiuLmTLCwSK03', name:'DSC_1190.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/19cWp-9t5xtSASHykPHHQiuLmTLCwSK03/view', fileSizeMB:104.7, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1aoRM8sLR9-B0XTtkeu15xjWitHRBBvbp', fileId:'1aoRM8sLR9-B0XTtkeu15xjWitHRBBvbp', name:'DSC_1189.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1aoRM8sLR9-B0XTtkeu15xjWitHRBBvbp/view', fileSizeMB:29.8, tags:{orientation:'landscape',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1XgHgHv8uSCvgTjJvFNlhQyQ6_rBda__d', fileId:'1XgHgHv8uSCvgTjJvFNlhQyQ6_rBda__d', name:'DSC_1188.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1XgHgHv8uSCvgTjJvFNlhQyQ6_rBda__d/view', fileSizeMB:124.3, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1t5KP0SnypjVtKqZvURJUolrR7WMzoLMA', fileId:'1t5KP0SnypjVtKqZvURJUolrR7WMzoLMA', name:'DSC_1173.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1t5KP0SnypjVtKqZvURJUolrR7WMzoLMA/view', fileSizeMB:287.1, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1PbqYCvuuuuQc5ej9oXmagtIAQdiqZzjT', fileId:'1PbqYCvuuuuQc5ej9oXmagtIAQdiqZzjT', name:'DSC_1159.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1PbqYCvuuuuQc5ej9oXmagtIAQdiqZzjT/view', fileSizeMB:357.7, tags:{orientation:'portrait',people:'solo',mood:'posed'}, usageCount:0 },
+  { id:'rs-1OCcy3zNi8BnRUV4nl7Oe_Gzj_lkMLYfQ', fileId:'1OCcy3zNi8BnRUV4nl7Oe_Gzj_lkMLYfQ', name:'DSC_1158.MOV', event:'GIVE IT ALL', driveUrl:'https://drive.google.com/file/d/1OCcy3zNi8BnRUV4nl7Oe_Gzj_lkMLYfQ/view', fileSizeMB:486.5, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  // ── Singapore ──
+  { id:'rs-1YJnpGbuFgLpa-D2wQ898pgsiiE-9QwdD', fileId:'1YJnpGbuFgLpa-D2wQ898pgsiiE-9QwdD', name:'IMG_2326.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1YJnpGbuFgLpa-D2wQ898pgsiiE-9QwdD/view', fileSizeMB:343.8, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1b3ZbbxrjgsRoeswRR1I-zR-K9REK2VON', fileId:'1b3ZbbxrjgsRoeswRR1I-zR-K9REK2VON', name:'IMG_2321.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1b3ZbbxrjgsRoeswRR1I-zR-K9REK2VON/view', fileSizeMB:275.4, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-16kCkkbcPMHdf4Xk_WAc5CCJ6R9kfcbSv', fileId:'16kCkkbcPMHdf4Xk_WAc5CCJ6R9kfcbSv', name:'IMG_2335.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/16kCkkbcPMHdf4Xk_WAc5CCJ6R9kfcbSv/view', fileSizeMB:252.6, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1ZoAfTA-0HitwekCyt8NSdpfvVwG9vEio', fileId:'1ZoAfTA-0HitwekCyt8NSdpfvVwG9vEio', name:'IMG_2346.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1ZoAfTA-0HitwekCyt8NSdpfvVwG9vEio/view', fileSizeMB:241.2, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-15szjy_qXevFVs6ioqHcNtObWdgZAYyK8', fileId:'15szjy_qXevFVs6ioqHcNtObWdgZAYyK8', name:'IMG_2338.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/15szjy_qXevFVs6ioqHcNtObWdgZAYyK8/view', fileSizeMB:231.6, tags:{orientation:'landscape',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1d9rzFjYJTPVhIGjAx5rJQZBS5A2gXhu3', fileId:'1d9rzFjYJTPVhIGjAx5rJQZBS5A2gXhu3', name:'IMG_2344.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1d9rzFjYJTPVhIGjAx5rJQZBS5A2gXhu3/view', fileSizeMB:221, tags:{orientation:'landscape',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1nALa0ihP58ha8BrfR3dQn0EzZDqueOA8', fileId:'1nALa0ihP58ha8BrfR3dQn0EzZDqueOA8', name:'IMG_2333.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1nALa0ihP58ha8BrfR3dQn0EzZDqueOA8/view', fileSizeMB:200.1, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1PnVdDLIop1QBKNA0hRXdNdS-1XbDjPjV', fileId:'1PnVdDLIop1QBKNA0hRXdNdS-1XbDjPjV', name:'IMG_2305.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1PnVdDLIop1QBKNA0hRXdNdS-1XbDjPjV/view', fileSizeMB:167.8, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1k5OUEsJvnyq4VwikRV_C2nqdF9ODwE7M', fileId:'1k5OUEsJvnyq4VwikRV_C2nqdF9ODwE7M', name:'IMG_2329.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1k5OUEsJvnyq4VwikRV_C2nqdF9ODwE7M/view', fileSizeMB:70.7, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1b4s1nbjBk7PZtSbwg3CZXeyQKiiTGit4', fileId:'1b4s1nbjBk7PZtSbwg3CZXeyQKiiTGit4', name:'IMG_2342.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1b4s1nbjBk7PZtSbwg3CZXeyQKiiTGit4/view', fileSizeMB:153.2, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1-51EvlgvssQuYE19d79fWr5gjo5_fqUf', fileId:'1-51EvlgvssQuYE19d79fWr5gjo5_fqUf', name:'IMG_2345.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1-51EvlgvssQuYE19d79fWr5gjo5_fqUf/view', fileSizeMB:151.8, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1lln3d9xoHHk9e92XSR1mqL6NHE42JHHG', fileId:'1lln3d9xoHHk9e92XSR1mqL6NHE42JHHG', name:'IMG_2323.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1lln3d9xoHHk9e92XSR1mqL6NHE42JHHG/view', fileSizeMB:149.4, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1TwtfTC7aKLqI3w6glc1ktNzk7ihyKZh_', fileId:'1TwtfTC7aKLqI3w6glc1ktNzk7ihyKZh_', name:'IMG_2320.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1TwtfTC7aKLqI3w6glc1ktNzk7ihyKZh_/view', fileSizeMB:140, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1vw8oZaEx_cPQkR5iHXDuzIFsorv6AatO', fileId:'1vw8oZaEx_cPQkR5iHXDuzIFsorv6AatO', name:'IMG_2337.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1vw8oZaEx_cPQkR5iHXDuzIFsorv6AatO/view', fileSizeMB:136.2, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1Wvwp0puJ6AB0U_wEFuOZhVeQjY76kQFz', fileId:'1Wvwp0puJ6AB0U_wEFuOZhVeQjY76kQFz', name:'IMG_2319.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1Wvwp0puJ6AB0U_wEFuOZhVeQjY76kQFz/view', fileSizeMB:130.1, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1pnzbWtXaRoOJ1oXGqJ22NxqvcY3cIo4p', fileId:'1pnzbWtXaRoOJ1oXGqJ22NxqvcY3cIo4p', name:'IMG_2334.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1pnzbWtXaRoOJ1oXGqJ22NxqvcY3cIo4p/view', fileSizeMB:129.3, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1sjOYrXl5eqf1UCEzkkWd8jdd7Gon0xxX', fileId:'1sjOYrXl5eqf1UCEzkkWd8jdd7Gon0xxX', name:'IMG_2310.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1sjOYrXl5eqf1UCEzkkWd8jdd7Gon0xxX/view', fileSizeMB:126.3, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1vtJ2OM3LN92mjeV0U7ZKbG1xA_lMEJm9', fileId:'1vtJ2OM3LN92mjeV0U7ZKbG1xA_lMEJm9', name:'IMG_2339.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1vtJ2OM3LN92mjeV0U7ZKbG1xA_lMEJm9/view', fileSizeMB:116.8, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1hBmDBSPn5hmUEGIJWbm9cjKvmLefNJEs', fileId:'1hBmDBSPn5hmUEGIJWbm9cjKvmLefNJEs', name:'IMG_2331.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1hBmDBSPn5hmUEGIJWbm9cjKvmLefNJEs/view', fileSizeMB:106.6, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-19EAIUCG8m_3Uptqob89A0i-CmkBbXgle', fileId:'19EAIUCG8m_3Uptqob89A0i-CmkBbXgle', name:'IMG_2322.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/19EAIUCG8m_3Uptqob89A0i-CmkBbXgle/view', fileSizeMB:98.2, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1d8aapAxRCkWmbjaClb7dyyjuwYKlftwR', fileId:'1d8aapAxRCkWmbjaClb7dyyjuwYKlftwR', name:'IMG_2341.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1d8aapAxRCkWmbjaClb7dyyjuwYKlftwR/view', fileSizeMB:90.5, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1YS_JbNc9Z-ndb346H9_K1JWmlNr-2Xq9', fileId:'1YS_JbNc9Z-ndb346H9_K1JWmlNr-2Xq9', name:'IMG_2318.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1YS_JbNc9Z-ndb346H9_K1JWmlNr-2Xq9/view', fileSizeMB:90.2, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-16DeuH2815mjWIrcsg5LxB_rKORNKCPCb', fileId:'16DeuH2815mjWIrcsg5LxB_rKORNKCPCb', name:'IMG_2340.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/16DeuH2815mjWIrcsg5LxB_rKORNKCPCb/view', fileSizeMB:84.3, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1NwjyWMs761YGiNUuL-M5kibwBndhnbHf', fileId:'1NwjyWMs761YGiNUuL-M5kibwBndhnbHf', name:'IMG_2324.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1NwjyWMs761YGiNUuL-M5kibwBndhnbHf/view', fileSizeMB:84.3, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1MvkMcq8CGxWMjsxfDl-sPrAK3G8f2MNE', fileId:'1MvkMcq8CGxWMjsxfDl-sPrAK3G8f2MNE', name:'IMG_2343.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1MvkMcq8CGxWMjsxfDl-sPrAK3G8f2MNE/view', fileSizeMB:80.4, tags:{orientation:'landscape',people:'solo',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1qLEVd3Ik0PrBkxQTB0KlEe_mbmnTh6iM', fileId:'1qLEVd3Ik0PrBkxQTB0KlEe_mbmnTh6iM', name:'IMG_2316.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1qLEVd3Ik0PrBkxQTB0KlEe_mbmnTh6iM/view', fileSizeMB:71.4, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1nrpsf-OPpqmRw0JNtEd9rjv6_SP6AY_s', fileId:'1nrpsf-OPpqmRw0JNtEd9rjv6_SP6AY_s', name:'IMG_2332.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1nrpsf-OPpqmRw0JNtEd9rjv6_SP6AY_s/view', fileSizeMB:66.3, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1J-gznbk-ye5ZNft2CAC00bbaiM_t_3fq', fileId:'1J-gznbk-ye5ZNft2CAC00bbaiM_t_3fq', name:'IMG_2304.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1J-gznbk-ye5ZNft2CAC00bbaiM_t_3fq/view', fileSizeMB:58.9, tags:{orientation:'landscape',people:'solo',mood:'posed'}, usageCount:0 },
+  { id:'rs-1vW10HGEeXIBz7_YtKBBcP8o3x7r4-50o', fileId:'1vW10HGEeXIBz7_YtKBBcP8o3x7r4-50o', name:'IMG_2330.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1vW10HGEeXIBz7_YtKBBcP8o3x7r4-50o/view', fileSizeMB:43.2, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1VGucol95tFsv1TB-GelBQThdFSbgOAYC', fileId:'1VGucol95tFsv1TB-GelBQThdFSbgOAYC', name:'IMG_2327.MOV', event:'Singapore', driveUrl:'https://drive.google.com/file/d/1VGucol95tFsv1TB-GelBQThdFSbgOAYC/view', fileSizeMB:20.6, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  // ── Coworking day ──
+  { id:'rs-1kDlXQPq844PHMkPXfpHGQyyQnSjqXfbh', fileId:'1kDlXQPq844PHMkPXfpHGQyyQnSjqXfbh', name:'IMG_0605.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1kDlXQPq844PHMkPXfpHGQyyQnSjqXfbh/view', fileSizeMB:10.4, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1NqsDitjiageSL4EiUh-lAl-GCO-8AY3v', fileId:'1NqsDitjiageSL4EiUh-lAl-GCO-8AY3v', name:'IMG_0619.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1NqsDitjiageSL4EiUh-lAl-GCO-8AY3v/view', fileSizeMB:12.8, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1eygs6S_B4xk_3Gsr7cR6HArvui8rgKXJ', fileId:'1eygs6S_B4xk_3Gsr7cR6HArvui8rgKXJ', name:'IMG_0606.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1eygs6S_B4xk_3Gsr7cR6HArvui8rgKXJ/view', fileSizeMB:6.7, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1b0U-9vu95qwZw5uxUjmW3nWMBiabdq2f', fileId:'1b0U-9vu95qwZw5uxUjmW3nWMBiabdq2f', name:'IMG_0607.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1b0U-9vu95qwZw5uxUjmW3nWMBiabdq2f/view', fileSizeMB:9.3, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1mbBNDgxGdVzdQT2lYcUwHeo8zegVpIg3', fileId:'1mbBNDgxGdVzdQT2lYcUwHeo8zegVpIg3', name:'IMG_0432.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1mbBNDgxGdVzdQT2lYcUwHeo8zegVpIg3/view', fileSizeMB:6.9, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1CoJTNRVKm86oHtj3hcMZWDLfhNfD5pIw', fileId:'1CoJTNRVKm86oHtj3hcMZWDLfhNfD5pIw', name:'IMG_0608.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1CoJTNRVKm86oHtj3hcMZWDLfhNfD5pIw/view', fileSizeMB:3.3, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1HTCoBneb4DPvDQ4qjnvmYENjYEQuBYPN', fileId:'1HTCoBneb4DPvDQ4qjnvmYENjYEQuBYPN', name:'IMG_0611.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1HTCoBneb4DPvDQ4qjnvmYENjYEQuBYPN/view', fileSizeMB:10.3, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1-Lc1VP5jR_NXJ_f1fUeYEt00fhsqWsJF', fileId:'1-Lc1VP5jR_NXJ_f1fUeYEt00fhsqWsJF', name:'IMG_0610.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1-Lc1VP5jR_NXJ_f1fUeYEt00fhsqWsJF/view', fileSizeMB:6.2, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1-21wPb8UpSGgrPEo1rbvzCNbhtQ-Lrl3', fileId:'1-21wPb8UpSGgrPEo1rbvzCNbhtQ-Lrl3', name:'IMG_0612.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1-21wPb8UpSGgrPEo1rbvzCNbhtQ-Lrl3/view', fileSizeMB:6.9, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1oUktKH_N9Gi0simm5u4p_RK1vPRDFGRn', fileId:'1oUktKH_N9Gi0simm5u4p_RK1vPRDFGRn', name:'IMG_0613.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1oUktKH_N9Gi0simm5u4p_RK1vPRDFGRn/view', fileSizeMB:6.9, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-11ZHoYrAjcnSco9vyIminnqnNLmFML1LM', fileId:'11ZHoYrAjcnSco9vyIminnqnNLmFML1LM', name:'coworking day.mp4', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/11ZHoYrAjcnSco9vyIminnqnNLmFML1LM/view', fileSizeMB:8.2, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1rqjDqVCHWxv-uLmetpj3KCqiPpG59thu', fileId:'1rqjDqVCHWxv-uLmetpj3KCqiPpG59thu', name:'IMG_0217.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1rqjDqVCHWxv-uLmetpj3KCqiPpG59thu/view', fileSizeMB:159.2, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-15RGq5pPwHcynIGEX7ZhXyF4qe7dnyins', fileId:'15RGq5pPwHcynIGEX7ZhXyF4qe7dnyins', name:'IMG_0219.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/15RGq5pPwHcynIGEX7ZhXyF4qe7dnyins/view', fileSizeMB:127.3, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1ur7kb9Ln4BVz2sLzJ8gNsaEOkFII66Ji', fileId:'1ur7kb9Ln4BVz2sLzJ8gNsaEOkFII66Ji', name:'IMG_0223.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1ur7kb9Ln4BVz2sLzJ8gNsaEOkFII66Ji/view', fileSizeMB:92.8, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1YVnzfd5sck-SKyoNxCgbBLxoCd0XrhnT', fileId:'1YVnzfd5sck-SKyoNxCgbBLxoCd0XrhnT', name:'IMG_0216.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1YVnzfd5sck-SKyoNxCgbBLxoCd0XrhnT/view', fileSizeMB:69, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1kltSN0rdRaw5w-NiTdQYWlCTFKudaJgI', fileId:'1kltSN0rdRaw5w-NiTdQYWlCTFKudaJgI', name:'IMG_0222.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1kltSN0rdRaw5w-NiTdQYWlCTFKudaJgI/view', fileSizeMB:38.8, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-12DJ1BsrtKCLc9vpCNRShapm_ningYZNi', fileId:'12DJ1BsrtKCLc9vpCNRShapm_ningYZNi', name:'IMG_0215.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/12DJ1BsrtKCLc9vpCNRShapm_ningYZNi/view', fileSizeMB:30.7, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1b5C6Ec2KaSZQ3pUng1MRGd0D1q8MTGKd', fileId:'1b5C6Ec2KaSZQ3pUng1MRGd0D1q8MTGKd', name:'IMG_0221.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1b5C6Ec2KaSZQ3pUng1MRGd0D1q8MTGKd/view', fileSizeMB:21.2, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-18pokVRA92RYHazWp9zURlDZmHk9lYENP', fileId:'18pokVRA92RYHazWp9zURlDZmHk9lYENP', name:'IMG_0220.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/18pokVRA92RYHazWp9zURlDZmHk9lYENP/view', fileSizeMB:13.3, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1Q7LVpXCWQ5VjFnG0LrqVCBOsGbp4cLN7', fileId:'1Q7LVpXCWQ5VjFnG0LrqVCBOsGbp4cLN7', name:'IMG_0620.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1Q7LVpXCWQ5VjFnG0LrqVCBOsGbp4cLN7/view', fileSizeMB:9.4, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1e2fuNRLhaBUJpVYl01mleJj7GHYyetiR', fileId:'1e2fuNRLhaBUJpVYl01mleJj7GHYyetiR', name:'IMG_0217.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1e2fuNRLhaBUJpVYl01mleJj7GHYyetiR/view', fileSizeMB:159.2, tags:{orientation:'portrait',people:'group',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1kKOFXFVGzVg7l9uBzph3UEok35MNkX2c', fileId:'1kKOFXFVGzVg7l9uBzph3UEok35MNkX2c', name:'IMG_0219.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1kKOFXFVGzVg7l9uBzph3UEok35MNkX2c/view', fileSizeMB:127.3, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1WKwnUHlWBxBci1OxrmCbGSpdaeJnSuJJ', fileId:'1WKwnUHlWBxBci1OxrmCbGSpdaeJnSuJJ', name:'IMG_0223.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1WKwnUHlWBxBci1OxrmCbGSpdaeJnSuJJ/view', fileSizeMB:92.8, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1fLWlkEdvT-BY0BTLSuw9zhGqJPeSm_C5', fileId:'1fLWlkEdvT-BY0BTLSuw9zhGqJPeSm_C5', name:'IMG_0216.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1fLWlkEdvT-BY0BTLSuw9zhGqJPeSm_C5/view', fileSizeMB:69, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1tC-zKeO3Qo0aBccfSJluWJ3b_YC6prRu', fileId:'1tC-zKeO3Qo0aBccfSJluWJ3b_YC6prRu', name:'IMG_0222.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1tC-zKeO3Qo0aBccfSJluWJ3b_YC6prRu/view', fileSizeMB:38.8, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1cDSw_es0rlj6HSOF8PPNIjgutK3AhfoB', fileId:'1cDSw_es0rlj6HSOF8PPNIjgutK3AhfoB', name:'IMG_0215.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1cDSw_es0rlj6HSOF8PPNIjgutK3AhfoB/view', fileSizeMB:30.7, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1RvgA8jdlBYpD9ZOSmyxs-JG_xDbh_Q40', fileId:'1RvgA8jdlBYpD9ZOSmyxs-JG_xDbh_Q40', name:'IMG_0221.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1RvgA8jdlBYpD9ZOSmyxs-JG_xDbh_Q40/view', fileSizeMB:21.2, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1ipzUZIYuiuNC61nRi8zJao0H9n0DV7gF', fileId:'1ipzUZIYuiuNC61nRi8zJao0H9n0DV7gF', name:'IMG_0218.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1ipzUZIYuiuNC61nRi8zJao0H9n0DV7gF/view', fileSizeMB:13.5, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1hyr0EqgXBjbC-FUU2Qvyuk68rzY0ZWNE', fileId:'1hyr0EqgXBjbC-FUU2Qvyuk68rzY0ZWNE', name:'IMG_0220.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1hyr0EqgXBjbC-FUU2Qvyuk68rzY0ZWNE/view', fileSizeMB:13.3, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-11MzsaffImV_15qmRQfKeT6Bl88w0ZRbe', fileId:'11MzsaffImV_15qmRQfKeT6Bl88w0ZRbe', name:'IMG_0213.MOV', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/11MzsaffImV_15qmRQfKeT6Bl88w0ZRbe/view', fileSizeMB:10, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1JkFphJwHnMAqtS8qMVt9LQrH1-whUww9', fileId:'1JkFphJwHnMAqtS8qMVt9LQrH1-whUww9', name:'Home.mov', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1JkFphJwHnMAqtS8qMVt9LQrH1-whUww9/view', fileSizeMB:15.2, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1kVCd1u--EiBjHjKQjM_xbUWiMe8Ez45z', fileId:'1kVCd1u--EiBjHjKQjM_xbUWiMe8Ez45z', name:'coworking day.mp4', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1kVCd1u--EiBjHjKQjM_xbUWiMe8Ez45z/view', fileSizeMB:14.7, tags:{orientation:'portrait',people:'group',mood:'calm'}, usageCount:0 },
+  { id:'rs-1D1AWbJgaffQ0_8YS97CcF3OiT0-Us6EZ', fileId:'1D1AWbJgaffQ0_8YS97CcF3OiT0-Us6EZ', name:'coworking day.mp4', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1D1AWbJgaffQ0_8YS97CcF3OiT0-Us6EZ/view', fileSizeMB:17.2, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1XD_ahDfb3U9vPbMvjGMdbUCAWT-0eClt', fileId:'1XD_ahDfb3U9vPbMvjGMdbUCAWT-0eClt', name:'coworking day.mp4', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1XD_ahDfb3U9vPbMvjGMdbUCAWT-0eClt/view', fileSizeMB:15.4, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1t9g0SF2rFgovNjGZLe7y7N9Jsf_XUcVx', fileId:'1t9g0SF2rFgovNjGZLe7y7N9Jsf_XUcVx', name:'coworking day.mp4', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1t9g0SF2rFgovNjGZLe7y7N9Jsf_XUcVx/view', fileSizeMB:12.6, tags:{orientation:'portrait',people:'group',mood:'calm'}, usageCount:0 },
+  { id:'rs-1SchaDBvevfhSCauJCV8g2loMJ3ljT5nH', fileId:'1SchaDBvevfhSCauJCV8g2loMJ3ljT5nH', name:'coworking day.mp4', event:'Coworking day', driveUrl:'https://drive.google.com/file/d/1SchaDBvevfhSCauJCV8g2loMJ3ljT5nH/view', fileSizeMB:6, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  // ── Content day ──
+  { id:'rs-1sl_-yp-kw0HZENYgb8vNCwZnuM-6e8TR', fileId:'1sl_-yp-kw0HZENYgb8vNCwZnuM-6e8TR', name:'IMG_2048.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1sl_-yp-kw0HZENYgb8vNCwZnuM-6e8TR/view', fileSizeMB:198.8, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1uJLmzHS5sT7OKSXTvW6dVyusOlp2_SXc', fileId:'1uJLmzHS5sT7OKSXTvW6dVyusOlp2_SXc', name:'IMG_2040.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1uJLmzHS5sT7OKSXTvW6dVyusOlp2_SXc/view', fileSizeMB:177.9, tags:{orientation:'portrait',people:'solo',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1fhmmYn1MgwetC2V0IJd2_S9qXo1QD_1I', fileId:'1fhmmYn1MgwetC2V0IJd2_S9qXo1QD_1I', name:'IMG_2064.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1fhmmYn1MgwetC2V0IJd2_S9qXo1QD_1I/view', fileSizeMB:144.8, tags:{orientation:'portrait',people:'group',mood:'posed'}, usageCount:0 },
+  { id:'rs-1YaEeDTbTeoRFJrRYzFH5q_Cs7mBi57d8', fileId:'1YaEeDTbTeoRFJrRYzFH5q_Cs7mBi57d8', name:'IMG_2050.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1YaEeDTbTeoRFJrRYzFH5q_Cs7mBi57d8/view', fileSizeMB:73.6, tags:{orientation:'landscape',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1fIT6mSS1lKADn6A7LL8sCMBSWywgPoxo', fileId:'1fIT6mSS1lKADn6A7LL8sCMBSWywgPoxo', name:'IMG_2060.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1fIT6mSS1lKADn6A7LL8sCMBSWywgPoxo/view', fileSizeMB:68.1, tags:{orientation:'landscape',people:'group',mood:'posed'}, usageCount:0 },
+  { id:'rs-1BIXtXc4Upgvzalmx0tCNEnlrjK46pKbH', fileId:'1BIXtXc4Upgvzalmx0tCNEnlrjK46pKbH', name:'IMG_2051.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1BIXtXc4Upgvzalmx0tCNEnlrjK46pKbH/view', fileSizeMB:58.6, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1oj7DsNhoxPf6CiC-KuY_vPvWW2EaUTXz', fileId:'1oj7DsNhoxPf6CiC-KuY_vPvWW2EaUTXz', name:'IMG_2043.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1oj7DsNhoxPf6CiC-KuY_vPvWW2EaUTXz/view', fileSizeMB:50, tags:{orientation:'portrait',people:'solo',mood:'energetic'}, usageCount:0 },
+  { id:'rs-1Q7KQ6_vOAAb70BwASJDYcCjx9zGBv6-F', fileId:'1Q7KQ6_vOAAb70BwASJDYcCjx9zGBv6-F', name:'IMG_2062.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1Q7KQ6_vOAAb70BwASJDYcCjx9zGBv6-F/view', fileSizeMB:49.9, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1ebIul4HsXS6uQdLWaOKfFo4SZpIPBtKX', fileId:'1ebIul4HsXS6uQdLWaOKfFo4SZpIPBtKX', name:'IMG_2049.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1ebIul4HsXS6uQdLWaOKfFo4SZpIPBtKX/view', fileSizeMB:47, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1y-mnG7_joEq2nBg1aZeHQjHutkSB74r6', fileId:'1y-mnG7_joEq2nBg1aZeHQjHutkSB74r6', name:'IMG_2052.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1y-mnG7_joEq2nBg1aZeHQjHutkSB74r6/view', fileSizeMB:42.1, tags:{orientation:'portrait',people:'solo',mood:'candid'}, usageCount:0 },
+  { id:'rs-1Evaj6ukraOfVyuacEPfGvSMNAjt8n5rs', fileId:'1Evaj6ukraOfVyuacEPfGvSMNAjt8n5rs', name:'IMG_2058.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1Evaj6ukraOfVyuacEPfGvSMNAjt8n5rs/view', fileSizeMB:40.5, tags:{orientation:'landscape',people:'group',mood:'posed'}, usageCount:0 },
+  { id:'rs-1SVb9oWt2lEU96CF5UsX56NRUFpzo4KCH', fileId:'1SVb9oWt2lEU96CF5UsX56NRUFpzo4KCH', name:'IMG_2063.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1SVb9oWt2lEU96CF5UsX56NRUFpzo4KCH/view', fileSizeMB:25.6, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1XWr1JIpACMCdu_5NwsJeGEWbTgdbUfmw', fileId:'1XWr1JIpACMCdu_5NwsJeGEWbTgdbUfmw', name:'IMG_2044.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1XWr1JIpACMCdu_5NwsJeGEWbTgdbUfmw/view', fileSizeMB:23, tags:{orientation:'landscape',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1EQro0YkeaSbE43vXmnEjcMNsSRobtxR7', fileId:'1EQro0YkeaSbE43vXmnEjcMNsSRobtxR7', name:'IMG_2045.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1EQro0YkeaSbE43vXmnEjcMNsSRobtxR7/view', fileSizeMB:22.4, tags:{orientation:'landscape',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-1UhSRh_qg8Gd4vUYAysf7i1MP4pPPRXKN', fileId:'1UhSRh_qg8Gd4vUYAysf7i1MP4pPPRXKN', name:'IMG_2047.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1UhSRh_qg8Gd4vUYAysf7i1MP4pPPRXKN/view', fileSizeMB:21.9, tags:{orientation:'portrait',people:'group',mood:'posed'}, usageCount:0 },
+  { id:'rs-1bP6Bn_hdnsY2G5OL3_LmSpz4NWmqeDSK', fileId:'1bP6Bn_hdnsY2G5OL3_LmSpz4NWmqeDSK', name:'IMG_2053.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1bP6Bn_hdnsY2G5OL3_LmSpz4NWmqeDSK/view', fileSizeMB:16.6, tags:{orientation:'portrait',people:'solo',mood:'posed'}, usageCount:0 },
+  { id:'rs-1P43S6XWFs56Ijkba1BxRxRfGON8c6yrF', fileId:'1P43S6XWFs56Ijkba1BxRxRfGON8c6yrF', name:'IMG_2046.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1P43S6XWFs56Ijkba1BxRxRfGON8c6yrF/view', fileSizeMB:16.3, tags:{orientation:'portrait',people:'solo',mood:'calm'}, usageCount:0 },
+  { id:'rs-1bkS9QFFX_S0QasCZ0LqHiopgu9yKWZdJ', fileId:'1bkS9QFFX_S0QasCZ0LqHiopgu9yKWZdJ', name:'IMG_2054.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1bkS9QFFX_S0QasCZ0LqHiopgu9yKWZdJ/view', fileSizeMB:15.1, tags:{orientation:'portrait',people:'solo',mood:'posed'}, usageCount:0 },
+  { id:'rs-1GtR0xG95fQcB0IJ6hZEUdO5d76g3LoZY', fileId:'1GtR0xG95fQcB0IJ6hZEUdO5d76g3LoZY', name:'IMG_2039.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/1GtR0xG95fQcB0IJ6hZEUdO5d76g3LoZY/view', fileSizeMB:11.9, tags:{orientation:'portrait',people:'group',mood:'candid'}, usageCount:0 },
+  { id:'rs-10k2rY_9syF26WU2Zp_Jc9T6xrc0ZrAP1', fileId:'10k2rY_9syF26WU2Zp_Jc9T6xrc0ZrAP1', name:'IMG_2056.MOV', event:'Content day', driveUrl:'https://drive.google.com/file/d/10k2rY_9syF26WU2Zp_Jc9T6xrc0ZrAP1/view', fileSizeMB:1.6, tags:{orientation:'landscape',people:'group',mood:'candid'}, usageCount:0 }
+];
+
+const RS_CATALOG_VERSION = '2';
+function rsCatalog() {
+  if (localStorage.getItem('rs-catalog-version') !== RS_CATALOG_VERSION) {
+    localStorage.removeItem('rs-catalog');
+    localStorage.setItem('rs-catalog-version', RS_CATALOG_VERSION);
+  }
+  return JSON.parse(localStorage.getItem('rs-catalog') || 'null') || RS_CATALOG_DEFAULTS;
+}
+
+function rsSaveCatalog(items) {
+  localStorage.setItem('rs-catalog', JSON.stringify(items));
+}
+
+let rsActiveTab = 'catalog';
+function rsSwitchTab(tab) {
+  rsActiveTab = tab;
+  document.getElementById('rs-view-catalog').style.display = tab === 'catalog' ? '' : 'none';
+  document.getElementById('rs-view-plan').style.display = tab === 'plan' ? '' : 'none';
+  document.getElementById('rs-tab-catalog').classList.toggle('active', tab === 'catalog');
+  document.getElementById('rs-tab-plan').classList.toggle('active', tab === 'plan');
+  if (tab === 'plan') renderRsPlan();
+}
+
+let rsSortKey = 'name';
+let rsSortDir = 1;
+function rsSortBy(key) {
+  if (rsSortKey === key) rsSortDir *= -1; else { rsSortKey = key; rsSortDir = 1; }
+  renderRsCatalog();
+}
+
+function rsTagValue(item, key) {
+  if (key === 'orientation' || key === 'people' || key === 'mood') return item.tags[key] || '';
+  return item[key];
+}
+
+function renderRsCatalog() {
+  const tbody = document.getElementById('rs-catalog-tbody');
+  const progressEl = document.getElementById('rs-catalog-progress');
+  if (!tbody) return;
+  const items = rsCatalog();
+  const tagged = items.filter(i => i.tags.orientation || i.tags.people || i.tags.mood).length;
+  if (progressEl) progressEl.textContent = `${items.length} clips · ${tagged} tagged so far`;
+
+  const sorted = [...items].sort((a, b) => {
+    const av = rsTagValue(a, rsSortKey), bv = rsTagValue(b, rsSortKey);
+    if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * rsSortDir;
+    return String(av).localeCompare(String(bv)) * rsSortDir;
+  });
+
+  const orientationOpts = ['', 'landscape', 'portrait'];
+  const peopleOpts = ['', 'group', 'solo'];
+  const moodOpts = ['', 'calm', 'energetic', 'candid', 'posed'];
+  const optHtml = (opts, current) => opts.map(o => `<option value="${o}"${o === current ? ' selected' : ''}>${o || '—'}</option>`).join('');
+
+  tbody.innerHTML = sorted.map(item => `<tr>
+      <td class="rs-name" title="${esc(item.name)}">
+        <a href="${esc(item.driveUrl)}" target="_blank" rel="noopener" class="rs-thumb-wrap">
+          <img class="rs-thumb" src="https://drive.google.com/thumbnail?id=${esc(item.fileId)}&sz=w200" loading="lazy" alt="">
+          <span class="rs-drive-link">${esc(item.name)} ↗</span>
+        </a>
+      </td>
+      <td>${esc(item.event)}</td>
+      <td><select onchange="rsSetTag('${item.id}','orientation',this.value)">${optHtml(orientationOpts, item.tags.orientation || '')}</select></td>
+      <td><select onchange="rsSetTag('${item.id}','people',this.value)">${optHtml(peopleOpts, item.tags.people || '')}</select></td>
+      <td><select onchange="rsSetTag('${item.id}','mood',this.value)">${optHtml(moodOpts, item.tags.mood || '')}</select></td>
+      <td>${item.fileSizeMB} MB</td>
+      <td><button class="rs-usage-btn" onclick="rsIncrementUsage('${item.id}')">+1 used (${item.usageCount})</button></td>
+    </tr>`).join('');
+}
+
+function rsSetTag(id, dimension, value) {
+  const items = rsCatalog();
+  const item = items.find(i => i.id === id);
+  if (!item) return;
+  item.tags[dimension] = value || null;
+  rsSaveCatalog(items);
+  renderRsCatalog();
+}
+
+function rsIncrementUsage(id) {
+  const items = rsCatalog();
+  const item = items.find(i => i.id === id);
+  if (!item) return;
+  item.usageCount++;
+  rsSaveCatalog(items);
+  renderRsCatalog();
+}
+
+// ─── REELS PLAN ───────────────────────────────────────────────────
+function rsTodayKey() {
+  const wita = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Makassar' }));
+  const y = wita.getFullYear(), m = String(wita.getMonth() + 1).padStart(2, '0'), d = String(wita.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
+const RS_PLAN_VERSION = '1';
+function rsPlanData() {
+  if (localStorage.getItem('rs-plan-version') !== RS_PLAN_VERSION) {
+    localStorage.removeItem('rs-plan');
+    localStorage.setItem('rs-plan-version', RS_PLAN_VERSION);
+  }
+  return JSON.parse(localStorage.getItem('rs-plan') || '{}');
+}
+
+function rsSavePlan(data) {
+  localStorage.setItem('rs-plan', JSON.stringify(data));
+}
+
+function rsEmptySlots() {
+  return Array.from({ length: 5 }, (_, i) => ({
+    slot: i + 1, inspoLink: '', description: '', caption: '', cta: '', hashtags: '',
+    suggestedTags: { orientation: null, people: null, mood: null }, posted: false
+  }));
+}
+
+let rsPlanActiveDate = null;
+function rsPlanChangeDate(dateKey) {
+  rsPlanActiveDate = dateKey;
+  renderRsPlan();
+}
+
+function renderRsPlan() {
+  const grid = document.getElementById('rs-plan-grid');
+  const progressEl = document.getElementById('rs-plan-progress');
+  const dateSelect = document.getElementById('rs-plan-date-select');
+  if (!grid) return;
+
+  const data = rsPlanData();
+  const todayKey = rsTodayKey();
+  if (!data[todayKey]) { data[todayKey] = rsEmptySlots(); rsSavePlan(data); }
+  if (!rsPlanActiveDate) rsPlanActiveDate = todayKey;
+
+  const dates = Object.keys(data).sort().reverse();
+  dateSelect.innerHTML = dates.map(d => `<option value="${d}"${d === rsPlanActiveDate ? ' selected' : ''}>${d === todayKey ? d + ' (today)' : d}</option>`).join('');
+
+  const slots = data[rsPlanActiveDate] || rsEmptySlots();
+  const postedCount = slots.filter(s => s.posted).length;
+  if (progressEl) progressEl.textContent = `${postedCount} of 5 posted — ${rsPlanActiveDate}`;
+
+  grid.innerHTML = slots.map((slot, i) => `<div class="rs-slot-card${slot.posted ? ' posted' : ''}">
+      <div class="rs-slot-head"><span>Slot ${slot.slot}</span></div>
+      <label>Inspo link (IG/TikTok)</label>
+      <input value="${esc(slot.inspoLink)}" onchange="rsPlanFieldChanged('${i}','inspoLink',this.value)">
+      <label>What's said/shown</label>
+      <textarea onchange="rsPlanFieldChanged('${i}','description',this.value)">${esc(slot.description)}</textarea>
+      <label>Caption</label>
+      <textarea onchange="rsPlanFieldChanged('${i}','caption',this.value)">${esc(slot.caption)}</textarea>
+      <label>CTA</label>
+      <input value="${esc(slot.cta)}" onchange="rsPlanFieldChanged('${i}','cta',this.value)">
+      <label>Hashtags</label>
+      <input value="${esc(slot.hashtags)}" onchange="rsPlanFieldChanged('${i}','hashtags',this.value)">
+      <div class="rs-suggested-tags">Suggested b-roll: ${slot.suggestedTags.orientation || '—'} · ${slot.suggestedTags.people || '—'} · ${slot.suggestedTags.mood || '—'}</div>
+      <label class="rs-slot-posted-label"><input type="checkbox" ${slot.posted ? 'checked' : ''} onchange="rsPlanTogglePosted('${i}')"> Posted</label>
+    </div>`).join('');
+}
+
+function rsPlanFieldChanged(slotIndex, field, value) {
+  const data = rsPlanData();
+  const slots = data[rsPlanActiveDate];
+  if (!slots || !slots[slotIndex]) return;
+  slots[slotIndex][field] = value;
+  rsSavePlan(data);
+}
+
+function rsPlanTogglePosted(slotIndex) {
+  const data = rsPlanData();
+  const slots = data[rsPlanActiveDate];
+  if (!slots || !slots[slotIndex]) return;
+  slots[slotIndex].posted = !slots[slotIndex].posted;
+  rsSavePlan(data);
+  renderRsPlan();
+}
+
+function renderReelsStrategy() {
+  document.getElementById('rs-tab-catalog').classList.add('active');
+  renderRsCatalog();
+}
+
 // ─── CAROUSEL STUDIO (Client Work) ─────────────────────────────────
 const CAROUSEL_STUDIO_DATA = {
   bwb: {
     seal: 'BWB',
     name: 'Betches Walking Betches',
     tagline: 'The luxury choice in LA for devoted pet parents',
+    color: '#4F0115',
     intro: 'Every carousel below is DM-first: hook on slide one, proof in the middle, a clear "DM this word" close on the last slide. Caption and hashtags are ready to paste as-is.',
     posts: [
       {
@@ -4556,8 +5050,44 @@ const CAROUSEL_STUDIO_DATA = {
         cta: `Save this checklist. And if you want the easy answer, DM "CHECKLIST" and we'll send you ours.`,
         caption: `You wouldn't hire a nanny without asking a single question, so why do it for the creature who greets you at the door every day like it's the best day of their life? Here's the exact checklist we'd want a stranger to hold us to. DM "CHECKLIST" and we'll send you ours.`,
         hashtags: ['#StealOurChecklist', '#VetYourVet', '#InsuredAndBonded', '#PetCareChecklist', '#AskBeforeYouBook']
+      },
+      {
+        id: 'summer-heat-safety', date: 'Aug 1, 2026', tag: 'Educational',
+        title: 'The summer heat safety checklist every LA dog owner needs before their next walk',
+        slides: [
+          `The summer heat safety checklist every LA dog owner needs before their next walk.`,
+          `Pavement test: press your hand to the sidewalk for 5 seconds. Too hot for you, too hot for paws.`,
+          `Water stops built into the route, not an afterthought.`,
+          `Shorter, shadier walks between 11am and 4pm, no exceptions, no rushing.`,
+          `A Care Team that reads the signs of overheating before your dog ever has to show you.`
+        ],
+        cta: `This is the standard we hold ourselves to, every single summer. DM "SUMMER" for our full heat-safety routine.`,
+        caption: `LA summers don't ask permission, and neither should your dog's safety. It's not just about avoiding the hottest hour, it's about a Care Team that plans the route, paces the walk, and knows the early signs of overheating before you ever have to ask. DM "SUMMER" for our full heat-safety routine.`,
+        hashtags: ['#SummerDogSafety', '#PavementTest', '#LAHeatWave', '#PetConciergeLA', '#BWBStandard']
+      },
+      {
+        id: 'red-flags', date: 'Aug 4, 2026', tag: 'Educational',
+        title: '5 red flags to walk away from when hiring a dog walker',
+        slides: [
+          `5 red flags to walk away from when hiring a dog walker.`,
+          `They can't tell you who's actually coming to your home, just "someone from the team."`,
+          `No insurance, no bonding, and they get defensive when you ask.`,
+          `They won't show you a report, photo, or update after the visit.`,
+          `The pack size keeps changing and nobody can tell you the cap.`
+        ],
+        cta: `If you've seen even one of these, you deserve better. DM "REDFLAGS" and we'll show you the standard instead.`,
+        caption: `Most red flags don't show up until something's already gone wrong. These five show up in the very first conversation, if you know to look for them. Save yourself the trouble and ask before you book, not after. DM "REDFLAGS" and we'll show you the standard instead.`,
+        hashtags: ['#RedFlags', '#VetYourVet', '#DogWalkerRedFlags', '#LAPetParents', '#BWBStandard']
       }
     ]
+  },
+  rania: {
+    seal: 'RA',
+    name: 'ra healing',
+    tagline: 'the science and the sacred, in the same breath',
+    color: '#3E5641',
+    intro: 'Carousels for Rania, in the Sacred Grove voice: say the tension, then offer the breath. Poetic but plain, soft and strong at once, never guru energy, never a hard sell.',
+    posts: []
   }
 };
 
@@ -4565,7 +5095,7 @@ function renderCarouselStudio() {
   const grid = document.getElementById('cs-grid');
   if (!grid) return;
   grid.innerHTML = Object.entries(CAROUSEL_STUDIO_DATA).map(([id, client]) => `
-    <div class="cs-file-card" onclick="csOpenFile('${id}')">
+    <div class="cs-file-card" style="--cs-accent:${client.color || '#4F0115'}" onclick="csOpenFile('${id}')">
       <div class="cs-file-seal">${esc(client.seal)}</div>
       <div class="cs-file-name">${esc(client.name)}</div>
       <div class="cs-file-brand">Client File</div>
@@ -4580,6 +5110,7 @@ function csOpenFile(id) {
   const modal = document.getElementById('cs-modal');
   if (!client || !overlay || !modal) return;
 
+  modal.style.setProperty('--cs-accent', client.color || '#4F0115');
   modal.innerHTML = `
     <div class="cs-modal-head">
       <div class="cs-modal-seal">${esc(client.seal)}</div>
