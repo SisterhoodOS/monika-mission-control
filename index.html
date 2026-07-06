@@ -703,7 +703,40 @@ strong { color: var(--ink); font-weight: 600; }
 .cs-copy-btn:hover { background:#4F0115; color:#F5EEE8; }
 .cs-copy-btn.copied { background:#7a8c6a; border-color:#7a8c6a; color:#fff; }
 
-/* ── EVENT PLANNER ───────────────────────────────────────────────── */
+/* ── DELICIOUS BABY (Client Work) ────────────────────────────────── */
+.db-hero { position:relative; background:linear-gradient(135deg,#7a1f2b 0%,#3f6b3a 100%); border:1px solid #5c1420; border-radius:14px; padding:26px 28px; margin-bottom:22px; overflow:hidden; }
+.db-hero h2 { font-family:var(--serif); font-size:22pt; font-weight:400; color:#F5EEE8; margin-bottom:4px; }
+.db-hero p { color:#e6dccf; font-family:var(--serif); font-style:italic; font-size:12pt; margin-bottom:0; }
+.db-hero .sec-eye { color:#d9b8bb !important; }
+.db-sticker { position:absolute; top:14px; right:22px; font-size:44px; line-height:1; transform:rotate(14deg); filter:drop-shadow(0 4px 8px rgba(0,0,0,.35)); }
+.db-body { color:var(--ink); }
+.db-correction-box { background:#fdf1ea; border:1px solid #d9b8a0; border-radius:12px; padding:16px 20px; margin-bottom:24px; }
+.db-correction-box h3 { font-family:var(--serif); font-size:13pt; color:#7a1f2b; margin-bottom:8px; }
+.db-correction-box ul { padding-left:18px; margin:0; display:flex; flex-direction:column; gap:6px; }
+.db-correction-box li { font-size:10pt; color:var(--ink-soft); line-height:1.5; }
+.db-section { margin-bottom:28px; }
+.db-section h3 { font-family:var(--serif); font-size:15pt; font-weight:400; color:#3f6b3a; border-bottom:2px solid #7a1f2b; padding-bottom:6px; margin-bottom:14px; }
+.db-time-list { list-style:none; display:flex; flex-direction:column; gap:7px; }
+.db-time-list li { display:flex; gap:12px; padding:9px 14px; border-left:3px solid #7a1f2b; background:#faf6f2; border-radius:0 8px 8px 0; font-size:10.5pt; color:var(--ink); line-height:1.4; }
+.db-time-list b { color:#7a1f2b; min-width:60px; flex-shrink:0; }
+.db-shot-list { list-style:none; display:flex; flex-direction:column; gap:10px; counter-reset:shot; }
+.db-shot-list li { display:flex; gap:12px; font-size:10.5pt; color:var(--ink); line-height:1.55; }
+.db-shot-num { flex-shrink:0; width:22px; height:22px; border-radius:50%; background:#3f6b3a; color:#fff; font-size:9pt; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.db-check-list { list-style:none; display:flex; flex-direction:column; gap:7px; }
+.db-check-list li { display:flex; gap:8px; align-items:flex-start; font-size:10.5pt; color:var(--ink); }
+.db-loc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px; }
+.db-loc-card { background:#fff; border:1px solid #e3d6cc; border-radius:10px; padding:14px 16px; }
+.db-loc-card h4 { font-family:var(--serif); font-size:12.5pt; color:#7a1f2b; margin-bottom:6px; }
+.db-loc-card p { font-size:9.5pt; color:var(--ink-mute); line-height:1.55; margin:0; }
+.db-flag { background:#fdf1ea; border:1px solid #d9b8a0; border-radius:8px; padding:10px 14px; font-size:9.5pt; color:#7a1f2b; margin-top:10px; }
+.db-note { font-size:9pt; color:#a08b76; font-style:italic; margin-top:8px; }
+.db-person-tabs { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+.db-person-tab { font-family:var(--serif); font-size:11.5pt; padding:9px 18px; border-radius:20px; border:1.5px solid #7a1f2b; background:#fff; color:#7a1f2b; cursor:pointer; transition:all .15s; }
+.db-person-tab:hover { background:#fdf1ea; }
+.db-person-tab.active { background:#7a1f2b; color:#F5EEE8; border-color:#7a1f2b; }
+.db-person-panel { display:none; }
+.db-person-panel.active { display:block; }
+.db-person-panel h4 { font-family:var(--serif); font-size:13pt; color:#3f6b3a; margin-bottom:10px; }
 .ep-page { padding:0 0 80px; }
 .ep-hero { background:linear-gradient(135deg,#eef4e8 0%,#ddecd4 100%); border:1px solid #b5c9ae; border-radius:14px; padding:26px 28px; margin-bottom:22px; }
 .ep-hero h2 { font-family:var(--serif); font-size:22pt; font-weight:400; color:var(--deep-green); margin-bottom:4px; }
@@ -949,6 +982,7 @@ strong { color: var(--ink); font-weight: 600; }
   <div class="nav-group">Client Work</div>
   <ul class="nav-list">
     <li><a onclick="navigate('carousel-studio')" id="nav-carousel-studio"><span class="nav-icon">🗂️</span> Carousel Studio</a></li>
+    <li><a onclick="navigate('delicious-baby')" id="nav-delicious-baby"><span class="nav-icon">🍒</span> Delicious Baby — Pre-Production</a></li>
   </ul>
 
   <div class="nav-group">Saha Synergy</div>
@@ -1550,6 +1584,164 @@ strong { color: var(--ink); font-weight: 600; }
     </div>
   </div>
 
+  <!-- DELICIOUS BABY - PRE PRODUCTION -->
+  <div id="panel-delicious-baby" class="section-panel content-mode" style="display:none">
+    <div class="main-inner">
+      <div class="wat-page">
+        <div class="db-hero">
+          <span class="db-sticker">🍒</span>
+          <div class="sec-eye">Client Work</div>
+          <h2>Delicious Baby — Pre-Production</h2>
+          <p>Meeting report will go here: reminders, what to bring, timing, and the action list.</p>
+        </div>
+        <div id="db-content" class="db-body">
+
+          <div class="db-correction-box">
+            <h3>✏️ Corrections from the original notes (per Monika, confirmed on the ground)</h3>
+            <ul>
+              <li>A sisterhood member feeds cherries to <b>Elliye</b> (fantasy shot in the sofa background).</li>
+              <li>The villa has <b>2 doors</b>: the first is the entrance/gate (pool &amp; garden visible through it), the second leads into the villa interior — the reveal happens at this second door.</li>
+              <li>It's <b>Elliye</b>, not the nerd, at the floor-1 mirror before the pool — she spins and looks straight at camera as the transition, then walks directly to the pool. (The nerd has his own separate chair-spin moment later, transitioning into the sofa scene — a different beat, don't confuse the two.)</li>
+              <li>The cherry pool float <b>and</b> the cherry balloons are both brought by <b>Elliye</b>.</li>
+            </ul>
+          </div>
+
+          <div class="db-section">
+            <h3>🕐 Before Shoot Day</h3>
+            <ul class="db-time-list">
+              <li><b>Tue Jul 7, 07:00</b> Dress trial + Makeup trial + pre-pack all equipment</li>
+              <li><b>Tue Jul 7, 16:00–18:00</b> Dancer rehearsal / run-through — try to attend to plan the shots</li>
+            </ul>
+          </div>
+
+          <div class="db-section">
+            <h3>🕐 Shoot Day — Wednesday, July 8</h3>
+            <ul class="db-time-list">
+              <li><b>10:30</b> Delicious Baby Production — Microsoft Teams Meeting (9h30m block, runs to ~20:00)</li>
+              <li><b>11:30</b> Dancer Slot (3h45m, runs to 15:15)</li>
+              <li><b>13:30</b> Male Lead Slot — the nerd (5h30m, runs to 19:00)</li>
+              <li><b>14:30</b> Sisterhood Slot (2h, runs to 16:30)</li>
+            </ul>
+            <div class="db-note">Confirmed call times from the calendar. Attendee circles per slot: Dancer Slot has 7 people, Male Lead Slot has 6, Sisterhood Slot has 7 — full names TBD, only initials showing (G, U, S, MP, M, Y, +others).</div>
+            <div class="db-flag">⚠️ Sisterhood Slot is only 2 hours (14:30–16:30) — the creative plan below has sisters needed later for the evening pink-light climax too. Confirm whether that's covered by the same slot or a separate call.</div>
+          </div>
+
+          <div class="db-section">
+            <h3>🎬 Planned Shot Timeline (draft — fit inside the confirmed call windows above)</h3>
+            <ul class="db-time-list">
+              <li><b>11:00</b> Make sure all dancers have arrived on location</li>
+              <li><b>12:00</b> Choreography 1 — Sofa / Living Room (45 min)</li>
+              <li><b>12:45</b> Costume change (30 min)</li>
+              <li><b>13:15–14:00</b> Choreography 2 — Pool (45 min)</li>
+              <li><b>~14:00</b> The nerd arrives on location</li>
+              <li><b>14:00–14:45</b> Nerd's outdoor scenes — arrival, knocking on the door (not including the dining table reveal yet)</li>
+              <li><b>14:30–16:30</b> Extra coverage / "peak" choreography with the sisters — dancers on standby until ~15:00</li>
+              <li><b>16:30</b> Relationship beats with the nerd — dining table + monitor scene</li>
+              <li><b>17:00</b> Elliye's solo dance ("pink, red, gore" concept, slow motion)</li>
+              <li><b>18:00</b> Sunset — vibe shift to pink lights, smoke machine, climax scene (~9–10 min)</li>
+              <li><b>Evening</b> Makeup mirror hero reveal → pink tube light climax (sisters "going wild" ~20 sec) → back to the monitor for closing lyrics</li>
+            </ul>
+            <div class="db-note">This is tight and rotating — small shifts on the day are likely, stay flexible.</div>
+          </div>
+
+          <div class="db-section">
+            <h3>🎬 Shot Flow (story order in the video, different from shooting order)</h3>
+            <ul class="db-shot-list">
+              <li><span class="db-shot-num">1</span> Nerd arrives, knocks at the entrance/gate door (pool &amp; garden visible through it), wearing his "AI NERD" shirt (no real intercom → faked with a dolly shot from behind + sound design to feel real)</li>
+              <li><span class="db-shot-num">2</span> He's let through to the second door, into the villa interior — Elliye opens it → her reveal in the gown, seen over the nerd's shoulder → cut to his shocked reaction ("holy shit" — she's literally his favorite)</li>
+              <li><span class="db-shot-num">3</span> Cut to the dining table — they sit facing each other with the monitor between them. On the monitor: glitchy AI edit of Elliye's lips ("cherry-ish", seductive) → song lyrics appear → cut to real footage of Elliye + dancers dancing "Delicious Baby"</li>
+              <li><span class="db-shot-num">4</span> Transition: the nerd spins in his computer chair ("spinning out") → cut to the sofa scene (Elliye looking at camera, cozy, 3 dancers in front, one sister feeding Elliye cherries in the background)</li>
+              <li><span class="db-shot-num">5</span> Elliye is at the floor-1 mirror, spins and looks straight at camera — transition — then walks directly to the pool</li>
+              <li><span class="db-shot-num">6</span> Pool choreography — cherry balloons + cherry pool float (both brought by Elliye) in the background, freestyle with the sisterhood, nerd's reaction at the pool</li>
+              <li><span class="db-shot-num">7</span> Vibe shift — makeup mirror scene: Elliye has her back to camera first (touching up lipstick) → spins to camera (hero reveal), the nerd looks mesmerized</li>
+              <li><span class="db-shot-num">8</span> Cut to night — pink tube lights on, smoke machine + lighting jib changing colors, the sisters "going wild," climax ~20 sec</li>
+              <li><span class="db-shot-num">9</span> Closing — back to the monitor, the song's final lyrics appear on screen, tease of the next outfit/song (yellow dress) while the nerd falls asleep at the computer</li>
+            </ul>
+          </div>
+
+          <div class="db-section">
+            <h3>🛍️ Bring / Checklist — By Person</h3>
+            <div class="db-person-tabs">
+              <button class="db-person-tab active" onclick="dbShowPerson(this,'elliye')">🍒 Elliye</button>
+              <button class="db-person-tab" onclick="dbShowPerson(this,'sophia')">🍒 Sophia</button>
+              <button class="db-person-tab" onclick="dbShowPerson(this,'monika')">🍒 Monika</button>
+              <button class="db-person-tab" onclick="dbShowPerson(this,'crew')">🍒 Production / Crew</button>
+            </div>
+
+            <div class="db-person-panel active" id="db-person-elliye">
+              <h4>Elliye — reminders</h4>
+              <ul class="db-check-list">
+                <li>🍒 Bring the cherry balloons (already bought, 5 giant + 1 small)</li>
+                <li>🍒 Bring the cherry pool float</li>
+                <li>🍒 Make sure a drive/pickup is arranged for you — confirm time &amp; who's driving</li>
+              </ul>
+            </div>
+
+            <div class="db-person-panel" id="db-person-sophia">
+              <h4>Sophia — reminders</h4>
+              <ul class="db-check-list">
+                <li>🍒 Bring the hot pink blanket</li>
+                <li>🍒 Inform Vanessa: borrowing the Office Room + Office Bathroom</li>
+                <li>🍒 Special Polaroid (has a QR code, scan it → hear the music) — confirm this is yours to bring</li>
+              </ul>
+            </div>
+
+            <div class="db-person-panel" id="db-person-monika">
+              <h4>Monika — reminders</h4>
+              <ul class="db-check-list">
+                <li>🍒 Bring Sophia's blue tablet</li>
+                <li>🍒 Bring the custom "AI NERD" t-shirt (the nerd's costume)</li>
+              </ul>
+            </div>
+
+            <div class="db-person-panel" id="db-person-crew">
+              <h4>Production / Crew — reminders</h4>
+              <ul class="db-check-list">
+                <li>🍒 Bring 2 monitors — one to watch back the footage being shot, one for the dining table scene where Elliye &amp; the AI Nerd are acting</li>
+                <li>🍒 Lighting — jib lights, color-changing</li>
+                <li>🍒 Smoke machine</li>
+                <li>🍒 Board game — Catan (for the "chilling" scene, the villa has no TV)</li>
+                <li>🍒 A proper chair/stool for in front of the mirror (the current one is a pink "kid's chair," needs swapping)</li>
+                <li>🍒 Film for the film/disposable camera (it's currently empty, no film in it)</li>
+                <li>🍒 Dolly track — check whether John has sent it yet</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="db-section">
+            <h3>📍 Locations &amp; Room Plan</h3>
+            <div class="db-loc-grid">
+              <div class="db-loc-card"><h4>Living Room / Sofa</h4><p>Choreography 1. Speaker &amp; sound equipment stay here, don't move them (needed to play the song live).</p></div>
+              <div class="db-loc-card"><h4>Pool</h4><p>Choreography 2, cherry balloons + cherry float as backdrop (brought by Elliye).</p></div>
+              <div class="db-loc-card"><h4>Entrance / Gate Door</h4><p>First door on arrival — pool &amp; garden visible through it. Nerd knocks here — dolly shot from behind.</p></div>
+              <div class="db-loc-card"><h4>Interior Door</h4><p>Second door, leads into the villa interior — Elliye's reveal happens here.</p></div>
+              <div class="db-loc-card"><h4>Dining Table</h4><p>Monitor / reveal scene.</p></div>
+              <div class="db-loc-card"><h4>Floor-1 Mirror</h4><p>Elliye's spin-to-camera transition, straight into the pool walk.</p></div>
+              <div class="db-loc-card"><h4>Office Room (upstairs)</h4><p>For the computer/monitor setup, pink chair (needs swapping), nice window light. Sophia needs to inform Vanessa first.</p></div>
+              <div class="db-loc-card"><h4>Office Bathroom</h4><p>Main option for the makeup mirror scene — good window light, only needs one shot, no need to move Vanessa's things.</p></div>
+              <div class="db-loc-card"><h4>Guest Room (downstairs)</h4><p>Sisterhood get-ready &amp; dance prep space. Also the backup option for the makeup mirror scene, and a safe spot to store gear (tube lights, film camera).</p></div>
+            </div>
+            <div class="db-flag">⚠️ Decision still to lock in: makeup mirror scene in the <b>Guest Room</b> or the <b>Office Bathroom</b> — pick one on the day.</div>
+          </div>
+
+          <div class="db-section">
+            <h3>❓ To Confirm</h3>
+            <ul class="db-check-list">
+              <li>🍒 Sophia to inform Vanessa: borrowing the Office Room + Office Bathroom</li>
+              <li>🍒 Check the dolly track — has John sent it?</li>
+              <li>🍒 Buy film for the film/disposable camera</li>
+              <li>🍒 Sizing for the guy playing the nerd — confirm with Scott</li>
+              <li>🍒 Final makeup mirror location: Guest Room vs Office Bathroom</li>
+              <li>🍒 Drive to pick up Elliye — what time &amp; who's driving</li>
+              <li>🍒 Which car/villa door counts as "entrance" vs "interior" on-site — walk it once with the crew before 12:00</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
 </main>
 </div>
 
@@ -1831,7 +2023,7 @@ function saveState(state) {
 let state = loadState();
 
 // ─── NAVIGATION ──────────────────────────────────────────────────
-const panels = ['dashboard','console','tasks','workspace','content-calendar','checkins','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy','agents','sops','signed-docs','wa-templates','event-planner','facilitator-schedule','poll-templates','reels-strategy','carousel-studio'];
+const panels = ['dashboard','console','tasks','workspace','content-calendar','checkins','sisterhood-kb','marketing-kb','saha-kb','icp','soul-path','synergy','agents','sops','signed-docs','wa-templates','event-planner','facilitator-schedule','poll-templates','reels-strategy','carousel-studio','delicious-baby'];
 
 const CONSOLE_DEFAULT_SYSTEM = `You are an assistant inside Monika's Mission Control for Sisterhood OS (Sophia Fox's women's empowerment brand based in Bali).
 
@@ -1858,6 +2050,13 @@ const CONSOLE_MODELS = ['claude-sonnet-4-6','claude-opus-4-7','claude-haiku-4-5-
 const CONSOLE_LABELS = { 'claude-sonnet-4-6':'SONNET 4.6', 'claude-opus-4-7':'OPUS 4.7', 'claude-haiku-4-5-20251001':'HAIKU 4.5' };
 
 const MOOD_OPTIONS = ['Lit','Soft','Focused','Tender','Tired','Anxious','Grieving','Numb','Magnetic','Slow'];
+
+function dbShowPerson(btn, name) {
+  document.querySelectorAll('.db-person-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.db-person-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('db-person-' + name).classList.add('active');
+}
 
 function navigate(id) {
   panels.forEach(p => {
@@ -3805,23 +4004,35 @@ function toggleMonth(key) {
   renderEventPlanner();
 }
 
-function buildEPPack(ev) {
+function epGetWaMessage(ev) {
   const type = EP_TYPES[ev.type] || {};
   const watTpl = WAT_DEFAULTS.find(t => t.id === type.watId);
-  let waMsg = '(No template linked)';
-  if (watTpl) {
-    const lv = {};
-    watTpl.fields.forEach(f => {
-      if (f.key === 'DAY')          lv[f.key] = ev.dayLabel || f.default;
-      else if (f.key === 'DATE')    lv[f.key] = ev.dateLabel || f.default;
-      else if (f.key === 'LINK')    lv[f.key] = ev.nomeoLink || f.default;
-      else if (f.key === 'MAPS_LINK')    lv[f.key] = ev.mapsLink || f.default;
-      else if (f.key === 'BOOKING_LINK') lv[f.key] = ev.bookingLink || f.default;
-      else lv[f.key] = f.default;
-    });
-    waMsg = watTpl.body;
-    watTpl.fields.forEach(f => { waMsg = waMsg.split('{{'+f.key+'}}').join(lv[f.key]); });
-  }
+  if (!watTpl) return '(No template linked)';
+  const lv = {};
+  watTpl.fields.forEach(f => {
+    if (f.key === 'DAY')          lv[f.key] = ev.dayLabel || f.default;
+    else if (f.key === 'DATE')    lv[f.key] = ev.dateLabel || f.default;
+    else if (f.key === 'LINK')    lv[f.key] = ev.nomeoLink || f.default;
+    else if (f.key === 'MAPS_LINK')    lv[f.key] = ev.mapsLink || f.default;
+    else if (f.key === 'BOOKING_LINK') lv[f.key] = ev.bookingLink || f.default;
+    else lv[f.key] = f.default;
+  });
+  let waMsg = watTpl.body;
+  watTpl.fields.forEach(f => { waMsg = waMsg.split('{{'+f.key+'}}').join(lv[f.key]); });
+  return waMsg;
+}
+
+function epSendToWA(evId) {
+  const events = epEvents();
+  const ev = events.find(e => e.id === evId);
+  if (!ev) return;
+  const msg = epGetWaMessage(ev);
+  window.open('http://localhost:5184/?prefill=' + encodeURIComponent(msg), '_blank');
+}
+
+function buildEPPack(ev) {
+  const type = EP_TYPES[ev.type] || {};
+  const waMsg = epGetWaMessage(ev);
 
   const savedImg = localStorage.getItem('ep-img-' + ev.id) || '';
   const autoFlyer = epAutoFlyerPath(ev);
@@ -3857,6 +4068,7 @@ function buildEPPack(ev) {
     ${type.mapsUrl ? `<div style="margin-top:-4px;margin-bottom:12px;padding-left:2px"><a href="${type.mapsUrl}" target="_blank" rel="noopener" style="font-size:10pt;color:#1565c0;text-decoration:none;font-weight:500">📍 Open in Google Maps ↗</a></div>` : ''}
     ${type.nomeoDesc ? epPackField('DESCRIPTION', type.nomeoDesc.replace('{DAY}', ev.dayLabel).replace('{DATE}', ev.dateLabel + ', 2026'), 'epf-desc-'+ev.id) : ''}
     ${epPackField('WHATSAPP MESSAGE', waMsg, 'epf-wa-'+ev.id)}
+    <button class="ep-flyer-download" style="margin-top:-8px;margin-bottom:12px" onclick="epSendToWA('${ev.id}')">📤 Send via WA Automation</button>
 
     <div class="ep-section-divider"></div>
     ${epPackField('MINIMUM SPEND', type.minSpend||'', 'epf-spend-'+ev.id, true)}
