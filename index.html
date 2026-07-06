@@ -2020,6 +2020,30 @@ function saveState(state) {
   sbSave(state);
 }
 
+async function sbSaveJSON(key, value) {
+  try {
+    await _SB.from('mc_settings').upsert({ key, value: JSON.stringify(value) });
+  } catch(e) { console.warn('Supabase save failed:', key, e); }
+}
+
+async function sbLoadJSON(key) {
+  try {
+    const { data } = await _SB.from('mc_settings').select('value').eq('key', key).single();
+    if (data?.value) return JSON.parse(data.value);
+  } catch(e) { console.warn('Supabase load failed:', key, e); }
+  return null;
+}
+
+async function epSyncFromSupabase() {
+  const [remoteEvents, remoteTypes] = await Promise.all([
+    sbLoadJSON('ep_events'),
+    sbLoadJSON('ep_custom_types')
+  ]);
+  if (remoteEvents) localStorage.setItem('ep-events', JSON.stringify(remoteEvents));
+  if (remoteTypes) localStorage.setItem('ep-custom-types', JSON.stringify(remoteTypes));
+  if (document.getElementById('panel-event-planner')?.style.display !== 'none') renderEventPlanner();
+}
+
 let state = loadState();
 
 // ─── NAVIGATION ──────────────────────────────────────────────────
@@ -3855,6 +3879,7 @@ function epGetCustomTypes() {
 }
 function epSaveCustomTypes(arr) {
   localStorage.setItem('ep-custom-types', JSON.stringify(arr));
+  sbSaveJSON('ep_custom_types', arr);
 }
 
 function epAllTypes() {
@@ -3926,6 +3951,7 @@ function epEvents() {
 }
 function epSaveAll(events) {
   localStorage.setItem('ep-events', JSON.stringify(events));
+  sbSaveJSON('ep_events', events);
 }
 
 function renderEventPlanner() {
@@ -5929,6 +5955,7 @@ function init() {
     });
   }
   syncFromSupabase();
+  epSyncFromSupabase();
   renderJune();
 }
 
