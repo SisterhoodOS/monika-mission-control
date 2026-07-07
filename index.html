@@ -2039,8 +2039,13 @@ async function epSyncFromSupabase() {
     sbLoadJSON('ep_events'),
     sbLoadJSON('ep_custom_types')
   ]);
-  if (remoteEvents) localStorage.setItem('ep-events', JSON.stringify(remoteEvents));
-  if (remoteTypes) localStorage.setItem('ep-custom-types', JSON.stringify(remoteTypes));
+  const localEvents = JSON.parse(localStorage.getItem('ep-events') || '[]');
+  const localTypes = JSON.parse(localStorage.getItem('ep-custom-types') || '[]');
+  // never let an empty remote silently wipe local data — push up instead of pulling down
+  if (remoteEvents && remoteEvents.length) localStorage.setItem('ep-events', JSON.stringify(remoteEvents));
+  else if (localEvents.length) sbSaveJSON('ep_events', localEvents);
+  if (remoteTypes && remoteTypes.length) localStorage.setItem('ep-custom-types', JSON.stringify(remoteTypes));
+  else if (localTypes.length) sbSaveJSON('ep_custom_types', localTypes);
   if (document.getElementById('panel-event-planner')?.style.display !== 'none') renderEventPlanner();
 }
 
